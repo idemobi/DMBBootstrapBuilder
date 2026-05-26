@@ -1,0 +1,129 @@
+[data-layout-debug="true"] .theme-debug-only {
+    display: revert !important;
+    visibility: initial !important;
+}
+
+[data-layout-debug="true"] .btn.theme-debug-only {
+    display: initial;
+    visibility: initial;
+}
+
+[data-layout-debug="true"] .bootstrap-overridable-area {
+    border: 1px dashed var(--bs-warning-border-subtle);
+    border-radius: var(--bs-border-radius);
+    padding: .5rem;
+}
+
+.bootstrap-overridable-marker {
+    font-size: .75rem;
+    line-height: 1.25;
+}
+
+.bootstrap-overridable-marker code {
+    color: inherit;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.bootstrap-overridable-marker-override {
+    --bs-alert-color: var(--bs-info-text-emphasis);
+    --bs-alert-bg: var(--bs-info-bg-subtle);
+    --bs-alert-border-color: var(--bs-info-border-subtle);
+}
+
+.bootstrap-overridable-paths {
+    max-width: 100%;
+}
+
+.bootstrap-page-qualification-marker {
+    font-size: .75rem;
+    line-height: 1.25;
+}
+
+.bootstrap-page-qualification-marker .bi {
+    border: 0 !important;
+}
+
+.bootstrap-page-qualification-path {
+    color: inherit;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.navbar.fixed-top, 
+.navbar.sticky-top,
+header {
+    z-index: 2000 !important;
+}
+
+.section-debug-stack {
+    z-index: 1020 !important; 
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+    overflow: visible !important;
+}
+
+.section-debug-panel {
+    width: 350px;
+    background: #1a1a1a !important; 
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+    color: #eee;
+    pointer-events: auto;
+    padding: 8px;
+}
+
+.section-debug-panel .card-body {
+    padding: 8px;
+}
+
+.section-debug-panel .row {
+    margin: 0 0 10px 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    width: 100%;
+}
+
+.section-debug-panel .row > [class^="col"] {
+    padding: 0 4px !important;
+}
+
+.section-debug-panel label {
+    color: #999;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin: 0 !important;
+    letter-spacing: 0.5px;
+}
+
+.section-debug-panel .form-control-sm, 
+.section-debug-panel .form-select-sm {
+    background-color: #252525;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 6px;
+    padding: 4px 8px;
+}
+
+.section-debug-panel .card-header {
+    background: transparent;
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    font-size: 0.95rem;
+    padding: 4px 8px 12px 8px;
+    margin-bottom: 8px;
+}
+
+.section-debug-panel .mt-3 {
+    margin-top: 15px !important;
+    padding: 10px;
+    background: #000;
+    border-radius: 6px;
+    border: 1px solid #333;
+}

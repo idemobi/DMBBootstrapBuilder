@@ -1,0 +1,32 @@
+/* @override 
+	https://localhost:8015/css/FooterBar.css?* */
+
+
+
+.footer-bar {
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.footer-bar-before {
+    background: var(--bs-body-bg);
+    color: var(--bs-body-color);
+}
+
+.footer-bar-main {
+    background: #02152d;
+    color: #cccccc;
+    padding: 2rem 0;
+}
+
+.footer-bar-main a {
+	color: #ababab;
+}
+
+
+.footer-bar-notice{
+    background: #02152d;
+    color: #cccccc;
+    text-align: center;
+	font-size: 10px;
+}

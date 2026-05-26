@@ -1,0 +1,10 @@
+/* @override 
+	https://localhost:8015/css/ModernMode.css?* 
+	
+*/
+
+[data-layout-modern="true"] [modern-component="true"] {
+	
+	border: 1px dotted #1d451b;
+	background-color: rgba(96, 207, 28, 0.18);
+}

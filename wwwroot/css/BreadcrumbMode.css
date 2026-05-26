@@ -1,0 +1,3 @@
+html[data-layout-breadcrumb="false"] [data-breadcrumb="true"] {
+    display: none !important;
+}

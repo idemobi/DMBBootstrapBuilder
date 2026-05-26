@@ -1,0 +1,128 @@
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>1.3</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ACTIONITEM_NAVBAR_GROUP_Language_TITLE" xml:space="preserve">
+    <value>언어</value>
+  </data>
+  <data name="ACTIONITEM_NAVBAR_GROUP_Language_ICON" xml:space="preserve">
+    <value>bi-translate</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_ICON" xml:space="preserve">
+    <value>bi-palette</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_Options_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_Options_TITLE" xml:space="preserve">
+    <value>옵션</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_SideBar_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_SideBar_TITLE" xml:space="preserve">
+    <value>사이드바</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_Theme_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_Theme_TITLE" xml:space="preserve">
+    <value>테마</value>
+  </data>
+  <data name="ACTIONITEM_GROUP_Customize_TITLE" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="COMMON_OptionThemeFluid_ICON" xml:space="preserve">
+    <value>bi-arrows</value>
+  </data>
+  <data name="COMMON_OptionThemeFluid_TITLE" xml:space="preserve">
+    <value>유동 레이아웃</value>
+  </data>
+  <data name="COMMON_OptionThemeBreadcrumb_ICON" xml:space="preserve">
+    <value>bi-signpost-split</value>
+  </data>
+  <data name="COMMON_OptionThemeBreadcrumb_TITLE" xml:space="preserve">
+    <value>이동 경로</value>
+  </data>
+  <data name="COMMON_OptionThemeRTL_ICON" xml:space="preserve">
+    <value>bi-text-indent-right</value>
+  </data>
+  <data name="COMMON_OptionThemeRTL_TITLE" xml:space="preserve">
+    <value>RTL 모드</value>
+  </data>
+  <data name="COMMON_OurMission_DESCRIPTION" xml:space="preserve">
+    <value>우리의 사명 설명</value>
+  </data>
+  <data name="COMMON_OurMission_TITLE" xml:space="preserve">
+    <value>우리의 사명</value>
+  </data>
+  <data name="COMMON_SideBarThemeColored_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeColored_TITLE" xml:space="preserve">
+    <value>컬러</value>
+  </data>
+  <data name="COMMON_SideBarThemeDark_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeDark_TITLE" xml:space="preserve">
+    <value>다크</value>
+  </data>
+  <data name="COMMON_SideBarThemeDefault_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeDefault_TITLE" xml:space="preserve">
+    <value>기본</value>
+  </data>
+  <data name="COMMON_SideBarThemeInversed_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeInversed_TITLE" xml:space="preserve">
+    <value>반전</value>
+  </data>
+  <data name="COMMON_SideBarThemeLight_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeLight_TITLE" xml:space="preserve">
+    <value>라이트</value>
+  </data>
+  <data name="COMMON_SideBarThemePrimary_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemePrimary_TITLE" xml:space="preserve">
+    <value>기본</value>
+  </data>
+  <data name="COMMON_SideBarThemeTransparent_ICON" xml:space="preserve">
+    <value>__EMPTY__</value>
+  </data>
+  <data name="COMMON_SideBarThemeTransparent_TITLE" xml:space="preserve">
+    <value>투명</value>
+  </data>
+  <data name="COMMON_ThemeAutomatic_ICON" xml:space="preserve">
+    <value>bi-circle-half</value>
+  </data>
+  <data name="COMMON_ThemeAutomatic_TITLE" xml:space="preserve">
+    <value>자동</value>
+  </data>
+  <data name="COMMON_ThemeDark_ICON" xml:space="preserve">
+    <value>bi-moon-stars</value>
+  </data>
+  <data name="COMMON_ThemeDark_TITLE" xml:space="preserve">
+    <value>다크</value>
+  </data>
+  <data name="COMMON_ThemeLight_ICON" xml:space="preserve">
+    <value>bi-sun</value>
+  </data>
+  <data name="COMMON_ThemeLight_TITLE" xml:space="preserve">
+    <value>라이트</value>
+  </data>
+</root>

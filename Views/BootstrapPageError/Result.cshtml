@@ -1,0 +1,19 @@
+@using DMBBootstrapBuilder
+@using DMBPageBuilder
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().WithTitle("Page error", TitleLevel.One, IconStruct.BootstrapEnum(BootStrapEnum.bi_exclamation_triangle)).Begin())
+        {
+            <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-primary" href="/">Home</a>
+                <a class="btn btn-outline-secondary" href="javascript:history.back()">Back</a>
+            </div>
+        }
+    }
+}

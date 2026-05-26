@@ -1,0 +1,98 @@
+/* @override 
+	https://localhost:7174/css/ImageRender.css?* */
+
+.image-render-broken {
+    width: 100%;
+    min-height: 6rem;
+    background: rgba(128, 128, 128, 0.08);
+    color: rgba(128, 128, 128, 0.8);
+    border: 1px dashed rgba(128, 128, 128, 0.35);
+    border-radius: .375rem;
+}
+
+.image-render-broken .bi {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.image-render-inline-svg-node
+{
+	width: 100%;
+	height: 100%;
+}
+
+.image-render {
+    position: relative;
+    overflow: visible;
+    line-height: 0;
+    vertical-align: top;
+}
+
+.image-render-clickable {
+    cursor: zoom-in;
+}
+
+.image-render-media {
+    display: block;
+    line-height: normal;
+}
+
+.image-render-media svg,
+.image-render-media > svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.image-render-spinner {
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,.55);
+    pointer-events: none;
+	position: relative;
+	top: auto;
+}
+
+[data-bs-theme="dark"] .image-render-spinner {
+    background: rgba(0,0,0,.35);
+}
+
+.image-render-download {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    z-index: 3;
+    opacity: .88;
+}
+
+.image-render-download:hover {
+    opacity: 1;
+}
+
+.image-render-modal-body {
+    min-height: 40vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.image-render-modal-preview,
+.image-render-modal-preview svg {
+    max-width: 100%;
+    max-height: 75vh;
+}
+
+.image-render-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+    width: 100%;
+}
+
+.image-render-modal-split .dropdown-menu .bi {
+    margin-right: .5rem;
+}
