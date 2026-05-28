@@ -29,7 +29,7 @@ namespace DMBBootstrapBuilder
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFloat<TBuilder>(
             this TBuilder builder,
             Float value,
@@ -51,7 +51,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFloatEnd<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -67,7 +67,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFloatNone<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -83,7 +83,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFloatNormal<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -99,7 +99,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFloatStart<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs

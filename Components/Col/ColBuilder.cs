@@ -51,10 +51,13 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Col;
 
+        /// <inheritdoc />
         protected override bool RequiresParentContext => true;
 
+        /// <inheritdoc />
         protected override IReadOnlyCollection<HtmlRenderContextKind> AllowedParentContextKinds =>
             new[]
             {
@@ -65,6 +68,7 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ColBuilder CreateInstance()
         {
             return new ColBuilder(_textWriter, _htmlHelper);

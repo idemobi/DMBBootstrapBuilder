@@ -27,7 +27,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder row builder operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="RowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.RowBuilder"/> value or BootstrapBuilder result.</returns>
         public static RowBuilder RowBuilder(this IHtmlHelper html)
         {
             return new RowBuilder(html.ViewContext.Writer, html);
@@ -39,7 +39,7 @@ namespace DMBBootstrapBuilder
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="gap">The gap value.</param>
         /// <param name="additionalCss">The additional css value.</param>
-        /// <returns>The configured <see cref="RowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.RowBuilder"/> value or BootstrapBuilder result.</returns>
         public static RowBuilder RowBuilder(this IHtmlHelper html, int gap, string additionalCss = "")
         {
             return html.RowBuilder()

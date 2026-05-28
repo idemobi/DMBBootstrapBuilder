@@ -244,11 +244,13 @@ namespace DMBBootstrapBuilder
             WriteTo(_textWriter, HtmlEncoder.Default);
         }
 
+        /// <inheritdoc />
         protected override AccordionAreaBuilder CreateInstance()
         {
             return new AccordionAreaBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(AccordionAreaBuilder source)
         {
             base.InternalClone(source);
@@ -264,6 +266,7 @@ namespace DMBBootstrapBuilder
             _started = false;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             if (_items.Count == 0)

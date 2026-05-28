@@ -102,7 +102,7 @@ namespace DMBBootstrapBuilder
                     else
                     {
                         string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture, culture));
-                        string onClick = ServerWebHelperConfiguration.CookieLanguage.GenerateOnClick(cookieValue) + "; location.reload();";
+                        string onClick = (ServerWebHelperConfiguration.CookieLanguage?.GenerateOnClick(cookieValue) ?? "return false;") + " location.reload();";
                         JavaScriptActionItem item = new JavaScriptActionItem(onClick)
                             .SetLocalizedTitle(culture.DisplayName);
                         group.AddItem(item);

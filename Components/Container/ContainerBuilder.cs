@@ -66,11 +66,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ContainerBuilder CreateInstance()
         {
             return new ContainerBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ContainerBuilder source)
         {
             base.InternalClone(source);
@@ -133,6 +135,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void OnBeginRendering()
         {
             _renderContext = new HtmlRenderContext
@@ -168,6 +171,7 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <inheritdoc />
         protected override void OnEndRendering()
         {
             if (HasSidebar())

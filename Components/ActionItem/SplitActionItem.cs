@@ -100,78 +100,91 @@ namespace DMBBootstrapBuilder
 
         #region Delegated IActionItem properties
 
+        /// <inheritdoc />
         public string Id
         {
             get => PrimaryAction.Id;
             set => PrimaryAction.Id = value;
         }
 
+        /// <inheritdoc />
         public string? Title
         {
             get => PrimaryAction.Title;
             set => PrimaryAction.Title = value;
         }
 
+        /// <inheritdoc />
         public string? Subtitle
         {
             get => PrimaryAction.Subtitle;
             set => PrimaryAction.Subtitle = value;
         }
 
+        /// <inheritdoc />
         public IconStruct Icon
         {
             get => PrimaryAction.Icon;
             set => PrimaryAction.Icon = value;
         }
 
+        /// <inheritdoc />
         public bool DebugOnly
         {
             get => PrimaryAction.DebugOnly;
             set => PrimaryAction.DebugOnly = value;
         }
 
+        /// <inheritdoc />
         public bool Outline
         {
             get => PrimaryAction.Outline;
             set => PrimaryAction.Outline = value;
         }
 
+        /// <inheritdoc />
         public VariantStyle Variant
         {
             get => PrimaryAction.Variant;
             set => PrimaryAction.Variant = value;
         }
 
+        /// <inheritdoc />
         public BoostrapButtonSize Size
         {
             get => PrimaryAction.Size;
             set => PrimaryAction.Size = value;
         }
 
+        /// <inheritdoc />
         public string AdditionalClasses
         {
             get => PrimaryAction.AdditionalClasses;
             set => PrimaryAction.AdditionalClasses = value;
         }
 
+        /// <inheritdoc />
         public bool Disabled
         {
             get => PrimaryAction.Disabled;
             set => PrimaryAction.Disabled = value;
         }
 
+        /// <inheritdoc />
         public bool Active
         {
             get => PrimaryAction.Active;
             set => PrimaryAction.Active = value;
         }
 
+        /// <inheritdoc />
         public string? BadgeText
         {
             get => PrimaryAction.BadgeText;
             set => PrimaryAction.BadgeText = value;
         }
 
+        /// <inheritdoc />
         public VariantStyle BadgeStyle
         {
             get => PrimaryAction.BadgeStyle;

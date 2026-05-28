@@ -52,12 +52,14 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Row;
 
         #endregion
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override RowBuilder CreateInstance()
         {
             return new RowBuilder(_textWriter, _htmlHelper);

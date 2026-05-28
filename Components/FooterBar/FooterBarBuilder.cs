@@ -184,7 +184,7 @@ namespace DMBBootstrapBuilder
                 routeValues["area"] = item.AspArea;
             }
 
-            foreach (KeyValuePair<string, string?> kvp in item.RouteValues)
+            foreach (KeyValuePair<string, string> kvp in item.RouteValues)
             {
                 routeValues[kvp.Key] = kvp.Value;
             }
@@ -210,11 +210,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override FooterBarBuilder CreateInstance()
         {
             return new FooterBarBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(FooterBarBuilder source)
         {
             base.InternalClone(source);
@@ -501,6 +503,7 @@ namespace DMBBootstrapBuilder
             return $"{titleHtml}{textHtml}";
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             PageInformation page = PageRegistry.GetOrCreatePageInformation(_htmlHelper.ViewContext.HttpContext);

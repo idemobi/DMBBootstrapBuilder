@@ -38,6 +38,10 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <summary>
+        ///     Adds state action data attributes to the rendered Bootstrap tag.
+        /// </summary>
+        /// <param name="tag">The tag builder that receives the state attributes.</param>
         protected virtual void BuildAttributes(TagBuilder tag)
         {
             tag.Attributes["data-dmb-setting"] = SettingKey;

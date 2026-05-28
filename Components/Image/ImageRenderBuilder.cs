@@ -130,7 +130,7 @@ namespace DMBBootstrapBuilder
         private ImageWrapperBuilder _wrapperComponent = null!;
 
         internal bool AsEffect => _asEffect;
-        internal IHtmlHelper HtmlHelper => _htmlHelper;
+        internal new IHtmlHelper HtmlHelper => _htmlHelper;
 
         #endregion
 
@@ -159,11 +159,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ImageRenderBuilder CreateInstance()
         {
             return new ImageRenderBuilder(_textWriter, _htmlHelper, _mediaComponent.GetSource(), _mediaComponent.GetAlternate());
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ImageRenderBuilder source)
         {
             base.InternalClone(source);
@@ -262,6 +264,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             PageInformation page = PageRegistry.GetOrCreatePageInformation(_htmlHelper.ViewContext.HttpContext);

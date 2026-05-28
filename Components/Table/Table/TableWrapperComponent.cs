@@ -51,11 +51,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override TableWrapperComponent CreateInstance()
         {
             return new TableWrapperComponent(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TableWrapperComponent source)
         {
             base.InternalClone(source);
@@ -73,6 +75,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{_tag}{BuildAttributes()}>");

@@ -26,7 +26,7 @@ namespace DMBBootstrapBuilder
 
         private HtmlRenderContext? _bodyContext;
         private readonly HtmlRenderContext _parentContext;
-        private bool _started;
+        private new bool _started;
 
         #endregion
 
@@ -96,11 +96,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override BodyBuilder CreateInstance()
         {
             return new BodyBuilder(_textWriter, _htmlHelper, _parentContext);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             HtmlRenderContext bodyContext = CreateBodyContext();
@@ -128,10 +130,12 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <inheritdoc />
         protected override void OnBeginRendering()
         {
         }
 
+        /// <inheritdoc />
         protected override void OnEndRendering()
         {
         }

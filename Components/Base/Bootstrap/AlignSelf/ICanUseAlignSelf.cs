@@ -145,7 +145,7 @@ namespace DMBBootstrapBuilder
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="alignSelf">The align self value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelf<TBuilder>(
             this TBuilder builder,
             AlignSelf alignSelf,
@@ -167,7 +167,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfAuto<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -183,7 +183,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfBaseline<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -199,7 +199,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfCenter<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -215,7 +215,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfEnd<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -231,7 +231,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfStart<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -247,7 +247,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignSelfStretch<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs

@@ -53,7 +53,7 @@ namespace DMBBootstrapBuilder
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="display">The display value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplay<TBuilder>(
             this TBuilder builder,
             Display display,
@@ -75,7 +75,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayBlock<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -91,7 +91,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayFlex<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -107,7 +107,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayGrid<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -123,7 +123,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayInline<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -139,7 +139,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayInlineBlock<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -155,7 +155,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayInlineFlex<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -171,7 +171,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayInlineGrid<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -187,7 +187,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayNone<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -203,7 +203,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayTable<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -219,7 +219,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayTableCell<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -235,7 +235,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDisplayTableRow<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -251,7 +251,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="display">The display value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplay<TBuilder>(
             this TBuilder builder,
             Display display
@@ -271,7 +271,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayBlock<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -283,7 +283,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayFlex<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -295,7 +295,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayGrid<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -307,7 +307,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayInline<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -319,7 +319,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayInlineBlock<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -331,7 +331,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayInlineFlex<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -343,7 +343,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayInlineGrid<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -355,7 +355,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayNone<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -367,7 +367,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayTable<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -379,7 +379,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayTableCell<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {
@@ -391,7 +391,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPrintDisplayTableRow<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseDisplay
         {

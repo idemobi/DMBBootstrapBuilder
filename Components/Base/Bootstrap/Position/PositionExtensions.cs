@@ -28,7 +28,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetBottom<TBuilder>(this TBuilder builder, PositionValue value)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {
@@ -43,7 +43,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetEnd<TBuilder>(this TBuilder builder, PositionValue value)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {
@@ -58,7 +58,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="position">The position value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPosition<TBuilder>(this TBuilder builder, Position position)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {
@@ -73,7 +73,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetStart<TBuilder>(this TBuilder builder, PositionValue value)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {
@@ -88,7 +88,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTop<TBuilder>(this TBuilder builder, PositionValue value)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {
@@ -103,7 +103,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="mode">The mode value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTranslate<TBuilder>(this TBuilder builder, TranslateMode mode)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUsePosition
         {

@@ -47,7 +47,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Gets or sets the side bar value used by BootstrapBuilder rendering or composition.
         /// </summary>
-        public SideBarComponent SideBar { set; get; } = null;
+        public SideBarComponent? SideBar { set; get; }
 
         #endregion
     }

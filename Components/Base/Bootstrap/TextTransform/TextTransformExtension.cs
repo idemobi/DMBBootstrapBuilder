@@ -54,7 +54,7 @@ namespace DMBBootstrapBuilder
         /// </typeparam>
         /// <param name="builder">The builder instance that this method extends.</param>
         /// <param name="textTransform">The <see cref="TextTransform" /> enum value that specifies the desired text transformation.</param>
-        /// <returns>The builder instance of type <see cref="TBuilder" /> with the text transform style applied.</returns>
+        /// <returns>The builder instance of type <typeparamref name="TBuilder"/> with the text transform style applied.</returns>
         [Documented]
         public static TBuilder SetTextTransform<TBuilder>(
             this TBuilder builder,

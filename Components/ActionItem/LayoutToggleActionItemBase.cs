@@ -30,6 +30,10 @@ namespace DMBBootstrapBuilder
 
         #region Instance constructors and destructors
 
+        /// <summary>
+        ///     Initializes a new layout toggle action item with the specified state.
+        /// </summary>
+        /// <param name="value">The initial toggle state rendered by the action item.</param>
         protected LayoutToggleActionItemBase(bool value)
         {
             SwitchValue = value;
@@ -39,6 +43,9 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <summary>
+        ///     Applies data attributes used by client-side layout toggle behavior.
+        /// </summary>
         protected void ConfigureStateAttributes()
         {
             SetAttribut("data-dmb-setting", SettingKey);

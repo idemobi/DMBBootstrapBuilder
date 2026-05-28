@@ -72,12 +72,14 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ImageMediaBuilder CreateInstance()
         {
             return new ImageMediaBuilder(_textWriter, _htmlHelper, _src, _alt)
                 .SetMode(_mode);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ImageMediaBuilder source)
         {
             base.InternalClone(source);
@@ -153,6 +155,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string? previousSrc = GetAttributeValue("src");

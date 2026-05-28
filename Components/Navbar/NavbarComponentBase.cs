@@ -42,6 +42,11 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <summary>
+        ///     Builds the shared Bootstrap navbar CSS class list.
+        /// </summary>
+        /// <param name="classes">Additional CSS classes to append to the common navbar classes.</param>
+        /// <returns>The CSS class string used by the navbar component.</returns>
         protected string BuildCommonCss(params string[] classes)
         {
             var result = new List<string>();

@@ -53,17 +53,20 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override SpinnerWrapperBuilder CreateInstance()
         {
             return new SpinnerWrapperBuilder(_textWriter, _htmlHelper, _tag, _inner);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(SpinnerWrapperBuilder source)
         {
             base.InternalClone(source);
             _inner = source._inner;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{_tag}{BuildAttributes()}>");

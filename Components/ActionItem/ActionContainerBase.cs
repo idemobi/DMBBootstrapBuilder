@@ -45,7 +45,7 @@ namespace DMBBootstrapBuilder
         /// Adds item to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="item">The item value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf AddItem(IActionItem item)
         {
             if (item == null)
@@ -61,7 +61,7 @@ namespace DMBBootstrapBuilder
         /// Adds items to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf AddItems(params IActionItem[] items)
         {
             foreach (var item in items)

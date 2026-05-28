@@ -82,11 +82,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override HtmlBuilderWrapper CreateInstance()
         {
-            return new HtmlBuilderWrapper(_textWriter, _htmlHelper, _tag, _inner);
+            return new HtmlBuilderWrapper(_textWriter, _htmlHelper, _tag, string.Empty, _inner);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{_tag}{BuildAttributes()}>");
@@ -99,6 +101,7 @@ namespace DMBBootstrapBuilder
             writer.Write($"</{_tag}>");
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(HtmlBuilderWrapper source)
         {
             base.InternalClone(source);

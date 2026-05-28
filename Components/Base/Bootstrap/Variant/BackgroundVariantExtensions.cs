@@ -28,7 +28,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="opacity">The opacity value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetBackgroundOpacity<TBuilder>(
             this TBuilder builder,
             Opacity opacity
@@ -46,7 +46,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="subtle">The subtle value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetBackgroundSubtle<TBuilder>(
             this TBuilder builder,
             bool subtle
@@ -67,7 +67,7 @@ namespace DMBBootstrapBuilder
         /// <param name="autoTextVariant">The auto text variant value.</param>
         /// <param name="opacity">The opacity value.</param>
         /// <param name="subtle">The subtle value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetBackgroundVariant<TBuilder>(
             this TBuilder builder,
             VariantStyle variant,
@@ -88,7 +88,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetBackgroundVariant<TBuilder>(
             this TBuilder builder,
             VariantStyle variant

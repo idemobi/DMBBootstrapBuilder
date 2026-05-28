@@ -334,7 +334,7 @@ namespace DMBBootstrapBuilder
 
             string iconHtml = HtmlLayoutExtensions
                 .IconBuilder(htmlHelper, ToggleIcon)
-                .ToString();
+                .ToString() ?? string.Empty;
 
             string buttonCss = BuildCommonCss(
                 "btn",
@@ -430,11 +430,11 @@ namespace DMBBootstrapBuilder
 
             string startIconHtml = startIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString() ?? string.Empty;
 
             string endIconHtml = endIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString() ?? string.Empty;
 
             string badgeHtml = GetInlineBadgeHtml(item);
 
@@ -466,7 +466,7 @@ namespace DMBBootstrapBuilder
             string title = rootItem.Title ?? string.Empty;
             string iconHtml = rootItem.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString() ?? string.Empty;
 
             string badgeHtml = GetInlineBadgeHtml(rootItem);
             string textColorCss = BuildTextColorCss(rootItem);
@@ -517,7 +517,7 @@ namespace DMBBootstrapBuilder
             string title = group.Title ?? string.Empty;
             string iconHtml = group.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString() ?? string.Empty;
 
             string subtitleHtml = string.IsNullOrWhiteSpace(group.Subtitle)
                 ? string.Empty
@@ -611,7 +611,7 @@ namespace DMBBootstrapBuilder
             string title = item.Title ?? string.Empty;
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
 
             string disabledCss = item.Disabled ? " disabled" : string.Empty;
             string activeCss = item.Active ? " active" : string.Empty;
@@ -693,7 +693,7 @@ namespace DMBBootstrapBuilder
                 : $"offcanvas_toggle_{Guid.NewGuid():N}";
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
 
             string indentCss = level > 0 ? $"ms-{Math.Min(level, 4)}" : string.Empty;
             string checkedAttribute = item.SwitchValue ? """ checked="checked" """ : string.Empty;

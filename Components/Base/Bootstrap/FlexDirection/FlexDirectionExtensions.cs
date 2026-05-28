@@ -28,7 +28,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexColumn<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -44,7 +44,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexColumnReverse<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -61,7 +61,7 @@ namespace DMBBootstrapBuilder
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="flexDirection">The flex direction value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexDirection<TBuilder>(
             this TBuilder builder,
             FlexDirection flexDirection,
@@ -83,7 +83,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexRow<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
@@ -99,7 +99,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexRowReverse<TBuilder>(
             this TBuilder builder,
             ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs

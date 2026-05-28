@@ -16,6 +16,9 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
+        /// <summary>
+        ///     Gets or sets the subtitle rendered by the component.
+        /// </summary>
         string? Subtitle { get; set; }
 
         #endregion

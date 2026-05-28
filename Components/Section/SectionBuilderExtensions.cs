@@ -27,7 +27,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder section builder operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.SectionBuilder"/> value or BootstrapBuilder result.</returns>
         public static SectionBuilder SectionBuilder(this IHtmlHelper html)
         {
             return new SectionBuilder(html.ViewContext.Writer, html);
@@ -38,7 +38,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="additionalCss">The additional css value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.SectionBuilder"/> value or BootstrapBuilder result.</returns>
         public static SectionBuilder SectionBuilder(this IHtmlHelper html, string additionalCss)
         {
             return html.SectionBuilder()

@@ -27,7 +27,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexNoShrink<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlexShrink
             => builder.SetFlexShrink(FlexShrink.NoShrink);
@@ -38,7 +38,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexShrink<TBuilder>(
             this TBuilder builder,
             FlexShrink value
@@ -55,7 +55,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFlexShrink<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlexShrink
             => builder.SetFlexShrink(FlexShrink.Shrink);

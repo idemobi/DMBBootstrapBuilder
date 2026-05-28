@@ -27,7 +27,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder col builder operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="ColBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.ColBuilder"/> value or BootstrapBuilder result.</returns>
         public static ColBuilder ColBuilder(this IHtmlHelper html)
         {
             return new ColBuilder(html.ViewContext.Writer, html);
@@ -44,7 +44,7 @@ namespace DMBBootstrapBuilder
         /// <param name="colXl">The col xl value.</param>
         /// <param name="colXxl">The col xxl value.</param>
         /// <param name="additionalClasses">The additional classes value.</param>
-        /// <returns>The configured <see cref="ColBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.ColBuilder"/> value or BootstrapBuilder result.</returns>
         public static ColBuilder ColBuilder(
             this IHtmlHelper html,
             int col,
@@ -70,7 +70,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder col central builder operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="ColBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.ColBuilder"/> value or BootstrapBuilder result.</returns>
         public static ColBuilder ColCentralBuilder(this IHtmlHelper html)
         {
             return html.ColBuilder()

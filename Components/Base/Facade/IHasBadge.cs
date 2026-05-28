@@ -22,7 +22,14 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
+        /// <summary>
+        ///     Gets or sets the Bootstrap variant used by the badge.
+        /// </summary>
         VariantStyle BadgeStyle { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the badge text rendered by the component.
+        /// </summary>
         string? BadgeText { get; set; }
 
         #endregion

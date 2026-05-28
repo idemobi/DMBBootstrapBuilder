@@ -44,11 +44,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ImageWrapperBuilder CreateInstance()
         {
             return new ImageWrapperBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{_tag}{BuildAttributes()}></{_tag}>");

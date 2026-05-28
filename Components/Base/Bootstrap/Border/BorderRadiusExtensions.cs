@@ -30,7 +30,7 @@ namespace DMBBootstrapBuilder
         /// <param name="size">The size value.</param>
         /// <param name="side">The side value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetRounded<TBuilder>(
             this TBuilder builder,
             BorderRadiusSize size = BorderRadiusSize.Normal,

@@ -28,7 +28,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="overflow">The overflow value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflow<TBuilder>(
             this TBuilder builder,
             OverflowValue overflow
@@ -48,7 +48,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowAuto<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -60,7 +60,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowHidden<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -72,7 +72,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowScroll<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -84,7 +84,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowVisible<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -97,7 +97,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="overflow">The overflow value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowX<TBuilder>(
             this TBuilder builder,
             OverflowValue overflow
@@ -117,7 +117,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowXAuto<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -129,7 +129,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowXHidden<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -141,7 +141,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowXScroll<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -153,7 +153,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowXVisible<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -166,7 +166,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="overflow">The overflow value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowY<TBuilder>(
             this TBuilder builder,
             OverflowValue overflow
@@ -186,7 +186,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowYAuto<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -198,7 +198,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowYHidden<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -210,7 +210,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowYScroll<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {
@@ -222,7 +222,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetOverflowYVisible<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseOverflow
         {

@@ -125,7 +125,7 @@ namespace DMBBootstrapBuilder
 
             string iconHtml = Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, Icon).ToString() ?? string.Empty;
 
             string textHtml = WebUtility.HtmlEncode(Text ?? string.Empty);
             string css = BuildCommonCss("navbar-brand");

@@ -16,6 +16,9 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
+        /// <summary>
+        ///     Gets or sets the dropdown direction used by Bootstrap dropdown rendering.
+        /// </summary>
         DropdownDirection DropdownDirection { get; set; }
 
         #endregion

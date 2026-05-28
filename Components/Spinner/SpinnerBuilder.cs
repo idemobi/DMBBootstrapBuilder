@@ -95,11 +95,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override SpinnerBuilder CreateInstance()
         {
             return new SpinnerBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(SpinnerBuilder source)
         {
             base.InternalClone(source);
@@ -169,6 +171,7 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string spinnerHtml = RenderSpinnerHtml();

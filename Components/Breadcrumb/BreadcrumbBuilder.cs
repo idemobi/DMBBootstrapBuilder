@@ -168,11 +168,13 @@ namespace DMBBootstrapBuilder
             return this.SetBreadcrumbStyle(style);
         }
 
+        /// <inheritdoc />
         protected override BreadcrumbBuilder CreateInstance()
         {
             return new BreadcrumbBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(BreadcrumbBuilder source)
         {
             base.InternalClone(source);
@@ -184,6 +186,7 @@ namespace DMBBootstrapBuilder
             _collapseAfter = source._collapseAfter;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             if (_items.Count == 0)
@@ -207,7 +210,7 @@ namespace DMBBootstrapBuilder
                 }
                 writer.Write($"<{GetTag()}{BuildAttributes()}>");
                 writer.Write("<ol class=\"breadcrumb mb-0\">");
-                WriteItems(writer, encoder, divider);
+                WriteItems(writer, encoder, divider ?? string.Empty);
                 writer.Write("</ol>");
                 writer.Write($"</{GetTag()}>");
             }

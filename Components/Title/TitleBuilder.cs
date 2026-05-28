@@ -112,11 +112,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override TitleBuilder CreateInstance()
         {
             return new TitleBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string originalTag = _tag;

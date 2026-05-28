@@ -24,7 +24,7 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
-        private ContainerBuilder Container;
+        private ContainerBuilder Container = null!;
         /// <summary>
         /// Stores the body attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>

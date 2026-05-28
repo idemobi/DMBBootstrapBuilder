@@ -49,7 +49,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="fontWeight">The font weight value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontWeight<TBuilder>(
             this TBuilder builder,
             FontWeight fontWeight
@@ -69,7 +69,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontWeightBold<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontWeight
         {
@@ -81,7 +81,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontWeightBolder<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontWeight
         {
@@ -93,7 +93,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontWeightLight<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontWeight
         {
@@ -105,7 +105,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontWeightNormal<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontWeight
         {

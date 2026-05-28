@@ -143,6 +143,7 @@ namespace DMBBootstrapBuilder
             return new HtmlString(writer.ToString());
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             if (!CanRenderDebugHint())
@@ -160,11 +161,13 @@ namespace DMBBootstrapBuilder
             WriteMarker(writer, encoder, paths, true);
         }
 
+        /// <inheritdoc />
         protected override OverridableViewDebugBuilder CreateInstance()
         {
             return new OverridableViewDebugBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(OverridableViewDebugBuilder source)
         {
             base.InternalClone(source);

@@ -87,11 +87,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ProgressBarBuilder CreateInstance()
         {
             return new ProgressBarBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ProgressBarBuilder source)
         {
             base.InternalClone(source);
@@ -189,6 +191,7 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             if (_renderWrapper)

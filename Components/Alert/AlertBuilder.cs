@@ -268,12 +268,14 @@ namespace DMBBootstrapBuilder
 
         #region Protected methods
 
+        /// <inheritdoc />
         protected override AlertBuilder CreateInstance()
         {
             AlertBuilder clone = new AlertBuilder(_textWriter, _htmlHelper);
             return clone;
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(AlertBuilder source)
         {
             base.InternalClone(source);
@@ -282,6 +284,7 @@ namespace DMBBootstrapBuilder
             _footerActions.AddRange(source._footerActions);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{GetTag()}{BuildAttributes()}>");

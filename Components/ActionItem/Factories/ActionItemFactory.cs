@@ -158,7 +158,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <typeparam name="TAction">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public static GuardedActionItem<TAction> Guarded<TAction>(TAction action)
             where TAction : IActionItem
         {

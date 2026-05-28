@@ -22,6 +22,10 @@ namespace DMBBootstrapBuilder
     {
         #region Instance methods
 
+        /// <summary>
+        ///     Converts stored page alerts into Bootstrap alert models.
+        /// </summary>
+        /// <returns>The Bootstrap alert models in rendering order.</returns>
         IEnumerable<AlertModel> ToAlertModels();
 
         #endregion

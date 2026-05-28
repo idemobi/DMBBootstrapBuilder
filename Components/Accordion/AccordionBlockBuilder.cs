@@ -276,11 +276,13 @@ namespace DMBBootstrapBuilder
             });
         }
 
+        /// <inheritdoc />
         protected override AccordionBlockBuilder CreateInstance()
         {
             return new AccordionBlockBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(AccordionBlockBuilder source)
         {
             base.InternalClone(source);
@@ -298,6 +300,7 @@ namespace DMBBootstrapBuilder
             _started = false;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             throw new InvalidOperationException("AccordionBlockBuilder does not render directly. Use Begin()/Dispose() inside an AccordionAreaBuilder.");

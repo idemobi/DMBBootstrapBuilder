@@ -90,11 +90,13 @@ namespace DMBBootstrapBuilder
 
         #region Protected methods
 
+        /// <inheritdoc />
         protected override BadgeBuilder CreateInstance()
         {
             return new BadgeBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{GetTag()}{BuildAttributes()}>");

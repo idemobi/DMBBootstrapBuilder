@@ -76,7 +76,7 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_sortKey", value);
         }
 
-        private bool _started
+        private new bool _started
         {
             get => GetInternal("_started", false);
             set => SetInternal("_started", value);
@@ -106,7 +106,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder begin operation.
         /// </summary>
         /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableCellBuilder Begin()
+        public override TableCellBuilder Begin()
         {
             if (_started)
             {
@@ -158,6 +158,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+       /// <inheritdoc />
        protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
 {
     string? previousScope = GetAttributeValue("scope");
@@ -231,11 +232,13 @@ private void RestoreAttribute(string name, string? value)
     }
 }
 
+        /// <inheritdoc />
         protected override TableCellBuilder CreateInstance()
         {
             return new TableCellBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TableCellBuilder source)
         {
             base.InternalClone(source);
@@ -513,7 +516,7 @@ private void RestoreAttribute(string name, string? value)
         /// <summary>
         /// Executes the BootstrapBuilder dispose operation.
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
             if (!_started)
             {

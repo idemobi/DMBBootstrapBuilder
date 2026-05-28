@@ -30,7 +30,7 @@ namespace DMBBootstrapBuilder
         /// <param name="side">The side value.</param>
         /// <param name="size">The size value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder SetPadding<TBuilder>(
             this TBuilder builder,
             SpacingSide side,

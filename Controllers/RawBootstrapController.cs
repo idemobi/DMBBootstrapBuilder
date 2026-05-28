@@ -43,6 +43,10 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         private PageBootstrapInformation PageBootstrap = new PageBootstrapInformation();
+
+        /// <summary>
+        ///     Gets the breadcrumb actions rendered by the Bootstrap page chrome.
+        /// </summary>
         protected List<IActionItem> BreadcrumbActions => PageBootstrap.BreadcrumbActions;
 
         #endregion

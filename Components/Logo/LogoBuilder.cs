@@ -89,6 +89,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override LogoBuilder CreateInstance()
         {
             return new LogoBuilder(_textWriter, _htmlHelper)
@@ -98,6 +99,7 @@ namespace DMBBootstrapBuilder
                 .WithBadge(_badgeText, _badgeVariant);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(LogoBuilder source)
         {
             base.InternalClone(source);
@@ -109,6 +111,7 @@ namespace DMBBootstrapBuilder
             _badgeVariant = source._badgeVariant;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{GetTag()}{BuildAttributes()}>");

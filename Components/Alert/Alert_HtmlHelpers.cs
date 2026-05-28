@@ -26,7 +26,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder alert builder operation.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.AlertBuilder"/> value or BootstrapBuilder result.</returns>
         [Documented]
         public static AlertBuilder AlertBuilder(this IHtmlHelper htmlHelper)
         {
@@ -38,7 +38,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <param name="message">The message value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="DMBBootstrapBuilder.AlertBuilder"/> value or BootstrapBuilder result.</returns>
         [Documented]
         public static AlertBuilder AlertBuilder(this IHtmlHelper htmlHelper, string? message)
         {

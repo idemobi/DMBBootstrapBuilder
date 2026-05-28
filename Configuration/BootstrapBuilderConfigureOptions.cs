@@ -46,6 +46,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         ///     Configuration options for DMBWebDevelopment.
         /// </summary>
+        /// <param name="sEnvironment">The web host environment used to locate embedded static assets.</param>
         public BootstrapBuilderConfigureOptions(IWebHostEnvironment sEnvironment)
         {
             Environment = sEnvironment;

@@ -150,17 +150,20 @@ namespace DMBBootstrapBuilder
             return new HtmlString(writer.ToString());
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             IHtmlContent marker = RenderMarker();
             marker.WriteTo(writer, encoder);
         }
 
+        /// <inheritdoc />
         protected override PageQualificationDebugBuilder CreateInstance()
         {
             return new PageQualificationDebugBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(PageQualificationDebugBuilder source)
         {
             base.InternalClone(source);

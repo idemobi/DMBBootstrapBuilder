@@ -16,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    ///     Provides Razor helpers for creating <see cref="ToastBuilder" /> instances.
+    ///     Provides Razor helpers for creating <see cref="DMBBootstrapBuilder.ToastBuilder" /> instances.
     /// </summary>
     [Documented]
     public static class ToastBuilderExtensions
@@ -24,10 +24,10 @@ namespace DMBBootstrapBuilder
         #region Static methods
 
         /// <summary>
-        ///     Creates a <see cref="ToastBuilder" /> for the current Razor view.
+        ///     Creates a <see cref="DMBBootstrapBuilder.ToastBuilder" /> for the current Razor view.
         /// </summary>
         /// <param name="html">The current <see cref="IHtmlHelper" /> instance.</param>
-        /// <returns>A new <see cref="ToastBuilder" /> instance.</returns>
+        /// <returns>A new <see cref="DMBBootstrapBuilder.ToastBuilder" /> instance.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="html" /> is <see langword="null" />.</exception>
         [Documented]
         public static ToastBuilder ToastBuilder(this IHtmlHelper html)
@@ -37,11 +37,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        ///     Creates a <see cref="ToastBuilder" /> with an initial body message.
+        ///     Creates a <see cref="DMBBootstrapBuilder.ToastBuilder" /> with an initial body message.
         /// </summary>
         /// <param name="html">The current <see cref="IHtmlHelper" /> instance.</param>
         /// <param name="message">The toast body message.</param>
-        /// <returns>A new <see cref="ToastBuilder" /> instance.</returns>
+        /// <returns>A new <see cref="DMBBootstrapBuilder.ToastBuilder" /> instance.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="html" /> is <see langword="null" />.</exception>
         [Documented]
         public static ToastBuilder ToastBuilder(this IHtmlHelper html, string? message)
@@ -51,10 +51,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        ///     Creates a <see cref="ToastBuilder" /> for the current Razor view.
+        ///     Creates a <see cref="DMBBootstrapBuilder.ToastBuilder" /> for the current Razor view.
         /// </summary>
         /// <param name="html">The current <see cref="IHtmlHelper" /> instance.</param>
-        /// <returns>A new <see cref="ToastBuilder" /> instance.</returns>
+        /// <returns>A new <see cref="DMBBootstrapBuilder.ToastBuilder" /> instance.</returns>
         /// <exception cref="ArgumentNullException">Thrown when <paramref name="html" /> is <see langword="null" />.</exception>
         [Documented]
         public static ToastBuilder Toast(this IHtmlHelper html)

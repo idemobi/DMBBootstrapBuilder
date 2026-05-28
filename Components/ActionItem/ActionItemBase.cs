@@ -105,7 +105,7 @@ namespace DMBBootstrapBuilder
         /// Removes attribut from the current BootstrapBuilder component or composer.
         /// </summary>
         /// <param name="name">The name value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf RemoveAttribut(string name)
         {
             if (!string.IsNullOrWhiteSpace(name))
@@ -120,7 +120,7 @@ namespace DMBBootstrapBuilder
         /// Configures active on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="active">True to enable active; otherwise, false.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetActive(bool active = true)
         {
             Active = active;
@@ -131,7 +131,7 @@ namespace DMBBootstrapBuilder
         /// Configures additional classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetAdditionalClasses(string classes)
         {
             AdditionalClasses = classes ?? string.Empty;
@@ -143,7 +143,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetAriaAttribut(string name, string value)
         {
             return SetAttribut($"aria-{name}", value);
@@ -154,7 +154,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetAriaAttribut(string name, bool value)
         {
             return SetAttribut($"aria-{name}", value);
@@ -165,7 +165,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetAttribut(string name, string value)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -190,7 +190,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetAttribut(string name, bool value)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -208,7 +208,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetBadge(string text, VariantStyle style = VariantStyle.Danger)
         {
             BadgeText = text;
@@ -221,7 +221,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetDataAttribut(string name, string value)
         {
             return SetAttribut($"data-{name}", value);
@@ -232,7 +232,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetDataAttribut(string name, bool value)
         {
             return SetAttribut($"data-{name}", value);
@@ -242,7 +242,7 @@ namespace DMBBootstrapBuilder
         /// Configures debug only on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetDebugOnly(bool value = true)
         {
             DebugOnly = value;
@@ -253,7 +253,7 @@ namespace DMBBootstrapBuilder
         /// Configures disabled on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="disabled">True to enable disabled; otherwise, false.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetDisabled(bool disabled = true)
         {
             Disabled = disabled;
@@ -264,7 +264,7 @@ namespace DMBBootstrapBuilder
         /// Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetIcon(IconStruct icon)
         {
             Icon = icon;
@@ -275,7 +275,7 @@ namespace DMBBootstrapBuilder
         /// Configures id on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetId(string id)
         {
             Id = HtmlIdGenerator.CleanId(id) ?? string.Empty;
@@ -332,7 +332,7 @@ namespace DMBBootstrapBuilder
         /// Configures outlined on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetOutlined(bool value = true)
         {
             Outline = value;
@@ -343,7 +343,7 @@ namespace DMBBootstrapBuilder
         /// Configures size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetSize(BoostrapButtonSize size)
         {
             Size = size;
@@ -354,7 +354,7 @@ namespace DMBBootstrapBuilder
         /// Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetSubtitle(string? subtitle)
         {
             Subtitle = subtitle;
@@ -365,7 +365,7 @@ namespace DMBBootstrapBuilder
         /// Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetTitle(string? title)
         {
             Title = title;
@@ -376,13 +376,17 @@ namespace DMBBootstrapBuilder
         /// Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
         public TSelf SetVariant(VariantStyle variant)
         {
             Variant = variant;
             return This();
         }
 
+        /// <summary>
+        ///     Gets the current action item typed as the fluent self type.
+        /// </summary>
+        /// <returns>The current action item instance.</returns>
         protected TSelf This()
         {
             return (TSelf)this;

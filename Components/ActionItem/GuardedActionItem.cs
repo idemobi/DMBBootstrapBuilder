@@ -43,7 +43,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GuardedActionItem"/> class.
+        /// Initializes a new instance of the <see cref="GuardedActionItem{TAction}"/> class.
         /// </summary>
         /// <param name="innerAction">The inner action value.</param>
         public GuardedActionItem(TAction innerAction)
@@ -189,7 +189,7 @@ namespace DMBBootstrapBuilder
         /// Configures id on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithId(string id)
         {
             Id = HtmlIdGenerator.CleanId(id) ?? string.Empty;
@@ -200,7 +200,7 @@ namespace DMBBootstrapBuilder
         /// Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithTitle(string? title)
         {
             Title = title;
@@ -211,7 +211,7 @@ namespace DMBBootstrapBuilder
         /// Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithSubtitle(string? subtitle)
         {
             Subtitle = subtitle;
@@ -222,7 +222,7 @@ namespace DMBBootstrapBuilder
         /// Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithIcon(IconStruct icon)
         {
             Icon = icon;
@@ -233,7 +233,7 @@ namespace DMBBootstrapBuilder
         /// Configures debug only on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> SetDebugOnly(bool value = true)
         {
             DebugOnly = value;
@@ -244,7 +244,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder outlined operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> Outlined(bool value = true)
         {
             Outline = value;
@@ -255,7 +255,7 @@ namespace DMBBootstrapBuilder
         /// Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithVariant(VariantStyle variant)
         {
             Variant = variant;
@@ -266,7 +266,7 @@ namespace DMBBootstrapBuilder
         /// Configures size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithSize(BoostrapButtonSize size)
         {
             Size = size;
@@ -282,7 +282,7 @@ namespace DMBBootstrapBuilder
         /// Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithClasses(string classes)
         {
             AdditionalClasses = classes ?? string.Empty;
@@ -293,7 +293,7 @@ namespace DMBBootstrapBuilder
         /// Configures disabled on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> SetDisabled(bool value = true)
         {
             Disabled = value;
@@ -304,7 +304,7 @@ namespace DMBBootstrapBuilder
         /// Configures active on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> SetActive(bool value = true)
         {
             Active = value;
@@ -316,7 +316,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> AddBadge(string text, VariantStyle style = VariantStyle.Danger)
         {
             BadgeText = text;
@@ -328,7 +328,7 @@ namespace DMBBootstrapBuilder
         /// Configures warning text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithWarningText(string? text)
         {
             WarningText = text;
@@ -339,7 +339,7 @@ namespace DMBBootstrapBuilder
         /// Configures warning icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithWarningIcon(IconStruct icon)
         {
             WarningIcon = icon;
@@ -350,7 +350,7 @@ namespace DMBBootstrapBuilder
         /// Configures switch text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithSwitchText(string? text)
         {
             SwitchText = text;
@@ -361,7 +361,7 @@ namespace DMBBootstrapBuilder
         /// Configures switch default value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> WithSwitchDefaultValue(bool value = true)
         {
             SwitchDefaultValue = value;
@@ -372,7 +372,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder no button group operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="GuardedActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GuardedActionItem{TAction}"/> value or BootstrapBuilder result.</returns>
         public GuardedActionItem<TAction> NoButtonGroup(bool value = true)
         {
             RenderAsButtonGroup = !value;

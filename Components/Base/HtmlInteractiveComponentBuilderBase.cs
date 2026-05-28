@@ -113,7 +113,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder Style<TBuilder>(this TBuilder builder, VariantStyle style)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {
@@ -127,7 +127,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public static TBuilder Size<TBuilder>(this TBuilder builder, BoostrapButtonSize size)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {
@@ -139,6 +139,9 @@ namespace DMBBootstrapBuilder
         /// Stores the disabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The interactive builder to configure.</param>
+        /// <param name="disabled">Whether the rendered Bootstrap component should be disabled.</param>
+        /// <returns>The configured builder for fluent chaining.</returns>
         public static TBuilder Disabled<TBuilder>(this TBuilder builder, bool disabled = true)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {
@@ -152,6 +155,9 @@ namespace DMBBootstrapBuilder
         /// Stores the enabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The interactive builder to configure.</param>
+        /// <param name="enabled">Whether the rendered text should avoid line breaks.</param>
+        /// <returns>The configured builder for fluent chaining.</returns>
         public static TBuilder NoBreakText<TBuilder>(this TBuilder builder, bool enabled = true)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {

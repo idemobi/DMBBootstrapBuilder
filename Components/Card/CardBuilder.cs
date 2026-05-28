@@ -100,7 +100,7 @@ namespace DMBBootstrapBuilder
 
         private HtmlRenderContext? _renderContext;
 
-        private bool _started
+        private new bool _started
         {
             get => GetInternal("_started", false);
             set => SetInternal("_started", value);
@@ -173,9 +173,8 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Card;
-
-        protected IHtmlHelper HtmlHelper => _htmlHelper;
 
         #endregion
 
@@ -466,7 +465,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder dispose operation.
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
             if (!_started)
             {
@@ -478,6 +477,7 @@ namespace DMBBootstrapBuilder
             _started = false;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             ValidateBeforeBegin();
@@ -499,11 +499,13 @@ namespace DMBBootstrapBuilder
 
         #region Overrides
 
+        /// <inheritdoc />
         protected override CardBuilder CreateInstance()
         {
             return new CardBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(CardBuilder source)
         {
             base.InternalClone(source);
@@ -528,6 +530,7 @@ namespace DMBBootstrapBuilder
             _renderContext = null;
         }
 
+        /// <inheritdoc />
         protected override void OnBeginRendering()
         {
             _renderContext = new HtmlRenderContext
@@ -543,6 +546,7 @@ namespace DMBBootstrapBuilder
             HtmlRenderContextManager.Push(HtmlHelper, _renderContext);
         }
 
+        /// <inheritdoc />
         protected override void OnEndRendering()
         {
             HtmlRenderContext? current = HtmlRenderContextManager.Current(HtmlHelper);

@@ -25,6 +25,12 @@ namespace DMBBootstrapBuilder
     {
         #region Instance methods
 
+        /// <summary>
+        ///     Applies the default footer bar content before it is returned to the page layout.
+        /// </summary>
+        /// <param name="result">The footer bar builder to configure.</param>
+        /// <param name="writer">The writer associated with the current Razor output.</param>
+        /// <param name="html">The Razor HTML helper for the current view.</param>
         protected virtual void ConfigureFooterBar(FooterBarBuilder result, TextWriter writer, IHtmlHelper html)
         {
             //TODO rework mission

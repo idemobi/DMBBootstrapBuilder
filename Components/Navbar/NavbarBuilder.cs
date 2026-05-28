@@ -162,11 +162,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override NavbarBuilder CreateInstance()
         {
             return new NavbarBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(NavbarBuilder source)
         {
             base.InternalClone(source);
@@ -347,6 +349,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string navbarCss = BuildNavbarCss();

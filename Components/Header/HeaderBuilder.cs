@@ -24,7 +24,7 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         private readonly HtmlRenderContext _context;
-        private bool _started;
+        private new bool _started;
 
         #endregion
 
@@ -95,21 +95,25 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override HeaderBuilder CreateInstance()
         {
             return new HeaderBuilder(_textWriter, _htmlHelper, _context);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(HeaderBuilder source)
         {
             base.InternalClone(source);
             _started = false;
         }
 
+        /// <inheritdoc />
         protected override void OnBeginRendering()
         {
         }
 
+        /// <inheritdoc />
         protected override void OnEndRendering()
         {
         }

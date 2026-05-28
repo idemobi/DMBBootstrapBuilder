@@ -366,14 +366,14 @@ namespace DMBBootstrapBuilder
 
             string startIconHtml = startIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString() ?? string.Empty;
             string startIconContainerHtml = string.IsNullOrWhiteSpace(startIconHtml)
                 ? string.Empty
                 : $"""<span class="action-item-clipboard-icon dmb-sidebar-item-icon">{startIconHtml}</span>""";
 
             string endIconHtml = endIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString() ?? string.Empty;
 
             string badgeHtml = GetInlineBadgeHtml(item);
 
@@ -413,7 +413,7 @@ namespace DMBBootstrapBuilder
             string title = rootItem.Title ?? string.Empty;
             string iconHtml = rootItem.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString() ?? string.Empty;
             string iconContainerHtml = string.IsNullOrWhiteSpace(iconHtml)
                 ? string.Empty
                 : $"""<span class="dmb-sidebar-item-icon">{iconHtml}</span>""";
@@ -488,7 +488,7 @@ namespace DMBBootstrapBuilder
             string title = group.Title ?? string.Empty;
             string iconHtml = group.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString() ?? string.Empty;
             string iconContainerHtml = string.IsNullOrWhiteSpace(iconHtml)
                 ? string.Empty
                 : $"""<span class="dmb-sidebar-item-icon">{iconHtml}</span>""";
@@ -595,7 +595,7 @@ namespace DMBBootstrapBuilder
             string title = item.Title ?? string.Empty;
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
             string iconContainerHtml = string.IsNullOrWhiteSpace(iconHtml)
                 ? string.Empty
                 : $"""<span class="dmb-sidebar-item-icon">{iconHtml}</span>""";

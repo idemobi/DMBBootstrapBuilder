@@ -97,11 +97,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override ProgressBarStackBuilder CreateInstance()
         {
             return new ProgressBarStackBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ProgressBarStackBuilder source)
         {
             base.InternalClone(source);
@@ -157,6 +159,7 @@ namespace DMBBootstrapBuilder
             return SetStyle("height", size.GetSizeAndUnitStyle());
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string? previousAriaLabel = GetAttributeValue("aria-label");

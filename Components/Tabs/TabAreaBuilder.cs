@@ -284,11 +284,13 @@ namespace DMBBootstrapBuilder
             _tabs.Add(tab);
         }
 
+        /// <inheritdoc />
         protected override TabAreaBuilder CreateInstance()
         {
             return new TabAreaBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TabAreaBuilder source)
         {
             base.InternalClone(source);
@@ -303,6 +305,7 @@ namespace DMBBootstrapBuilder
             _updateHashOnTabChange = source._updateHashOnTabChange;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             if (_tabs.Count == 0)

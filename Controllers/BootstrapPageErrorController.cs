@@ -138,17 +138,30 @@ namespace DMBBootstrapBuilder
             });
         }
 
+        /// <summary>
+        ///     Configures common page metadata for a Bootstrap error page.
+        /// </summary>
+        /// <param name="title">The title rendered for the error page.</param>
         protected virtual void ConfigureErrorPage(string title)
         {
             Page.Title = title;
             Page.SetDescription("HTTP error rendered by BootstrapBuilder.");
         }
 
+        /// <summary>
+        ///     Gets the Razor view path used to render the Bootstrap error page.
+        /// </summary>
+        /// <returns>The absolute Razor view path.</returns>
         protected virtual string GetErrorViewPath()
         {
             return "/Views/BootstrapPageError/Result.cshtml";
         }
 
+        /// <summary>
+        ///     Resolves a human-readable HTTP reason phrase for a status code.
+        /// </summary>
+        /// <param name="statusCode">The HTTP status code to resolve.</param>
+        /// <returns>The reason phrase associated with the status code.</returns>
         protected static string GetReasonPhrase(int statusCode)
         {
             if (ErrorStatuses.TryGetValue(statusCode, out string? error))

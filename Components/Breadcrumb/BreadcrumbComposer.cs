@@ -35,7 +35,7 @@ namespace DMBBootstrapBuilder
         /// <returns>The configured <see cref="string"/> value or BootstrapBuilder result.</returns>
         public string? GetDivider()
         {
-            return _divider.Trim();
+            return _divider?.Trim();
         }
 
         /// <summary>

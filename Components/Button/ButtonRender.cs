@@ -79,17 +79,20 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override ButtonRender CreateInstance()
         {
             return new ButtonRender(_textWriter, _htmlHelper, _actionItem);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ButtonRender source)
         {
             base.InternalClone(source);
             _noWrap = source._noWrap;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             RegisterRequiredAssets(_actionItem);
@@ -1026,7 +1029,7 @@ namespace DMBBootstrapBuilder
                 routeValues["area"] = item.AspArea;
             }
 
-            foreach (KeyValuePair<string, string?> kvp in item.RouteValues)
+            foreach (KeyValuePair<string, string> kvp in item.RouteValues)
             {
                 routeValues[kvp.Key] = kvp.Value;
             }

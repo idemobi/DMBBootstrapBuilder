@@ -151,7 +151,7 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_size", value);
         }
 
-        private bool _started
+        private new bool _started
         {
             get => GetInternal("_started", false);
             set => SetInternal("_started", value);
@@ -231,9 +231,8 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Body;
-
-        protected IHtmlHelper HtmlHelper => _htmlHelper;
 
         #endregion
 
@@ -720,7 +719,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder dispose operation.
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
             if (!_started)
             {
@@ -738,6 +737,7 @@ namespace DMBBootstrapBuilder
             _started = false;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             ValidateBeforeBegin();
@@ -770,11 +770,13 @@ namespace DMBBootstrapBuilder
 
         #region Overrides
 
+        /// <inheritdoc />
         protected override ModalBuilder CreateInstance()
         {
             return new ModalBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(ModalBuilder source)
         {
             base.InternalClone(source);
@@ -812,6 +814,7 @@ namespace DMBBootstrapBuilder
             _modalRenderContext = null;
         }
 
+        /// <inheritdoc />
         protected override void OnBeginRendering()
         {
             _modalRenderContext = new ModalRenderContext
@@ -837,6 +840,7 @@ namespace DMBBootstrapBuilder
             HtmlRenderContextManager.Push(HtmlHelper, _htmlRenderContext);
         }
 
+        /// <inheritdoc />
         protected override void OnEndRendering()
         {
             HtmlRenderContext? current = HtmlRenderContextManager.Current(HtmlHelper);

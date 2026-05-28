@@ -29,7 +29,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="emphasize">The emphasize value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         [Documented]
         public static TBuilder SetTextEmphasize<TBuilder>(
             this TBuilder builder,
@@ -56,7 +56,7 @@ namespace DMBBootstrapBuilder
         ///     The <see cref="VariantStyle" /> value representing the text variant to be set.
         /// </param>
         /// <returns>
-        ///     The modified <see cref="TBuilder" /> instance with the specified text variant applied.
+        ///     The modified <typeparamref name="TBuilder"/> instance with the specified text variant applied.
         /// </returns>
         [Documented]
         public static TBuilder SetTextVariant<TBuilder>(
@@ -76,7 +76,7 @@ namespace DMBBootstrapBuilder
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="autoTextVariant">The auto text variant value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         [Documented]
         public static TBuilder SetTextVariantFromBackground<TBuilder>(
             this TBuilder builder,

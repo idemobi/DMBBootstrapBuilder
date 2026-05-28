@@ -122,11 +122,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override TableBuilder CreateInstance()
         {
             return new TableBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TableBuilder source)
         {
             base.InternalClone(source);
@@ -162,6 +164,7 @@ namespace DMBBootstrapBuilder
             return This();
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             TableComposer? tableComposer = GetCssComposer<TableComposer>();

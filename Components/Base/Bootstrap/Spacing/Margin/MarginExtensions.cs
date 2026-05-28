@@ -31,7 +31,7 @@ namespace DMBBootstrapBuilder
         /// <param name="size">The size value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
         /// <param name="negative">The negative value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         [Documented]
         public static TBuilder SetMargin<TBuilder>(
             this TBuilder builder,

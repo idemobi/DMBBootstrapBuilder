@@ -23,6 +23,11 @@ namespace DMBBootstrapBuilder
     {
         #region Instance methods
 
+        /// <summary>
+        ///     Renders the navbar component for the current Razor view.
+        /// </summary>
+        /// <param name="htmlHelper">The Razor HTML helper for the current view.</param>
+        /// <returns>The rendered navbar content.</returns>
         IHtmlContent Render(IHtmlHelper htmlHelper);
 
         #endregion

@@ -67,6 +67,7 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Section;
 
         #endregion
@@ -184,11 +185,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override SectionBuilder CreateInstance()
         {
             return new SectionBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(SectionBuilder source)
         {
             base.InternalClone(source);

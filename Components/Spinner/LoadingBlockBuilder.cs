@@ -161,11 +161,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override LoadingBlockBuilder CreateInstance()
         {
             return new LoadingBlockBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(LoadingBlockBuilder source)
         {
             base.InternalClone(source);
@@ -274,6 +276,7 @@ namespace DMBBootstrapBuilder
             return $""" style="min-height:{WebUtility.HtmlEncode(_minHeightCss)};" """;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string wrapperCss = BuildWrapperCss();

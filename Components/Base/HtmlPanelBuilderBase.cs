@@ -37,6 +37,10 @@ namespace DMBBootstrapBuilder
         private string? _bodyAdditionalClasses;
         private bool _bodyNoPadding;
         private bool _centered = true;
+
+        /// <summary>
+        ///     Stores whether the panel should be rendered only in debug-oriented contexts.
+        /// </summary>
         protected bool _debugOnly;
         private CardDecorationStyle _decoration = CardDecorationStyle.Decoration_None;
 
@@ -49,12 +53,21 @@ namespace DMBBootstrapBuilder
         private string? _subtitle;
         private string? _title;
         private TitleLevel _titleLevel = TitleLevel.Four;
+
+        /// <summary>
+        ///     Stores the Bootstrap variant used by the panel header and surface.
+        /// </summary>
         protected VariantStyle _variant = VariantStyle.Normal;
 
         #endregion
 
         #region Instance constructors and destructors
 
+        /// <summary>
+        ///     Initializes a new panel builder using the current Razor writer and HTML helper.
+        /// </summary>
+        /// <param name="writer">The writer that receives rendered panel markup.</param>
+        /// <param name="html">The Razor HTML helper that provides rendering context.</param>
         protected HtmlPanelBuilderBase(TextWriter writer, IHtmlHelper html)
             : base(writer, html)
         {
@@ -86,29 +99,93 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <summary>
+        ///     Gets the Razor HTML helper used by panel rendering helpers.
+        /// </summary>
         protected IHtmlHelper HtmlHelper => _htmlHelper;
 
+        /// <summary>
+        ///     Gets the writer used by the panel builder.
+        /// </summary>
         protected TextWriter Writer => _textWriter;
 
+        /// <summary>
+        ///     Gets or sets whether the panel has started its immediate rendering scope.
+        /// </summary>
         protected bool Started
         {
             get => _started;
             set => _started = value;
         }
 
+        /// <summary>
+        ///     Gets a value indicating whether panel header content is centered.
+        /// </summary>
         protected bool CenteredValue => _centered;
+
+        /// <summary>
+        ///     Gets a value indicating whether the panel header is suppressed.
+        /// </summary>
         protected bool NoHeaderValue => _noHeader;
+
+        /// <summary>
+        ///     Gets a value indicating whether the panel body removes its default padding.
+        /// </summary>
         protected bool BodyNoPaddingValue => _bodyNoPadding;
+
+        /// <summary>
+        ///     Gets a value indicating whether the header renders only the configured icon.
+        /// </summary>
         protected bool IconOnlyHeaderValue => _iconOnlyHeader;
+
+        /// <summary>
+        ///     Gets a value indicating whether icon-only header content is centered.
+        /// </summary>
         protected bool IconOnlyCenteredValue => _iconOnlyCentered;
+
+        /// <summary>
+        ///     Gets the panel title configured for header rendering.
+        /// </summary>
         protected string? TitleValue => _title;
+
+        /// <summary>
+        ///     Gets the panel subtitle configured for header rendering.
+        /// </summary>
         protected string? SubtitleValue => _subtitle;
+
+        /// <summary>
+        ///     Gets the icon configured for header rendering.
+        /// </summary>
         protected IconStruct IconValue => _icon;
+
+        /// <summary>
+        ///     Gets additional CSS classes appended to the panel surface.
+        /// </summary>
         protected string? AdditionalClassesValue => _additionalClasses;
+
+        /// <summary>
+        ///     Gets additional CSS classes appended to the panel body.
+        /// </summary>
         protected string? BodyAdditionalClassesValue => _bodyAdditionalClasses;
+
+        /// <summary>
+        ///     Gets the optional action rendered in the panel header tools area.
+        /// </summary>
         protected IActionItem? HeaderActionValue => _headerAction;
+
+        /// <summary>
+        ///     Gets the title level used for the rendered panel heading tag.
+        /// </summary>
         protected TitleLevel TitleLevelValue => _titleLevel;
+
+        /// <summary>
+        ///     Gets the Bootstrap variant used by the panel.
+        /// </summary>
         protected VariantStyle StyleValue => _variant;
+
+        /// <summary>
+        ///     Gets the decoration style applied to the panel surface.
+        /// </summary>
         protected CardDecorationStyle DecorationValue => _decoration;
 
         #endregion
@@ -120,7 +197,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="titleLevel">The title level value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetTitle(string title, TitleLevel titleLevel = TitleLevel.Three)
         {
             _iconOnlyHeader = false;
@@ -135,7 +212,7 @@ namespace DMBBootstrapBuilder
         /// Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetSubtitle(string subtitle)
         {
             _subtitle = subtitle;
@@ -146,7 +223,7 @@ namespace DMBBootstrapBuilder
         /// Configures icon bootstrap on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="iconBootstrap">The icon bootstrap value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetIconBootstrap(string iconBootstrap)
         {
             _icon = IconStruct.Bootstrap(iconBootstrap);
@@ -160,7 +237,7 @@ namespace DMBBootstrapBuilder
         /// <param name="titleLevel">The title level value.</param>
         /// <param name="icon">The icon value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithTitle(string title, TitleLevel titleLevel, IconStruct icon = default, string? subtitle = null)
         {
             if (string.IsNullOrWhiteSpace(title))
@@ -186,7 +263,7 @@ namespace DMBBootstrapBuilder
         /// <param name="icon">The icon value.</param>
         /// <param name="centered">The centered value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithIconOnly(TitleLevel titleLevel, IconStruct icon, bool centered = true, string? subtitle = null)
         {
             if (icon.IsEmpty)
@@ -208,7 +285,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder debug only operation.
         /// </summary>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder DebugOnly()
         {
             _debugOnly = true;
@@ -219,7 +296,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder centered operation.
         /// </summary>
         /// <param name="centered">The centered value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder Centered(bool centered = true)
         {
             _centered = centered;
@@ -230,7 +307,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder no header operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder NoHeader(bool value = true)
         {
             _noHeader = value;
@@ -241,7 +318,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder body no padding operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder BodyNoPadding(bool value = true)
         {
             _bodyNoPadding = value;
@@ -252,7 +329,7 @@ namespace DMBBootstrapBuilder
         /// Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -263,7 +340,7 @@ namespace DMBBootstrapBuilder
         /// Configures decoration on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="decoration">The decoration value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithDecoration(CardDecorationStyle decoration)
         {
             _decoration = decoration;
@@ -274,7 +351,7 @@ namespace DMBBootstrapBuilder
         /// Configures additional classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="additionalClasses">The additional classes value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithAdditionalClasses(string additionalClasses)
         {
             _additionalClasses = additionalClasses;
@@ -285,7 +362,7 @@ namespace DMBBootstrapBuilder
         /// Configures body class on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="cssClass">The css class value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder WithBodyClass(string cssClass)
         {
             if (!string.IsNullOrWhiteSpace(cssClass))
@@ -302,7 +379,7 @@ namespace DMBBootstrapBuilder
         /// Configures header action on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetHeaderAction(IActionItem action)
         {
             _headerAction = action ?? throw new ArgumentNullException(nameof(action));
@@ -314,7 +391,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetDataAttribut(string name, string value)
         {
             return SetAttribut($"data-{name}", value);
@@ -325,7 +402,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetDataAttribut(string name, bool value)
         {
             return SetAttribut($"data-{name}", value);
@@ -336,7 +413,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetAriaAttribut(string name, string value)
         {
             return SetAttribut($"aria-{name}", value);
@@ -347,7 +424,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetAriaAttribut(string name, bool value)
         {
             return SetAttribut($"aria-{name}", value);
@@ -358,7 +435,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetAttribut(string name, string value)
         {
             return SetAttribute(name, value);
@@ -369,7 +446,7 @@ namespace DMBBootstrapBuilder
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder SetAttribut(string name, bool value)
         {
             return SetAttribute(name, value);
@@ -382,7 +459,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
         public TBuilder Begin()
         {
             if (_started)
@@ -419,6 +496,7 @@ namespace DMBBootstrapBuilder
 
         #region Overrides
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             ValidateBeforeBegin();
@@ -436,6 +514,7 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TBuilder source)
         {
             base.InternalClone(source);
@@ -466,6 +545,12 @@ namespace DMBBootstrapBuilder
 
         #region Overridables
 
+        /// <summary>
+        ///     Validates the panel state before the begin tag and header are rendered.
+        /// </summary>
+        /// <exception cref="InvalidOperationException">
+        ///     Thrown when the panel requires a title or icon before rendering can begin.
+        /// </exception>
         protected virtual void ValidateBeforeBegin()
         {
             if (_noHeader)
@@ -484,37 +569,73 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <summary>
+        ///     Runs custom logic immediately before the panel starts rendering.
+        /// </summary>
         protected virtual void OnBeginRendering()
         {
         }
 
+        /// <summary>
+        ///     Runs custom logic immediately after the panel finishes rendering.
+        /// </summary>
         protected virtual void OnEndRendering()
         {
         }
 
+        /// <summary>
+        ///     Renders the opening outer panel markup around the prepared header and body start content.
+        /// </summary>
+        /// <param name="contentHtml">The pre-rendered header, tools, and body start markup.</param>
+        /// <returns>The opening outer panel markup.</returns>
         protected abstract string RenderOuterStart(string contentHtml);
+
+        /// <summary>
+        ///     Renders the closing outer panel markup.
+        /// </summary>
+        /// <returns>The closing outer panel markup.</returns>
         protected abstract string RenderOuterEnd();
 
+        /// <summary>
+        ///     Gets the CSS prefix used for Bootstrap panel regions such as headers and bodies.
+        /// </summary>
+        /// <returns>The region CSS prefix.</returns>
         protected virtual string GetRegionCssPrefix()
         {
             return "card";
         }
 
+        /// <summary>
+        ///     Gets a value indicating whether the panel should render a close button in its tools area.
+        /// </summary>
+        /// <returns><see langword="true"/> when a close button should be rendered; otherwise, <see langword="false"/>.</returns>
         protected virtual bool HasCloseButton()
         {
             return false;
         }
 
+        /// <summary>
+        ///     Renders the close button markup used by panels that support dismissal.
+        /// </summary>
+        /// <returns>The close button markup, or an empty string when no close button is rendered.</returns>
         protected virtual string RenderCloseButton()
         {
             return string.Empty;
         }
 
+        /// <summary>
+        ///     Gets the CSS classes used by the tools overlay container.
+        /// </summary>
+        /// <returns>The tools overlay CSS class string.</returns>
         protected virtual string GetToolsOverlayContainerCss()
         {
             return $"{GetRegionCssPrefix()}-tools-overlay position-absolute top-0 end-0 p-3 d-inline-flex align-items-center gap-2";
         }
 
+        /// <summary>
+        ///     Gets the CSS classes used by the panel header content container.
+        /// </summary>
+        /// <returns>The header content container CSS class string.</returns>
         protected virtual string GetHeaderContentContainerCss()
         {
             List<string> classes = new();
@@ -533,6 +654,10 @@ namespace DMBBootstrapBuilder
             return string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)));
         }
 
+        /// <summary>
+        ///     Estimates bottom padding reserved for header actions and compact header layouts.
+        /// </summary>
+        /// <returns>The Bootstrap padding class to reserve space, or an empty string.</returns>
         protected virtual string GetHeaderReservedBottomCss()
         {
             if (HeaderActionValue == null || NoHeaderValue)
@@ -581,6 +706,10 @@ namespace DMBBootstrapBuilder
             return estimate > 0 ? $"pb-{estimate}" : string.Empty;
         }
 
+        /// <summary>
+        ///     Gets a value indicating whether the panel should render the closing body markup.
+        /// </summary>
+        /// <returns><see langword="true"/> when the body closing markup should be rendered.</returns>
         protected virtual bool ShouldRenderBodyEndHtml()
         {
             return true;
@@ -590,12 +719,20 @@ namespace DMBBootstrapBuilder
 
         #region Protected render helpers
 
+        /// <summary>
+        ///     Renders the opening panel markup, including tools, header, and body start markup.
+        /// </summary>
+        /// <returns>The opening panel markup.</returns>
         protected virtual string RenderPanelStart()
         {
             string contentHtml = $"{RenderToolsOverlayHtml()}{RenderHeaderHtml()}{RenderBodyStartHtml()}";
             return RenderOuterStart(contentHtml);
         }
 
+        /// <summary>
+        ///     Renders the closing panel markup, including body closing markup when enabled.
+        /// </summary>
+        /// <returns>The closing panel markup.</returns>
         protected virtual string RenderPanelEnd()
         {
             string bodyEnd = ShouldRenderBodyEndHtml()
@@ -605,6 +742,10 @@ namespace DMBBootstrapBuilder
             return $"{bodyEnd}{RenderOuterEnd()}";
         }
 
+        /// <summary>
+        ///     Renders the Bootstrap panel header markup.
+        /// </summary>
+        /// <returns>The rendered header markup, or an empty string when the header is disabled.</returns>
         protected virtual string RenderHeaderHtml()
         {
             if (_noHeader)
@@ -671,6 +812,10 @@ namespace DMBBootstrapBuilder
 """;
         }
 
+        /// <summary>
+        ///     Renders the panel tools overlay container.
+        /// </summary>
+        /// <returns>The tools overlay markup, or an empty string when no tools are available.</returns>
         protected virtual string RenderToolsOverlayHtml()
         {
             string toolsContentHtml = RenderToolsOverlayContentHtml();
@@ -687,6 +832,10 @@ namespace DMBBootstrapBuilder
 """;
         }
 
+        /// <summary>
+        ///     Renders the content placed inside the tools overlay.
+        /// </summary>
+        /// <returns>The tools overlay content markup.</returns>
         protected virtual string RenderToolsOverlayContentHtml()
         {
             List<string> parts = new();
@@ -712,6 +861,10 @@ namespace DMBBootstrapBuilder
             return string.Join(Environment.NewLine, parts);
         }
 
+        /// <summary>
+        ///     Renders the opening Bootstrap panel body markup.
+        /// </summary>
+        /// <returns>The opening body markup.</returns>
         protected virtual string RenderBodyStartHtml()
         {
             string prefix = GetRegionCssPrefix();
@@ -737,6 +890,10 @@ namespace DMBBootstrapBuilder
 """;
         }
 
+        /// <summary>
+        ///     Renders the closing Bootstrap panel body markup.
+        /// </summary>
+        /// <returns>The closing body markup.</returns>
         protected virtual string RenderBodyEndHtml()
         {
             return """
@@ -744,6 +901,10 @@ namespace DMBBootstrapBuilder
                    """;
         }
 
+        /// <summary>
+        ///     Builds the CSS classes applied to the outer panel surface.
+        /// </summary>
+        /// <returns>The panel surface CSS class string.</returns>
         protected string BuildPanelSurfaceCssClasses()
         {
             List<string> classes = new()
@@ -765,6 +926,10 @@ namespace DMBBootstrapBuilder
             return string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)));
         }
 
+        /// <summary>
+        ///     Gets the CSS class generated from the configured panel decoration style.
+        /// </summary>
+        /// <returns>The decoration CSS class, or an empty string when no decoration is configured.</returns>
         protected virtual string GetDecorationCssClass()
         {
             string decoration = _decoration.ToString().ToLowerInvariant().Replace("_", "-");

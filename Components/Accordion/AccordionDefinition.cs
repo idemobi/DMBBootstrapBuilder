@@ -90,7 +90,7 @@ namespace DMBBootstrapBuilder
                 Title = Title,
                 Subtitle = Subtitle,
                 Icon = Icon,
-                Badges = Badges?
+                Badges = Badges
                     .Select(b => b.Clone())
                     .ToList(),
                 Open = Open,

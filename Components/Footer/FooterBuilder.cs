@@ -26,7 +26,7 @@ namespace DMBBootstrapBuilder
 
         private readonly HtmlRenderContext _context;
         private string? _noticeText;
-        private bool _started;
+        private new bool _started;
 
         #endregion
 
@@ -48,11 +48,13 @@ namespace DMBBootstrapBuilder
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override FooterBuilder CreateInstance()
         {
             return new FooterBuilder(_textWriter, _htmlHelper, _context);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(FooterBuilder source)
         {
             base.InternalClone(source);
@@ -64,7 +66,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder begin operation.
         /// </summary>
         /// <returns>The configured <see cref="FooterBuilder"/> value or BootstrapBuilder result.</returns>
-        public FooterBuilder Begin()
+        public override FooterBuilder Begin()
         {
             if (_started)
             {
@@ -112,6 +114,7 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             switch (_context.Kind)
@@ -144,7 +147,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder dispose operation.
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
             if (!_started)
             {

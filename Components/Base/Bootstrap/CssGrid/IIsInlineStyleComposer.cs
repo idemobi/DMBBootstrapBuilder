@@ -16,6 +16,10 @@ namespace DMBBootstrapBuilder
     {
         #region Instance methods
 
+        /// <summary>
+        ///     Builds inline CSS style declarations for the current composer.
+        /// </summary>
+        /// <returns>The inline style declarations to append to the rendered element.</returns>
         IReadOnlyList<string> BuildStyles();
 
         #endregion

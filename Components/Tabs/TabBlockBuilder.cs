@@ -208,11 +208,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override TabBlockBuilder CreateInstance()
         {
             return new TabBlockBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TabBlockBuilder source)
         {
             base.InternalClone(source);
@@ -227,6 +229,7 @@ namespace DMBBootstrapBuilder
             _title = source._title;
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             throw new InvalidOperationException("TabBlockBuilder does not render directly. Use Begin()/Dispose() inside a TabAreaBuilder.");

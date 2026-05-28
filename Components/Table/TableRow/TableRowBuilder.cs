@@ -34,7 +34,7 @@ namespace DMBBootstrapBuilder
 
         private HtmlRenderContext? _renderContext;
 
-        private bool _started
+        private new bool _started
         {
             get => GetInternal("_started", false);
             set => SetInternal("_started", value);
@@ -64,7 +64,7 @@ namespace DMBBootstrapBuilder
         /// Executes the BootstrapBuilder begin operation.
         /// </summary>
         /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableRowBuilder Begin()
+        public override TableRowBuilder Begin()
         {
             if (_started)
             {
@@ -99,11 +99,13 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <inheritdoc />
         protected override TableRowBuilder CreateInstance()
         {
             return new TableRowBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <inheritdoc />
         protected override void InternalClone(TableRowBuilder source)
         {
             base.InternalClone(source);
@@ -208,6 +210,7 @@ namespace DMBBootstrapBuilder
             return this.SetTableRowVariant(style);
         }
 
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             writer.Write($"<{GetTag()}{BuildAttributes()}></{GetTag()}>");
@@ -218,7 +221,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder dispose operation.
         /// </summary>
-        public void Dispose()
+        public new void Dispose()
         {
             if (!_started)
             {

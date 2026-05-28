@@ -28,7 +28,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         /// Executes the BootstrapBuilder to alert models operation.
         /// </summary>
-        /// <returns>The configured <see cref="IEnumerable"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The Bootstrap alert models generated from the current page alerts.</returns>
         public IEnumerable<AlertModel> ToAlertModels()
         {
             foreach (PageAlertModel alert in Alerts)
@@ -37,6 +37,11 @@ namespace DMBBootstrapBuilder
             }
         }
 
+        /// <summary>
+        ///     Converts a page alert into the Bootstrap alert model used by alert rendering.
+        /// </summary>
+        /// <param name="alert">The page alert to convert.</param>
+        /// <returns>The Bootstrap alert model created from <paramref name="alert"/>.</returns>
         protected virtual AlertModel ToAlertModel(PageAlertModel alert)
         {
             AlertModel model = new AlertModel(GetIcon(alert), BuildTitle(alert), BuildMessage(alert))

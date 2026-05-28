@@ -42,12 +42,14 @@ namespace DMBBootstrapBuilder
 
         #region Protected accessors
 
+        /// <inheritdoc />
         protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Block;
 
         #endregion
 
         #region Instance methods
 
+        /// <inheritdoc />
         protected override BlockBuilder CreateInstance()
         {
             return new BlockBuilder(_textWriter, _htmlHelper);

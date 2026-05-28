@@ -22,6 +22,9 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
+        /// <summary>
+        ///     Gets or sets the icon rendered by the component.
+        /// </summary>
         IconStruct Icon { get; set; }
 
         #endregion

@@ -451,11 +451,11 @@ namespace DMBBootstrapBuilder
 
             string startIconHtml = startIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString() ?? string.Empty;
 
             string endIconHtml = endIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString() ?? string.Empty;
 
             return $"""
                     <button type="button"
@@ -484,7 +484,7 @@ namespace DMBBootstrapBuilder
             string title = group.Title ?? string.Empty;
             string iconHtml = group.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, group.Icon).ToString() ?? string.Empty;
 
             string badgeHtml = GetInlineBadgeHtml(group);
             string subtitleHtml = string.IsNullOrWhiteSpace(group.Subtitle)
@@ -597,7 +597,7 @@ namespace DMBBootstrapBuilder
             string title = item.Title ?? string.Empty;
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
 
             string disabledCss = item.Disabled ? " disabled" : string.Empty;
             string activeCss = item.Active ? " active" : string.Empty;
@@ -687,7 +687,7 @@ namespace DMBBootstrapBuilder
         {
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
             string switchId = !string.IsNullOrWhiteSpace(item.Id)
                 ? item.Id
                 : $"dropdown_toggle_{Guid.NewGuid():N}";
@@ -741,11 +741,11 @@ namespace DMBBootstrapBuilder
 
             string startIconHtml = startIcon.IsEmpty
                 ? iconHtml
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, startIcon).ToString() ?? string.Empty;
 
             string endIconHtml = endIcon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, endIcon).ToString() ?? string.Empty;
 
             return $"""
                     <li class="nav-item">
@@ -775,7 +775,7 @@ namespace DMBBootstrapBuilder
             string title = IconOnly ? string.Empty : (rootItem.Title ?? string.Empty);
             string iconHtml = rootItem.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, rootItem.Icon).ToString() ?? string.Empty;
 
             string disabledCss = rootItem.Disabled ? " disabled" : string.Empty;
             string activeCss = rootItem.Active ? " active" : string.Empty;
@@ -829,7 +829,7 @@ namespace DMBBootstrapBuilder
             string title = IconOnly ? string.Empty : (item.Title ?? string.Empty);
             string iconHtml = item.Icon.IsEmpty
                 ? string.Empty
-                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString();
+                : HtmlLayoutExtensions.IconBuilder(htmlHelper, item.Icon).ToString() ?? string.Empty;
 
             string disabledCss = item.Disabled ? " disabled" : string.Empty;
             string activeCss = item.Active ? " active" : string.Empty;

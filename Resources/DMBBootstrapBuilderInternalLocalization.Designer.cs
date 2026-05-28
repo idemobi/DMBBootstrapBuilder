@@ -11,6 +11,9 @@ namespace DMBBootstrapBuilder.Resources {
     using System;
     
     
+    /// <summary>
+    ///     Provides strongly typed access to DMBBootstrapBuilder internal localization resources.
+    /// </summary>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -24,6 +27,9 @@ namespace DMBBootstrapBuilder.Resources {
         internal DMBBootstrapBuilderInternalLocalization() {
         }
         
+        /// <summary>
+        ///     Gets the resource manager used to resolve DMBBootstrapBuilder internal localization values.
+        /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public static System.Resources.ResourceManager ResourceManager {
             get {
@@ -35,6 +41,9 @@ namespace DMBBootstrapBuilder.Resources {
             }
         }
         
+        /// <summary>
+        ///     Gets or sets the culture used to resolve DMBBootstrapBuilder internal localization values.
+        /// </summary>
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public static System.Globalization.CultureInfo Culture {
             get {
@@ -45,228 +54,342 @@ namespace DMBBootstrapBuilder.Resources {
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_NAVBAR_GROUP_Language_TITLE</c>.
+        /// </summary>
         public static string ACTIONITEM_NAVBAR_GROUP_Language_TITLE {
             get {
                 return ResourceManager.GetString("ACTIONITEM_NAVBAR_GROUP_Language_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_NAVBAR_GROUP_Language_ICON</c>.
+        /// </summary>
         public static string ACTIONITEM_NAVBAR_GROUP_Language_ICON {
             get {
                 return ResourceManager.GetString("ACTIONITEM_NAVBAR_GROUP_Language_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_ICON</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_ICON {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_Options_ICON</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_Options_ICON {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_Options_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_Options_TITLE</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_Options_TITLE {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_Options_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_SideBar_ICON</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_SideBar_ICON {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_SideBar_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_SideBar_TITLE</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_SideBar_TITLE {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_SideBar_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_Theme_ICON</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_Theme_ICON {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_Theme_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_Theme_TITLE</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_Theme_TITLE {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_Theme_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>ACTIONITEM_GROUP_Customize_TITLE</c>.
+        /// </summary>
         public static string ACTIONITEM_GROUP_Customize_TITLE {
             get {
                 return ResourceManager.GetString("ACTIONITEM_GROUP_Customize_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeFluid_ICON</c>.
+        /// </summary>
         public static string COMMON_OptionThemeFluid_ICON {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeFluid_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeFluid_TITLE</c>.
+        /// </summary>
         public static string COMMON_OptionThemeFluid_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeFluid_TITLE", resourceCulture);
             }
         }
 
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeBreadcrumb_ICON</c>.
+        /// </summary>
         public static string COMMON_OptionThemeBreadcrumb_ICON {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeBreadcrumb_ICON", resourceCulture);
             }
         }
 
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeBreadcrumb_TITLE</c>.
+        /// </summary>
         public static string COMMON_OptionThemeBreadcrumb_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeBreadcrumb_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeRTL_ICON</c>.
+        /// </summary>
         public static string COMMON_OptionThemeRTL_ICON {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeRTL_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OptionThemeRTL_TITLE</c>.
+        /// </summary>
         public static string COMMON_OptionThemeRTL_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_OptionThemeRTL_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OurMission_DESCRIPTION</c>.
+        /// </summary>
         public static string COMMON_OurMission_DESCRIPTION {
             get {
                 return ResourceManager.GetString("COMMON_OurMission_DESCRIPTION", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_OurMission_TITLE</c>.
+        /// </summary>
         public static string COMMON_OurMission_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_OurMission_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeColored_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeColored_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeColored_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeColored_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeColored_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeColored_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeDark_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeDark_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeDark_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeDark_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeDark_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeDark_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeDefault_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeDefault_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeDefault_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeDefault_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeDefault_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeDefault_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeInversed_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeInversed_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeInversed_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeInversed_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeInversed_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeInversed_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeLight_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeLight_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeLight_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeLight_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeLight_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeLight_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemePrimary_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemePrimary_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemePrimary_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemePrimary_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemePrimary_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemePrimary_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeTransparent_ICON</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeTransparent_ICON {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeTransparent_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_SideBarThemeTransparent_TITLE</c>.
+        /// </summary>
         public static string COMMON_SideBarThemeTransparent_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_SideBarThemeTransparent_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeAutomatic_ICON</c>.
+        /// </summary>
         public static string COMMON_ThemeAutomatic_ICON {
             get {
                 return ResourceManager.GetString("COMMON_ThemeAutomatic_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeAutomatic_TITLE</c>.
+        /// </summary>
         public static string COMMON_ThemeAutomatic_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_ThemeAutomatic_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeDark_ICON</c>.
+        /// </summary>
         public static string COMMON_ThemeDark_ICON {
             get {
                 return ResourceManager.GetString("COMMON_ThemeDark_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeDark_TITLE</c>.
+        /// </summary>
         public static string COMMON_ThemeDark_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_ThemeDark_TITLE", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeLight_ICON</c>.
+        /// </summary>
         public static string COMMON_ThemeLight_ICON {
             get {
                 return ResourceManager.GetString("COMMON_ThemeLight_ICON", resourceCulture);
             }
         }
         
+        /// <summary>
+        ///     Gets the localized resource value for <c>COMMON_ThemeLight_TITLE</c>.
+        /// </summary>
         public static string COMMON_ThemeLight_TITLE {
             get {
                 return ResourceManager.GetString("COMMON_ThemeLight_TITLE", resourceCulture);
