@@ -59,28 +59,6 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder asp route operation.
-        /// </summary>
-        /// <param name="title">The title value.</param>
-        /// <param name="controller">The controller value.</param>
-        /// <param name="action">The action value.</param>
-        /// <param name="icon">The icon value.</param>
-        /// <param name="area">The area value.</param>
-        /// <returns>The configured <see cref="AspRouteActionItem"/> value or BootstrapBuilder result.</returns>
-        [Obsolete("Use AspRoute instead")]
-        public static AspRouteActionItem AspRoute(string title, [AspMvcController] string controller, [AspMvcAction] string action, IconStruct icon = default, string? area = null)
-        {
-            return new AspRouteActionItem
-            {
-                Title = title,
-                AspController = controller,
-                AspAction = action,
-                AspArea = area,
-                Icon = icon
-            };
-        }
-
-        /// <summary>
         /// Executes the BootstrapBuilder clipboard button operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
