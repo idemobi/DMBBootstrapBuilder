@@ -227,4 +227,7 @@
       <_ContentIncludedByDefault Remove="wwwroot\css\effects\SectionRenderEffect.css" />
       <_ContentIncludedByDefault Remove="wwwroot\css\effects\VideoSection.css" />
     </ItemGroup>
+    <ItemGroup Label="Project file exclusions">
+        <None Remove=".gitignore" />
+    </ItemGroup>
 </Project>
