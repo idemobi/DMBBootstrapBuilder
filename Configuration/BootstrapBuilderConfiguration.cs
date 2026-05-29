@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BootstrapBuilderConfiguration.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -21,7 +19,7 @@ using Microsoft.Extensions.Hosting;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder bootstrap builder configuration component or support type.
+    ///     Represents the BootstrapBuilder bootstrap builder configuration component or support type.
     /// </summary>
     [Serializable]
     public class BootstrapBuilderConfiguration : WebGenericConfiguration<BootstrapBuilderConfiguration>, IServerWebConfig
@@ -37,24 +35,27 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the breadcrumb composer value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the breadcrumb composer value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IBreadcrumbComposer BreadcrumbComposer { set; get; } = new BasicBreadcrumbComposer();
 
         /// <summary>
-        /// Gets or sets the cookie consent composer value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the cookie consent composer value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public ICookieConsentComposer CookieConsentComposer { set; get; } = new BasicCookieConsentComposer();
+
         /// <summary>
-        /// Gets or sets the footer bar composer value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the footer bar composer value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IFooterBarComposer FooterBarComposer { set; get; } = new BasicFooterBarComposer();
+
         /// <summary>
-        /// Gets or sets the launch token value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the launch token value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string LaunchToken { set; get; } = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+
         /// <summary>
-        /// Gets or sets the navigation bar composer value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the navigation bar composer value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public INavigationBarComposer NavigationBarComposer { set; get; } = new BasicNavigationBarComposer();
 
@@ -65,7 +66,7 @@ namespace DMBBootstrapBuilder
         #region From interface IServerWebConfig
 
         /// <summary>
-        /// Executes the BootstrapBuilder after configuration operation.
+        ///     Executes the BootstrapBuilder after configuration operation.
         /// </summary>
         /// <param name="appBuilder">The app builder value.</param>
         /// <param name="configBuilder">The config builder value.</param>
@@ -82,7 +83,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder api description operation.
+        ///     Executes the BootstrapBuilder api description operation.
         /// </summary>
         /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
         public override bool ApiDescription()
@@ -91,7 +92,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder before configuration operation.
+        ///     Executes the BootstrapBuilder before configuration operation.
         /// </summary>
         /// <param name="appBuilder">The app builder value.</param>
         /// <param name="configBuilder">The config builder value.</param>
@@ -101,7 +102,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder needs config file or app settings operation.
+        ///     Executes the BootstrapBuilder needs config file or app settings operation.
         /// </summary>
         /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
         public override bool NeedsConfigFileOrAppSettings()
@@ -110,7 +111,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder random fake operation.
+        ///     Executes the BootstrapBuilder random fake operation.
         /// </summary>
         public override void RandomFake()
         {

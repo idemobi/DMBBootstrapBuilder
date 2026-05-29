@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BadgeBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder badge component or page region.
+    ///     Builds and renders the BootstrapBuilder badge component or page region.
     /// </summary>
     public sealed class BadgeBuilder :
         HtmlBuilderBase<BadgeBuilder>,
@@ -48,7 +46,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BadgeBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="BadgeBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -65,10 +63,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures hidden text on the current BootstrapBuilder instance.
+        ///     Configures hidden text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="BadgeBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BadgeBuilder" /> value or BootstrapBuilder result.</returns>
         public BadgeBuilder SetHiddenText(string? text)
         {
             _visuallyHiddenText = text;
@@ -76,10 +74,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures text on the current BootstrapBuilder instance.
+        ///     Configures text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="BadgeBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BadgeBuilder" /> value or BootstrapBuilder result.</returns>
         public BadgeBuilder SetText(string? text)
         {
             _text = text;

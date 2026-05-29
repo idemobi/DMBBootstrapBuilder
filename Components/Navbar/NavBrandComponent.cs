@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj NavBrandComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,18 +17,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder nav brand logo component component or support type.
+    ///     Represents the BootstrapBuilder nav brand logo component component or support type.
     /// </summary>
     public sealed class NavBrandLogoComponent : NavbarComponentBase
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the logo path value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the logo path value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string LogoPath { get; set; } = "/logo/logo.png";
+
         /// <summary>
-        /// Gets or sets the url value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the url value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Url { get; set; } = "/";
 
@@ -39,7 +38,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavBrandLogoComponent"/> class.
+        ///     Initializes a new instance of the <see cref="NavBrandLogoComponent" /> class.
         /// </summary>
         /// <param name="url">The url value.</param>
         public NavBrandLogoComponent(string? url = "/")
@@ -52,7 +51,7 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
@@ -71,22 +70,24 @@ namespace DMBBootstrapBuilder
     }
 
     /// <summary>
-    /// Represents the BootstrapBuilder nav brand component component or support type.
+    ///     Represents the BootstrapBuilder nav brand component component or support type.
     /// </summary>
     public sealed class NavBrandComponent : NavbarComponentBase
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the icon value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IconStruct Icon { get; set; }
+
         /// <summary>
-        /// Gets or sets the text value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the text value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? Text { get; set; }
+
         /// <summary>
-        /// Gets or sets the url value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the url value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Url { get; set; } = "/";
 
@@ -95,7 +96,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavBrandComponent"/> class.
+        ///     Initializes a new instance of the <see cref="NavBrandComponent" /> class.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="url">The url value.</param>
@@ -112,7 +113,7 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>

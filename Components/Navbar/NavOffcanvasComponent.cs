@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj NavOffcanvasComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -23,7 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder nav offcanvas component component or support type.
+    ///     Represents the BootstrapBuilder nav offcanvas component component or support type.
     /// </summary>
     public sealed class NavOffcanvasComponent : NavbarComponentBase
     {
@@ -161,43 +159,49 @@ namespace DMBBootstrapBuilder
 
         #region Instance fields and properties
 
-        private readonly List<IActionItem> _items = new();
         private readonly List<INavbarComponent> _components = new();
-        private readonly List<SideBarComponent> _sidebars = new();
         private bool _isHidden = false;
 
+        private readonly List<IActionItem> _items = new();
+        private readonly List<SideBarComponent> _sidebars = new();
+
         /// <summary>
-        /// Gets or sets the id value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the id value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Id { get; set; }
+
         /// <summary>
-        /// Gets or sets the placement value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the placement value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public OffcanvasPlacement Placement { get; set; } = OffcanvasPlacement.End;
+
         /// <summary>
-        /// Gets or sets the title value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the title value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? Title { get; set; }
 
         /// <summary>
-        /// Gets or sets the toggle icon value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the toggle icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IconStruct ToggleIcon { get; set; } = IconStruct.Bootstrap("bi-list");
+
         /// <summary>
-        /// Gets or sets the toggle outline value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the toggle outline value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool ToggleOutline { get; set; } = false;
+
         /// <summary>
-        /// Gets or sets the toggle size value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the toggle size value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public BoostrapButtonSize ToggleSize { get; set; } = BoostrapButtonSize.Medium;
+
         /// <summary>
-        /// Gets or sets the toggle text value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the toggle text value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string ToggleText { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets the toggle variant value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the toggle variant value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public VariantStyle ToggleVariant { get; set; } = VariantStyle.Normal;
 
@@ -206,7 +210,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavOffcanvasComponent"/> class.
+        ///     Initializes a new instance of the <see cref="NavOffcanvasComponent" /> class.
         /// </summary>
         /// <param name="id">The id value.</param>
         /// <param name="title">The title value.</param>
@@ -221,10 +225,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="item">The item value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent Add(IActionItem item)
         {
             if (item == null)
@@ -237,10 +241,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent Add(params IActionItem[] items)
         {
             if (items == null)
@@ -257,10 +261,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds navbar component content to the current BootstrapBuilder offcanvas.
+        ///     Adds navbar component content to the current BootstrapBuilder offcanvas.
         /// </summary>
         /// <param name="component">The navbar component value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent Add(INavbarComponent component)
         {
             if (component == null)
@@ -273,10 +277,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds navbar component content to the current BootstrapBuilder offcanvas.
+        ///     Adds navbar component content to the current BootstrapBuilder offcanvas.
         /// </summary>
         /// <param name="components">The navbar components to add.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent Add(params INavbarComponent[] components)
         {
             if (components == null)
@@ -293,10 +297,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds sidebar to the current BootstrapBuilder component or page model.
+        ///     Adds sidebar to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="sideBar">The side bar value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent AddSidebar(SideBarComponent sideBar)
         {
             if (sideBar == null)
@@ -308,8 +312,29 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Executes the BootstrapBuilder has actions operation.
+        /// </summary>
+        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
+        public bool HasActions()
+        {
+            return _items.Count > 0 || _sidebars.Count > 0;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder hide operation.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
+        public NavOffcanvasComponent Hide(bool value = true)
+        {
+            _isHidden = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
@@ -726,10 +751,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures placement on the current BootstrapBuilder instance.
+        ///     Configures placement on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="placement">The placement value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent WithPlacement(OffcanvasPlacement placement)
         {
             Placement = placement;
@@ -737,10 +762,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures toggle outlined on the current BootstrapBuilder instance.
+        ///     Configures toggle outlined on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent WithToggleOutlined(bool value = true)
         {
             ToggleOutline = value;
@@ -748,10 +773,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures toggle size on the current BootstrapBuilder instance.
+        ///     Configures toggle size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent WithToggleSize(BoostrapButtonSize size)
         {
             ToggleSize = size;
@@ -759,35 +784,14 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures toggle variant on the current BootstrapBuilder instance.
+        ///     Configures toggle variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavOffcanvasComponent" /> value or BootstrapBuilder result.</returns>
         public NavOffcanvasComponent WithToggleVariant(VariantStyle variant)
         {
             ToggleVariant = variant;
             return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder hide operation.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="NavOffcanvasComponent"/> value or BootstrapBuilder result.</returns>
-        public NavOffcanvasComponent Hide(bool value = true)
-        {
-            _isHidden = value;
-            return this;
-        }
-
-
-        /// <summary>
-        /// Executes the BootstrapBuilder has actions operation.
-        /// </summary>
-        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
-        public bool HasActions()
-        {
-            return _items.Count > 0 || _sidebars.Count > 0;
         }
 
         #endregion

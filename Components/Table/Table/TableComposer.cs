@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for table.
+    ///     Composes Bootstrap CSS classes or page chrome for table.
     /// </summary>
     public sealed class TableComposer : IIsCssClassComposer
     {
@@ -33,7 +31,7 @@ namespace DMBBootstrapBuilder
         private bool _stripedColumns;
 
         /// <summary>
-        /// Gets or sets a value indicating whether sortable is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether sortable is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool IsSortable => _sortable;
 
@@ -42,10 +40,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures bordered on the current BootstrapBuilder instance.
+        ///     Configures bordered on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetBordered(bool value = true)
         {
             _bordered = value;
@@ -58,10 +56,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures borderless on the current BootstrapBuilder instance.
+        ///     Configures borderless on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetBorderless(bool value = true)
         {
             _borderless = value;
@@ -74,10 +72,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures caption top on the current BootstrapBuilder instance.
+        ///     Configures caption top on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetCaptionTop(bool value = true)
         {
             _captionTop = value;
@@ -85,10 +83,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dark on the current BootstrapBuilder instance.
+        ///     Configures dark on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetDark(bool value = true)
         {
             _dark = value;
@@ -96,10 +94,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures hover on the current BootstrapBuilder instance.
+        ///     Configures hover on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetHover(bool value = true)
         {
             _hover = value;
@@ -107,10 +105,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures small on the current BootstrapBuilder instance.
+        ///     Configures small on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetSmall(bool value = true)
         {
             _small = value;
@@ -118,10 +116,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures sortable on the current BootstrapBuilder instance.
+        ///     Configures sortable on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetSortable(bool value = true)
         {
             _sortable = value;
@@ -129,10 +127,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures striped on the current BootstrapBuilder instance.
+        ///     Configures striped on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetStriped(bool value = true)
         {
             _striped = value;
@@ -140,10 +138,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures striped columns on the current BootstrapBuilder instance.
+        ///     Configures striped columns on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableComposer" /> value or BootstrapBuilder result.</returns>
         public TableComposer SetStripedColumns(bool value = true)
         {
             _stripedColumns = value;
@@ -153,7 +151,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -215,9 +213,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             var clone = new TableComposer();

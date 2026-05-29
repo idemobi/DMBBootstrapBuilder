@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SideBarComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -24,7 +22,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder side bar component component or support type.
+    ///     Represents the BootstrapBuilder side bar component component or support type.
     /// </summary>
     public sealed class SideBarComponent
     {
@@ -159,35 +157,39 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         private readonly List<SideBarSectionComponent> _sections = new();
+
         /// <summary>
-        /// Gets or sets the additional classes value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the additional classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string AdditionalClasses { get; set; } = string.Empty;
+
         /// <summary>
-        /// Gets or sets the auto expand active path value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the auto expand active path value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool AutoExpandActivePath { get; set; } = true;
+
         /// <summary>
-        /// Gets or sets the expand groups by default value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the expand groups by default value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool ExpandGroupsByDefault { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether content is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether content is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool HasContent => _sections.Any(x => x.HasContent);
 
         /// <summary>
-        /// Gets or sets the id value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the id value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Id { get; set; } = "dmb_sidebar";
 
         /// <summary>
-        /// Gets or sets the local storage key value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the local storage key value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string LocalStorageKey { get; set; } = "dmb.sidebar.state";
+
         /// <summary>
-        /// Gets or sets the remember expanded state value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the remember expanded state value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool RememberExpandedState { get; set; } = true;
 
@@ -196,10 +198,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds section to the current BootstrapBuilder component or page model.
+        ///     Adds section to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="section">The section value.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent AddSection(SideBarSectionComponent section)
         {
             if (section == null)
@@ -212,11 +214,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds section to the current BootstrapBuilder component or page model.
+        ///     Adds section to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent AddSection(string? title, params IActionItem[] items)
         {
             var section = new SideBarSectionComponent(title);
@@ -238,9 +240,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent Clone()
         {
             var clone = new SideBarComponent
@@ -304,7 +306,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
@@ -463,7 +465,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders for offcanvas for the BootstrapBuilder output.
+        ///     Renders for offcanvas for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
@@ -862,10 +864,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures auto expand active path on the current BootstrapBuilder instance.
+        ///     Configures auto expand active path on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithAutoExpandActivePath(bool value = true)
         {
             AutoExpandActivePath = value;
@@ -873,10 +875,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures classes on the current BootstrapBuilder instance.
+        ///     Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithClasses(string classes)
         {
             AdditionalClasses = classes ?? string.Empty;
@@ -884,10 +886,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures expand groups by default on the current BootstrapBuilder instance.
+        ///     Configures expand groups by default on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithExpandGroupsByDefault(bool value = true)
         {
             ExpandGroupsByDefault = value;
@@ -895,10 +897,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures id on the current BootstrapBuilder instance.
+        ///     Configures id on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithId(string id)
         {
             Id = HtmlIdGenerator.CleanId(id) ?? "dmb_sidebar";
@@ -906,10 +908,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures local storage key on the current BootstrapBuilder instance.
+        ///     Configures local storage key on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithLocalStorageKey(string key)
         {
             LocalStorageKey = string.IsNullOrWhiteSpace(key) ? "dmb.sidebar.state" : key.Trim();
@@ -917,10 +919,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures remember expanded state on the current BootstrapBuilder instance.
+        ///     Configures remember expanded state on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SideBarComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarComponent WithRememberExpandedState(bool value = true)
         {
             RememberExpandedState = value;

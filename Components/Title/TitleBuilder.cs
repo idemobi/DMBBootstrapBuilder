@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TitleBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder title component or page region.
+    ///     Builds and renders the BootstrapBuilder title component or page region.
     /// </summary>
     [Documented]
     public sealed class TitleBuilder : HtmlTagBuilder<TitleBuilder>,
@@ -50,10 +48,12 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
+        #region Instance constructors and destructors
+
         #region Instance constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TitleBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TitleBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -67,13 +67,21 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
+        #endregion
+
         #region Instance methods
 
+        /// <inheritdoc />
+        protected override TitleBuilder CreateInstance()
+        {
+            return new TitleBuilder(_textWriter, _htmlHelper);
+        }
+
         /// <summary>
-        /// Configures icon on the current BootstrapBuilder instance.
+        ///     Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="TitleBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TitleBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public TitleBuilder SetIcon(IconStruct icon)
         {
@@ -86,10 +94,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon bootstrap on the current BootstrapBuilder instance.
+        ///     Configures icon bootstrap on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="TitleBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TitleBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public TitleBuilder SetIconBootstrap(string icon)
         {
@@ -98,11 +106,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="level">The level value.</param>
-        /// <returns>The configured <see cref="TitleBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TitleBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public TitleBuilder SetTitle(string text, TitleLevel level = TitleLevel.Three)
         {
@@ -110,12 +118,6 @@ namespace DMBBootstrapBuilder
             Level = level;
             _tag = level.Tag();
             return this;
-        }
-
-        /// <inheritdoc />
-        protected override TitleBuilder CreateInstance()
-        {
-            return new TitleBuilder(_textWriter, _htmlHelper);
         }
 
         /// <inheritdoc />

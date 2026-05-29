@@ -1,50 +1,52 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ProgressBarSize.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines BootstrapBuilder values for progress bar size.
+    ///     Defines BootstrapBuilder values for progress bar size.
     /// </summary>
     public enum ProgressBarSize
     {
         /// <summary>
-        /// Represents the thin BootstrapBuilder option.
+        ///     Represents the thin BootstrapBuilder option.
         /// </summary>
         Thin = 0,
+
         /// <summary>
-        /// Represents the small BootstrapBuilder option.
+        ///     Represents the small BootstrapBuilder option.
         /// </summary>
         Small,
+
         /// <summary>
-        /// Represents the medium BootstrapBuilder option.
+        ///     Represents the medium BootstrapBuilder option.
         /// </summary>
         Medium,
+
         /// <summary>
-        /// Represents the large BootstrapBuilder option.
+        ///     Represents the large BootstrapBuilder option.
         /// </summary>
         Large,
+
         /// <summary>
-        /// Represents the thick BootstrapBuilder option.
+        ///     Represents the thick BootstrapBuilder option.
         /// </summary>
         Thick
     }
 
     /// <summary>
-    /// Provides extension methods for configuring progress bar size in BootstrapBuilder components.
+    ///     Provides extension methods for configuring progress bar size in BootstrapBuilder components.
     /// </summary>
     public static class ProgressBarSizeExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Gets size and unit style for BootstrapBuilder rendering or composition.
+        ///     Gets size and unit style for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="barSize">The bar size value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

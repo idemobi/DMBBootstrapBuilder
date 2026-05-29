@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BreadcrumbComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for breadcrumb.
+    ///     Composes Bootstrap CSS classes or page chrome for breadcrumb.
     /// </summary>
     public sealed class BreadcrumbComposer : IIsCssClassComposer
     {
@@ -30,19 +28,19 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Gets divider for BootstrapBuilder rendering or composition.
+        ///     Gets divider for BootstrapBuilder rendering or composition.
         /// </summary>
-        /// <returns>The configured <see cref="string"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="string" /> value or BootstrapBuilder result.</returns>
         public string? GetDivider()
         {
             return _divider?.Trim();
         }
 
         /// <summary>
-        /// Configures divider on the current BootstrapBuilder instance.
+        ///     Configures divider on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="divider">The divider value.</param>
-        /// <returns>The configured <see cref="BreadcrumbComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BreadcrumbComposer" /> value or BootstrapBuilder result.</returns>
         public BreadcrumbComposer SetDivider(string? divider)
         {
             _divider = divider;
@@ -50,10 +48,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures style on the current BootstrapBuilder instance.
+        ///     Configures style on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="BreadcrumbComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BreadcrumbComposer" /> value or BootstrapBuilder result.</returns>
         public BreadcrumbComposer SetStyle(BreadcrumbStyle style)
         {
             _style = style;
@@ -63,7 +61,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -83,9 +81,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             return new BreadcrumbComposer()

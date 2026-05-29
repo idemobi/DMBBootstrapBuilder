@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableCellComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for table cell.
+    ///     Composes Bootstrap CSS classes or page chrome for table cell.
     /// </summary>
     public sealed class TableCellComposer : IIsCssClassComposer
     {
@@ -31,10 +29,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures sortable header on the current BootstrapBuilder instance.
+        ///     Configures sortable header on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellComposer" /> value or BootstrapBuilder result.</returns>
         public TableCellComposer SetSortableHeader(bool value = true)
         {
             _sortableHeader = value;
@@ -42,10 +40,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="TableCellComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellComposer" /> value or BootstrapBuilder result.</returns>
         public TableCellComposer SetVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -53,10 +51,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures vertical title on the current BootstrapBuilder instance.
+        ///     Configures vertical title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="direction">The direction value.</param>
-        /// <returns>The configured <see cref="TableCellComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellComposer" /> value or BootstrapBuilder result.</returns>
         public TableCellComposer SetVerticalTitle(VerticalTitleDirection direction)
         {
             _verticalTitleDirection = direction;
@@ -66,7 +64,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -103,9 +101,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             return new TableCellComposer()

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableSectionBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,13 +16,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder table section component or page region.
+    ///     Builds and renders the BootstrapBuilder table section component or page region.
     /// </summary>
     public sealed class TableSectionBuilder :
         HtmlTagBuilder<TableSectionBuilder>,
         IDisposable,
         ICanUseTableSection
     {
+        #region Static methods
+
+        private static HtmlRenderContextKind GetRenderContextKind(TableSectionKind kind)
+        {
+            return kind switch
+            {
+                TableSectionKind.Header => HtmlRenderContextKind.TableHead,
+                TableSectionKind.Body => HtmlRenderContextKind.TableBody,
+                TableSectionKind.Footer => HtmlRenderContextKind.TableFoot,
+                _ => HtmlRenderContextKind.TableBody
+            };
+        }
+
+        #endregion
+
         #region Instance fields and properties
 
         private TableSectionKind _kind
@@ -46,7 +59,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableSectionBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TableSectionBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -59,7 +72,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableSectionBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TableSectionBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -77,9 +90,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TableSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public override TableSectionBuilder Begin()
         {
             if (_started)
@@ -127,20 +140,20 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures divider on the current BootstrapBuilder instance.
+        ///     Configures divider on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="divider">The divider value.</param>
-        /// <returns>The configured <see cref="TableSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public TableSectionBuilder SetDivider(bool divider = true)
         {
             return this.SetTableSectionDivider(divider);
         }
 
         /// <summary>
-        /// Configures section on the current BootstrapBuilder instance.
+        ///     Configures section on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="kind">The kind value.</param>
-        /// <returns>The configured <see cref="TableSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public TableSectionBuilder SetSection(TableSectionKind kind)
         {
             _kind = kind;
@@ -149,10 +162,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TableSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public TableSectionBuilder SetVariant(VariantStyle style)
         {
             return this.SetTableSectionVariant(style);
@@ -164,21 +177,10 @@ namespace DMBBootstrapBuilder
             writer.Write($"""<{_kind.GetTag()}{BuildAttributes()}></{_kind.GetTag()}>""");
         }
 
-        private static HtmlRenderContextKind GetRenderContextKind(TableSectionKind kind)
-        {
-            return kind switch
-            {
-                TableSectionKind.Header => HtmlRenderContextKind.TableHead,
-                TableSectionKind.Body => HtmlRenderContextKind.TableBody,
-                TableSectionKind.Footer => HtmlRenderContextKind.TableFoot,
-                _ => HtmlRenderContextKind.TableBody
-            };
-        }
-
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {

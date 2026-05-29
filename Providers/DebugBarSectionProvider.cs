@@ -1,15 +1,12 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// labs_idemobi_com.csproj DebugBarSectionProvider.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 #region
 
-using DMBBootstrapBuilder;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -18,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides debug bar section content for BootstrapBuilder page chrome.
+    ///     Provides debug bar section content for BootstrapBuilder page chrome.
     /// </summary>
     public class DebugBarSectionProvider : IProfileBarSectionProvider
     {
@@ -27,7 +24,7 @@ namespace DMBBootstrapBuilder
         #region From interface IProfileBarSectionProvider
 
         /// <summary>
-        /// Gets or sets the order value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the order value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int Order => 800;
 
@@ -40,11 +37,11 @@ namespace DMBBootstrapBuilder
         #region From interface IProfileBarSectionProvider
 
         /// <summary>
-        /// Builds value for BootstrapBuilder rendering.
+        ///     Builds value for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="ProfilBarModuleResult"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProfilBarModuleResult" /> value or BootstrapBuilder result.</returns>
         public virtual ProfilBarModuleResult Build(TextWriter writer, IHtmlHelper html)
         {
             ProfilBarModuleResult result = new ProfilBarModuleResult();
@@ -68,7 +65,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Determines whether enabled is active for BootstrapBuilder rendering.
+        ///     Determines whether enabled is active for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring table in BootstrapBuilder components.
+    ///     Provides extension methods for configuring table in BootstrapBuilder components.
     /// </summary>
     public static class TableExtensions
     {
@@ -30,12 +28,12 @@ namespace DMBBootstrapBuilder
 
 
         /// <summary>
-        /// Configures caption top on the current BootstrapBuilder instance.
+        ///     Configures caption top on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetCaptionTop<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -47,12 +45,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table bordered on the current BootstrapBuilder instance.
+        ///     Configures table bordered on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableBordered<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -64,12 +62,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table borderless on the current BootstrapBuilder instance.
+        ///     Configures table borderless on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableBorderless<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -81,12 +79,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table dark on the current BootstrapBuilder instance.
+        ///     Configures table dark on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableDark<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -98,12 +96,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table hover on the current BootstrapBuilder instance.
+        ///     Configures table hover on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableHover<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -115,12 +113,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table small on the current BootstrapBuilder instance.
+        ///     Configures table small on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableSmall<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -132,12 +130,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table sortable on the current BootstrapBuilder instance.
+        ///     Configures table sortable on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableSortable<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -155,12 +153,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table striped on the current BootstrapBuilder instance.
+        ///     Configures table striped on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableStriped<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -172,12 +170,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures table striped columns on the current BootstrapBuilder instance.
+        ///     Configures table striped columns on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTableStripedColumns<TBuilder>(
             this TBuilder builder,
             bool value = true

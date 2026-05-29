@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableCellBuilder_extension.cs create at 2026/04/08 09:04:40
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,18 +15,18 @@ using DMBServerHelper;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring table cell builder in BootstrapBuilder components.
+    ///     Provides extension methods for configuring table cell builder in BootstrapBuilder components.
     /// </summary>
     public static class TableCellBuilderExtension
     {
         #region Static methods
 
         /// <summary>
-        /// Renders icon bootstrap localized for the BootstrapBuilder output.
+        ///     Renders icon bootstrap localized for the BootstrapBuilder output.
         /// </summary>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="iconKey">The icon key value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public static TableCellBuilder RenderIconBootstrapLocalized(this TableCellBuilder builder, string iconKey)
         {
             #if DEBUG
@@ -39,12 +37,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders localized for the BootstrapBuilder output.
+        ///     Renders localized for the BootstrapBuilder output.
         /// </summary>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="titleKey">The title key value.</param>
         /// <param name="args">The args value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public static TableCellBuilder RenderLocalized(this TableCellBuilder builder, string titleKey, params object[] args)
         {
             #if DEBUG

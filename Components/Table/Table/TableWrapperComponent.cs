@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableWrapperComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder table wrapper component component or support type.
+    ///     Represents the BootstrapBuilder table wrapper component component or support type.
     /// </summary>
     public sealed class TableWrapperComponent :
         HtmlTagBuilder<TableWrapperComponent>,
@@ -37,7 +35,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableWrapperComponent"/> class.
+        ///     Initializes a new instance of the <see cref="TableWrapperComponent" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -65,10 +63,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures inner on the current BootstrapBuilder instance.
+        ///     Configures inner on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="TableWrapperComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableWrapperComponent" /> value or BootstrapBuilder result.</returns>
         public TableWrapperComponent SetInner(string html)
         {
             _inner = html ?? string.Empty;

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ButtonRender.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -23,7 +21,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder button render component or support type.
+    ///     Represents the BootstrapBuilder button render component or support type.
     /// </summary>
     public sealed class ButtonRender : HtmlTagBuilder<ButtonRender>,
         ICanUseInteractive,
@@ -33,7 +31,7 @@ namespace DMBBootstrapBuilder
         #region Static fields and properties
 
         /// <summary>
-        /// Stores the gap icon value used by BootstrapBuilder rendering or composition.
+        ///     Stores the gap icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public static string GapIcon = "gap-1";
 
@@ -54,7 +52,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ButtonRender"/> class.
+        ///     Initializes a new instance of the <see cref="ButtonRender" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -92,22 +90,61 @@ namespace DMBBootstrapBuilder
             _noWrap = source._noWrap;
         }
 
+        #region Main dispatch
+
+        private IHtmlContent RenderAction(IActionItem item, bool applyId)
+        {
+            if (item is IGuardedActionItem guarded)
+            {
+                return RenderGuarded(guarded);
+            }
+
+            if (item is DividerActionItem)
+            {
+                return HtmlString.Empty;
+            }
+
+            if (item is ToggleActionItem toggle)
+            {
+                return RenderSwitchButton(toggle, applyId);
+            }
+
+            if (item is SplitActionItem split && split.HasChildren)
+            {
+                return RenderSplitDropdown(split, applyId);
+            }
+
+            if (item is GroupActionItem group)
+            {
+                return RenderGroupDropdown(group, applyId);
+            }
+
+            if (item is IActionContainerItem container && container.HasChildren)
+            {
+                return RenderContainerDropdown(item, container, applyId);
+            }
+
+            return RenderSingleAction(item, applyId);
+        }
+
+        #endregion
+
+        /// <summary>
+        ///     Configures nowrap on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ButtonRender" /> value or BootstrapBuilder result.</returns>
+        public ButtonRender WithNowrap(bool value = true)
+        {
+            _noWrap = value;
+            return this;
+        }
+
         /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             RegisterRequiredAssets(_actionItem);
             RenderAction(_actionItem, applyId: true).WriteTo(writer, encoder);
-        }
-
-        /// <summary>
-        /// Configures nowrap on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ButtonRender"/> value or BootstrapBuilder result.</returns>
-        public ButtonRender WithNowrap(bool value = true)
-        {
-            _noWrap = value;
-            return this;
         }
 
         #endregion
@@ -165,45 +202,6 @@ namespace DMBBootstrapBuilder
             }
 
             return false;
-        }
-
-        #endregion
-
-        #region Main dispatch
-
-        private IHtmlContent RenderAction(IActionItem item, bool applyId)
-        {
-            if (item is IGuardedActionItem guarded)
-            {
-                return RenderGuarded(guarded);
-            }
-
-            if (item is DividerActionItem)
-            {
-                return HtmlString.Empty;
-            }
-
-            if (item is ToggleActionItem toggle)
-            {
-                return RenderSwitchButton(toggle, applyId);
-            }
-
-            if (item is SplitActionItem split && split.HasChildren)
-            {
-                return RenderSplitDropdown(split, applyId);
-            }
-
-            if (item is GroupActionItem group)
-            {
-                return RenderGroupDropdown(group, applyId);
-            }
-
-            if (item is IActionContainerItem container && container.HasChildren)
-            {
-                return RenderContainerDropdown(item, container, applyId);
-            }
-
-            return RenderSingleAction(item, applyId);
         }
 
         #endregion
@@ -297,7 +295,8 @@ namespace DMBBootstrapBuilder
             string classes,
             string idAttribute,
             string disabledAttribute,
-            string badgeHtml)
+            string badgeHtml
+        )
         {
             string startText = item.ClipboardStartText ?? item.Title ?? string.Empty;
             string endText = item.ClipboardEndText ?? string.Empty;
@@ -787,7 +786,7 @@ namespace DMBBootstrapBuilder
             string actionElementId = isSplit ? $"{buttonId}_action" : buttonId;
             string toggleElementId = isContainer ? $"{buttonId}_toggle" : string.Empty;
 
-                        return new HtmlString(@$"
+            return new HtmlString(@$"
 <div id=""{rootId}"" class=""btn-group"" >
     <div class=""{warningCss} {GapIcon}"">
         {warningIconHtml}

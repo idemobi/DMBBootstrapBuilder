@@ -1,16 +1,14 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ICanUsePadding.cs create at 2026/04/08 15:04:23
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines the contract for BootstrapBuilder components that can configure padding.
+    ///     Defines the contract for BootstrapBuilder components that can configure padding.
     /// </summary>
     public interface ICanUsePadding
     {

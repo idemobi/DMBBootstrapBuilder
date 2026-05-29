@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj NavLinksComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -24,7 +22,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder nav links component component or support type.
+    ///     Represents the BootstrapBuilder nav links component component or support type.
     /// </summary>
     public sealed class NavLinksComponent : NavbarComponentBase
     {
@@ -163,71 +161,79 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         private readonly List<IActionItem> _items = new();
+
         /// <summary>
-        /// Gets or sets the align items value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the align items value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public AlignItems AlignItems { get; set; } = AlignItems.Center;
 
         /// <summary>
-        /// Gets or sets the dropdown align value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown align value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public NavbarDropdownAlign DropdownAlign { get; set; } = NavbarDropdownAlign.Start;
 
         /// <summary>
-        /// Gets or sets the dropdown auto columns value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown auto columns value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool DropdownAutoColumns { get; set; } = true;
+
         /// <summary>
-        /// Gets or sets the dropdown break on divider value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown break on divider value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool DropdownBreakOnDivider { get; set; } = true;
+
         /// <summary>
-        /// Gets or sets the dropdown column gap rem value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown column gap rem value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public decimal DropdownColumnGapRem { get; set; } = 1m;
 
         /// <summary>
-        /// Gets or sets the dropdown column width rem value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown column width rem value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public decimal DropdownColumnWidthRem { get; set; } = 14m;
 
         /// <summary>
-        /// Gets or sets the dropdown grid columns value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown grid columns value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int DropdownGridColumns { get; set; } = 2;
+
         /// <summary>
-        /// Gets or sets the dropdown horizontal padding rem value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown horizontal padding rem value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public decimal DropdownHorizontalPaddingRem { get; set; } = 1.5m;
+
         /// <summary>
-        /// Gets or sets the dropdown layout value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown layout value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public NavbarDropdownLayout DropdownLayout { get; set; } = NavbarDropdownLayout.Grid;
+
         /// <summary>
-        /// Gets or sets the dropdown max columns value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown max columns value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int DropdownMaxColumns { get; set; } = 3;
+
         /// <summary>
-        /// Gets or sets the dropdown max items per column value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown max items per column value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int DropdownMaxItemsPerColumn { get; set; } = 15;
 
         /// <summary>
-        /// Gets or sets the dropdown scrollable value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown scrollable value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool DropdownScrollable { get; set; } = true;
 
         /// <summary>
-        /// Gets or sets the icon only value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the icon only value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool IconOnly { get; set; }
 
         /// <summary>
-        /// Gets or sets the justify value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the justify value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public JustifyContent Justify { get; set; } = JustifyContent.Start;
+
         /// <summary>
-        /// Gets or sets the old gap value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the old gap value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public Old_Gap OldGap { get; set; } = Old_Gap.Gap2;
 
@@ -236,10 +242,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="item">The item value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent Add(IActionItem item)
         {
             if (item == null)
@@ -252,10 +258,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent Add(params IActionItem[] items)
         {
             if (items == null)
@@ -409,7 +415,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
@@ -913,10 +919,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures align items on the current BootstrapBuilder instance.
+        ///     Configures align items on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="alignItems">The align items value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent WithAlignItems(AlignItems alignItems)
         {
             AlignItems = alignItems;
@@ -924,10 +930,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dropdown align on the current BootstrapBuilder instance.
+        ///     Configures dropdown align on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="dropdownAlign">The dropdown align value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent WithDropdownAlign(NavbarDropdownAlign dropdownAlign)
         {
             DropdownAlign = dropdownAlign;
@@ -935,10 +941,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dropdown layout on the current BootstrapBuilder instance.
+        ///     Configures dropdown layout on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="dropdownLayout">The dropdown layout value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent WithDropdownLayout(NavbarDropdownLayout dropdownLayout)
         {
             DropdownLayout = dropdownLayout;
@@ -946,10 +952,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures justify on the current BootstrapBuilder instance.
+        ///     Configures justify on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="justify">The justify value.</param>
-        /// <returns>The configured <see cref="NavLinksComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavLinksComponent" /> value or BootstrapBuilder result.</returns>
         public NavLinksComponent WithJustify(JustifyContent justify)
         {
             Justify = justify;
@@ -965,11 +971,12 @@ namespace DMBBootstrapBuilder
             #region Instance fields and properties
 
             /// <summary>
-            /// Gets or sets the column count value used by BootstrapBuilder rendering or composition.
+            ///     Gets or sets the column count value used by BootstrapBuilder rendering or composition.
             /// </summary>
             public int ColumnCount { get; set; } = 1;
+
             /// <summary>
-            /// Gets or sets the html value used by BootstrapBuilder rendering or composition.
+            ///     Gets or sets the html value used by BootstrapBuilder rendering or composition.
             /// </summary>
             public string Html { get; set; } = string.Empty;
 

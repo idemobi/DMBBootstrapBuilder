@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ThemeVisibilityExtension.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines the contract for BootstrapBuilder components that can configure theme visibility.
+    ///     Defines the contract for BootstrapBuilder components that can configure theme visibility.
     /// </summary>
     public interface ICanUseThemeVisibility
     {
     }
 
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for theme visibility.
+    ///     Composes Bootstrap CSS classes or page chrome for theme visibility.
     /// </summary>
     public sealed class ThemeVisibilityComposer : IIsCssClassComposer
     {
@@ -36,10 +34,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures value on the current BootstrapBuilder instance.
+        ///     Configures value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="visibility">The visibility value.</param>
-        /// <returns>The configured <see cref="ThemeVisibilityComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ThemeVisibilityComposer" /> value or BootstrapBuilder result.</returns>
         public ThemeVisibilityComposer Set(ThemeVisibility visibility)
         {
             _visibility = visibility;
@@ -49,7 +47,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -65,9 +63,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             var clone = new ThemeVisibilityComposer();
@@ -81,14 +79,14 @@ namespace DMBBootstrapBuilder
     }
 
     /// <summary>
-    /// Provides extension methods for configuring theme visibility in BootstrapBuilder components.
+    ///     Provides extension methods for configuring theme visibility in BootstrapBuilder components.
     /// </summary>
     public static class ThemeVisibilityExtension
     {
         #region Static methods
 
         /// <summary>
-        /// Gets css for BootstrapBuilder rendering or composition.
+        ///     Gets css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="value">The value to apply.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -104,11 +102,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dark only on the current BootstrapBuilder instance.
+        ///     Configures dark only on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetDarkOnly<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseThemeVisibility
         {
@@ -116,11 +114,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures light only on the current BootstrapBuilder instance.
+        ///     Configures light only on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetLightOnly<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseThemeVisibility
         {
@@ -128,11 +126,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures theme always on the current BootstrapBuilder instance.
+        ///     Configures theme always on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetThemeAlways<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseThemeVisibility
         {
@@ -140,12 +138,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures theme visibility on the current BootstrapBuilder instance.
+        ///     Configures theme visibility on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="visibility">The visibility value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetThemeVisibility<TBuilder>(
             this TBuilder builder,
             ThemeVisibility visibility

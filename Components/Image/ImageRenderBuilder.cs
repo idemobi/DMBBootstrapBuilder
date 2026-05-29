@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ImageRenderBuilder.cs create at 2026/04/12 12:04:31
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -11,7 +9,6 @@
 
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 #endregion
@@ -19,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder image render component or page region.
+    ///     Builds and renders the BootstrapBuilder image render component or page region.
     /// </summary>
     [Documented]
     public sealed class ImageRenderBuilder : HtmlTagBuilder<ImageRenderBuilder>,
@@ -100,6 +97,9 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_effectTiming", value);
         }
 
+        private ImageMediaBuilder _mediaComponent = null!;
+        private ModalBuilder _modalComponent = null!;
+
         private bool _openInModal
         {
             get => GetInternal("_openInModal", false);
@@ -118,15 +118,14 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_showSpinner", value);
         }
 
+        private SpinnerBuilder _spinnerComponent = null!;
+
         private string _title
         {
             get => GetInternal("_title", string.Empty);
             set => SetInternal("_title", value);
         }
 
-        private ImageMediaBuilder _mediaComponent = null!;
-        private ModalBuilder _modalComponent = null!;
-        private SpinnerBuilder _spinnerComponent = null!;
         private ImageWrapperBuilder _wrapperComponent = null!;
 
         internal bool AsEffect => _asEffect;
@@ -137,7 +136,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImageRenderBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ImageRenderBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -165,6 +164,42 @@ namespace DMBBootstrapBuilder
             return new ImageRenderBuilder(_textWriter, _htmlHelper, _mediaComponent.GetSource(), _mediaComponent.GetAlternate());
         }
 
+        /// <summary>
+        ///     Executes the BootstrapBuilder in media component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder InMediaComponent(Func<ImageMediaBuilder, ImageMediaBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _mediaComponent = configure(_mediaComponent);
+            return this;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder in modal component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder InModalComponent(Func<ModalBuilder, ModalBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _modalComponent = configure(_modalComponent);
+            return this;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder in spinner component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder InSpinnerComponent(Func<SpinnerBuilder, SpinnerBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _spinnerComponent = configure(_spinnerComponent);
+            return this;
+        }
+
         /// <inheritdoc />
         protected override void InternalClone(ImageRenderBuilder source)
         {
@@ -189,46 +224,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder in media component operation.
+        ///     Executes the BootstrapBuilder in wrapper component operation.
         /// </summary>
         /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder InMediaComponent(Func<ImageMediaBuilder, ImageMediaBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _mediaComponent = configure(_mediaComponent);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in modal component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder InModalComponent(Func<ModalBuilder, ModalBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _modalComponent = configure(_modalComponent);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in spinner component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder InSpinnerComponent(Func<SpinnerBuilder, SpinnerBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _spinnerComponent = configure(_spinnerComponent);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in wrapper component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder InWrapperComponent(Func<ImageWrapperBuilder, ImageWrapperBuilder> configure)
         {
             ArgumentNullException.ThrowIfNull(configure);
@@ -239,9 +238,9 @@ namespace DMBBootstrapBuilder
         #region Effects
 
         /// <summary>
-        /// Executes the BootstrapBuilder mark as effect operation.
+        ///     Executes the BootstrapBuilder mark as effect operation.
         /// </summary>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder MarkAsEffect()
         {
             _asEffect = true;
@@ -251,16 +250,201 @@ namespace DMBBootstrapBuilder
         #endregion
 
         /// <summary>
-        /// Removes border from the current BootstrapBuilder component or composer.
+        ///     Removes border from the current BootstrapBuilder component or composer.
         /// </summary>
         /// <param name="side">The side value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder RemoveBorder(
             BorderSide side = BorderSide.All,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
+        )
         {
             _mediaComponent.RemoveBorder(side, breakpoint);
+            return this;
+        }
+
+        #region Private methods
+
+        private void RestoreAttribute(string name, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                RemoveAttribute(name);
+            }
+            else
+            {
+                _attributes[name] = value;
+            }
+        }
+
+        #endregion
+
+        /// <summary>
+        ///     Configures border on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="side">The side value.</param>
+        /// <param name="breakpoint">The breakpoint value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetBorder(
+            BorderSide side = BorderSide.All,
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
+        )
+        {
+            _mediaComponent.SetBorder(side, breakpoint);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures border color on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="color">The color value.</param>
+        /// <param name="breakpoint">The breakpoint value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetBorderColor(
+            BorderColor color,
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
+        )
+        {
+            _mediaComponent.SetBorderColor(color, breakpoint);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures border opacity on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="opacity">The opacity value.</param>
+        /// <param name="breakpoint">The breakpoint value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetBorderOpacity(
+            BorderOpacity opacity,
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
+        )
+        {
+            _mediaComponent.SetBorderOpacity(opacity, breakpoint);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures height on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetHeight(size, unit, important);
+            _wrapperComponent.SetHeight(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures max height on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetMaxHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetMaxHeight(size, unit, important);
+            _wrapperComponent.SetMaxHeight(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures max width on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetMaxWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetMaxWidth(size, unit, important);
+            _wrapperComponent.SetMaxWidth(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures min height on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetMinHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetMinHeight(size, unit, important);
+            _wrapperComponent.SetMinHeight(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures min width on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetMinWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetMinWidth(size, unit, important);
+            _wrapperComponent.SetMinWidth(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures rounded on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="side">The side value.</param>
+        /// <param name="breakpoint">The breakpoint value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetRounded(
+            BorderRadiusSize size = BorderRadiusSize.Normal,
+            BorderRadiusSide side = BorderRadiusSide.All,
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs
+        )
+        {
+            _mediaComponent.SetRounded(size, side, breakpoint);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures shadow on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="shadow">The shadow value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetShadow(Shadow shadow)
+        {
+            _mediaComponent.SetShadow(shadow);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures width on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <param name="important">The important value.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder SetWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
+        {
+            _mediaComponent.SetWidth(size, unit, important);
+            _wrapperComponent.SetWidth(size, unit, important);
+            return this;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder show spinner operation.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
+        public ImageRenderBuilder ShowSpinner(bool value = true)
+        {
+            _showSpinner = value;
             return this;
         }
 
@@ -350,179 +534,15 @@ namespace DMBBootstrapBuilder
             }
         }
 
-        /// <summary>
-        /// Configures border on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="side">The side value.</param>
-        /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetBorder(
-            BorderSide side = BorderSide.All,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
-        {
-            _mediaComponent.SetBorder(side, breakpoint);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures border color on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="color">The color value.</param>
-        /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetBorderColor(
-            BorderColor color,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
-        {
-            _mediaComponent.SetBorderColor(color, breakpoint);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures border opacity on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="opacity">The opacity value.</param>
-        /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetBorderOpacity(
-            BorderOpacity opacity,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
-        {
-            _mediaComponent.SetBorderOpacity(opacity, breakpoint);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures height on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetHeight(size, unit, important);
-            _wrapperComponent.SetHeight(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures max height on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetMaxHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetMaxHeight(size, unit, important);
-            _wrapperComponent.SetMaxHeight(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures max width on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetMaxWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetMaxWidth(size, unit, important);
-            _wrapperComponent.SetMaxWidth(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures min height on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetMinHeight(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetMinHeight(size, unit, important);
-            _wrapperComponent.SetMinHeight(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures min width on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetMinWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetMinWidth(size, unit, important);
-            _wrapperComponent.SetMinWidth(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures rounded on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="side">The side value.</param>
-        /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetRounded(
-            BorderRadiusSize size = BorderRadiusSize.Normal,
-            BorderRadiusSide side = BorderRadiusSide.All,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
-        {
-            _mediaComponent.SetRounded(size, side, breakpoint);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures shadow on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="shadow">The shadow value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetShadow(Shadow shadow)
-        {
-            _mediaComponent.SetShadow(shadow);
-            return this;
-        }
-
-        /// <summary>
-        /// Configures width on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <param name="important">The important value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder SetWidth(uint size, UnitSize unit = UnitSize.percent, bool important = false)
-        {
-            _mediaComponent.SetWidth(size, unit, important);
-            _wrapperComponent.SetWidth(size, unit, important);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder show spinner operation.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
-        public ImageRenderBuilder ShowSpinner(bool value = true)
-        {
-            _showSpinner = value;
-            return this;
-        }
-
         #endregion
 
         #region Metadata
 
         /// <summary>
-        /// Executes the BootstrapBuilder alt operation.
+        ///     Executes the BootstrapBuilder alt operation.
         /// </summary>
         /// <param name="alt">The alt value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder Alt(string alt)
         {
             _mediaComponent.SetAlt(alt ?? string.Empty);
@@ -530,10 +550,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder title operation.
+        ///     Executes the BootstrapBuilder title operation.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder Title(string title)
         {
             _title = title ?? string.Empty;
@@ -545,10 +565,10 @@ namespace DMBBootstrapBuilder
         #region Mode
 
         /// <summary>
-        /// Executes the BootstrapBuilder mode operation.
+        ///     Executes the BootstrapBuilder mode operation.
         /// </summary>
         /// <param name="mode">The mode value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder Mode(ImageRenderMode mode)
         {
             _mediaComponent.SetMode(mode);
@@ -556,9 +576,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder inline svg operation.
+        ///     Executes the BootstrapBuilder inline svg operation.
         /// </summary>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder InlineSvg()
         {
             _mediaComponent.SetMode(ImageRenderMode.InlineSvg);
@@ -570,10 +590,10 @@ namespace DMBBootstrapBuilder
         #region Appearance
 
         /// <summary>
-        /// Executes the BootstrapBuilder open in modal operation.
+        ///     Executes the BootstrapBuilder open in modal operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder OpenInModal(bool value = true)
         {
             _openInModal = value;
@@ -581,10 +601,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder allow download operation.
+        ///     Executes the BootstrapBuilder allow download operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder AllowDownload(bool value = true)
         {
             _allowDownload = value;
@@ -592,10 +612,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder allow theme download operation.
+        ///     Executes the BootstrapBuilder allow theme download operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder AllowThemeDownload(bool value = true)
         {
             _allowThemeDownload = value;
@@ -603,10 +623,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder show download button on image operation.
+        ///     Executes the BootstrapBuilder show download button on image operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder ShowDownloadButtonOnImage(bool value = true)
         {
             _showDownloadButtonOnImage = value;
@@ -618,10 +638,10 @@ namespace DMBBootstrapBuilder
         #region Effect timing
 
         /// <summary>
-        /// Executes the BootstrapBuilder effect duration ms operation.
+        ///     Executes the BootstrapBuilder effect duration ms operation.
         /// </summary>
         /// <param name="ms">The ms value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder EffectDurationMs(int ms)
         {
             if (ms <= 0)
@@ -634,10 +654,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder effect delay ms operation.
+        ///     Executes the BootstrapBuilder effect delay ms operation.
         /// </summary>
         /// <param name="ms">The ms value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder EffectDelayMs(int ms)
         {
             if (ms < 0)
@@ -650,10 +670,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder effect animation duration ms operation.
+        ///     Executes the BootstrapBuilder effect animation duration ms operation.
         /// </summary>
         /// <param name="ms">The ms value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder EffectAnimationDurationMs(int ms)
         {
             if (ms <= 0)
@@ -666,30 +686,14 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder effect timing operation.
+        ///     Executes the BootstrapBuilder effect timing operation.
         /// </summary>
         /// <param name="timing">The timing value.</param>
-        /// <returns>The configured <see cref="ImageRenderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageRenderBuilder EffectTiming(ImageRenderEffectTiming timing)
         {
             _effectTiming = timing;
             return this;
-        }
-
-        #endregion
-
-        #region Private methods
-
-        private void RestoreAttribute(string name, string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                RemoveAttribute(name);
-            }
-            else
-            {
-                _attributes[name] = value;
-            }
         }
 
         #endregion

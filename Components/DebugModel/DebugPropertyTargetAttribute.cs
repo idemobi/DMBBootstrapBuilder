@@ -1,7 +1,14 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Adds debug property target metadata used by BootstrapBuilder diagnostics or documentation.
+    ///     Adds debug property target metadata used by BootstrapBuilder diagnostics or documentation.
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
     public sealed class DebugPropertyTargetAttribute : Attribute
@@ -9,19 +16,22 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the name value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the name value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Name { get; }
+
         /// <summary>
-        /// Gets or sets the target value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the target value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public DebugTarget Target { get; }
+
         /// <summary>
-        /// Gets or sets the value prefix value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the value prefix value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? ValuePrefix { get; set; }
+
         /// <summary>
-        /// Gets or sets the value suffix value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the value suffix value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? ValueSuffix { get; set; }
 
@@ -30,7 +40,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DebugPropertyTargetAttribute"/> class.
+        ///     Initializes a new instance of the <see cref="DebugPropertyTargetAttribute" /> class.
         /// </summary>
         /// <param name="target">The target value.</param>
         /// <param name="name">The name value.</param>

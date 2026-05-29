@@ -1,9 +1,7 @@
 ﻿#region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BootstrapFullKindOfStyle.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -14,107 +12,108 @@
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines BootstrapBuilder values for bootstrap full kind of style.
+    ///     Defines BootstrapBuilder values for bootstrap full kind of style.
     /// </summary>
     [Serializable]
     public enum BootstrapFullKindOfStyle : int
     {
         /// <summary>
-        /// Represents the primary BootstrapBuilder option.
+        ///     Represents the primary BootstrapBuilder option.
         /// </summary>
         Primary,
 
         /// <summary>
-        /// Represents the outline primary BootstrapBuilder option.
+        ///     Represents the outline primary BootstrapBuilder option.
         /// </summary>
         OutlinePrimary,
 
         /// <summary>
-        /// Represents the secondary BootstrapBuilder option.
+        ///     Represents the secondary BootstrapBuilder option.
         /// </summary>
         Secondary,
+
         /// <summary>
-        /// Represents the outline secondary BootstrapBuilder option.
+        ///     Represents the outline secondary BootstrapBuilder option.
         /// </summary>
         OutlineSecondary,
 
         /// <summary>
-        /// Represents the tertiary BootstrapBuilder option.
+        ///     Represents the tertiary BootstrapBuilder option.
         /// </summary>
         Tertiary,
 
         /// <summary>
-        /// Represents the outline tertiary BootstrapBuilder option.
+        ///     Represents the outline tertiary BootstrapBuilder option.
         /// </summary>
         OutlineTertiary,
 
         /// <summary>
-        /// Represents the success BootstrapBuilder option.
+        ///     Represents the success BootstrapBuilder option.
         /// </summary>
         Success,
 
         /// <summary>
-        /// Represents the outline success BootstrapBuilder option.
+        ///     Represents the outline success BootstrapBuilder option.
         /// </summary>
         OutlineSuccess,
 
         /// <summary>
-        /// Represents the warning BootstrapBuilder option.
+        ///     Represents the warning BootstrapBuilder option.
         /// </summary>
         Warning,
 
         /// <summary>
-        /// Represents the outline warning BootstrapBuilder option.
+        ///     Represents the outline warning BootstrapBuilder option.
         /// </summary>
         OutlineWarning,
 
         /// <summary>
-        /// Represents the danger BootstrapBuilder option.
+        ///     Represents the danger BootstrapBuilder option.
         /// </summary>
         Danger,
 
         /// <summary>
-        /// Represents the outline danger BootstrapBuilder option.
+        ///     Represents the outline danger BootstrapBuilder option.
         /// </summary>
         OutlineDanger,
 
         /// <summary>
-        /// Represents the info BootstrapBuilder option.
+        ///     Represents the info BootstrapBuilder option.
         /// </summary>
         Info,
 
         /// <summary>
-        /// Represents the outline info BootstrapBuilder option.
+        ///     Represents the outline info BootstrapBuilder option.
         /// </summary>
         OutlineInfo,
 
         /// <summary>
-        /// Represents the normal BootstrapBuilder option.
+        ///     Represents the normal BootstrapBuilder option.
         /// </summary>
         Normal,
 
         /// <summary>
-        /// Represents the outline normal BootstrapBuilder option.
+        ///     Represents the outline normal BootstrapBuilder option.
         /// </summary>
         OutlineNormal,
 
         /// <summary>
-        /// Represents the light BootstrapBuilder option.
+        ///     Represents the light BootstrapBuilder option.
         /// </summary>
         Light,
 
         /// <summary>
-        /// Represents the outline light BootstrapBuilder option.
+        ///     Represents the outline light BootstrapBuilder option.
         /// </summary>
         OutlineLight,
 
         /// <summary>
-        /// Represents the dark BootstrapBuilder option.
+        ///     Represents the dark BootstrapBuilder option.
         /// </summary>
         Dark,
 
         /// <summary>
-        /// Represents the outline dark BootstrapBuilder option.
+        ///     Represents the outline dark BootstrapBuilder option.
         /// </summary>
         OutlineDark,
     }

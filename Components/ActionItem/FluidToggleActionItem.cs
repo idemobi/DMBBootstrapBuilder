@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FluidToggleActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder fluid toggle action item component or support type.
+    ///     Represents the BootstrapBuilder fluid toggle action item component or support type.
     /// </summary>
     public sealed class FluidToggleActionItem : LayoutToggleActionItemBase
     {
@@ -68,7 +66,7 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the setting key value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the setting key value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public override string SettingKey => "fluid";
 
@@ -77,7 +75,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FluidToggleActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="FluidToggleActionItem" /> class.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="value">The value to apply.</param>

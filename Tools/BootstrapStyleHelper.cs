@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BootstrapStyleHelper.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder bootstrap style helper component or support type.
+    ///     Represents the BootstrapBuilder bootstrap style helper component or support type.
     /// </summary>
     public static class BootstrapStyleHelper
     {
         #region Static methods
 
         /// <summary>
-        /// Gets btn variant css for BootstrapBuilder rendering or composition.
+        ///     Gets btn variant css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="style">The style value.</param>
         /// <param name="outline">The outline value.</param>
@@ -35,7 +33,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets gap css for BootstrapBuilder rendering or composition.
+        ///     Gets gap css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="oldGap">The old gap value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -54,7 +52,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets justify css for BootstrapBuilder rendering or composition.
+        ///     Gets justify css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="justify">The justify value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -73,7 +71,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets old variant css for BootstrapBuilder rendering or composition.
+        ///     Gets old variant css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="style">The style value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -94,7 +92,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets switch style css for BootstrapBuilder rendering or composition.
+        ///     Gets switch style css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="style">The style value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

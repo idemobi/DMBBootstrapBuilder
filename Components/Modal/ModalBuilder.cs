@@ -1,15 +1,12 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ModalBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 #region
 
-using System.Text;
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Html;
@@ -20,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder modal component or page region.
+    ///     Builds and renders the BootstrapBuilder modal component or page region.
     /// </summary>
     public sealed class ModalBuilder :
         HtmlConstrainedTagBuilder<ModalBuilder>,
@@ -33,11 +30,12 @@ namespace DMBBootstrapBuilder
         #region Static fields and properties
 
         /// <summary>
-        /// Gets or sets the close button add class value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the close button add class value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public static string CloseButtonAddClass => "btn-sm";
+
         /// <summary>
-        /// Gets or sets the close icon bootstrap value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the close icon bootstrap value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public static string CloseIconBootstrap => "bi bi-x-lg";
 
@@ -75,16 +73,16 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_debugOnly", value);
         }
 
-        private IActionItem? _headerAction
-        {
-            get => GetInternal<IActionItem?>("_headerAction", null);
-            set => SetInternal("_headerAction", value);
-        }
-
         private bool _hasPdfPreview
         {
             get => GetInternal("_hasPdfPreview", false);
             set => SetInternal("_hasPdfPreview", value);
+        }
+
+        private IActionItem? _headerAction
+        {
+            get => GetInternal<IActionItem?>("_headerAction", null);
+            set => SetInternal("_headerAction", value);
         }
 
         private HtmlRenderContext? _htmlRenderContext;
@@ -189,6 +187,55 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_variant", value);
         }
 
+        #region Protected accessors
+
+        /// <inheritdoc />
+        protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Body;
+
+        #endregion
+
+        #endregion
+
+        #region Instance constructors and destructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="ModalBuilder" /> class.
+        /// </summary>
+        /// <param name="writer">The writer that receives the rendered HTML output.</param>
+        /// <param name="html">The Razor HTML helper used to access view context and services.</param>
+        public ModalBuilder(TextWriter writer, IHtmlHelper html)
+            : base(writer, html)
+        {
+            _tag = "div";
+            _modalId = html.GenerateUniqueId("modal");
+        }
+
+        #endregion
+
+        #region Instance methods
+
+        #region Validation
+
+        private void ValidateBeforeBegin()
+        {
+            if (_noHeader)
+            {
+                return;
+            }
+
+            if (!_iconOnlyHeader && string.IsNullOrWhiteSpace(_title))
+            {
+                throw new InvalidOperationException("Modal title must be defined before Begin().");
+            }
+
+            if (_iconOnlyHeader && _icon.IsEmpty)
+            {
+                throw new InvalidOperationException("Modal icon must be defined before Begin() when using IconOnly().");
+            }
+        }
+
+        #endregion
+
         #endregion
 
         #region Interface properties
@@ -213,37 +260,14 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
-        #region Instance constructors and destructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ModalBuilder"/> class.
-        /// </summary>
-        /// <param name="writer">The writer that receives the rendered HTML output.</param>
-        /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        public ModalBuilder(TextWriter writer, IHtmlHelper html)
-            : base(writer, html)
-        {
-            _tag = "div";
-            _modalId = html.GenerateUniqueId("modal");
-        }
-
-        #endregion
-
-        #region Protected accessors
-
-        /// <inheritdoc />
-        protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Body;
-
-        #endregion
-
         #region Fluent API
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="titleLevel">The title level value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetTitle(string title, TitleLevel titleLevel = TitleLevel.Three)
         {
             _iconOnlyHeader = false;
@@ -254,10 +278,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures subtitle on the current BootstrapBuilder instance.
+        ///     Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetSubtitle(string subtitle)
         {
             _subtitle = subtitle;
@@ -265,10 +289,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon bootstrap on the current BootstrapBuilder instance.
+        ///     Configures icon bootstrap on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="iconBootstrap">The icon bootstrap value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetIconBootstrap(string iconBootstrap)
         {
             _icon = IconStruct.Bootstrap(iconBootstrap);
@@ -276,13 +300,13 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="titleLevel">The title level value.</param>
         /// <param name="icon">The icon value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder WithTitle(string title, TitleLevel titleLevel, IconStruct icon = default, string? subtitle = null)
         {
             if (string.IsNullOrWhiteSpace(title))
@@ -301,13 +325,13 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon only on the current BootstrapBuilder instance.
+        ///     Configures icon only on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="titleLevel">The title level value.</param>
         /// <param name="icon">The icon value.</param>
         /// <param name="centered">The centered value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder WithIconOnly(TitleLevel titleLevel, IconStruct icon, bool centered = true, string? subtitle = null)
         {
             if (icon.IsEmpty)
@@ -326,9 +350,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder debug only operation.
+        ///     Executes the BootstrapBuilder debug only operation.
         /// </summary>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder DebugOnly()
         {
             _debugOnly = true;
@@ -336,9 +360,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures debug only on the current BootstrapBuilder instance.
+        ///     Configures debug only on the current BootstrapBuilder instance.
         /// </summary>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetDebugOnly()
         {
             _debugOnly = true;
@@ -346,10 +370,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder centered operation.
+        ///     Executes the BootstrapBuilder centered operation.
         /// </summary>
         /// <param name="centered">The centered value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder Centered(bool centered = true)
         {
             _centered = centered;
@@ -357,10 +381,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder no header operation.
+        ///     Executes the BootstrapBuilder no header operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder NoHeader(bool value = true)
         {
             _noHeader = value;
@@ -368,10 +392,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder body no padding operation.
+        ///     Executes the BootstrapBuilder body no padding operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder BodyNoPadding(bool value = true)
         {
             _bodyNoPadding = value;
@@ -379,10 +403,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder WithVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -390,10 +414,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures additional classes on the current BootstrapBuilder instance.
+        ///     Configures additional classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="additionalClasses">The additional classes value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder WithAdditionalClasses(string additionalClasses)
         {
             _additionalClasses = additionalClasses;
@@ -401,10 +425,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures body class on the current BootstrapBuilder instance.
+        ///     Configures body class on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="cssClass">The css class value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder WithBodyClass(string cssClass)
         {
             if (!string.IsNullOrWhiteSpace(cssClass))
@@ -418,10 +442,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures header action on the current BootstrapBuilder instance.
+        ///     Configures header action on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetHeaderAction(IActionItem action)
         {
             _headerAction = action ?? throw new ArgumentNullException(nameof(action));
@@ -429,76 +453,76 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures data attribut on the current BootstrapBuilder instance.
+        ///     Configures data attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetDataAttribut(string name, string value)
         {
             return SetAttribut($"data-{name}", value);
         }
 
         /// <summary>
-        /// Configures data attribut on the current BootstrapBuilder instance.
+        ///     Configures data attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetDataAttribut(string name, bool value)
         {
             return SetAttribut($"data-{name}", value);
         }
 
         /// <summary>
-        /// Configures aria attribut on the current BootstrapBuilder instance.
+        ///     Configures aria attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetAriaAttribut(string name, string value)
         {
             return SetAttribut($"aria-{name}", value);
         }
 
         /// <summary>
-        /// Configures aria attribut on the current BootstrapBuilder instance.
+        ///     Configures aria attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetAriaAttribut(string name, bool value)
         {
             return SetAttribut($"aria-{name}", value);
         }
 
         /// <summary>
-        /// Configures attribut on the current BootstrapBuilder instance.
+        ///     Configures attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetAttribut(string name, string value)
         {
             return SetAttribute(name, value);
         }
 
         /// <summary>
-        /// Configures attribut on the current BootstrapBuilder instance.
+        ///     Configures attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder SetAttribut(string name, bool value)
         {
             return SetAttribute(name, value);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder id operation.
+        ///     Executes the BootstrapBuilder id operation.
         /// </summary>
         /// <param name="modalId">The modal id value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder Id(string modalId)
         {
             if (string.IsNullOrWhiteSpace(modalId))
@@ -512,10 +536,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder size operation.
+        ///     Executes the BootstrapBuilder size operation.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder Size(ModalSize size)
         {
             _size = size;
@@ -523,11 +547,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger operation.
+        ///     Executes the BootstrapBuilder trigger operation.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder Trigger(string? title = null, IconStruct icon = default)
         {
             _triggerRequested = true;
@@ -558,10 +582,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger operation.
+        ///     Executes the BootstrapBuilder trigger operation.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder Trigger(IActionItem action)
         {
             ArgumentNullException.ThrowIfNull(action);
@@ -585,10 +609,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger style operation.
+        ///     Executes the BootstrapBuilder trigger style operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder TriggerStyle(VariantStyle style)
         {
             _triggerAction ??= ActionItemFactory.Modal(_title ?? string.Empty, _modalId, _icon);
@@ -597,10 +621,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger outlined operation.
+        ///     Executes the BootstrapBuilder trigger outlined operation.
         /// </summary>
         /// <param name="outlined">The outlined value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder TriggerOutlined(bool outlined = true)
         {
             _triggerAction ??= ActionItemFactory.Modal(_title ?? string.Empty, _modalId, _icon);
@@ -609,10 +633,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger size operation.
+        ///     Executes the BootstrapBuilder trigger size operation.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder TriggerSize(BoostrapButtonSize size)
         {
             _triggerAction ??= ActionItemFactory.Modal(_title ?? string.Empty, _modalId, _icon);
@@ -621,10 +645,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder trigger classes operation.
+        ///     Executes the BootstrapBuilder trigger classes operation.
         /// </summary>
         /// <param name="additionalClasses">The additional classes value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder TriggerClasses(string additionalClasses)
         {
             _triggerAction ??= ActionItemFactory.Modal(_title ?? string.Empty, _modalId, _icon);
@@ -633,10 +657,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets trigger for BootstrapBuilder rendering or composition.
+        ///     Gets trigger for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder GetTrigger(out ModalActionItem action)
         {
             action = BuildTriggerAction();
@@ -644,10 +668,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders trigger inside begin for the BootstrapBuilder output.
+        ///     Renders trigger inside begin for the BootstrapBuilder output.
         /// </summary>
         /// <param name="renderInsideBegin">The render inside begin value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder RenderTriggerInsideBegin(bool renderInsideBegin = true)
         {
             _triggerRequested = true;
@@ -656,11 +680,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds pdf preview url to the current BootstrapBuilder component or page model.
+        ///     Adds pdf preview url to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="urlOfPdf">The url of pdf value.</param>
         /// <param name="iframeHeight">The iframe height value.</param>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public ModalBuilder AddPDFPreviewURL(string urlOfPdf, int iframeHeight = 600)
         {
             if (string.IsNullOrWhiteSpace(urlOfPdf))
@@ -686,9 +710,9 @@ namespace DMBBootstrapBuilder
         #region Lifecycle
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="ModalBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ModalBuilder" /> value or BootstrapBuilder result.</returns>
         public new ModalBuilder Begin()
         {
             if (_started)
@@ -717,7 +741,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {
@@ -856,28 +880,6 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
-        #region Validation
-
-        private void ValidateBeforeBegin()
-        {
-            if (_noHeader)
-            {
-                return;
-            }
-
-            if (!_iconOnlyHeader && string.IsNullOrWhiteSpace(_title))
-            {
-                throw new InvalidOperationException("Modal title must be defined before Begin().");
-            }
-
-            if (_iconOnlyHeader && _icon.IsEmpty)
-            {
-                throw new InvalidOperationException("Modal icon must be defined before Begin() when using IconOnly().");
-            }
-        }
-
-        #endregion
-
         #region Render helpers
 
         private string RenderModalStart()
@@ -891,14 +893,14 @@ namespace DMBBootstrapBuilder
             string contentClasses = BuildModalContentCss();
 
             return $"""
-<!-- Modal start -->
-<div class="modal fade" id="{HtmlEncoder.Default.Encode(_modalId)}" tabindex="-1" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable {sizeCss} {centeredCss}">
-        <div class="{contentClasses}">
-            {toolsOverlayHtml}
-            {headerHtml}
-            {bodyStartHtml}
-""";
+                    <!-- Modal start -->
+                    <div class="modal fade" id="{HtmlEncoder.Default.Encode(_modalId)}" tabindex="-1" aria-labelledby="" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable {sizeCss} {centeredCss}">
+                            <div class="{contentClasses}">
+                                {toolsOverlayHtml}
+                                {headerHtml}
+                                {bodyStartHtml}
+                    """;
         }
 
         private string RenderModalEnd()
@@ -908,12 +910,12 @@ namespace DMBBootstrapBuilder
                 : string.Empty;
 
             return $"""
-            {bodyEnd}
-        </div>
-    </div>
-</div>
-<!-- Modal end -->
-""";
+                                {bodyEnd}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal end -->
+                    """;
         }
 
         private string RenderHeaderHtml()
@@ -943,23 +945,23 @@ namespace DMBBootstrapBuilder
                 if (_iconOnlyCentered)
                 {
                     return $"""
-<div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
-    <div class="d-flex flex-column align-items-center text-center w-100 {headerContentCss}">
-        <{titleLevel} class="modal-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
-        {subtitleHtml}
-    </div>
-</div>
-""";
+                            <div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
+                                <div class="d-flex flex-column align-items-center text-center w-100 {headerContentCss}">
+                                    <{titleLevel} class="modal-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
+                                    {subtitleHtml}
+                                </div>
+                            </div>
+                            """;
                 }
 
                 return $"""
-<div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
-    <div class="{headerContentCss}">
-        <{titleLevel} class="modal-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
-        {subtitleHtml}
-    </div>
-</div>
-""";
+                        <div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
+                            <div class="{headerContentCss}">
+                                <{titleLevel} class="modal-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
+                                {subtitleHtml}
+                            </div>
+                        </div>
+                        """;
             }
 
             string iconHtml = _icon.IsEmpty
@@ -971,13 +973,13 @@ namespace DMBBootstrapBuilder
                 : $"""<div class="modal-subtitle small opacity-75">{HtmlEncoder.Default.Encode(_subtitle)}</div>""";
 
             return $"""
-<div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
-    <div class="{headerContentCss}">
-        <{titleLevel} class="modal-title d-inline-flex align-items-center {titleGap}">{iconHtml}<span>{HtmlEncoder.Default.Encode(_title ?? string.Empty)}</span></{titleLevel}>
-        {subtitleStandardHtml}
-    </div>
-</div>
-""";
+                    <div class="modal-header bg-{styleCss} text-bg-{styleCss} border-bottom">
+                        <div class="{headerContentCss}">
+                            <{titleLevel} class="modal-title d-inline-flex align-items-center {titleGap}">{iconHtml}<span>{HtmlEncoder.Default.Encode(_title ?? string.Empty)}</span></{titleLevel}>
+                            {subtitleStandardHtml}
+                        </div>
+                    </div>
+                    """;
         }
 
         private string RenderToolsOverlayHtml()
@@ -990,10 +992,10 @@ namespace DMBBootstrapBuilder
             }
 
             return $"""
-<div class="{GetToolsOverlayContainerCss()}">
-    {toolsContentHtml}
-</div>
-""";
+                    <div class="{GetToolsOverlayContainerCss()}">
+                        {toolsContentHtml}
+                    </div>
+                    """;
         }
 
         private string RenderToolsOverlayContentHtml()
@@ -1040,15 +1042,15 @@ namespace DMBBootstrapBuilder
             }
 
             return $"""
-<div class="{string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)))}">
-""";
+                    <div class="{string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)))}">
+                    """;
         }
 
         private string RenderBodyEndHtml()
         {
             return """
-</div>
-""";
+                   </div>
+                   """;
         }
 
         private bool ShouldRenderBodyEndHtml()
@@ -1098,10 +1100,10 @@ namespace DMBBootstrapBuilder
             string styleCss = _variant.ToString().ToLowerInvariant();
 
             return $"""
-<button type="button" class="btn {CloseButtonAddClass} text-bg-{styleCss}" data-bs-dismiss="modal" aria-label="Close">
-    <span class="{CloseIconBootstrap}"></span>
-</button>
-""";
+                    <button type="button" class="btn {CloseButtonAddClass} text-bg-{styleCss}" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="{CloseIconBootstrap}"></span>
+                    </button>
+                    """;
         }
 
         private string GetToolsOverlayContainerCss()
@@ -1256,26 +1258,26 @@ namespace DMBBootstrapBuilder
         private string RenderPdfPreviewScript()
         {
             return $$$"""
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    var modalEl = document.getElementById('{{_modalId}}');
-    var iframe = document.getElementById('{{_pdfIframeId}}');
-    var pdfUrl = '{{_pdfPreviewUrl}}';
+                      <script>
+                      document.addEventListener('DOMContentLoaded', function () {
+                          var modalEl = document.getElementById('{{_modalId}}');
+                          var iframe = document.getElementById('{{_pdfIframeId}}');
+                          var pdfUrl = '{{_pdfPreviewUrl}}';
 
-    if (!modalEl || !iframe) {
-        return;
-    }
+                          if (!modalEl || !iframe) {
+                              return;
+                          }
 
-    modalEl.addEventListener('show.bs.modal', function () {
-        iframe.src = pdfUrl;
-    });
+                          modalEl.addEventListener('show.bs.modal', function () {
+                              iframe.src = pdfUrl;
+                          });
 
-    modalEl.addEventListener('hidden.bs.modal', function () {
-        iframe.src = '';
-    });
-});
-</script>
-""";
+                          modalEl.addEventListener('hidden.bs.modal', function () {
+                              iframe.src = '';
+                          });
+                      });
+                      </script>
+                      """;
         }
 
         private void WriteHtmlContent(IHtmlContent content)

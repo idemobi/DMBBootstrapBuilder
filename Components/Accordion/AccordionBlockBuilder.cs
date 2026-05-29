@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj AccordionBlockBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder accordion block component or page region.
+    ///     Builds and renders the BootstrapBuilder accordion block component or page region.
     /// </summary>
     public sealed class AccordionBlockBuilder :
         HtmlBuilderBase<AccordionBlockBuilder>,
@@ -29,7 +27,6 @@ namespace DMBBootstrapBuilder
         private BadgeBuilderCollection _badges = new();
 
         private StringWriter? _captureWriter;
-        private TextWriter? _originalWriter;
 
         private bool _disabled
         {
@@ -55,6 +52,8 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_open", value);
         }
 
+        private TextWriter? _originalWriter;
+
         private bool _started
         {
             get => GetInternal("_started", false);
@@ -78,7 +77,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccordionBlockBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="AccordionBlockBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -92,10 +91,10 @@ namespace DMBBootstrapBuilder
         #region Fluent API
 
         /// <summary>
-        /// Executes the BootstrapBuilder id operation.
+        ///     Executes the BootstrapBuilder id operation.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder Id(string id)
         {
             SetId(HtmlIdGenerator.CleanId(id) ?? string.Empty);
@@ -103,10 +102,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder WithTitle(string? title)
         {
             _title = title;
@@ -114,10 +113,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures subtitle on the current BootstrapBuilder instance.
+        ///     Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder WithSubtitle(string? subtitle)
         {
             _subtitle = subtitle;
@@ -125,10 +124,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon on the current BootstrapBuilder instance.
+        ///     Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder WithIcon(IconStruct icon)
         {
             _icon = icon;
@@ -136,10 +135,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures badge on the current BootstrapBuilder instance.
+        ///     Configures badge on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="badge">The badge value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder SetBadge(BadgeBuilder badge)
         {
             _badges.Set(badge);
@@ -147,11 +146,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds badge to the current BootstrapBuilder component or page model.
+        ///     Adds badge to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="badge">The badge value.</param>
         /// <param name="others">The others value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder AddBadge(BadgeBuilder badge, params BadgeBuilder[] others)
         {
             _badges.Add(badge, others);
@@ -159,9 +158,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder clear badges operation.
+        ///     Executes the BootstrapBuilder clear badges operation.
         /// </summary>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder ClearBadges()
         {
             _badges.Clear();
@@ -169,11 +168,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds badge to the current BootstrapBuilder component or page model.
+        ///     Adds badge to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder AddBadge(string text, VariantStyle style = VariantStyle.Danger)
         {
             BadgeBuilder badge = new BadgeBuilder(_textWriter, _htmlHelper)
@@ -185,10 +184,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder open operation.
+        ///     Executes the BootstrapBuilder open operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder Open(bool value = true)
         {
             _open = value;
@@ -196,10 +195,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder disabled operation.
+        ///     Executes the BootstrapBuilder disabled operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder Disabled(bool value = true)
         {
             _disabled = value;
@@ -207,9 +206,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="AccordionBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionBlockBuilder Begin()
         {
             if (_started)
@@ -236,7 +235,7 @@ namespace DMBBootstrapBuilder
         #region Rendering
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

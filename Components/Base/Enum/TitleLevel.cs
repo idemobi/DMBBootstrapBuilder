@@ -1,9 +1,7 @@
 ﻿#region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TitleLevel.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -14,46 +12,51 @@
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines BootstrapBuilder values for title level.
+    ///     Defines BootstrapBuilder values for title level.
     /// </summary>
     [Serializable]
     public enum TitleLevel : int
     {
         /// <summary>
-        /// Represents the one BootstrapBuilder option.
+        ///     Represents the one BootstrapBuilder option.
         /// </summary>
         One = 1,
+
         /// <summary>
-        /// Represents the two BootstrapBuilder option.
+        ///     Represents the two BootstrapBuilder option.
         /// </summary>
         Two = 2,
+
         /// <summary>
-        /// Represents the three BootstrapBuilder option.
+        ///     Represents the three BootstrapBuilder option.
         /// </summary>
         Three = 3,
+
         /// <summary>
-        /// Represents the four BootstrapBuilder option.
+        ///     Represents the four BootstrapBuilder option.
         /// </summary>
         Four = 4,
+
         /// <summary>
-        /// Represents the five BootstrapBuilder option.
+        ///     Represents the five BootstrapBuilder option.
         /// </summary>
         Five = 5,
+
         /// <summary>
-        /// Represents the six BootstrapBuilder option.
+        ///     Represents the six BootstrapBuilder option.
         /// </summary>
         Six = 6,
     }
 
     /// <summary>
-    /// Provides extension methods for configuring title level in BootstrapBuilder components.
+    ///     Provides extension methods for configuring title level in BootstrapBuilder components.
     /// </summary>
     public static class TitleLevelExtension
     {
         #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder gap operation.
+        ///     Executes the BootstrapBuilder gap operation.
         /// </summary>
         /// <param name="level">The level value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -72,7 +75,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder tag operation.
+        ///     Executes the BootstrapBuilder tag operation.
         /// </summary>
         /// <param name="level">The level value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

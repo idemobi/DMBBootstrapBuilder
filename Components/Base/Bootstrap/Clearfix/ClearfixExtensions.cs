@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ClearfixExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,19 +14,19 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring clearfix in BootstrapBuilder components.
+    ///     Provides extension methods for configuring clearfix in BootstrapBuilder components.
     /// </summary>
     public static class ClearfixExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Configures clearfix on the current BootstrapBuilder instance.
+        ///     Configures clearfix on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="clearfix">The clearfix value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetClearfix<TBuilder>(
             this TBuilder builder,
             Clearfix clearfix
@@ -44,11 +42,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clearfix on the current BootstrapBuilder instance.
+        ///     Configures clearfix on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetClearfix<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseClearfix
         {
@@ -56,11 +54,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clearfix normal on the current BootstrapBuilder instance.
+        ///     Configures clearfix normal on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetClearfixNormal<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseClearfix
         {

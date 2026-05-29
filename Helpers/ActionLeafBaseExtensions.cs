@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ActionLeafBaseExtensions.cs create at 2026/04/08 09:04:40
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,14 +15,14 @@ using DMBServerHelper;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring action leaf base in BootstrapBuilder components.
+    ///     Provides extension methods for configuring action leaf base in BootstrapBuilder components.
     /// </summary>
     public static class ActionLeafBaseExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Stores the style value used by BootstrapBuilder rendering or composition.
+        ///     Stores the style value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TSelf">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The action item builder that receives the localized badge.</param>
@@ -43,12 +41,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures localized icon bootstrap on the current BootstrapBuilder instance.
+        ///     Configures localized icon bootstrap on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TSelf">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="iconBootstrapKey">The icon bootstrap key value.</param>
-        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf" /> value or BootstrapBuilder result.</returns>
         public static TSelf SetLocalizedIconBootstrap<TSelf>(this TSelf builder, string iconBootstrapKey) where TSelf : ActionItemBase<TSelf>
         {
             #if DEBUG
@@ -61,12 +59,12 @@ namespace DMBBootstrapBuilder
 
 
         /// <summary>
-        /// Configures localized subtitle on the current BootstrapBuilder instance.
+        ///     Configures localized subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TSelf">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="subtitleKey">The subtitle key value.</param>
-        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf" /> value or BootstrapBuilder result.</returns>
         public static TSelf SetLocalizedSubtitle<TSelf>(this TSelf builder, string subtitleKey) where TSelf : ActionItemBase<TSelf>
         {
             #if DEBUG
@@ -78,13 +76,13 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures localized title on the current BootstrapBuilder instance.
+        ///     Configures localized title on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TSelf">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="titleKey">The title key value.</param>
         /// <param name="args">The args value.</param>
-        /// <returns>The configured <typeparamref name="TSelf"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TSelf" /> value or BootstrapBuilder result.</returns>
         public static TSelf SetLocalizedTitle<TSelf>(this TSelf builder, string titleKey, params object[] args) where TSelf : ActionItemBase<TSelf>
         {
             #if DEBUG

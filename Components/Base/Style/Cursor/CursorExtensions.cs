@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj CursorExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring cursor in BootstrapBuilder components.
+    ///     Provides extension methods for configuring cursor in BootstrapBuilder components.
     /// </summary>
     public static class CursorExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Stores the important value used by BootstrapBuilder rendering or composition.
+        ///     Stores the important value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The cursor-capable builder to configure.</param>

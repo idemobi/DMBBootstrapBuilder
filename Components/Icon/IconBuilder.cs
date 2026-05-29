@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj IconBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,14 +17,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring html layout in BootstrapBuilder components.
+    ///     Provides extension methods for configuring html layout in BootstrapBuilder components.
     /// </summary>
     public static partial class HtmlLayoutExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder icon builder operation.
+        ///     Executes the BootstrapBuilder icon builder operation.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <param name="iconStruct">The icon struct value.</param>
@@ -85,7 +83,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder icon builder operation.
+        ///     Executes the BootstrapBuilder icon builder operation.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <param name="icon">The icon value.</param>
@@ -98,7 +96,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder icon render operation.
+        ///     Executes the BootstrapBuilder icon render operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="icon">The icon value.</param>

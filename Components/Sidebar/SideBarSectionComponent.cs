@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SideBarSectionComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,27 +15,28 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder side bar section component component or support type.
+    ///     Represents the BootstrapBuilder side bar section component component or support type.
     /// </summary>
     public sealed class SideBarSectionComponent
     {
         #region Instance fields and properties
 
         private readonly List<IActionItem> _items = new();
+
         /// <summary>
-        /// Gets or sets the additional classes value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the additional classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string AdditionalClasses { get; set; } = string.Empty;
 
         /// <summary>
-        /// Gets or sets a value indicating whether content is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether content is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool HasContent => _items.Count > 0;
 
         internal IReadOnlyList<IActionItem> Items => _items;
 
         /// <summary>
-        /// Gets or sets the title value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the title value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? Title { get; set; }
 
@@ -46,7 +45,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SideBarSectionComponent"/> class.
+        ///     Initializes a new instance of the <see cref="SideBarSectionComponent" /> class.
         /// </summary>
         /// <param name="title">The title value.</param>
         public SideBarSectionComponent(string? title = null)
@@ -59,10 +58,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="item">The item value.</param>
-        /// <returns>The configured <see cref="SideBarSectionComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarSectionComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarSectionComponent Add(IActionItem item)
         {
             if (item == null)
@@ -75,10 +74,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="SideBarSectionComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarSectionComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarSectionComponent Add(params IActionItem[] items)
         {
             if (items == null)
@@ -95,9 +94,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="SideBarSectionComponent"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SideBarSectionComponent" /> value or BootstrapBuilder result.</returns>
         public SideBarSectionComponent Clone()
         {
             var clone = new SideBarSectionComponent(Title)

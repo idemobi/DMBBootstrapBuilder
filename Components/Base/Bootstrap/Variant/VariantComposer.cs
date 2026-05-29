@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj VariantComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for variant.
+    ///     Composes Bootstrap CSS classes or page chrome for variant.
     /// </summary>
     public sealed class VariantComposer : IIsCssClassComposer
     {
@@ -35,13 +33,13 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures background complex on the current BootstrapBuilder instance.
+        ///     Configures background complex on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <param name="autoTextVariant">The auto text variant value.</param>
         /// <param name="opacity">The opacity value.</param>
         /// <param name="subtle">The subtle value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetBackgroundComplex(VariantStyle variant, bool autoTextVariant, Opacity opacity = Opacity.Normal, bool subtle = false)
         {
             _backgroundVariant = variant;
@@ -52,10 +50,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures background opacity on the current BootstrapBuilder instance.
+        ///     Configures background opacity on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="opacity">The opacity value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetBackgroundOpacity(Opacity opacity)
         {
             _backgroundOpacity = opacity;
@@ -63,10 +61,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures background subtle on the current BootstrapBuilder instance.
+        ///     Configures background subtle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtle">The subtle value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetBackgroundSubtle(bool subtle)
         {
             _backgroundSubtle = subtle;
@@ -74,10 +72,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures background variant on the current BootstrapBuilder instance.
+        ///     Configures background variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetBackgroundVariant(VariantStyle variant)
         {
             _backgroundVariant = variant;
@@ -85,10 +83,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures text on the current BootstrapBuilder instance.
+        ///     Configures text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetText(VariantStyle variant)
         {
             _textVariant = variant;
@@ -96,10 +94,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures text emphasize on the current BootstrapBuilder instance.
+        ///     Configures text emphasize on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="emphasize">The emphasize value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetTextEmphasize(bool emphasize = false)
         {
             _textEmphasize = emphasize;
@@ -107,10 +105,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures text variant from background on the current BootstrapBuilder instance.
+        ///     Configures text variant from background on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="autoTextVariant">The auto text variant value.</param>
-        /// <returns>The configured <see cref="VariantComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantComposer" /> value or BootstrapBuilder result.</returns>
         public VariantComposer SetTextVariantFromBackground(bool autoTextVariant)
         {
             _autoTextVariantFromBackground = autoTextVariant;
@@ -120,7 +118,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -173,9 +171,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             var clone = new VariantComposer();

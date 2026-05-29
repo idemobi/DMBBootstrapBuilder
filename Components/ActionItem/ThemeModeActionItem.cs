@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ThemeModeActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder theme mode action item component or support type.
+    ///     Represents the BootstrapBuilder theme mode action item component or support type.
     /// </summary>
     public sealed class ThemeModeActionItem : JavaScriptActionItem
     {
@@ -44,7 +42,7 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the theme mode value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the theme mode value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public ThemeMode ThemeMode { get; }
 
@@ -53,7 +51,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ThemeModeActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="ThemeModeActionItem" /> class.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="themeMode">The theme mode value.</param>

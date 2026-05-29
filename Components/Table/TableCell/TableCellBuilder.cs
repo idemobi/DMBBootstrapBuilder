@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableCellBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -21,7 +19,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder table cell component or page region.
+    ///     Builds and renders the BootstrapBuilder table cell component or page region.
     /// </summary>
     public sealed class TableCellBuilder :
         HtmlTagBuilder<TableCellBuilder>,
@@ -87,7 +85,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableCellBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TableCellBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -103,9 +101,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public override TableCellBuilder Begin()
         {
             if (_started)
@@ -158,80 +156,6 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
-       /// <inheritdoc />
-       protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
-{
-    string? previousScope = GetAttributeValue("scope");
-    string? previousColspan = GetAttributeValue("colspan");
-    string? previousRowspan = GetAttributeValue("rowspan");
-    string? previousSortable = GetAttributeValue("data-sortable");
-    string? previousSortKey = GetAttributeValue("data-sort-key");
-    string? previousSortDirection = GetAttributeValue("data-sort-direction");
-
-    try
-    {
-        if (!string.IsNullOrWhiteSpace(_sortKey))
-        {
-            this.SetSortable(true);
-            SetData("sortable", "true");
-            SetData("sort-key", _sortKey);
-            SetData("sort-direction", string.Empty);
-        }
-
-        if (!string.IsNullOrWhiteSpace(_scope))
-        {
-            SetAttribute("scope", _scope);
-        }
-
-        if (_colspan > 1)
-        {
-            SetAttribute("colspan", _colspan.ToString(CultureInfo.InvariantCulture));
-        }
-
-        if (_rowspan > 1)
-        {
-            SetAttribute("rowspan", _rowspan.ToString(CultureInfo.InvariantCulture));
-        }
-
-        writer.Write($"<{GetTag()}{BuildAttributes()}>");
-
-        if (!string.IsNullOrWhiteSpace(_sortKey))
-        {
-            writer.Write("""
-                         <span class="table-sort-header">
-                             <span class="table-sort-icons" aria-hidden="true">
-                                 <i class="bi bi-caret-up-fill sort-icon sort-icon-asc"></i>
-                                 <i class="bi bi-caret-down-fill sort-icon sort-icon-desc"></i>
-                             </span>
-                         </span>
-                         """);
-        }
-
-        writer.Write($"</{GetTag()}>");
-    }
-    finally
-    {
-        RestoreAttribute("scope", previousScope);
-        RestoreAttribute("colspan", previousColspan);
-        RestoreAttribute("rowspan", previousRowspan);
-        RestoreAttribute("data-sortable", previousSortable);
-        RestoreAttribute("data-sort-key", previousSortKey);
-        RestoreAttribute("data-sort-direction", previousSortDirection);
-    }
-}
-
-private void RestoreAttribute(string name, string? value)
-{
-    if (string.IsNullOrWhiteSpace(value))
-    {
-        RemoveAttribute(name);
-    }
-    else
-    {
-        _attributes[name] = value;
-    }
-}
-
         /// <inheritdoc />
         protected override TableCellBuilder CreateInstance()
         {
@@ -254,45 +178,45 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(int value) => Render(value.ToString(CultureInfo.CurrentCulture));
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(long value) => Render(value.ToString(CultureInfo.CurrentCulture));
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(float value) => Render(value.ToString("N2", CultureInfo.CurrentCulture));
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(double value) => Render(value.ToString("N2", CultureInfo.CurrentCulture));
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(decimal value) => Render(value.ToString("N2", CultureInfo.CurrentCulture));
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(string? text)
         {
             Begin();
@@ -307,10 +231,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(IHtmlContent? content)
         {
             Begin();
@@ -325,10 +249,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(IconStruct icon)
         {
             Begin();
@@ -342,10 +266,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(IActionItem action)
         {
             ArgumentNullException.ThrowIfNull(action);
@@ -353,16 +277,17 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="oldGap">The old gap value.</param>
         /// <param name="justify">The justify value.</param>
         /// <param name="actions">The actions value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder Render(
             Old_Gap oldGap = Old_Gap.Gap1,
             JustifyContent justify = JustifyContent.Start,
-            params IActionItem[] actions)
+            params IActionItem[] actions
+        )
         {
             Begin();
 
@@ -386,10 +311,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders group for the BootstrapBuilder output.
+        ///     Renders group for the BootstrapBuilder output.
         /// </summary>
         /// <param name="actions">The actions value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder RenderGroup(params IActionItem[] actions)
         {
             Begin();
@@ -412,10 +337,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Renders html for the BootstrapBuilder output.
+        ///     Renders html for the BootstrapBuilder output.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder RenderHtml(string? html)
         {
             Begin();
@@ -429,11 +354,23 @@ private void RestoreAttribute(string name, string? value)
             return this;
         }
 
+        private void RestoreAttribute(string name, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                RemoveAttribute(name);
+            }
+            else
+            {
+                _attributes[name] = value;
+            }
+        }
+
         /// <summary>
-        /// Configures colspan on the current BootstrapBuilder instance.
+        ///     Configures colspan on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="colspan">The colspan value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder SetColspan(int colspan)
         {
             if (colspan <= 0)
@@ -446,10 +383,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Configures is header on the current BootstrapBuilder instance.
+        ///     Configures is header on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="header">The header value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder SetIsHeader(bool header = true)
         {
             if (!_started)
@@ -462,10 +399,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Configures rowspan on the current BootstrapBuilder instance.
+        ///     Configures rowspan on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="rowspan">The rowspan value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder SetRowspan(int rowspan)
         {
             if (rowspan <= 0)
@@ -478,10 +415,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Configures scope on the current BootstrapBuilder instance.
+        ///     Configures scope on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="scope">The scope value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder SetScope(string scope)
         {
             _scope = scope ?? string.Empty;
@@ -489,10 +426,10 @@ private void RestoreAttribute(string name, string? value)
         }
 
         /// <summary>
-        /// Configures sortable on the current BootstrapBuilder instance.
+        ///     Configures sortable on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
-        /// <returns>The configured <see cref="TableCellBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableCellBuilder" /> value or BootstrapBuilder result.</returns>
         public TableCellBuilder SetSortable(string key)
         {
             if (!_isHeader)
@@ -511,10 +448,72 @@ private void RestoreAttribute(string name, string? value)
             return this;
         }
 
+        /// <inheritdoc />
+        protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
+        {
+            string? previousScope = GetAttributeValue("scope");
+            string? previousColspan = GetAttributeValue("colspan");
+            string? previousRowspan = GetAttributeValue("rowspan");
+            string? previousSortable = GetAttributeValue("data-sortable");
+            string? previousSortKey = GetAttributeValue("data-sort-key");
+            string? previousSortDirection = GetAttributeValue("data-sort-direction");
+
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(_sortKey))
+                {
+                    this.SetSortable(true);
+                    SetData("sortable", "true");
+                    SetData("sort-key", _sortKey);
+                    SetData("sort-direction", string.Empty);
+                }
+
+                if (!string.IsNullOrWhiteSpace(_scope))
+                {
+                    SetAttribute("scope", _scope);
+                }
+
+                if (_colspan > 1)
+                {
+                    SetAttribute("colspan", _colspan.ToString(CultureInfo.InvariantCulture));
+                }
+
+                if (_rowspan > 1)
+                {
+                    SetAttribute("rowspan", _rowspan.ToString(CultureInfo.InvariantCulture));
+                }
+
+                writer.Write($"<{GetTag()}{BuildAttributes()}>");
+
+                if (!string.IsNullOrWhiteSpace(_sortKey))
+                {
+                    writer.Write("""
+                                 <span class="table-sort-header">
+                                     <span class="table-sort-icons" aria-hidden="true">
+                                         <i class="bi bi-caret-up-fill sort-icon sort-icon-asc"></i>
+                                         <i class="bi bi-caret-down-fill sort-icon sort-icon-desc"></i>
+                                     </span>
+                                 </span>
+                                 """);
+                }
+
+                writer.Write($"</{GetTag()}>");
+            }
+            finally
+            {
+                RestoreAttribute("scope", previousScope);
+                RestoreAttribute("colspan", previousColspan);
+                RestoreAttribute("rowspan", previousRowspan);
+                RestoreAttribute("data-sortable", previousSortable);
+                RestoreAttribute("data-sort-key", previousSortKey);
+                RestoreAttribute("data-sort-direction", previousSortDirection);
+            }
+        }
+
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {

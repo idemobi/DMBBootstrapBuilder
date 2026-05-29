@@ -1,41 +1,44 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ObjectFit.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines BootstrapBuilder values for object fit.
+    ///     Defines BootstrapBuilder values for object fit.
     /// </summary>
     public enum ObjectFit
     {
         /// <summary>
-        /// Represents the normal BootstrapBuilder option.
+        ///     Represents the normal BootstrapBuilder option.
         /// </summary>
         Normal,
+
         /// <summary>
-        /// Represents the contain BootstrapBuilder option.
+        ///     Represents the contain BootstrapBuilder option.
         /// </summary>
         Contain,
+
         /// <summary>
-        /// Represents the cover BootstrapBuilder option.
+        ///     Represents the cover BootstrapBuilder option.
         /// </summary>
         Cover,
+
         /// <summary>
-        /// Represents the fill BootstrapBuilder option.
+        ///     Represents the fill BootstrapBuilder option.
         /// </summary>
         Fill,
+
         /// <summary>
-        /// Represents the scale BootstrapBuilder option.
+        ///     Represents the scale BootstrapBuilder option.
         /// </summary>
         Scale,
+
         /// <summary>
-        /// Disables the related BootstrapBuilder option.
+        ///     Disables the related BootstrapBuilder option.
         /// </summary>
         None
     }

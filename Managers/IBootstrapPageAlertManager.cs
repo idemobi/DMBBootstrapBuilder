@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj IBootstrapPageAlertManager.cs create at 2026/05/07 00:00:00
-// (c)2024-2026 ideMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines a BootstrapBuilder contract for bootstrap page alert manager.
+    ///     Defines a BootstrapBuilder contract for bootstrap page alert manager.
     /// </summary>
     public interface IBootstrapPageAlertManager : IPageAlertManager
     {

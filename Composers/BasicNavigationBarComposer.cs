@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BasicNavigationBarComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,14 +16,14 @@ using Microsoft.Extensions.DependencyInjection;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for basic navigation bar.
+    ///     Composes Bootstrap CSS classes or page chrome for basic navigation bar.
     /// </summary>
     public class BasicNavigationBarComposer : INavigationBarComposer
     {
         #region Instance methods
 
         /// <summary>
-        /// Gets menu bar module result for BootstrapBuilder rendering or composition.
+        ///     Gets menu bar module result for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -61,16 +59,16 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets nav bar offcanvas icon for BootstrapBuilder rendering or composition.
+        ///     Gets nav bar offcanvas icon for BootstrapBuilder rendering or composition.
         /// </summary>
-        /// <returns>The configured <see cref="IconStruct"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IconStruct" /> value or BootstrapBuilder result.</returns>
         public virtual IconStruct GetNavBarOffcanvasIcon()
         {
             return IconStruct.Bootstrap("bi-list");
         }
 
         /// <summary>
-        /// Gets nav bar offcanvas title for BootstrapBuilder rendering or composition.
+        ///     Gets nav bar offcanvas title for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public virtual string GetNavBarOffcanvasTitle()
@@ -79,7 +77,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets profil bar module result for BootstrapBuilder rendering or composition.
+        ///     Gets profil bar module result for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -115,16 +113,16 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets side bar offcanvas icon for BootstrapBuilder rendering or composition.
+        ///     Gets side bar offcanvas icon for BootstrapBuilder rendering or composition.
         /// </summary>
-        /// <returns>The configured <see cref="IconStruct"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IconStruct" /> value or BootstrapBuilder result.</returns>
         public virtual IconStruct GetSideBarOffcanvasIcon()
         {
             return IconStruct.Bootstrap("bi-layout-sidebar");
         }
 
         /// <summary>
-        /// Gets side bar offcanvas title for BootstrapBuilder rendering or composition.
+        ///     Gets side bar offcanvas title for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public virtual string GetSideBarOffcanvasTitle()
@@ -135,11 +133,11 @@ namespace DMBBootstrapBuilder
         #region From interface INavigationBarComposer
 
         /// <summary>
-        /// Gets desktop navbar for BootstrapBuilder rendering or composition.
+        ///     Gets desktop navbar for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public virtual NavbarBuilder GetDesktopNavbar(TextWriter writer, IHtmlHelper html)
         {
             // prepare
@@ -203,12 +201,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets mobile navbar for BootstrapBuilder rendering or composition.
+        ///     Gets mobile navbar for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="sideBar">The side bar value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public virtual NavbarBuilder GetMobileNavbar(TextWriter writer, IHtmlHelper html, SideBarComponent? sideBar)
         {
             NavbarBuilder _mobileNavbar = new NavbarBuilder(writer, html);

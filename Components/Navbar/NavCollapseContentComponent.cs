@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj NavCollapseContentComponent.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,18 +17,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder nav collapse content component component or support type.
+    ///     Represents the BootstrapBuilder nav collapse content component component or support type.
     /// </summary>
     public sealed class NavCollapseContentComponent : INavbarComponent
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the content value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the content value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IHtmlContent Content { get; }
+
         /// <summary>
-        /// Gets or sets the id value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the id value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Id { get; }
 
@@ -39,7 +38,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavCollapseContentComponent"/> class.
+        ///     Initializes a new instance of the <see cref="NavCollapseContentComponent" /> class.
         /// </summary>
         /// <param name="id">The id value.</param>
         /// <param name="content">The content value.</param>
@@ -56,7 +55,7 @@ namespace DMBBootstrapBuilder
         #region From interface INavbarComponent
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <param name="htmlHelper">The Razor HTML helper used to access view context and services.</param>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>

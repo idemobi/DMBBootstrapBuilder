@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BootstrapPageAlertManager.cs create at 2026/05/07 00:00:00
-// (c)2024-2026 ideMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,56 +17,25 @@ using Microsoft.AspNetCore.Html;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder bootstrap page alert manager component or support type.
+    ///     Represents the BootstrapBuilder bootstrap page alert manager component or support type.
     /// </summary>
     public class BootstrapPageAlertManager : PageAlertManager, IBootstrapPageAlertManager
     {
-        #region Instance methods
+        #region Static methods
 
-        /// <summary>
-        /// Executes the BootstrapBuilder to alert models operation.
-        /// </summary>
-        /// <returns>The Bootstrap alert models generated from the current page alerts.</returns>
-        public IEnumerable<AlertModel> ToAlertModels()
+        private static IEnumerable<IActionItem> BuildFooterActions(PageAlertModel alert)
         {
-            foreach (PageAlertModel alert in Alerts)
+            if (!string.IsNullOrWhiteSpace(alert.PrimaryUrl))
             {
-                yield return ToAlertModel(alert);
-            }
-        }
-
-        /// <summary>
-        ///     Converts a page alert into the Bootstrap alert model used by alert rendering.
-        /// </summary>
-        /// <param name="alert">The page alert to convert.</param>
-        /// <returns>The Bootstrap alert model created from <paramref name="alert"/>.</returns>
-        protected virtual AlertModel ToAlertModel(PageAlertModel alert)
-        {
-            AlertModel model = new AlertModel(GetIcon(alert), BuildTitle(alert), BuildMessage(alert))
-                .SetVariant(ToVariant(alert.Style));
-
-            if (alert.Style is PageAlertStyle.Info or PageAlertStyle.Success)
-            {
-                model.SetDismissible();
+                yield return ActionItemFactory.Url(string.IsNullOrWhiteSpace(alert.PrimaryText) ? "Open" : alert.PrimaryText, alert.PrimaryUrl, IconStruct.BootstrapEnum(BootStrapEnum.bi_arrow_right))
+                    .SetVariant(VariantStyle.Primary);
             }
 
-            List<IActionItem> footerActions = BuildFooterActions(alert).ToList();
-            if (footerActions.Count > 0)
+            if (!string.IsNullOrWhiteSpace(alert.SecondaryUrl))
             {
-                model.SetFooterActions(footerActions.ToArray());
+                yield return ActionItemFactory.Url(string.IsNullOrWhiteSpace(alert.SecondaryText) ? "More" : alert.SecondaryText, alert.SecondaryUrl, IconStruct.BootstrapEnum(BootStrapEnum.bi_arrow_right_circle))
+                    .SetVariant(VariantStyle.Secondary);
             }
-
-            return model;
-        }
-
-        private static string? BuildTitle(PageAlertModel alert)
-        {
-            if (alert.Code.HasValue)
-            {
-                return string.IsNullOrWhiteSpace(alert.Title) ? alert.Code.Value.ToString() : $"{alert.Code.Value} - {alert.Title}";
-            }
-
-            return alert.Title;
         }
 
         private static IHtmlContent BuildMessage(PageAlertModel alert)
@@ -105,19 +72,14 @@ namespace DMBBootstrapBuilder
             return new HtmlString(builder.ToString());
         }
 
-        private static IEnumerable<IActionItem> BuildFooterActions(PageAlertModel alert)
+        private static string? BuildTitle(PageAlertModel alert)
         {
-            if (!string.IsNullOrWhiteSpace(alert.PrimaryUrl))
+            if (alert.Code.HasValue)
             {
-                yield return ActionItemFactory.Url(string.IsNullOrWhiteSpace(alert.PrimaryText) ? "Open" : alert.PrimaryText, alert.PrimaryUrl, IconStruct.BootstrapEnum(BootStrapEnum.bi_arrow_right))
-                    .SetVariant(VariantStyle.Primary);
+                return string.IsNullOrWhiteSpace(alert.Title) ? alert.Code.Value.ToString() : $"{alert.Code.Value} - {alert.Title}";
             }
 
-            if (!string.IsNullOrWhiteSpace(alert.SecondaryUrl))
-            {
-                yield return ActionItemFactory.Url(string.IsNullOrWhiteSpace(alert.SecondaryText) ? "More" : alert.SecondaryText, alert.SecondaryUrl, IconStruct.BootstrapEnum(BootStrapEnum.bi_arrow_right_circle))
-                    .SetVariant(VariantStyle.Secondary);
-            }
+            return alert.Title;
         }
 
         private static IconStruct GetIcon(PageAlertModel alert)
@@ -164,6 +126,50 @@ namespace DMBBootstrapBuilder
                 _ => VariantStyle.Warning
             };
         }
+
+        #endregion
+
+        #region Instance methods
+
+        /// <summary>
+        ///     Converts a page alert into the Bootstrap alert model used by alert rendering.
+        /// </summary>
+        /// <param name="alert">The page alert to convert.</param>
+        /// <returns>The Bootstrap alert model created from <paramref name="alert" />.</returns>
+        protected virtual AlertModel ToAlertModel(PageAlertModel alert)
+        {
+            AlertModel model = new AlertModel(GetIcon(alert), BuildTitle(alert), BuildMessage(alert))
+                .SetVariant(ToVariant(alert.Style));
+
+            if (alert.Style is PageAlertStyle.Info or PageAlertStyle.Success)
+            {
+                model.SetDismissible();
+            }
+
+            List<IActionItem> footerActions = BuildFooterActions(alert).ToList();
+            if (footerActions.Count > 0)
+            {
+                model.SetFooterActions(footerActions.ToArray());
+            }
+
+            return model;
+        }
+
+        #region From interface IBootstrapPageAlertManager
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder to alert models operation.
+        /// </summary>
+        /// <returns>The Bootstrap alert models generated from the current page alerts.</returns>
+        public IEnumerable<AlertModel> ToAlertModels()
+        {
+            foreach (PageAlertModel alert in Alerts)
+            {
+                yield return ToAlertModel(alert);
+            }
+        }
+
+        #endregion
 
         #endregion
     }

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FooterBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder footer component or page region.
+    ///     Builds and renders the BootstrapBuilder footer component or page region.
     /// </summary>
     public sealed class FooterBuilder : HtmlConstrainedTagBuilder<FooterBuilder>, IDisposable, ICanUseFlex
     {
@@ -33,7 +31,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="FooterBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -47,6 +45,47 @@ namespace DMBBootstrapBuilder
         #endregion
 
         #region Instance methods
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder begin operation.
+        /// </summary>
+        /// <returns>The configured <see cref="FooterBuilder" /> value or BootstrapBuilder result.</returns>
+        public override FooterBuilder Begin()
+        {
+            if (_started)
+            {
+                return this;
+            }
+
+            _context.RegisterRegionUse(HtmlRegionKind.Footer);
+
+            switch (_context.Kind)
+            {
+                case HtmlRenderContextKind.Body:
+                    BeginBodyFooter();
+                break;
+
+                case HtmlRenderContextKind.Block:
+                    BeginBlockFooter();
+                break;
+
+                case HtmlRenderContextKind.Card:
+                    BeginCardFooter();
+                break;
+
+                case HtmlRenderContextKind.Section:
+                    BeginSectionFooter();
+                break;
+
+                default:
+                    Console.WriteLine($"Footer is not supported in context '{_context.Kind}'.");
+                    //throw new InvalidOperationException($"Footer is not supported in context '{_context.Kind}'.");
+                break;
+            }
+
+            _started = true;
+            return this;
+        }
 
         /// <inheritdoc />
         protected override FooterBuilder CreateInstance()
@@ -63,51 +102,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
-        /// </summary>
-        /// <returns>The configured <see cref="FooterBuilder"/> value or BootstrapBuilder result.</returns>
-        public override FooterBuilder Begin()
-        {
-            if (_started)
-            {
-                return this;
-            }
-
-            _context.RegisterRegionUse(HtmlRegionKind.Footer);
-
-            switch (_context.Kind)
-            {
-                case HtmlRenderContextKind.Body:
-                    BeginBodyFooter();
-                    break;
-
-                case HtmlRenderContextKind.Block:
-                    BeginBlockFooter();
-                    break;
-
-                case HtmlRenderContextKind.Card:
-                    BeginCardFooter();
-                    break;
-
-                case HtmlRenderContextKind.Section:
-                    BeginSectionFooter();
-                    break;
-
-                default:
-                    Console.WriteLine($"Footer is not supported in context '{_context.Kind}'.");
-                    //throw new InvalidOperationException($"Footer is not supported in context '{_context.Kind}'.");
-                break;
-            }
-
-            _started = true;
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder notice text operation.
+        ///     Executes the BootstrapBuilder notice text operation.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="FooterBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBuilder NoticeText(string text)
         {
             _noticeText = text;
@@ -121,19 +119,19 @@ namespace DMBBootstrapBuilder
             {
                 case HtmlRenderContextKind.Body:
                     WriteBodyFooter(writer, encoder);
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Block:
                     WriteBlockFooter(writer, encoder);
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Card:
                     WriteCardFooter(writer, encoder);
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Section:
                     WriteSectionFooter(writer, encoder);
-                    break;
+                break;
 
                 default:
                     Console.WriteLine($"Footer is not supported in context '{_context.Kind}'.");
@@ -145,7 +143,7 @@ namespace DMBBootstrapBuilder
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {
@@ -158,19 +156,19 @@ namespace DMBBootstrapBuilder
             {
                 case HtmlRenderContextKind.Body:
                     EndBodyFooter();
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Block:
                     EndBlockFooter();
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Card:
                     EndCardFooter();
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Section:
                     EndSectionFooter();
-                    break;
+                break;
             }
 
             _started = false;
@@ -251,6 +249,7 @@ namespace DMBBootstrapBuilder
                               """);
                 return;
             }
+
             Console.WriteLine("Footer inside Body is only supported for Modal at the moment.");
             //throw new InvalidOperationException("Footer inside Body is only supported for Modal at the moment.");
         }

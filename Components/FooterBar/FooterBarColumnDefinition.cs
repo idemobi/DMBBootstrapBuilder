@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FooterBarColumnDefinition.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder footer bar column definition component or support type.
+    ///     Represents the BootstrapBuilder footer bar column definition component or support type.
     /// </summary>
     public sealed class FooterBarColumnDefinition
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the groups value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the groups value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public List<GroupActionItem> Groups { get; } = new();
 
@@ -26,14 +24,14 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterBarColumnDefinition"/> class.
+        ///     Initializes a new instance of the <see cref="FooterBarColumnDefinition" /> class.
         /// </summary>
         public FooterBarColumnDefinition()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterBarColumnDefinition"/> class.
+        ///     Initializes a new instance of the <see cref="FooterBarColumnDefinition" /> class.
         /// </summary>
         /// <param name="groups">The groups value.</param>
         public FooterBarColumnDefinition(params GroupActionItem[] groups)
@@ -46,10 +44,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds groups to the current BootstrapBuilder component or page model.
+        ///     Adds groups to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="groups">The groups value.</param>
-        /// <returns>The configured <see cref="FooterBarColumnDefinition"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarColumnDefinition" /> value or BootstrapBuilder result.</returns>
         public FooterBarColumnDefinition AddGroups(params GroupActionItem[] groups)
         {
             if (groups == null)

@@ -1,20 +1,27 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using DMBPageBuilder;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring flex builder in BootstrapBuilder components.
+    ///     Provides extension methods for configuring flex builder in BootstrapBuilder components.
     /// </summary>
     public static class FlexBuilderExtensions
     {
-        private static FlexComposer GetFlexComposer<TBuilder>(TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            return builder.GetOrCreateCssComposer(() => new FlexComposer());
-        }
+        #region Static methods
 
         /// <summary>
-        /// Builds flex css classes for BootstrapBuilder rendering.
+        ///     Builds flex css classes for BootstrapBuilder rendering.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
@@ -25,12 +32,18 @@ namespace DMBBootstrapBuilder
             return GetFlexComposer(builder).BuildJoinedClasses();
         }
 
+        private static FlexComposer GetFlexComposer<TBuilder>(TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            return builder.GetOrCreateCssComposer(() => new FlexComposer());
+        }
+
         /// <summary>
-        /// Configures align items center on the current BootstrapBuilder instance.
+        ///     Configures align items center on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignItemsCenter<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -39,24 +52,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures align items start on the current BootstrapBuilder instance.
+        ///     Configures align items end on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder SetAlignItemsStart<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            GetFlexComposer(builder).AlignItems = AlignItems.Start;
-            return builder;
-        }
-
-        /// <summary>
-        /// Configures align items end on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignItemsEnd<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -65,11 +65,24 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures align items stretch on the current BootstrapBuilder instance.
+        ///     Configures align items start on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder SetAlignItemsStart<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            GetFlexComposer(builder).AlignItems = AlignItems.Start;
+            return builder;
+        }
+
+        /// <summary>
+        ///     Configures align items stretch on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAlignItemsStretch<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -78,63 +91,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures justify content center on the current BootstrapBuilder instance.
+        ///     Configures justify content around on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder SetJustifyContentCenter<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            GetFlexComposer(builder).JustifyContent = JustifyContent.Center;
-            return builder;
-        }
-
-        /// <summary>
-        /// Configures justify content start on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder SetJustifyContentStart<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            GetFlexComposer(builder).JustifyContent = JustifyContent.Start;
-            return builder;
-        }
-
-        /// <summary>
-        /// Configures justify content end on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder SetJustifyContentEnd<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            GetFlexComposer(builder).JustifyContent = JustifyContent.End;
-            return builder;
-        }
-
-        /// <summary>
-        /// Configures justify content between on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder SetJustifyContentBetween<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
-        {
-            GetFlexComposer(builder).JustifyContent = JustifyContent.Between;
-            return builder;
-        }
-
-        /// <summary>
-        /// Configures justify content around on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetJustifyContentAround<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -143,11 +104,50 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures justify content evenly on the current BootstrapBuilder instance.
+        ///     Configures justify content between on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder SetJustifyContentBetween<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            GetFlexComposer(builder).JustifyContent = JustifyContent.Between;
+            return builder;
+        }
+
+        /// <summary>
+        ///     Configures justify content center on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder SetJustifyContentCenter<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            GetFlexComposer(builder).JustifyContent = JustifyContent.Center;
+            return builder;
+        }
+
+        /// <summary>
+        ///     Configures justify content end on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder SetJustifyContentEnd<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            GetFlexComposer(builder).JustifyContent = JustifyContent.End;
+            return builder;
+        }
+
+        /// <summary>
+        ///     Configures justify content evenly on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetJustifyContentEvenly<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -156,11 +156,24 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures no wrap on the current BootstrapBuilder instance.
+        ///     Configures justify content start on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder SetJustifyContentStart<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
+        {
+            GetFlexComposer(builder).JustifyContent = JustifyContent.Start;
+            return builder;
+        }
+
+        /// <summary>
+        ///     Configures no wrap on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetNoWrap<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
@@ -169,21 +182,21 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Stores the wrap value used by BootstrapBuilder rendering or composition.
+        ///     Configures flex additional classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The flex-capable builder to configure.</param>
-        /// <param name="wrap">Whether flex items should wrap.</param>
-        /// <returns>The configured builder for fluent chaining.</returns>
-        public static TBuilder WithWrap<TBuilder>(this TBuilder builder, bool wrap = true)
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <param name="classes">The classes value.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder WithFlexAdditionalClasses<TBuilder>(this TBuilder builder, string classes)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
-            GetFlexComposer(builder).Wrap = wrap;
+            GetFlexComposer(builder).AdditionalClasses = classes ?? string.Empty;
             return builder;
         }
 
         /// <summary>
-        /// Stores the gap value used by BootstrapBuilder rendering or composition.
+        ///     Stores the gap value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The flex-capable builder to configure.</param>
@@ -197,17 +210,19 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures flex additional classes on the current BootstrapBuilder instance.
+        ///     Stores the wrap value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder WithFlexAdditionalClasses<TBuilder>(this TBuilder builder, string classes)
+        /// <param name="builder">The flex-capable builder to configure.</param>
+        /// <param name="wrap">Whether flex items should wrap.</param>
+        /// <returns>The configured builder for fluent chaining.</returns>
+        public static TBuilder WithWrap<TBuilder>(this TBuilder builder, bool wrap = true)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFlex
         {
-            GetFlexComposer(builder).AdditionalClasses = classes ?? string.Empty;
+            GetFlexComposer(builder).Wrap = wrap;
             return builder;
         }
+
+        #endregion
     }
 }

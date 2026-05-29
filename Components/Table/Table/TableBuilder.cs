@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder table component or page region.
+    ///     Builds and renders the BootstrapBuilder table component or page region.
     /// </summary>
     public sealed class TableBuilder :
         HtmlBuilderBase<TableBuilder>,
@@ -50,7 +48,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TableBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -69,9 +67,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
         public TableBuilder Begin()
         {
             if (_started)
@@ -128,6 +126,18 @@ namespace DMBBootstrapBuilder
             return new TableBuilder(_textWriter, _htmlHelper);
         }
 
+        /// <summary>
+        ///     Executes the BootstrapBuilder in caption component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder InCaptionComponent(Func<HtmlBuilderWrapper, HtmlBuilderWrapper> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _captionComponent = configure(_captionComponent);
+            return This();
+        }
+
         /// <inheritdoc />
         protected override void InternalClone(TableBuilder source)
         {
@@ -141,27 +151,177 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder in caption component operation.
+        ///     Executes the BootstrapBuilder in wrapper component operation.
         /// </summary>
         /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder InCaptionComponent(Func<HtmlBuilderWrapper, HtmlBuilderWrapper> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _captionComponent = configure(_captionComponent);
-            return This();
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in wrapper component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
         public TableBuilder InWrapperComponent(Func<TableWrapperComponent, TableWrapperComponent> configure)
         {
             ArgumentNullException.ThrowIfNull(configure);
             _wrapperComponent = configure(_wrapperComponent);
             return This();
+        }
+
+        /// <summary>
+        ///     Configures bordered on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetBordered(bool value = true)
+        {
+            return this.SetTableBordered(value);
+        }
+
+        /// <summary>
+        ///     Configures borderless on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetBorderless(bool value = true)
+        {
+            return this.SetTableBorderless(value);
+        }
+
+        /// <summary>
+        ///     Configures caption on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="caption">The caption value.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetCaption(string? caption)
+        {
+            _caption = caption;
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures dark on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetDark(bool value = true)
+        {
+            return this.SetTableDark(value);
+        }
+
+        /// <summary>
+        ///     Configures hover on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetHover(bool value = true)
+        {
+            return this.SetTableHover(value);
+        }
+
+        /// <summary>
+        ///     Configures responsive on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="responsive">The responsive value.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsive(TableResponsiveBreakpoint responsive)
+        {
+            _wrapperComponent.SetResponsiveTable(responsive);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive always on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveAlways()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Always);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive lg on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveLg()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Lg);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive md on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveMd()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Md);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive sm on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveSm()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Sm);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive xl on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveXl()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Xl);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures responsive xxl on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetResponsiveXxl()
+        {
+            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Xxl);
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures small on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetSmall(bool value = true)
+        {
+            return this.SetTableSmall(value);
+        }
+
+        /// <summary>
+        ///     Configures sortable on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetSortable(bool value = true)
+        {
+            return this.SetTableSortable(value);
+        }
+
+        /// <summary>
+        ///     Configures striped on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetStriped(bool value = true)
+        {
+            return this.SetTableStriped(value);
+        }
+
+        /// <summary>
+        ///     Configures striped columns on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TableBuilder" /> value or BootstrapBuilder result.</returns>
+        public TableBuilder SetStripedColumns(bool value = true)
+        {
+            return this.SetTableStripedColumns(value);
         }
 
         /// <inheritdoc />
@@ -205,172 +365,10 @@ namespace DMBBootstrapBuilder
             }
         }
 
-        /// <summary>
-        /// Configures bordered on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetBordered(bool value = true)
-        {
-            return this.SetTableBordered(value);
-        }
-
-        /// <summary>
-        /// Configures borderless on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetBorderless(bool value = true)
-        {
-            return this.SetTableBorderless(value);
-        }
-
-        /// <summary>
-        /// Configures caption on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="caption">The caption value.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetCaption(string? caption)
-        {
-            _caption = caption;
-            return This();
-        }
-
-        /// <summary>
-        /// Configures dark on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetDark(bool value = true)
-        {
-            return this.SetTableDark(value);
-        }
-
-        /// <summary>
-        /// Configures hover on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetHover(bool value = true)
-        {
-            return this.SetTableHover(value);
-        }
-
-        /// <summary>
-        /// Configures responsive on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="responsive">The responsive value.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsive(TableResponsiveBreakpoint responsive)
-        {
-            _wrapperComponent.SetResponsiveTable(responsive);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive always on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveAlways()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Always);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive lg on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveLg()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Lg);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive md on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveMd()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Md);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive sm on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveSm()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Sm);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive xl on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveXl()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Xl);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures responsive xxl on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetResponsiveXxl()
-        {
-            _wrapperComponent.SetResponsiveTable(TableResponsiveBreakpoint.Xxl);
-            return This();
-        }
-
-        /// <summary>
-        /// Configures small on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetSmall(bool value = true)
-        {
-            return this.SetTableSmall(value);
-        }
-
-        /// <summary>
-        /// Configures sortable on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetSortable(bool value = true)
-        {
-            return this.SetTableSortable(value);
-        }
-
-        /// <summary>
-        /// Configures striped on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetStriped(bool value = true)
-        {
-            return this.SetTableStriped(value);
-        }
-
-        /// <summary>
-        /// Configures striped columns on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableBuilder"/> value or BootstrapBuilder result.</returns>
-        public TableBuilder SetStripedColumns(bool value = true)
-        {
-            return this.SetTableStripedColumns(value);
-        }
-
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

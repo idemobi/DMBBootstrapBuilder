@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BreadcrumbBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -12,7 +10,6 @@
 using System.Net;
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -22,7 +19,7 @@ using Microsoft.AspNetCore.Mvc.Routing;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder breadcrumb component or page region.
+    ///     Builds and renders the BootstrapBuilder breadcrumb component or page region.
     /// </summary>
     public sealed class BreadcrumbBuilder :
         HtmlBuilderBase<BreadcrumbBuilder>,
@@ -53,7 +50,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BreadcrumbBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="BreadcrumbBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -72,10 +69,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds item to the current BootstrapBuilder component or page model.
+        ///     Adds item to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="actionItem">The action item value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
         public BreadcrumbBuilder AddItem(IActionItem actionItem)
         {
             if (actionItem is not null)
@@ -87,10 +84,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds items to the current BootstrapBuilder component or page model.
+        ///     Adds items to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="actionItems">The action items value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
         public BreadcrumbBuilder AddItems(params IActionItem[] actionItems)
         {
             if (actionItems is null)
@@ -107,10 +104,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds items to the current BootstrapBuilder component or page model.
+        ///     Adds items to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="actionItems">The action items value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
         public BreadcrumbBuilder AddItems(IEnumerable<IActionItem> actionItems)
         {
             if (actionItems is null)
@@ -124,48 +121,6 @@ namespace DMBBootstrapBuilder
             }
 
             return This();
-        }
-
-        /// <summary>
-        /// Configures collapse after on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="maxVisibleItems">The max visible items value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
-        public BreadcrumbBuilder SetCollapseAfter(int maxVisibleItems)
-        {
-            _collapseAfter = maxVisibleItems >= 3 ? maxVisibleItems : null;
-            return This();
-        }
-
-        /// <summary>
-        /// Configures display mode on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="displayMode">The display mode value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
-        public BreadcrumbBuilder SetDisplayMode(BreadcrumbDisplayMode displayMode)
-        {
-            _displayMode = displayMode;
-            return This();
-        }
-
-        /// <summary>
-        /// Configures separator on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="separator">The separator value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
-        public BreadcrumbBuilder SetSeparator(string? separator)
-        {
-            return this.SetBreadcrumbDivider(separator);
-        }
-
-        /// <summary>
-        /// Configures style on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="BreadcrumbBuilder"/> value or BootstrapBuilder result.</returns>
-        public BreadcrumbBuilder SetStyle(BreadcrumbStyle style)
-        {
-            return this.SetBreadcrumbStyle(style);
         }
 
         /// <inheritdoc />
@@ -184,6 +139,48 @@ namespace DMBBootstrapBuilder
 
             _displayMode = source._displayMode;
             _collapseAfter = source._collapseAfter;
+        }
+
+        /// <summary>
+        ///     Configures collapse after on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="maxVisibleItems">The max visible items value.</param>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
+        public BreadcrumbBuilder SetCollapseAfter(int maxVisibleItems)
+        {
+            _collapseAfter = maxVisibleItems >= 3 ? maxVisibleItems : null;
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures display mode on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="displayMode">The display mode value.</param>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
+        public BreadcrumbBuilder SetDisplayMode(BreadcrumbDisplayMode displayMode)
+        {
+            _displayMode = displayMode;
+            return This();
+        }
+
+        /// <summary>
+        ///     Configures separator on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="separator">The separator value.</param>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
+        public BreadcrumbBuilder SetSeparator(string? separator)
+        {
+            return this.SetBreadcrumbDivider(separator);
+        }
+
+        /// <summary>
+        ///     Configures style on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="style">The style value.</param>
+        /// <returns>The configured <see cref="BreadcrumbBuilder" /> value or BootstrapBuilder result.</returns>
+        public BreadcrumbBuilder SetStyle(BreadcrumbStyle style)
+        {
+            return this.SetBreadcrumbStyle(style);
         }
 
         /// <inheritdoc />
@@ -208,6 +205,7 @@ namespace DMBBootstrapBuilder
                 {
                     SetStyle("--bs-breadcrumb-divider", "/");
                 }
+
                 writer.Write($"<{GetTag()}{BuildAttributes()}>");
                 writer.Write("<ol class=\"breadcrumb mb-0\">");
                 WriteItems(writer, encoder, divider ?? string.Empty);
@@ -395,8 +393,9 @@ namespace DMBBootstrapBuilder
                 writer.Write("</li>");
                 if (string.IsNullOrWhiteSpace(divider) == false)
                 {
-                    writer.Write("<li class=\"mx-1\">"+WebUtility.HtmlEncode(divider)+"</li>");
+                    writer.Write("<li class=\"mx-1\">" + WebUtility.HtmlEncode(divider) + "</li>");
                 }
+
                 return;
             }
 
@@ -410,7 +409,7 @@ namespace DMBBootstrapBuilder
             writer.Write("</li>");
             if (string.IsNullOrWhiteSpace(divider) == false)
             {
-                writer.Write("<li class=\"mx-1\">"+WebUtility.HtmlEncode(divider)+"</li>");
+                writer.Write("<li class=\"mx-1\">" + WebUtility.HtmlEncode(divider) + "</li>");
             }
         }
 
@@ -423,6 +422,7 @@ namespace DMBBootstrapBuilder
                     WriteCollapsedItem(writer);
                     continue;
                 }
+
                 if (item is not null)
                 {
                     WriteItem(item, isLast, writer, divider);

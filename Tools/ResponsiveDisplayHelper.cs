@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ResponsiveDisplayHelper.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder responsive display helper component or support type.
+    ///     Represents the BootstrapBuilder responsive display helper component or support type.
     /// </summary>
     public static class ResponsiveDisplayHelper
     {
         #region Static methods
 
         /// <summary>
-        /// Builds responsive css for BootstrapBuilder rendering.
+        ///     Builds responsive css for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="visibleFrom">The visible from value.</param>
         /// <param name="visibleUntil">The visible until value.</param>
@@ -45,7 +43,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Builds visible from css for BootstrapBuilder rendering.
+        ///     Builds visible from css for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="breakpoint">The breakpoint value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -63,7 +61,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Builds visible until css for BootstrapBuilder rendering.
+        ///     Builds visible until css for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="breakpoint">The breakpoint value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

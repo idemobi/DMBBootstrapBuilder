@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj NavbarBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder navbar component or page region.
+    ///     Builds and renders the BootstrapBuilder navbar component or page region.
     /// </summary>
     public sealed class NavbarBuilder : HtmlTagBuilder<NavbarBuilder>, ICanUseCustomClasses
     {
@@ -85,7 +83,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavbarBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="NavbarBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -100,10 +98,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="component">The component value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Add(INavbarComponent component)
         {
             ArgumentNullException.ThrowIfNull(component);
@@ -148,10 +146,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder class operation.
+        ///     Executes the BootstrapBuilder class operation.
         /// </summary>
         /// <param name="cssClass">The css class value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Class(string cssClass)
         {
             if (!string.IsNullOrWhiteSpace(cssClass))
@@ -168,20 +166,11 @@ namespace DMBBootstrapBuilder
             return new NavbarBuilder(_textWriter, _htmlHelper);
         }
 
-        /// <inheritdoc />
-        protected override void InternalClone(NavbarBuilder source)
-        {
-            base.InternalClone(source);
-
-            _components.Clear();
-            _components.AddRange(source._components);
-        }
-
         /// <summary>
-        /// Executes the BootstrapBuilder expand operation.
+        ///     Executes the BootstrapBuilder expand operation.
         /// </summary>
         /// <param name="expand">The expand value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Expand(NavbarExpand expand)
         {
             _expand = expand;
@@ -189,10 +178,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder fluid operation.
+        ///     Executes the BootstrapBuilder fluid operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Fluid(bool value = true)
         {
             _fluid = value;
@@ -243,21 +232,30 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder id operation.
+        ///     Executes the BootstrapBuilder id operation.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Id(string id)
         {
             SetId(HtmlIdGenerator.CleanId(id) ?? string.Empty);
             return this;
         }
 
+        /// <inheritdoc />
+        protected override void InternalClone(NavbarBuilder source)
+        {
+            base.InternalClone(source);
+
+            _components.Clear();
+            _components.AddRange(source._components);
+        }
+
         /// <summary>
-        /// Executes the BootstrapBuilder justify operation.
+        ///     Executes the BootstrapBuilder justify operation.
         /// </summary>
         /// <param name="justify">The justify value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Justify(JustifyContent justify)
         {
             _justify = justify;
@@ -265,10 +263,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder placement operation.
+        ///     Executes the BootstrapBuilder placement operation.
         /// </summary>
         /// <param name="placement">The placement value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Placement(NavbarPlacement placement)
         {
             _placement = placement;
@@ -276,10 +274,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder show from operation.
+        ///     Executes the BootstrapBuilder show from operation.
         /// </summary>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder ShowFrom(ResponsiveBreakpoint breakpoint)
         {
             _visibleFrom = breakpoint;
@@ -287,10 +285,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder show until operation.
+        ///     Executes the BootstrapBuilder show until operation.
         /// </summary>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder ShowUntil(ResponsiveBreakpoint breakpoint)
         {
             _visibleUntil = breakpoint;
@@ -298,10 +296,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder style operation.
+        ///     Executes the BootstrapBuilder style operation.
         /// </summary>
         /// <param name="cssStyle">The css style value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Style(string cssStyle)
         {
             if (string.IsNullOrWhiteSpace(cssStyle))
@@ -317,10 +315,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder variant operation.
+        ///     Executes the BootstrapBuilder variant operation.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder Variant(VariantStyle variant)
         {
             _variant = variant;
@@ -328,10 +326,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures align items on the current BootstrapBuilder instance.
+        ///     Configures align items on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="alignItems">The align items value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder WithAlignItems(AlignItems alignItems)
         {
             _alignItems = alignItems;
@@ -339,10 +337,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures gap on the current BootstrapBuilder instance.
+        ///     Configures gap on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="oldGap">The old gap value.</param>
-        /// <returns>The configured <see cref="NavbarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="NavbarBuilder" /> value or BootstrapBuilder result.</returns>
         public NavbarBuilder WithGap(Old_Gap oldGap)
         {
             _oldGap = oldGap;

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ContainerBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder container component or page region.
+    ///     Builds and renders the BootstrapBuilder container component or page region.
     /// </summary>
     public sealed class ContainerBuilder : HtmlTagBuilder<ContainerBuilder>,
         ICanUsePadding,
@@ -27,29 +25,29 @@ namespace DMBBootstrapBuilder
     {
         #region Instance fields and properties
 
+        private BlockBuilder _containerComponent;
+
         private ContainerStyle _containerStyle = ContainerStyle.Default;
+        private BlockBuilder _mainComponent;
         private SpacingSize _margin = SpacingSize.Auto;
         private SpacingSize _padding = SpacingSize.Three;
 
         private HtmlRenderContext? _renderContext;
 
         private SideBarComponent? _sidebar;
+        private BlockBuilder _sidebarComponent;
         private string _sidebarMaxWidth = "400px";
         private string _sidebarMinWidth = "200px";
         private ResponsiveBreakpoint _sidebarShowFrom = ResponsiveBreakpoint.Xl;
         private string _sidebarWidth = "320px";
         private bool _switchableToFluid;
 
-        private BlockBuilder _containerComponent;
-        private BlockBuilder _mainComponent;
-        private BlockBuilder _sidebarComponent;
-
         #endregion
 
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ContainerBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ContainerBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -72,6 +70,47 @@ namespace DMBBootstrapBuilder
             return new ContainerBuilder(_textWriter, _htmlHelper);
         }
 
+        private bool HasSidebar()
+        {
+            return _sidebar != null && _sidebar.HasContent;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder in container component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
+        public ContainerBuilder InContainerComponent(Func<BlockBuilder, BlockBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _containerComponent = configure(_containerComponent);
+            return this;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder in main component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
+        public ContainerBuilder InMainComponent(Func<BlockBuilder, BlockBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _mainComponent = configure(_mainComponent);
+            return this;
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder in side bar component operation.
+        /// </summary>
+        /// <param name="configure">The configure value.</param>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
+        public ContainerBuilder InSideBarComponent(Func<BlockBuilder, BlockBuilder> configure)
+        {
+            ArgumentNullException.ThrowIfNull(configure);
+            _sidebarComponent = configure(_sidebarComponent);
+            return this;
+        }
+
         /// <inheritdoc />
         protected override void InternalClone(ContainerBuilder source)
         {
@@ -92,47 +131,6 @@ namespace DMBBootstrapBuilder
             _sidebarComponent = source._sidebarComponent.Clone();
 
             _renderContext = null;
-        }
-
-        private bool HasSidebar()
-        {
-            return _sidebar != null && _sidebar.HasContent;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in container component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
-        public ContainerBuilder InContainerComponent(Func<BlockBuilder, BlockBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _containerComponent = configure(_containerComponent);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in main component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
-        public ContainerBuilder InMainComponent(Func<BlockBuilder, BlockBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _mainComponent = configure(_mainComponent);
-            return this;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder in side bar component operation.
-        /// </summary>
-        /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
-        public ContainerBuilder InSideBarComponent(Func<BlockBuilder, BlockBuilder> configure)
-        {
-            ArgumentNullException.ThrowIfNull(configure);
-            _sidebarComponent = configure(_sidebarComponent);
-            return this;
         }
 
         /// <inheritdoc />
@@ -190,10 +188,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures margin on the current BootstrapBuilder instance.
+        ///     Configures margin on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
         public ContainerBuilder SetMargin(SpacingSize size)
         {
             _margin = size;
@@ -201,10 +199,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures padding on the current BootstrapBuilder instance.
+        ///     Configures padding on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
         public ContainerBuilder SetPadding(SpacingSize size)
         {
             _padding = size;
@@ -212,18 +210,19 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures sidebar on the current BootstrapBuilder instance.
+        ///     Configures sidebar on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="sidebar">The sidebar value.</param>
         /// <param name="width">The width value.</param>
         /// <param name="unitSize">The unit size value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
         public ContainerBuilder SetSidebar(
             SideBarComponent? sidebar,
             uint width = 320,
             UnitSize unitSize = UnitSize.px,
-            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xl)
+            ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xl
+        )
         {
             _sidebar = sidebar;
             _sidebarWidth = $"{width}{unitSize}";
@@ -232,10 +231,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder style operation.
+        ///     Executes the BootstrapBuilder style operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
         public ContainerBuilder Style(ContainerStyle style)
         {
             _containerStyle = style;
@@ -243,10 +242,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder switchable to fluid operation.
+        ///     Executes the BootstrapBuilder switchable to fluid operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ContainerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ContainerBuilder" /> value or BootstrapBuilder result.</returns>
         public ContainerBuilder SwitchableToFluid(bool value = true)
         {
             _switchableToFluid = value;

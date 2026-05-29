@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SplitActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder split action item component or support type.
+    ///     Represents the BootstrapBuilder split action item component or support type.
     /// </summary>
     public sealed class SplitActionItem : IActionContainerItem, IDropdownDirectional
     {
@@ -25,23 +23,24 @@ namespace DMBBootstrapBuilder
         private readonly List<IActionItem> _items = new();
 
         /// <summary>
-        /// Gets or sets the primary action value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the primary action value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IActionItem PrimaryAction { get; set; }
 
         #region From interface IActionContainerItem
 
         /// <summary>
-        /// Gets or sets a value indicating whether children is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether children is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool HasChildren => _items.Count > 0;
+
         /// <summary>
-        /// Gets or sets the html attributes value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the html attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IReadOnlyDictionary<string, string> HtmlAttributes => new Dictionary<string, string>();
 
         /// <summary>
-        /// Gets or sets the items value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the items value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public List<IActionItem> Items => _items;
 
@@ -50,7 +49,7 @@ namespace DMBBootstrapBuilder
         #region From interface IDropdownDirectional
 
         /// <summary>
-        /// Gets or sets the dropdown direction value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown direction value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public DropdownDirection DropdownDirection { get; set; } = DropdownDirection.Default;
 
@@ -61,7 +60,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SplitActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="SplitActionItem" /> class.
         /// </summary>
         /// <param name="primaryAction">The primary action value.</param>
         public SplitActionItem(IActionItem primaryAction)
@@ -76,9 +75,9 @@ namespace DMBBootstrapBuilder
         #region From interface IActionContainerItem
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionItem" /> value or BootstrapBuilder result.</returns>
         public IActionItem Clone()
         {
             var clone = new SplitActionItem(PrimaryAction.Clone())
@@ -196,10 +195,10 @@ namespace DMBBootstrapBuilder
         #region Fluent API
 
         /// <summary>
-        /// Executes the BootstrapBuilder outlined operation.
+        ///     Executes the BootstrapBuilder outlined operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Outlined(bool value = true)
         {
             Outline = value;
@@ -207,10 +206,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithVariant(VariantStyle variant)
         {
             Variant = variant;
@@ -218,10 +217,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures size on the current BootstrapBuilder instance.
+        ///     Configures size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithSize(BoostrapButtonSize size)
         {
             Size = size;
@@ -229,10 +228,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures disabled on the current BootstrapBuilder instance.
+        ///     Configures disabled on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem SetDisabled(bool value = true)
         {
             Disabled = value;
@@ -240,10 +239,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures active on the current BootstrapBuilder instance.
+        ///     Configures active on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem SetActive(bool value = true)
         {
             Active = value;
@@ -251,11 +250,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds badge to the current BootstrapBuilder component or page model.
+        ///     Adds badge to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem AddBadge(string text, VariantStyle style = VariantStyle.Danger)
         {
             BadgeText = text;
@@ -264,10 +263,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures classes on the current BootstrapBuilder instance.
+        ///     Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithClasses(string classes)
         {
             AdditionalClasses = classes ?? string.Empty;
@@ -275,10 +274,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithTitle(string? title)
         {
             Title = title;
@@ -286,10 +285,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures subtitle on the current BootstrapBuilder instance.
+        ///     Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithSubtitle(string? subtitle)
         {
             Subtitle = subtitle;
@@ -297,10 +296,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon on the current BootstrapBuilder instance.
+        ///     Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithIcon(IconStruct icon)
         {
             Icon = icon;
@@ -309,10 +308,10 @@ namespace DMBBootstrapBuilder
 
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="item">The item value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Add(IActionItem item)
         {
             if (item == null)
@@ -325,10 +324,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Add(params IActionItem[] items)
         {
             if (items == null)
@@ -345,20 +344,20 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds items to the current BootstrapBuilder component or page model.
+        ///     Adds items to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem AddItems(params IActionItem[] items)
         {
             return Add(items);
         }
 
         /// <summary>
-        /// Configures dropdown direction on the current BootstrapBuilder instance.
+        ///     Configures dropdown direction on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="direction">The direction value.</param>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem WithDropdownDirection(DropdownDirection direction)
         {
             DropdownDirection = direction;
@@ -366,9 +365,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder centered operation.
+        ///     Executes the BootstrapBuilder centered operation.
         /// </summary>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Centered()
         {
             DropdownDirection = DropdownDirection.Centered;
@@ -376,9 +375,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropup operation.
+        ///     Executes the BootstrapBuilder dropup operation.
         /// </summary>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Dropup()
         {
             DropdownDirection = DropdownDirection.Dropup;
@@ -386,9 +385,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropup centered operation.
+        ///     Executes the BootstrapBuilder dropup centered operation.
         /// </summary>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem DropupCentered()
         {
             DropdownDirection = DropdownDirection.DropupCentered;
@@ -396,9 +395,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropend operation.
+        ///     Executes the BootstrapBuilder dropend operation.
         /// </summary>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Dropend()
         {
             DropdownDirection = DropdownDirection.Dropend;
@@ -406,9 +405,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropstart operation.
+        ///     Executes the BootstrapBuilder dropstart operation.
         /// </summary>
-        /// <returns>The configured <see cref="SplitActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SplitActionItem" /> value or BootstrapBuilder result.</returns>
         public SplitActionItem Dropstart()
         {
             DropdownDirection = DropdownDirection.Dropstart;

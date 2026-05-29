@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj AlertBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -20,7 +18,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder alert component or page region.
+    ///     Builds and renders the BootstrapBuilder alert component or page region.
     /// </summary>
     [Documented]
     public sealed class AlertBuilder :
@@ -29,6 +27,33 @@ namespace DMBBootstrapBuilder
         ICanUseCustomClasses,
         IDisposable
     {
+        #region Instance constructors and destructors
+
+        #region Constructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="AlertBuilder" /> class.
+        /// </summary>
+        /// <param name="writer">The writer that receives the rendered HTML output.</param>
+        /// <param name="html">The Razor HTML helper used to access view context and services.</param>
+        public AlertBuilder(TextWriter writer, IHtmlHelper html)
+            : base(writer, html)
+        {
+            _footerActions = new List<IActionItem>();
+
+            _tag = "div";
+
+            SetAttribute("role", "alert");
+            SetData("alert", "true");
+
+            this.SetAlertVariant(VariantStyle.Primary);
+            this.SetAlertShow(true);
+        }
+
+        #endregion
+
+        #endregion
+
         #region Fields
 
         private readonly List<IActionItem> _footerActions;
@@ -71,36 +96,13 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
-        #region Constructors
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AlertBuilder"/> class.
-        /// </summary>
-        /// <param name="writer">The writer that receives the rendered HTML output.</param>
-        /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        public AlertBuilder(TextWriter writer, IHtmlHelper html)
-            : base(writer, html)
-        {
-            _footerActions = new List<IActionItem>();
-
-            _tag = "div";
-
-            SetAttribute("role", "alert");
-            SetData("alert", "true");
-
-            this.SetAlertVariant(VariantStyle.Primary);
-            this.SetAlertShow(true);
-        }
-
-        #endregion
-
         #region Public API
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetTitle(string? title)
         {
@@ -109,10 +111,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title level on the current BootstrapBuilder instance.
+        ///     Configures title level on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="level">The level value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetTitleLevel(TitleLevel level)
         {
@@ -121,10 +123,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon on the current BootstrapBuilder instance.
+        ///     Configures icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetIcon(IconStruct icon)
         {
@@ -133,10 +135,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures message on the current BootstrapBuilder instance.
+        ///     Configures message on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="message">The message value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetMessage(string? message)
         {
@@ -146,10 +148,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures message on the current BootstrapBuilder instance.
+        ///     Configures message on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetMessage(IHtmlContent? content)
         {
@@ -159,11 +161,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dismissible on the current BootstrapBuilder instance.
+        ///     Configures dismissible on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
         /// <param name="animated">The animated value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetDismissible(bool value = true, bool animated = false)
         {
@@ -175,10 +177,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder SetVariant(VariantStyle variant)
         {
@@ -186,10 +188,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds footer action to the current BootstrapBuilder component or page model.
+        ///     Adds footer action to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="actionItem">The action item value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder AddFooterAction(IActionItem actionItem)
         {
@@ -202,10 +204,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds footer actions to the current BootstrapBuilder component or page model.
+        ///     Adds footer actions to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="actionItems">The action items value.</param>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder AddFooterActions(params IActionItem[] actionItems)
         {
@@ -223,9 +225,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="AlertBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertBuilder" /> value or BootstrapBuilder result.</returns>
         [Documented]
         public AlertBuilder Begin()
         {
@@ -247,7 +249,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

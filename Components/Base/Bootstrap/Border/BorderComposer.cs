@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BorderComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for border.
+    ///     Composes Bootstrap CSS classes or page chrome for border.
     /// </summary>
     public sealed class BorderComposer : IIsCssClassComposer
     {
@@ -172,11 +170,11 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder border operation.
+        ///     Executes the BootstrapBuilder border operation.
         /// </summary>
         /// <param name="side">The side value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="BorderComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BorderComposer" /> value or BootstrapBuilder result.</returns>
         public BorderComposer Border(BorderSide side = BorderSide.All, ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
         {
             _presenceRules[(side, breakpoint)] = new BorderPresenceRule(side, BorderPresence.Visible, breakpoint);
@@ -184,11 +182,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder border color operation.
+        ///     Executes the BootstrapBuilder border color operation.
         /// </summary>
         /// <param name="color">The color value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="BorderComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BorderComposer" /> value or BootstrapBuilder result.</returns>
         public BorderComposer BorderColor(BorderColor color, ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
         {
             _colorRules[breakpoint] = new BorderColorRule(color, breakpoint);
@@ -196,11 +194,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder border opacity operation.
+        ///     Executes the BootstrapBuilder border opacity operation.
         /// </summary>
         /// <param name="opacity">The opacity value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="BorderComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BorderComposer" /> value or BootstrapBuilder result.</returns>
         public BorderComposer BorderOpacity(BorderOpacity opacity, ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
         {
             _opacityRules[breakpoint] = new BorderOpacityRule(opacity, breakpoint);
@@ -208,7 +206,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Builds class string for BootstrapBuilder rendering.
+        ///     Builds class string for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string BuildClassString()
@@ -217,11 +215,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder no border operation.
+        ///     Executes the BootstrapBuilder no border operation.
         /// </summary>
         /// <param name="side">The side value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="BorderComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BorderComposer" /> value or BootstrapBuilder result.</returns>
         public BorderComposer NoBorder(BorderSide side = BorderSide.All, ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
         {
             _presenceRules[(side, breakpoint)] = new BorderPresenceRule(side, BorderPresence.None, breakpoint);
@@ -229,12 +227,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder rounded operation.
+        ///     Executes the BootstrapBuilder rounded operation.
         /// </summary>
         /// <param name="size">The size value.</param>
         /// <param name="side">The side value.</param>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="BorderComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BorderComposer" /> value or BootstrapBuilder result.</returns>
         public BorderComposer Rounded(BorderRadiusSize size = BorderRadiusSize.Normal, BorderRadiusSide side = BorderRadiusSide.All, ResponsiveBreakpoint breakpoint = ResponsiveBreakpoint.Xs)
         {
             _radiusRules[(side, breakpoint)] = new BorderRadiusRule(side, size, breakpoint);
@@ -244,7 +242,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -263,9 +261,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             var clone = new BorderComposer();

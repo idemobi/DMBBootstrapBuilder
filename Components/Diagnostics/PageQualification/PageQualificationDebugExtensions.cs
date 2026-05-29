@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj PageQualificationDebugExtensions.cs create at 2026/05/12
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,29 +16,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides Razor helper methods for page qualification diagnostics.
+    ///     Provides Razor helper methods for page qualification diagnostics.
     /// </summary>
     public static class PageQualificationDebugExtensions
     {
-        /// <summary>
-        /// Creates a configured page qualification debug builder.
-        /// </summary>
-        /// <param name="html">The current HTML helper.</param>
-        /// <param name="status">The qualification status.</param>
-        /// <param name="sourcePath">The Razor source path.</param>
-        /// <returns>A configured debug builder.</returns>
-        public static PageQualificationDebugBuilder PageQualificationDebugBuilder(
-            this IHtmlHelper html,
-            PageQualificationStatus status = PageQualificationStatus.Validated,
-            string sourcePath = "")
-        {
-            return new PageQualificationDebugBuilder(html.ViewContext.Writer, html)
-                .SetStatus(status)
-                .SetSourcePath(sourcePath);
-        }
+        #region Static methods
 
         /// <summary>
-        /// Begins a diagnostic wrapper around a page or partial view.
+        ///     Begins a diagnostic wrapper around a page or partial view.
         /// </summary>
         /// <param name="html">The current HTML helper.</param>
         /// <param name="status">The qualification status.</param>
@@ -49,13 +32,14 @@ namespace DMBBootstrapBuilder
         public static IDisposable DebugPageComment(
             this IHtmlHelper html,
             PageQualificationStatus status = PageQualificationStatus.Validated,
-            [CallerFilePath] string callerFilePath = "")
+            [CallerFilePath] string callerFilePath = ""
+        )
         {
             return html.PageQualificationDebugBuilder(status, callerFilePath).Begin();
         }
 
         /// <summary>
-        /// Renders only the visible page qualification marker.
+        ///     Renders only the visible page qualification marker.
         /// </summary>
         /// <param name="html">The current HTML helper.</param>
         /// <param name="status">The qualification status.</param>
@@ -64,9 +48,30 @@ namespace DMBBootstrapBuilder
         public static IHtmlContent DebugPageQualification(
             this IHtmlHelper html,
             PageQualificationStatus status = PageQualificationStatus.Validated,
-            [CallerFilePath] string callerFilePath = "")
+            [CallerFilePath] string callerFilePath = ""
+        )
         {
             return html.PageQualificationDebugBuilder(status, callerFilePath).RenderMarker();
         }
+
+        /// <summary>
+        ///     Creates a configured page qualification debug builder.
+        /// </summary>
+        /// <param name="html">The current HTML helper.</param>
+        /// <param name="status">The qualification status.</param>
+        /// <param name="sourcePath">The Razor source path.</param>
+        /// <returns>A configured debug builder.</returns>
+        public static PageQualificationDebugBuilder PageQualificationDebugBuilder(
+            this IHtmlHelper html,
+            PageQualificationStatus status = PageQualificationStatus.Validated,
+            string sourcePath = ""
+        )
+        {
+            return new PageQualificationDebugBuilder(html.ViewContext.Writer, html)
+                .SetStatus(status)
+                .SetSourcePath(sourcePath);
+        }
+
+        #endregion
     }
 }

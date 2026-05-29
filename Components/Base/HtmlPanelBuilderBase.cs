@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj HtmlPanelBuilderBase.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -20,7 +18,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder html panel builder base component or support type.
+    ///     Represents the BootstrapBuilder html panel builder base component or support type.
     /// </summary>
     /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
     public abstract class HtmlPanelBuilderBase<TBuilder> :
@@ -42,6 +40,7 @@ namespace DMBBootstrapBuilder
         ///     Stores whether the panel should be rendered only in debug-oriented contexts.
         /// </summary>
         protected bool _debugOnly;
+
         private CardDecorationStyle _decoration = CardDecorationStyle.Decoration_None;
 
         private IActionItem? _headerAction;
@@ -193,11 +192,11 @@ namespace DMBBootstrapBuilder
         #region Fluent API
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="titleLevel">The title level value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetTitle(string title, TitleLevel titleLevel = TitleLevel.Three)
         {
             _iconOnlyHeader = false;
@@ -209,10 +208,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures subtitle on the current BootstrapBuilder instance.
+        ///     Configures subtitle on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetSubtitle(string subtitle)
         {
             _subtitle = subtitle;
@@ -220,10 +219,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon bootstrap on the current BootstrapBuilder instance.
+        ///     Configures icon bootstrap on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="iconBootstrap">The icon bootstrap value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetIconBootstrap(string iconBootstrap)
         {
             _icon = IconStruct.Bootstrap(iconBootstrap);
@@ -231,13 +230,13 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
+        ///     Configures title on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="titleLevel">The title level value.</param>
         /// <param name="icon">The icon value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithTitle(string title, TitleLevel titleLevel, IconStruct icon = default, string? subtitle = null)
         {
             if (string.IsNullOrWhiteSpace(title))
@@ -257,13 +256,13 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures icon only on the current BootstrapBuilder instance.
+        ///     Configures icon only on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="titleLevel">The title level value.</param>
         /// <param name="icon">The icon value.</param>
         /// <param name="centered">The centered value.</param>
         /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithIconOnly(TitleLevel titleLevel, IconStruct icon, bool centered = true, string? subtitle = null)
         {
             if (icon.IsEmpty)
@@ -283,9 +282,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder debug only operation.
+        ///     Executes the BootstrapBuilder debug only operation.
         /// </summary>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder DebugOnly()
         {
             _debugOnly = true;
@@ -293,10 +292,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder centered operation.
+        ///     Executes the BootstrapBuilder centered operation.
         /// </summary>
         /// <param name="centered">The centered value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder Centered(bool centered = true)
         {
             _centered = centered;
@@ -304,10 +303,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder no header operation.
+        ///     Executes the BootstrapBuilder no header operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder NoHeader(bool value = true)
         {
             _noHeader = value;
@@ -315,10 +314,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder body no padding operation.
+        ///     Executes the BootstrapBuilder body no padding operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder BodyNoPadding(bool value = true)
         {
             _bodyNoPadding = value;
@@ -326,10 +325,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -337,10 +336,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures decoration on the current BootstrapBuilder instance.
+        ///     Configures decoration on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="decoration">The decoration value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithDecoration(CardDecorationStyle decoration)
         {
             _decoration = decoration;
@@ -348,10 +347,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures additional classes on the current BootstrapBuilder instance.
+        ///     Configures additional classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="additionalClasses">The additional classes value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithAdditionalClasses(string additionalClasses)
         {
             _additionalClasses = additionalClasses;
@@ -359,10 +358,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures body class on the current BootstrapBuilder instance.
+        ///     Configures body class on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="cssClass">The css class value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder WithBodyClass(string cssClass)
         {
             if (!string.IsNullOrWhiteSpace(cssClass))
@@ -376,10 +375,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures header action on the current BootstrapBuilder instance.
+        ///     Configures header action on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="action">The action value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetHeaderAction(IActionItem action)
         {
             _headerAction = action ?? throw new ArgumentNullException(nameof(action));
@@ -387,66 +386,66 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures data attribut on the current BootstrapBuilder instance.
+        ///     Configures data attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetDataAttribut(string name, string value)
         {
             return SetAttribut($"data-{name}", value);
         }
 
         /// <summary>
-        /// Configures data attribut on the current BootstrapBuilder instance.
+        ///     Configures data attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetDataAttribut(string name, bool value)
         {
             return SetAttribut($"data-{name}", value);
         }
 
         /// <summary>
-        /// Configures aria attribut on the current BootstrapBuilder instance.
+        ///     Configures aria attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetAriaAttribut(string name, string value)
         {
             return SetAttribut($"aria-{name}", value);
         }
 
         /// <summary>
-        /// Configures aria attribut on the current BootstrapBuilder instance.
+        ///     Configures aria attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetAriaAttribut(string name, bool value)
         {
             return SetAttribut($"aria-{name}", value);
         }
 
         /// <summary>
-        /// Configures attribut on the current BootstrapBuilder instance.
+        ///     Configures attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetAttribut(string name, string value)
         {
             return SetAttribute(name, value);
         }
 
         /// <summary>
-        /// Configures attribut on the current BootstrapBuilder instance.
+        ///     Configures attribut on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="name">The name value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder SetAttribut(string name, bool value)
         {
             return SetAttribute(name, value);
@@ -457,9 +456,9 @@ namespace DMBBootstrapBuilder
         #region Public rendering lifecycle
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public TBuilder Begin()
         {
             if (_started)
@@ -478,7 +477,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public virtual void Dispose()
         {
@@ -608,7 +607,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         ///     Gets a value indicating whether the panel should render a close button in its tools area.
         /// </summary>
-        /// <returns><see langword="true"/> when a close button should be rendered; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true" /> when a close button should be rendered; otherwise, <see langword="false" />.</returns>
         protected virtual bool HasCloseButton()
         {
             return false;
@@ -709,7 +708,7 @@ namespace DMBBootstrapBuilder
         /// <summary>
         ///     Gets a value indicating whether the panel should render the closing body markup.
         /// </summary>
-        /// <returns><see langword="true"/> when the body closing markup should be rendered.</returns>
+        /// <returns><see langword="true" /> when the body closing markup should be rendered.</returns>
         protected virtual bool ShouldRenderBodyEndHtml()
         {
             return true;
@@ -775,23 +774,23 @@ namespace DMBBootstrapBuilder
                 if (_iconOnlyCentered)
                 {
                     return $"""
- <div class="{prefix}-header bg-{styleCss}text-bg-{styleCss}border-bottom"{additionalAttributes}>
-    <div class="d-flex flex-column align-items-center text-center {headerContentCss}">
-        <{titleLevel}class="{prefix}-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
-        {subtitleHtml}
-    </div>
- </div>
- """;
+                            <div class="{prefix}-header bg-{styleCss}text-bg-{styleCss}border-bottom"{additionalAttributes}>
+                               <div class="d-flex flex-column align-items-center text-center {headerContentCss}">
+                                   <{titleLevel}class="{prefix}-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
+                                   {subtitleHtml}
+                               </div>
+                            </div>
+                            """;
                 }
 
                 return $"""
- <div class="{prefix}-header bg-{styleCss}text-bg-{styleCss}border-bottom"{additionalAttributes}>
-    <div class="{headerContentCss}">
-        <{titleLevel}class="{prefix}-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
-        {subtitleHtml}
-    </div>
- </div>
- """;
+                        <div class="{prefix}-header bg-{styleCss}text-bg-{styleCss}border-bottom"{additionalAttributes}>
+                           <div class="{headerContentCss}">
+                               <{titleLevel}class="{prefix}-title d-inline-flex align-items-center">{iconHtmlOnly}</{titleLevel}>
+                               {subtitleHtml}
+                           </div>
+                        </div>
+                        """;
             }
 
             string iconHtml = _icon.IsEmpty
@@ -803,13 +802,13 @@ namespace DMBBootstrapBuilder
                 : $"""<div class="{prefix}-subtitle small opacity-75">{HtmlEncoder.Default.Encode(_subtitle)}</div>""";
 
             return $"""
-<div class="{prefix}-header bg-{styleCss} text-bg-{styleCss} border-bottom"{additionalAttributes}>
-    <div class="{headerContentCss}">
-        <{titleLevel} class="{prefix}-title d-inline-flex align-items-center {titleGap}">{iconHtml}<span>{HtmlEncoder.Default.Encode(_title ?? string.Empty)}</span></{titleLevel}>
-        {standardSubtitleHtml}
-    </div>
-</div>
-""";
+                    <div class="{prefix}-header bg-{styleCss} text-bg-{styleCss} border-bottom"{additionalAttributes}>
+                        <div class="{headerContentCss}">
+                            <{titleLevel} class="{prefix}-title d-inline-flex align-items-center {titleGap}">{iconHtml}<span>{HtmlEncoder.Default.Encode(_title ?? string.Empty)}</span></{titleLevel}>
+                            {standardSubtitleHtml}
+                        </div>
+                    </div>
+                    """;
         }
 
         /// <summary>
@@ -826,10 +825,10 @@ namespace DMBBootstrapBuilder
             }
 
             return $"""
-<div class="{GetToolsOverlayContainerCss()}">
-    {toolsContentHtml}
-</div>
-""";
+                    <div class="{GetToolsOverlayContainerCss()}">
+                        {toolsContentHtml}
+                    </div>
+                    """;
         }
 
         /// <summary>
@@ -886,8 +885,8 @@ namespace DMBBootstrapBuilder
             }
 
             return $"""
-<div class="{string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)))}">
-""";
+                    <div class="{string.Join(" ", classes.Where(x => !string.IsNullOrWhiteSpace(x)))}">
+                    """;
         }
 
         /// <summary>

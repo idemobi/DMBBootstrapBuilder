@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj LanguageBarSectionProvider.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -24,7 +22,7 @@ using Microsoft.Extensions.Options;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides language bar section content for BootstrapBuilder page chrome.
+    ///     Provides language bar section content for BootstrapBuilder page chrome.
     /// </summary>
     public class LanguageBarSectionProvider : IProfileBarSectionProvider
     {
@@ -35,7 +33,7 @@ namespace DMBBootstrapBuilder
         #region From interface IProfileBarSectionProvider
 
         /// <summary>
-        /// Gets or sets the order value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the order value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int Order => 900;
 
@@ -46,7 +44,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LanguageBarSectionProvider"/> class.
+        ///     Initializes a new instance of the <see cref="LanguageBarSectionProvider" /> class.
         /// </summary>
         /// <param name="locOptions">The loc options value.</param>
         public LanguageBarSectionProvider(IOptions<RequestLocalizationOptions> locOptions)
@@ -61,11 +59,11 @@ namespace DMBBootstrapBuilder
         #region From interface IProfileBarSectionProvider
 
         /// <summary>
-        /// Builds value for BootstrapBuilder rendering.
+        ///     Builds value for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="ProfilBarModuleResult"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProfilBarModuleResult" /> value or BootstrapBuilder result.</returns>
         public ProfilBarModuleResult Build(TextWriter writer, IHtmlHelper html)
         {
             HttpContext context = html.ViewContext.HttpContext;
@@ -114,7 +112,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Determines whether enabled is active for BootstrapBuilder rendering.
+        ///     Determines whether enabled is active for BootstrapBuilder rendering.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>

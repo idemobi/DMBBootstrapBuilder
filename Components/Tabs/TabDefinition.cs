@@ -1,4 +1,15 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using DMBPageBuilder;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
@@ -7,43 +18,52 @@ namespace DMBBootstrapBuilder
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the active value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the active value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool Active { get; set; }
+
         /// <summary>
-        /// Gets or sets the badges value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the badges value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public List<BadgeBuilder> Badges { get; set; } = new();
+
         /// <summary>
-        /// Gets or sets the content html value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the content html value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string ContentHtml { get; set; } = string.Empty;
+
         /// <summary>
-        /// Gets or sets the disabled value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the disabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool Disabled { get; set; }
+
         /// <summary>
-        /// Gets or sets the fade value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the fade value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool Fade { get; set; } = true;
+
         /// <summary>
-        /// Gets or sets the icon value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IconStruct Icon { get; set; }
+
         /// <summary>
-        /// Gets or sets the id value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the id value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string Id { get; set; } = string.Empty;
+
         /// <summary>
-        /// Gets or sets the pane id value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the pane id value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string PaneId { get; set; } = string.Empty;
+
         /// <summary>
-        /// Gets or sets the subtitle value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the subtitle value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? Subtitle { get; set; }
+
         /// <summary>
-        /// Gets or sets the title value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the title value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? Title { get; set; }
 
@@ -52,9 +72,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="TabDefinition"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabDefinition" /> value or BootstrapBuilder result.</returns>
         public TabDefinition Clone()
         {
             return new TabDefinition

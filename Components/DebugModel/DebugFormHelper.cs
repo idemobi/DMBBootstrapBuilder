@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj DebugFormHelper.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -21,7 +19,7 @@ using Microsoft.AspNetCore.Html;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder debug form helper component or support type.
+    ///     Represents the BootstrapBuilder debug form helper component or support type.
     /// </summary>
     public static class DebugFormHelper
     {
@@ -206,7 +204,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders form for the BootstrapBuilder output.
+        ///     Renders form for the BootstrapBuilder output.
         /// </summary>
         /// <typeparam name="T">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="model">The model value.</param>
@@ -407,8 +405,8 @@ namespace DMBBootstrapBuilder
                     string valueStr = value?.ToString() ?? "";
                     if (value is decimal d) valueStr = d.ToString(CultureInfo.InvariantCulture);
 
-                    string minAttr  = !string.IsNullOrEmpty(attr?.Min)  ? $@" min=""{attr!.Min}"""  : "";
-                    string maxAttr  = !string.IsNullOrEmpty(attr?.Max)  ? $@" max=""{attr!.Max}"""  : "";
+                    string minAttr = !string.IsNullOrEmpty(attr?.Min) ? $@" min=""{attr!.Min}""" : "";
+                    string maxAttr = !string.IsNullOrEmpty(attr?.Max) ? $@" max=""{attr!.Max}""" : "";
                     string stepAttr = !string.IsNullOrEmpty(attr?.Step) ? $@" step=""{attr!.Step}""" : "";
 
                     sb.AppendLine($@"<input id=""{propId}"" type=""{typeAttr}"" class=""form-control {classAttr}"" value=""{WebUtility.HtmlEncode(valueStr)}""{minAttr}{maxAttr}{stepAttr}>");

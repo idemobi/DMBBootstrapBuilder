@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BodyBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder body component or page region.
+    ///     Builds and renders the BootstrapBuilder body component or page region.
     /// </summary>
     public sealed class BodyBuilder : HtmlConstrainedTagBuilder<BodyBuilder>, IDisposable
     {
@@ -33,7 +31,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BodyBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="BodyBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -48,19 +46,19 @@ namespace DMBBootstrapBuilder
             {
                 case HtmlRenderContextKind.Block:
                     _classesOfComponent.Add("block-body");
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Card:
                     _classesOfComponent.Add("card-body");
-                    break;
+                break;
 
                 case HtmlRenderContextKind.Body:
                     _classesOfComponent.Add("body");
-                    break;
+                break;
 
                 default:
                     _classesOfComponent.Add("body");
-                    break;
+                break;
             }
         }
 
@@ -69,9 +67,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="BodyBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BodyBuilder" /> value or BootstrapBuilder result.</returns>
         public new BodyBuilder Begin()
         {
             if (_started)
@@ -96,10 +94,71 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        private HtmlRenderContext CreateBodyContext()
+        {
+            HtmlRenderContext bodyContext = new HtmlRenderContext
+            {
+                Kind = HtmlRenderContextKind.Body,
+                Owner = this
+            };
+
+            bodyContext.Data["ParentKind"] = _parentContext.Kind;
+            bodyContext.Data["ParentContext"] = _parentContext;
+            bodyContext.Data[HtmlRegionStateKeys.BodyClosedByFooter] = false;
+
+            return bodyContext;
+        }
+
         /// <inheritdoc />
         protected override BodyBuilder CreateInstance()
         {
             return new BodyBuilder(_textWriter, _htmlHelper, _parentContext);
+        }
+
+        /// <inheritdoc />
+        protected override void OnBeginRendering()
+        {
+        }
+
+        /// <inheritdoc />
+        protected override void OnEndRendering()
+        {
+        }
+
+        private void ReopenBodyIfFooterIsCurrentlyOpen()
+        {
+            bool footerOpen =
+                _parentContext.Data.TryGetValue(HtmlRegionStateKeys.FooterOpen, out object? footerObj) &&
+                footerObj is bool footerIsOpen &&
+                footerIsOpen;
+
+            if (!footerOpen)
+            {
+                return;
+            }
+
+            switch (_parentContext.Kind)
+            {
+                case HtmlRenderContextKind.Block:
+                    _textWriter.Write("</div></div>");
+                break;
+
+                case HtmlRenderContextKind.Card:
+                    _textWriter.Write("</div></div>");
+                break;
+
+                case HtmlRenderContextKind.Section:
+                    _textWriter.Write("</div></footer>");
+                break;
+
+                case HtmlRenderContextKind.Modal:
+                case HtmlRenderContextKind.Body:
+                    _textWriter.Write("</div></div>");
+                break;
+            }
+
+            _parentContext.Data[HtmlRegionStateKeys.FooterOpen] = false;
+            _parentContext.Data[HtmlRegionStateKeys.BodyOpen] = false;
         }
 
         /// <inheritdoc />
@@ -130,71 +189,10 @@ namespace DMBBootstrapBuilder
             }
         }
 
-        /// <inheritdoc />
-        protected override void OnBeginRendering()
-        {
-        }
-
-        /// <inheritdoc />
-        protected override void OnEndRendering()
-        {
-        }
-
-        private HtmlRenderContext CreateBodyContext()
-        {
-            HtmlRenderContext bodyContext = new HtmlRenderContext
-            {
-                Kind = HtmlRenderContextKind.Body,
-                Owner = this
-            };
-
-            bodyContext.Data["ParentKind"] = _parentContext.Kind;
-            bodyContext.Data["ParentContext"] = _parentContext;
-            bodyContext.Data[HtmlRegionStateKeys.BodyClosedByFooter] = false;
-
-            return bodyContext;
-        }
-
-        private void ReopenBodyIfFooterIsCurrentlyOpen()
-        {
-            bool footerOpen =
-                _parentContext.Data.TryGetValue(HtmlRegionStateKeys.FooterOpen, out object? footerObj) &&
-                footerObj is bool footerIsOpen &&
-                footerIsOpen;
-
-            if (!footerOpen)
-            {
-                return;
-            }
-
-            switch (_parentContext.Kind)
-            {
-                case HtmlRenderContextKind.Block:
-                    _textWriter.Write("</div></div>");
-                    break;
-
-                case HtmlRenderContextKind.Card:
-                    _textWriter.Write("</div></div>");
-                    break;
-
-                case HtmlRenderContextKind.Section:
-                    _textWriter.Write("</div></footer>");
-                    break;
-
-                case HtmlRenderContextKind.Modal:
-                case HtmlRenderContextKind.Body:
-                    _textWriter.Write("</div></div>");
-                    break;
-            }
-
-            _parentContext.Data[HtmlRegionStateKeys.FooterOpen] = false;
-            _parentContext.Data[HtmlRegionStateKeys.BodyOpen] = false;
-        }
-
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {

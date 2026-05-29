@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj HtmlBuilderWrapper.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder html builder wrapper component or support type.
+    ///     Represents the BootstrapBuilder html builder wrapper component or support type.
     /// </summary>
     public class HtmlBuilderWrapper : HtmlTagBuilder<HtmlBuilderWrapper>
     {
@@ -35,7 +33,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HtmlBuilderWrapper"/> class.
+        ///     Initializes a new instance of the <see cref="HtmlBuilderWrapper" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -49,7 +47,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="HtmlBuilderWrapper"/> class.
+        ///     Initializes a new instance of the <see cref="HtmlBuilderWrapper" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -63,29 +61,36 @@ namespace DMBBootstrapBuilder
             _inner = inner;
             if (string.IsNullOrWhiteSpace(classes) == false)
             {
-            _classesOfComponent.Add(classes);
+                _classesOfComponent.Add(classes);
+            }
         }
-    }
 
         #endregion
 
         #region Instance methods
 
-        /// <summary>
-        /// Configures inner on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="inner">The inner value.</param>
-        /// <returns>The configured <see cref="HtmlBuilderWrapper"/> value or BootstrapBuilder result.</returns>
-        public HtmlBuilderWrapper SetInner(string? inner)
-        {
-            _inner = inner;
-            return this;
-        }
-
         /// <inheritdoc />
         protected override HtmlBuilderWrapper CreateInstance()
         {
             return new HtmlBuilderWrapper(_textWriter, _htmlHelper, _tag, string.Empty, _inner);
+        }
+
+        /// <inheritdoc />
+        protected override void InternalClone(HtmlBuilderWrapper source)
+        {
+            base.InternalClone(source);
+            _inner = source._inner;
+        }
+
+        /// <summary>
+        ///     Configures inner on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="inner">The inner value.</param>
+        /// <returns>The configured <see cref="HtmlBuilderWrapper" /> value or BootstrapBuilder result.</returns>
+        public HtmlBuilderWrapper SetInner(string? inner)
+        {
+            _inner = inner;
+            return this;
         }
 
         /// <inheritdoc />
@@ -99,13 +104,6 @@ namespace DMBBootstrapBuilder
             }
 
             writer.Write($"</{_tag}>");
-        }
-
-        /// <inheritdoc />
-        protected override void InternalClone(HtmlBuilderWrapper source)
-        {
-            base.InternalClone(source);
-            _inner = source._inner;
         }
 
         #endregion

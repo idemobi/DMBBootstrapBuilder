@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ProgressBarStackBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder progress bar stack component or page region.
+    ///     Builds and renders the BootstrapBuilder progress bar stack component or page region.
     /// </summary>
     public sealed class ProgressBarStackBuilder :
         HtmlTagBuilder<ProgressBarStackBuilder>,
@@ -39,7 +37,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressBarStackBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ProgressBarStackBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -55,10 +53,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds progress bar to the current BootstrapBuilder component or page model.
+        ///     Adds progress bar to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="segment">The segment value.</param>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder AddProgressBar(ProgressBarBuilder segment)
         {
             ArgumentNullException.ThrowIfNull(segment);
@@ -67,7 +65,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds progress bar to the current BootstrapBuilder component or page model.
+        ///     Adds progress bar to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="value">The value to apply.</param>
         /// <param name="style">The style value.</param>
@@ -75,14 +73,15 @@ namespace DMBBootstrapBuilder
         /// <param name="showLabel">The show label value.</param>
         /// <param name="striped">The striped value.</param>
         /// <param name="animated">The animated value.</param>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder AddProgressBar(
             double value,
             VariantStyle style,
             string? label = null,
             bool showLabel = false,
             bool striped = false,
-            bool animated = false)
+            bool animated = false
+        )
         {
             ProgressBarBuilder segment = new ProgressBarBuilder(_textWriter, _htmlHelper)
                 .SetPercentage(value)
@@ -118,20 +117,32 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Removes all progress bar from the current BootstrapBuilder component or composer.
+        ///     Removes all progress bar from the current BootstrapBuilder component or composer.
         /// </summary>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder RemoveAllProgressBar()
         {
             _segments.Clear();
             return this;
         }
 
+        private void RestoreAttribute(string name, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                RemoveAttribute(name);
+            }
+            else
+            {
+                _attributes[name] = value;
+            }
+        }
+
         /// <summary>
-        /// Configures aria label on the current BootstrapBuilder instance.
+        ///     Configures aria label on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="label">The label value.</param>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder SetAriaLabel(string? label)
         {
             _ariaLabel = label ?? string.Empty;
@@ -139,21 +150,21 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures height on the current BootstrapBuilder instance.
+        ///     Configures height on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
         /// <param name="unit">The unit value.</param>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder SetHeight(uint size, UnitSize unit)
         {
             return SetStyle("height", $"{size}{unit.GetCss()}");
         }
 
         /// <summary>
-        /// Configures size on the current BootstrapBuilder instance.
+        ///     Configures size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ProgressBarStackBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarStackBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarStackBuilder SetSize(ProgressBarSize size)
         {
             return SetStyle("height", size.GetSizeAndUnitStyle());
@@ -183,18 +194,6 @@ namespace DMBBootstrapBuilder
             finally
             {
                 RestoreAttribute("aria-label", previousAriaLabel);
-            }
-        }
-
-        private void RestoreAttribute(string name, string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                RemoveAttribute(name);
-            }
-            else
-            {
-                _attributes[name] = value;
             }
         }
 

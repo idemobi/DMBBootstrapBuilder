@@ -1,12 +1,22 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder tab block component or page region.
+    ///     Builds and renders the BootstrapBuilder tab block component or page region.
     /// </summary>
     public sealed class TabBlockBuilder :
         HtmlBuilderBase<TabBlockBuilder>,
@@ -56,7 +66,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TabBlockBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TabBlockBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -72,32 +82,21 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder active operation.
+        ///     Executes the BootstrapBuilder active operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public TabBlockBuilder Active(bool value = true)
         {
             return this.SetTabBlockActive(value);
         }
 
         /// <summary>
-        /// Configures badge on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="badge">The badge value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder SetBadge(BadgeBuilder badge)
-        {
-            _badges.Set(badge);
-            return this;
-        }
-
-        /// <summary>
-        /// Adds badge to the current BootstrapBuilder component or page model.
+        ///     Adds badge to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="badge">The badge value.</param>
         /// <param name="others">The others value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public TabBlockBuilder AddBadge(BadgeBuilder badge, params BadgeBuilder[] others)
         {
             _badges.Add(badge, others);
@@ -105,21 +104,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder clear badges operation.
-        /// </summary>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder ClearBadges()
-        {
-            _badges.Clear();
-            return this;
-        }
-
-        /// <summary>
-        /// Adds badge to the current BootstrapBuilder component or page model.
+        ///     Adds badge to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="text">The text value.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public TabBlockBuilder AddBadge(string text, VariantStyle style = VariantStyle.Danger)
         {
             BadgeBuilder badge = new BadgeBuilder(_textWriter, _htmlHelper)
@@ -131,9 +120,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public TabBlockBuilder Begin()
         {
             if (_started)
@@ -156,55 +145,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder disabled operation.
+        ///     Executes the BootstrapBuilder clear badges operation.
         /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder Disabled(bool value = true)
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder ClearBadges()
         {
-            return this.SetTabBlockDisabled(value);
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder fade operation.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder Fade(bool value = true)
-        {
-            return this.SetTabBlockFade(value);
-        }
-
-        /// <summary>
-        /// Configures icon on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder WithIcon(IconStruct icon)
-        {
-            _icon = icon;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures subtitle on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="subtitle">The subtitle value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder WithSubtitle(string? subtitle)
-        {
-            _subtitle = subtitle;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures title on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="TabBlockBuilder"/> value or BootstrapBuilder result.</returns>
-        public TabBlockBuilder WithTitle(string? title)
-        {
-            _title = title;
+            _badges.Clear();
             return this;
         }
 
@@ -212,6 +158,26 @@ namespace DMBBootstrapBuilder
         protected override TabBlockBuilder CreateInstance()
         {
             return new TabBlockBuilder(_textWriter, _htmlHelper);
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder disabled operation.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder Disabled(bool value = true)
+        {
+            return this.SetTabBlockDisabled(value);
+        }
+
+        /// <summary>
+        ///     Executes the BootstrapBuilder fade operation.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder Fade(bool value = true)
+        {
+            return this.SetTabBlockFade(value);
         }
 
         /// <inheritdoc />
@@ -229,6 +195,50 @@ namespace DMBBootstrapBuilder
             _title = source._title;
         }
 
+        /// <summary>
+        ///     Configures badge on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="badge">The badge value.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder SetBadge(BadgeBuilder badge)
+        {
+            _badges.Set(badge);
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures icon on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="icon">The icon value.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder WithIcon(IconStruct icon)
+        {
+            _icon = icon;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures subtitle on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="subtitle">The subtitle value.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder WithSubtitle(string? subtitle)
+        {
+            _subtitle = subtitle;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures title on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="title">The title value.</param>
+        /// <returns>The configured <see cref="TabBlockBuilder" /> value or BootstrapBuilder result.</returns>
+        public TabBlockBuilder WithTitle(string? title)
+        {
+            _title = title;
+            return this;
+        }
+
         /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
@@ -238,7 +248,7 @@ namespace DMBBootstrapBuilder
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

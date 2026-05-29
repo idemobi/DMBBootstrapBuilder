@@ -1,9 +1,20 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using DMBPageBuilder;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring progress bar in BootstrapBuilder components.
+    ///     Provides extension methods for configuring progress bar in BootstrapBuilder components.
     /// </summary>
     public static class ProgressBarExtensions
     {
@@ -16,15 +27,16 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures animated on the current BootstrapBuilder instance.
+        ///     Configures animated on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetAnimated<TBuilder>(
             this TBuilder builder,
-            bool value = true)
+            bool value = true
+        )
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseProgressBar
         {
             GetProgressBarComposer(builder).SetAnimated(value);
@@ -32,15 +44,16 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures striped on the current BootstrapBuilder instance.
+        ///     Configures striped on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetStriped<TBuilder>(
             this TBuilder builder,
-            bool value = true)
+            bool value = true
+        )
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseProgressBar
         {
             GetProgressBarComposer(builder).SetStriped(value);
@@ -48,15 +61,16 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetVariant<TBuilder>(
             this TBuilder builder,
-            VariantStyle variant)
+            VariantStyle variant
+        )
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseProgressBar
         {
             GetProgressBarComposer(builder).SetVariant(variant);

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BasicBootstrapBodyBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,43 +16,51 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder basic bootstrap body component or page region.
+    ///     Builds and renders the BootstrapBuilder basic bootstrap body component or page region.
     /// </summary>
     public class BasicBootstrapBodyBuilder : IBodyBuilder
     {
         #region Instance fields and properties
 
-        private ContainerBuilder Container = null!;
         /// <summary>
-        /// Stores the body attributes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the body attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly Dictionary<string, string> BodyAttributes = new(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
-        /// Stores the body classes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the body classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly List<string> BodyClasses = new();
+
+        private ContainerBuilder Container = null!;
+
         /// <summary>
-        /// Stores the footer attributes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the footer attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly Dictionary<string, string> FooterAttributes = new(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
-        /// Stores the footer classes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the footer classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly List<string> FooterClasses = new();
+
         /// <summary>
-        /// Stores the header attributes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the header attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly Dictionary<string, string> HeaderAttributes = new(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
-        /// Stores the header classes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the header classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly List<string> HeaderClasses = new();
+
         /// <summary>
-        /// Stores the main attributes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the main attributes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly Dictionary<string, string> MainAttributes = new(StringComparer.OrdinalIgnoreCase);
+
         /// <summary>
-        /// Stores the main classes value used by BootstrapBuilder rendering or composition.
+        ///     Stores the main classes value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public readonly List<string> MainClasses = new();
 
@@ -63,7 +69,7 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Renders body attributes for the BootstrapBuilder output.
+        ///     Renders body attributes for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string RenderBodyAttributes()
@@ -84,7 +90,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders footer attributes for the BootstrapBuilder output.
+        ///     Renders footer attributes for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string RenderFooterAttributes()
@@ -105,7 +111,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders header attributes for the BootstrapBuilder output.
+        ///     Renders header attributes for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string RenderHeaderAttributes()
@@ -126,7 +132,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders main attributes for the BootstrapBuilder output.
+        ///     Renders main attributes for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string RenderMainAttributes()
@@ -149,7 +155,7 @@ namespace DMBBootstrapBuilder
         #region From interface IBodyBuilder
 
         /// <summary>
-        /// Renders body end for the BootstrapBuilder output.
+        ///     Renders body end for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -160,7 +166,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders body start for the BootstrapBuilder output.
+        ///     Renders body start for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -174,7 +180,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders footer end for the BootstrapBuilder output.
+        ///     Renders footer end for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -185,7 +191,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders footer start for the BootstrapBuilder output.
+        ///     Renders footer start for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -200,7 +206,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders header end for the BootstrapBuilder output.
+        ///     Renders header end for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -211,7 +217,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders header start for the BootstrapBuilder output.
+        ///     Renders header start for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -223,7 +229,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders main end for the BootstrapBuilder output.
+        ///     Renders main end for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -237,7 +243,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders main start for the BootstrapBuilder output.
+        ///     Renders main start for the BootstrapBuilder output.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>

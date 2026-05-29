@@ -1,13 +1,24 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using System.Net;
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+#endregion
+
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder tab area component or page region.
+    ///     Builds and renders the BootstrapBuilder tab area component or page region.
     /// </summary>
     public sealed class TabAreaBuilder :
         HtmlBuilderBase<TabAreaBuilder>,
@@ -109,7 +120,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TabAreaBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TabAreaBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -127,9 +138,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Begin()
         {
             if (_started)
@@ -212,11 +223,17 @@ namespace DMBBootstrapBuilder
                 : string.Empty;
         }
 
+        /// <inheritdoc />
+        protected override TabAreaBuilder CreateInstance()
+        {
+            return new TabAreaBuilder(_textWriter, _htmlHelper);
+        }
+
         /// <summary>
-        /// Executes the BootstrapBuilder enable hash navigation operation.
+        ///     Executes the BootstrapBuilder enable hash navigation operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder EnableHashNavigation(bool value = true)
         {
             _enableHashNavigation = value;
@@ -238,29 +255,44 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder fill operation.
+        ///     Executes the BootstrapBuilder fill operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Fill(bool value = true)
         {
             return this.SetTabAreaFill(value);
         }
 
+        /// <inheritdoc />
+        protected override void InternalClone(TabAreaBuilder source)
+        {
+            base.InternalClone(source);
+
+            _contentClasses = source._contentClasses;
+            _disposed = false;
+            _enableHashNavigation = source._enableHashNavigation;
+            _navClasses = source._navClasses;
+            _started = false;
+            _tabs.Clear();
+            _tabs.AddRange(source._tabs.Select(x => x.Clone()));
+            _updateHashOnTabChange = source._updateHashOnTabChange;
+        }
+
         /// <summary>
-        /// Executes the BootstrapBuilder justified operation.
+        ///     Executes the BootstrapBuilder justified operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Justified(bool value = true)
         {
             return this.SetTabAreaJustified(value);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder pills operation.
+        ///     Executes the BootstrapBuilder pills operation.
         /// </summary>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Pills()
         {
             return this.SetTabAreaStyle(TabAreaStyle.Pills);
@@ -284,74 +316,35 @@ namespace DMBBootstrapBuilder
             _tabs.Add(tab);
         }
 
-        /// <inheritdoc />
-        protected override TabAreaBuilder CreateInstance()
-        {
-            return new TabAreaBuilder(_textWriter, _htmlHelper);
-        }
-
-        /// <inheritdoc />
-        protected override void InternalClone(TabAreaBuilder source)
-        {
-            base.InternalClone(source);
-
-            _contentClasses = source._contentClasses;
-            _disposed = false;
-            _enableHashNavigation = source._enableHashNavigation;
-            _navClasses = source._navClasses;
-            _started = false;
-            _tabs.Clear();
-            _tabs.AddRange(source._tabs.Select(x => x.Clone()));
-            _updateHashOnTabChange = source._updateHashOnTabChange;
-        }
-
-        /// <inheritdoc />
-        protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
-        {
-            if (_tabs.Count == 0)
-            {
-                return;
-            }
-
-            EnsureActiveTab();
-
-            string navCss = BuildNavCss();
-            string contentCss = JoinClasses("tab-content", _contentClasses);
-
-            List<string> navItems = new();
-            List<string> panes = new();
-
-            foreach (TabDefinition tab in _tabs)
-            {
-                navItems.Add(RenderNavItem(tab));
-                panes.Add(RenderPane(tab));
-            }
-
-            string hashScript = (_enableHashNavigation || _updateHashOnTabChange)
-                ? RenderHashNavigationScript()
-                : string.Empty;
-
-            writer.Write($"""
-                         <div{BuildRootAttributes()}>
-                             <ul class="{WebUtility.HtmlEncode(navCss)}" role="tablist">
-                                 {string.Join(Environment.NewLine, navItems)}
-                             </ul>
-                             <div class="{WebUtility.HtmlEncode(contentCss)}">
-                                 {string.Join(Environment.NewLine, panes)}
-                             </div>
-                         </div>
-                         {hashScript}
-                         """);
-        }
-
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
         public override IHtmlContent Render()
         {
             throw new NotImplementedException();
-        }private string RenderHashNavigationScript()
+        }
+
+        private string RenderBadges(TabDefinition tab)
+        {
+            if (tab.Badges == null || tab.Badges.Count == 0)
+            {
+                return string.Empty;
+            }
+
+            using StringWriter writer = new();
+            writer.Write("""<span class="d-inline-flex align-items-center gap-1">""");
+
+            foreach (BadgeBuilder badge in tab.Badges)
+            {
+                badge.WriteTo(writer, HtmlEncoder.Default);
+            }
+
+            writer.Write("</span>");
+            return writer.ToString();
+        }
+
+        private string RenderHashNavigationScript()
         {
             string id = WebUtility.HtmlEncode(GetId());
 
@@ -503,58 +496,39 @@ namespace DMBBootstrapBuilder
             return writer.ToString();
         }
 
-        private string RenderBadges(TabDefinition tab)
-        {
-            if (tab.Badges == null || tab.Badges.Count == 0)
-            {
-                return string.Empty;
-            }
-
-            using StringWriter writer = new();
-            writer.Write("""<span class="d-inline-flex align-items-center gap-1">""");
-
-            foreach (BadgeBuilder badge in tab.Badges)
-            {
-                badge.WriteTo(writer, HtmlEncoder.Default);
-            }
-
-            writer.Write("</span>");
-            return writer.ToString();
-        }
-
         /// <summary>
-        /// Executes the BootstrapBuilder style operation.
+        ///     Executes the BootstrapBuilder style operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Style(TabAreaStyle style)
         {
             return this.SetTabAreaStyle(style);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder tabs operation.
+        ///     Executes the BootstrapBuilder tabs operation.
         /// </summary>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Tabs()
         {
             return this.SetTabAreaStyle(TabAreaStyle.Tabs);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder underline operation.
+        ///     Executes the BootstrapBuilder underline operation.
         /// </summary>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder Underline()
         {
             return this.SetTabAreaStyle(TabAreaStyle.Underline);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder update hash on tab change operation.
+        ///     Executes the BootstrapBuilder update hash on tab change operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder UpdateHashOnTabChange(bool value = true)
         {
             _updateHashOnTabChange = value;
@@ -562,10 +536,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures content classes on the current BootstrapBuilder instance.
+        ///     Configures content classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder WithContentClasses(string classes)
         {
             _contentClasses = classes ?? string.Empty;
@@ -573,20 +547,59 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures nav classes on the current BootstrapBuilder instance.
+        ///     Configures nav classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="TabAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TabAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public TabAreaBuilder WithNavClasses(string classes)
         {
             _navClasses = classes ?? string.Empty;
             return this;
         }
 
+        /// <inheritdoc />
+        protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
+        {
+            if (_tabs.Count == 0)
+            {
+                return;
+            }
+
+            EnsureActiveTab();
+
+            string navCss = BuildNavCss();
+            string contentCss = JoinClasses("tab-content", _contentClasses);
+
+            List<string> navItems = new();
+            List<string> panes = new();
+
+            foreach (TabDefinition tab in _tabs)
+            {
+                navItems.Add(RenderNavItem(tab));
+                panes.Add(RenderPane(tab));
+            }
+
+            string hashScript = (_enableHashNavigation || _updateHashOnTabChange)
+                ? RenderHashNavigationScript()
+                : string.Empty;
+
+            writer.Write($"""
+                          <div{BuildRootAttributes()}>
+                              <ul class="{WebUtility.HtmlEncode(navCss)}" role="tablist">
+                                  {string.Join(Environment.NewLine, navItems)}
+                              </ul>
+                              <div class="{WebUtility.HtmlEncode(contentCss)}">
+                                  {string.Join(Environment.NewLine, panes)}
+                              </div>
+                          </div>
+                          {hashScript}
+                          """);
+        }
+
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

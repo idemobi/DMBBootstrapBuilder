@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj HeaderHtmlHelper.cs create at 2026/04/08 09:04:40
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,17 +15,17 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder header html helper component or support type.
+    ///     Represents the BootstrapBuilder header html helper component or support type.
     /// </summary>
     public static class HeaderHtmlHelper
     {
         #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder header builder operation.
+        ///     Executes the BootstrapBuilder header builder operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="HeaderBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="HeaderBuilder" /> value or BootstrapBuilder result.</returns>
         public static HeaderBuilder HeaderBuilder(this IHtmlHelper html)
         {
             var context = HtmlRenderContextManager.Current(html);

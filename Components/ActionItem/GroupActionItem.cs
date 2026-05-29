@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj GroupActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -29,7 +27,7 @@ namespace DMBBootstrapBuilder
     }
 
     /// <summary>
-    /// Represents the BootstrapBuilder group action item component or support type.
+    ///     Represents the BootstrapBuilder group action item component or support type.
     /// </summary>
     public sealed class GroupActionItem : ActionContainerBase<GroupActionItem>,
         IDropdownDirectional
@@ -39,7 +37,7 @@ namespace DMBBootstrapBuilder
         #region From interface IDropdownDirectional
 
         /// <summary>
-        /// Gets or sets the dropdown direction value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the dropdown direction value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public DropdownDirection DropdownDirection { get; set; } = DropdownDirection.Default;
 
@@ -50,14 +48,14 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GroupActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="GroupActionItem" /> class.
         /// </summary>
         public GroupActionItem()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GroupActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="GroupActionItem" /> class.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="icon">The icon value.</param>
@@ -72,9 +70,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionItem" /> value or BootstrapBuilder result.</returns>
         public override IActionItem Clone()
         {
             var clone = new GroupActionItem
@@ -104,9 +102,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropdown operation.
+        ///     Executes the BootstrapBuilder dropdown operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem Dropdown()
         {
             DropdownDirection = DropdownDirection.Default;
@@ -114,9 +112,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropdown centered operation.
+        ///     Executes the BootstrapBuilder dropdown centered operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem DropdownCentered()
         {
             DropdownDirection = DropdownDirection.Centered;
@@ -124,9 +122,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropend operation.
+        ///     Executes the BootstrapBuilder dropend operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem Dropend()
         {
             DropdownDirection = DropdownDirection.Dropend;
@@ -134,9 +132,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropstart operation.
+        ///     Executes the BootstrapBuilder dropstart operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem Dropstart()
         {
             DropdownDirection = DropdownDirection.Dropstart;
@@ -144,9 +142,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropup operation.
+        ///     Executes the BootstrapBuilder dropup operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem Dropup()
         {
             DropdownDirection = DropdownDirection.Dropup;
@@ -154,9 +152,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder dropup centered operation.
+        ///     Executes the BootstrapBuilder dropup centered operation.
         /// </summary>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem DropupCentered()
         {
             DropdownDirection = DropdownDirection.DropupCentered;
@@ -164,10 +162,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures dropdown direction on the current BootstrapBuilder instance.
+        ///     Configures dropdown direction on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="direction">The direction value.</param>
-        /// <returns>The configured <see cref="GroupActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="GroupActionItem" /> value or BootstrapBuilder result.</returns>
         public GroupActionItem WithDropdownDirection(DropdownDirection direction)
         {
             DropdownDirection = direction;

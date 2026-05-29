@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj VariantStyleInternalExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring variant style internal in BootstrapBuilder components.
+    ///     Provides extension methods for configuring variant style internal in BootstrapBuilder components.
     /// </summary>
     public static class VariantStyleInternalExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Gets background css class for BootstrapBuilder rendering or composition.
+        ///     Gets background css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <param name="subtle">The subtle value.</param>
@@ -42,7 +40,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets button variant css for BootstrapBuilder rendering or composition.
+        ///     Gets button variant css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="style">The style value.</param>
         /// <param name="mode">The mode value.</param>
@@ -60,10 +58,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets recommended text variant for BootstrapBuilder rendering or composition.
+        ///     Gets recommended text variant for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="backgroundVariant">The background variant value.</param>
-        /// <returns>The configured <see cref="VariantStyle"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="VariantStyle" /> value or BootstrapBuilder result.</returns>
         public static VariantStyle? GetRecommendedTextVariant(this VariantStyle backgroundVariant)
         {
             return backgroundVariant switch
@@ -82,7 +80,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets text css class for BootstrapBuilder rendering or composition.
+        ///     Gets text css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <param name="emphasis">The emphasis value.</param>
@@ -101,7 +99,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets variant css for BootstrapBuilder rendering or composition.
+        ///     Gets variant css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

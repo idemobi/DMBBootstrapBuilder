@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj HtmlStyleHelper.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder html style helper component or support type.
+    ///     Represents the BootstrapBuilder html style helper component or support type.
     /// </summary>
     public static class HtmlStyleHelper
     {
         #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder merge style operation.
+        ///     Executes the BootstrapBuilder merge style operation.
         /// </summary>
         /// <param name="currentStyle">The current style value.</param>
         /// <param name="appendedStyle">The appended style value.</param>

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj TableRowBuilder.cs create at 2026/04/13 12:04:26
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder table row component or page region.
+    ///     Builds and renders the BootstrapBuilder table row component or page region.
     /// </summary>
     public sealed class TableRowBuilder :
         HtmlTagBuilder<TableRowBuilder>,
@@ -45,7 +43,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TableRowBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="TableRowBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -61,9 +59,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public override TableRowBuilder Begin()
         {
             if (_started)
@@ -114,21 +112,21 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures active on the current BootstrapBuilder instance.
+        ///     Configures active on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetActive(bool value = true)
         {
             return this.SetTableRowActive(value);
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, string? value)
         {
             PageInformation page = PageRegistry.GetOrCreatePageInformation(_htmlHelper.ViewContext.HttpContext);
@@ -146,65 +144,65 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, int value)
         {
             return SetSortValue(key, value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, long value)
         {
             return SetSortValue(key, value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, decimal value)
         {
             return SetSortValue(key, value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, double value)
         {
             return SetSortValue(key, value.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>
-        /// Configures sort value on the current BootstrapBuilder instance.
+        ///     Configures sort value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetSortValue(string key, DateTime value)
         {
             return SetSortValue(key, value.ToString("O", CultureInfo.InvariantCulture));
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="TableRowBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="TableRowBuilder" /> value or BootstrapBuilder result.</returns>
         public TableRowBuilder SetVariant(VariantStyle style)
         {
             return this.SetTableRowVariant(style);
@@ -219,7 +217,7 @@ namespace DMBBootstrapBuilder
         #region From interface IDisposable
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {

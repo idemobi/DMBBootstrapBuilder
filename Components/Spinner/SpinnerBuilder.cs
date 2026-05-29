@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SpinnerBuilder.cs create at 2026/04/12 12:04:31
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder spinner component or page region.
+    ///     Builds and renders the BootstrapBuilder spinner component or page region.
     /// </summary>
     public sealed class SpinnerBuilder : HtmlTagBuilder<SpinnerBuilder>, ICanUseHeight, ICanUseWidth, ICanUseCustomClasses
     {
@@ -80,7 +78,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpinnerBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="SpinnerBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -118,10 +116,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder in wrapper component operation.
+        ///     Executes the BootstrapBuilder in wrapper component operation.
         /// </summary>
         /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
         public SpinnerBuilder InWrapperComponent(Func<SpinnerWrapperBuilder, SpinnerWrapperBuilder> configure)
         {
             ArgumentNullException.ThrowIfNull(configure);
@@ -130,7 +128,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders spinner html for the BootstrapBuilder output.
+        ///     Renders spinner html for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public string RenderSpinnerHtml()
@@ -138,6 +136,102 @@ namespace DMBBootstrapBuilder
             using StringWriter writer = new();
             WriteSpinnerOnly(writer, HtmlEncoder.Default);
             return writer.ToString();
+        }
+
+        /// <summary>
+        ///     Configures centered on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="horizontal">The horizontal value.</param>
+        /// <param name="vertical">The vertical value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetCentered(bool horizontal = true, bool vertical = false)
+        {
+            _wrapCentered = true;
+            _centerHorizontally = horizontal;
+            _centerVertically = vertical;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures label on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="label">The label value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetLabel(string label)
+        {
+            _label = string.IsNullOrWhiteSpace(label) ? "Loading..." : label;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures size on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetSize(SpinnerSize size)
+        {
+            _size = size;
+            _sizeByUnit = string.Empty;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures size on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetSize(uint value, UnitSize unit)
+        {
+            _size = SpinnerSize.Free;
+            _sizeByUnit = $"{value}{unit.GetCss()}";
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures spinner type on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="type">The type value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetSpinnerType(SpinnerType type)
+        {
+            _type = type;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures variant on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="style">The style value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetVariant(VariantStyle style)
+        {
+            _style = style;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures wrapper min height on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetWrapperMinHeight(uint value, UnitSize unit)
+        {
+            InWrapperComponent(wrapper => wrapper.SetStyle("min-height", $"{value}{unit.GetCss()}"));
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures wrapper min width on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <returns>The configured <see cref="SpinnerBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerBuilder SetWrapperMinWidth(uint value, UnitSize unit)
+        {
+            InWrapperComponent(wrapper => wrapper.SetStyle("min-width", $"{value}{unit.GetCss()}"));
+            return this;
         }
 
         private void WriteSpinnerOnly(TextWriter writer, HtmlEncoder encoder)
@@ -197,102 +291,6 @@ namespace DMBBootstrapBuilder
             }
 
             localWrapper.WriteTo(writer, encoder);
-        }
-
-        /// <summary>
-        /// Configures centered on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="horizontal">The horizontal value.</param>
-        /// <param name="vertical">The vertical value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetCentered(bool horizontal = true, bool vertical = false)
-        {
-            _wrapCentered = true;
-            _centerHorizontally = horizontal;
-            _centerVertically = vertical;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures label on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="label">The label value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetLabel(string label)
-        {
-            _label = string.IsNullOrWhiteSpace(label) ? "Loading..." : label;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures size on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetSize(SpinnerSize size)
-        {
-            _size = size;
-            _sizeByUnit = string.Empty;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures size on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetSize(uint value, UnitSize unit)
-        {
-            _size = SpinnerSize.Free;
-            _sizeByUnit = $"{value}{unit.GetCss()}";
-            return this;
-        }
-
-        /// <summary>
-        /// Configures spinner type on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="type">The type value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetSpinnerType(SpinnerType type)
-        {
-            _type = type;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetVariant(VariantStyle style)
-        {
-            _style = style;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures wrapper min height on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetWrapperMinHeight(uint value, UnitSize unit)
-        {
-            InWrapperComponent(wrapper => wrapper.SetStyle("min-height", $"{value}{unit.GetCss()}"));
-            return this;
-        }
-
-        /// <summary>
-        /// Configures wrapper min width on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <returns>The configured <see cref="SpinnerBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerBuilder SetWrapperMinWidth(uint value, UnitSize unit)
-        {
-            InWrapperComponent(wrapper => wrapper.SetStyle("min-width", $"{value}{unit.GetCss()}"));
-            return this;
         }
 
         #endregion

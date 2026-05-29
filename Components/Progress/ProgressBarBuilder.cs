@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ProgressBarBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -13,7 +11,6 @@ using System.Globalization;
 using System.Net;
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 #endregion
@@ -21,7 +18,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder progress bar component or page region.
+    ///     Builds and renders the BootstrapBuilder progress bar component or page region.
     /// </summary>
     public sealed class ProgressBarBuilder :
         HtmlTagBuilder<ProgressBarBuilder>,
@@ -72,7 +69,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProgressBarBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ProgressBarBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -86,6 +83,19 @@ namespace DMBBootstrapBuilder
         #endregion
 
         #region Instance methods
+
+        private double ComputePercentage()
+        {
+            NormalizeBounds();
+
+            if (_max <= _min)
+            {
+                return 0d;
+            }
+
+            double clamped = Math.Max(_min, Math.Min(_value, _max));
+            return ((clamped - _min) / (_max - _min)) * 100d;
+        }
 
         /// <inheritdoc />
         protected override ProgressBarBuilder CreateInstance()
@@ -107,24 +117,11 @@ namespace DMBBootstrapBuilder
             _wrapperComponent = source._wrapperComponent.Clone();
         }
 
-        private double ComputePercentage()
-        {
-            NormalizeBounds();
-
-            if (_max <= _min)
-            {
-                return 0d;
-            }
-
-            double clamped = Math.Max(_min, Math.Min(_value, _max));
-            return ((clamped - _min) / (_max - _min)) * 100d;
-        }
-
         /// <summary>
-        /// Executes the BootstrapBuilder in wrapper component operation.
+        ///     Executes the BootstrapBuilder in wrapper component operation.
         /// </summary>
         /// <param name="configure">The configure value.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
         public ProgressBarBuilder InWrapperComponent(Func<HtmlBuilderWrapper, HtmlBuilderWrapper> configure)
         {
             ArgumentNullException.ThrowIfNull(configure);
@@ -145,6 +142,117 @@ namespace DMBBootstrapBuilder
             using StringWriter writer = new();
             WriteBarOnly(writer, HtmlEncoder.Default);
             return writer.ToString();
+        }
+
+        private void RestoreAttribute(string name, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                RemoveAttribute(name);
+            }
+            else
+            {
+                _attributes[name] = value;
+            }
+        }
+
+        /// <summary>
+        ///     Configures height on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <param name="unit">The unit value.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetHeight(uint size, UnitSize unit)
+        {
+            _wrapperComponent.SetStyle("height", $"{size}{unit.GetCss()}");
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures label on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="label">The label value.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetLabel(string? label)
+        {
+            _label = label;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures max on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetMax(double value)
+        {
+            _max = value;
+            NormalizeBounds();
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures min on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetMin(double value)
+        {
+            _min = value;
+            NormalizeBounds();
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures percentage on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetPercentage(double value)
+        {
+            _min = 0d;
+            _max = 100d;
+            _value = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures show label on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetShowLabel(bool value = true)
+        {
+            _showLabel = value;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures size on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="size">The size value.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetSize(ProgressBarSize size)
+        {
+            _wrapperComponent.SetStyle("height", size.GetSizeAndUnitStyle());
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures value on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="value">The value to apply.</param>
+        /// <returns>The configured <see cref="ProgressBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public ProgressBarBuilder SetValue(double value)
+        {
+            _value = value;
+            return this;
+        }
+
+        internal ProgressBarBuilder WithoutWrapper(bool value = true)
+        {
+            _renderWrapper = !value;
+            return this;
         }
 
         private void WriteBarOnly(TextWriter writer, HtmlEncoder encoder)
@@ -202,117 +310,6 @@ namespace DMBBootstrapBuilder
             }
 
             WriteBarOnly(writer, encoder);
-        }
-
-        /// <summary>
-        /// Configures height on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <param name="unit">The unit value.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetHeight(uint size, UnitSize unit)
-        {
-            _wrapperComponent.SetStyle("height", $"{size}{unit.GetCss()}");
-            return this;
-        }
-
-        /// <summary>
-        /// Configures label on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="label">The label value.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetLabel(string? label)
-        {
-            _label = label;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures max on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetMax(double value)
-        {
-            _max = value;
-            NormalizeBounds();
-            return this;
-        }
-
-        /// <summary>
-        /// Configures min on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetMin(double value)
-        {
-            _min = value;
-            NormalizeBounds();
-            return this;
-        }
-
-        /// <summary>
-        /// Configures percentage on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetPercentage(double value)
-        {
-            _min = 0d;
-            _max = 100d;
-            _value = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures show label on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetShowLabel(bool value = true)
-        {
-            _showLabel = value;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures size on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetSize(ProgressBarSize size)
-        {
-            _wrapperComponent.SetStyle("height", size.GetSizeAndUnitStyle());
-            return this;
-        }
-
-        /// <summary>
-        /// Configures value on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public ProgressBarBuilder SetValue(double value)
-        {
-            _value = value;
-            return this;
-        }
-
-        internal ProgressBarBuilder WithoutWrapper(bool value = true)
-        {
-            _renderWrapper = !value;
-            return this;
-        }
-
-        private void RestoreAttribute(string name, string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                RemoveAttribute(name);
-            }
-            else
-            {
-                _attributes[name] = value;
-            }
         }
 
         #endregion

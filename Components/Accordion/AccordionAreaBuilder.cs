@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj AccordionAreaBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder accordion area component or page region.
+    ///     Builds and renders the BootstrapBuilder accordion area component or page region.
     /// </summary>
     public sealed class AccordionAreaBuilder :
         HtmlBuilderBase<AccordionAreaBuilder>,
@@ -47,6 +45,8 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_flush", value);
         }
 
+        private readonly List<AccordionDefinition> _items = new();
+
         private bool _started
         {
             get => GetInternal("_started", false);
@@ -59,14 +59,12 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_stayOpen", value);
         }
 
-        private readonly List<AccordionDefinition> _items = new();
-
         #endregion
 
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccordionAreaBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="AccordionAreaBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -82,10 +80,10 @@ namespace DMBBootstrapBuilder
         #region Fluent API
 
         /// <summary>
-        /// Executes the BootstrapBuilder id operation.
+        ///     Executes the BootstrapBuilder id operation.
         /// </summary>
         /// <param name="id">The id value.</param>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder Id(string id)
         {
             SetId(HtmlIdGenerator.CleanId(id) ?? string.Empty);
@@ -93,10 +91,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder flush operation.
+        ///     Executes the BootstrapBuilder flush operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder Flush(bool value = true)
         {
             _flush = value;
@@ -104,10 +102,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder stay open operation.
+        ///     Executes the BootstrapBuilder stay open operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder StayOpen(bool value = true)
         {
             _stayOpen = value;
@@ -115,10 +113,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures classes on the current BootstrapBuilder instance.
+        ///     Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder WithClasses(string classes)
         {
             InternalAddClass(classes);
@@ -126,10 +124,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures badge on the current BootstrapBuilder instance.
+        ///     Configures badge on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="badge">The badge value.</param>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder SetBadge(BadgeBuilder badge)
         {
             ArgumentNullException.ThrowIfNull(badge);
@@ -138,9 +136,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder clear badge operation.
+        ///     Executes the BootstrapBuilder clear badge operation.
         /// </summary>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder ClearBadge()
         {
             _badgeBuilder = null;
@@ -148,9 +146,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="AccordionAreaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AccordionAreaBuilder" /> value or BootstrapBuilder result.</returns>
         public AccordionAreaBuilder Begin()
         {
             if (_started)
@@ -224,7 +222,7 @@ namespace DMBBootstrapBuilder
         #region Rendering
 
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public void Dispose()
         {

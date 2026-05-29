@@ -1,11 +1,22 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+#endregion
+
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder spinner wrapper component or page region.
+    ///     Builds and renders the BootstrapBuilder spinner wrapper component or page region.
     /// </summary>
     public class SpinnerWrapperBuilder : HtmlTagBuilder<SpinnerWrapperBuilder>, ICanUseCustomClasses
     {
@@ -22,7 +33,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpinnerWrapperBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="SpinnerWrapperBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -36,7 +47,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpinnerWrapperBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="SpinnerWrapperBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -66,6 +77,17 @@ namespace DMBBootstrapBuilder
             _inner = source._inner;
         }
 
+        /// <summary>
+        ///     Configures inner on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="inner">The inner value.</param>
+        /// <returns>The configured <see cref="SpinnerWrapperBuilder" /> value or BootstrapBuilder result.</returns>
+        public SpinnerWrapperBuilder SetInner(string? inner)
+        {
+            _inner = inner;
+            return this;
+        }
+
         /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
@@ -77,17 +99,6 @@ namespace DMBBootstrapBuilder
             }
 
             writer.Write($"</{_tag}>");
-        }
-
-        /// <summary>
-        /// Configures inner on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="inner">The inner value.</param>
-        /// <returns>The configured <see cref="SpinnerWrapperBuilder"/> value or BootstrapBuilder result.</returns>
-        public SpinnerWrapperBuilder SetInner(string? inner)
-        {
-            _inner = inner;
-            return this;
         }
 
         #endregion

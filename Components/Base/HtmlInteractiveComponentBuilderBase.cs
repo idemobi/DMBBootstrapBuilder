@@ -1,51 +1,60 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj HtmlInteractiveComponentBuilderBase.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 #region
 
 using DMBPageBuilder;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines the contract for BootstrapBuilder components that can configure interactive.
+    ///     Defines the contract for BootstrapBuilder components that can configure interactive.
     /// </summary>
     public interface ICanUseInteractive
     {
     }
+
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for interactive.
+    ///     Composes Bootstrap CSS classes or page chrome for interactive.
     /// </summary>
     public sealed class InteractiveComposer : IIsCssClassComposer
     {
+        #region Instance fields and properties
+
         /// <summary>
-        /// Gets or sets the size value used by BootstrapBuilder rendering or composition.
-        /// </summary>
-        public BoostrapButtonSize Size { get; set; } = BoostrapButtonSize.Medium;
-        /// <summary>
-        /// Gets or sets the style value used by BootstrapBuilder rendering or composition.
-        /// </summary>
-        public VariantStyle Style { get; set; } = VariantStyle.Normal;
-        /// <summary>
-        /// Gets or sets the disabled value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the disabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool Disabled { get; set; }
+
         /// <summary>
-        /// Gets or sets the no break text value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the no break text value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public bool NoBreakText { get; set; }
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Gets or sets the size value used by BootstrapBuilder rendering or composition.
+        /// </summary>
+        public BoostrapButtonSize Size { get; set; } = BoostrapButtonSize.Medium;
+
+        /// <summary>
+        ///     Gets or sets the style value used by BootstrapBuilder rendering or composition.
+        /// </summary>
+        public VariantStyle Style { get; set; } = VariantStyle.Normal;
+
+        #endregion
+
+        #region Instance methods
+
+        #region From interface IIsCssClassComposer
+
+        /// <summary>
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -80,9 +89,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             return new InteractiveComposer
@@ -93,50 +102,22 @@ namespace DMBBootstrapBuilder
                 NoBreakText = NoBreakText
             };
         }
+
+        #endregion
+
+        #endregion
     }
-    
-    
-       /// <summary>
-       /// Provides extension methods for configuring interactive builder in BootstrapBuilder components.
-       /// </summary>
-       public static class InteractiveBuilderExtensions
+
+
+    /// <summary>
+    ///     Provides extension methods for configuring interactive builder in BootstrapBuilder components.
+    /// </summary>
+    public static class InteractiveBuilderExtensions
     {
-        private static InteractiveComposer GetInteractiveComposer<TBuilder>(TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
-        {
-            return builder.GetOrCreateCssComposer(() => new InteractiveComposer());
-        }
+        #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder style operation.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <param name="style">The style value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder Style<TBuilder>(this TBuilder builder, VariantStyle style)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
-        {
-            GetInteractiveComposer(builder).Style = style;
-            return builder;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder size operation.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <param name="size">The size value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
-        public static TBuilder Size<TBuilder>(this TBuilder builder, BoostrapButtonSize size)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
-        {
-            GetInteractiveComposer(builder).Size = size;
-            return builder;
-        }
-
-        /// <summary>
-        /// Stores the disabled value used by BootstrapBuilder rendering or composition.
+        ///     Stores the disabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The interactive builder to configure.</param>
@@ -151,8 +132,62 @@ namespace DMBBootstrapBuilder
             return builder;
         }
 
+        private static InteractiveComposer GetInteractiveComposer<TBuilder>(TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
+        {
+            return builder.GetOrCreateCssComposer(() => new InteractiveComposer());
+        }
+
         /// <summary>
-        /// Stores the enabled value used by BootstrapBuilder rendering or composition.
+        ///     Gets interactive disabled for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
+        public static bool GetInteractiveDisabled<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
+        {
+            return GetInteractiveComposer(builder).Disabled;
+        }
+
+        /// <summary>
+        ///     Gets interactive no break text for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
+        public static bool GetInteractiveNoBreakText<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
+        {
+            return GetInteractiveComposer(builder).NoBreakText;
+        }
+
+        /// <summary>
+        ///     Gets interactive size for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <see cref="BoostrapButtonSize" /> value or BootstrapBuilder result.</returns>
+        public static BoostrapButtonSize GetInteractiveSize<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
+        {
+            return GetInteractiveComposer(builder).Size;
+        }
+
+        /// <summary>
+        ///     Gets interactive style for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
+        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
+        /// <returns>The configured <see cref="VariantStyle" /> value or BootstrapBuilder result.</returns>
+        public static VariantStyle GetInteractiveStyle<TBuilder>(this TBuilder builder)
+            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
+        {
+            return GetInteractiveComposer(builder).Style;
+        }
+
+        /// <summary>
+        ///     Stores the enabled value used by BootstrapBuilder rendering or composition.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The interactive builder to configure.</param>
@@ -166,55 +201,37 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets interactive style for BootstrapBuilder rendering or composition.
+        ///     Executes the BootstrapBuilder size operation.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="VariantStyle"/> value or BootstrapBuilder result.</returns>
-        public static VariantStyle GetInteractiveStyle<TBuilder>(this TBuilder builder)
+        /// <param name="size">The size value.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder Size<TBuilder>(this TBuilder builder, BoostrapButtonSize size)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {
-            return GetInteractiveComposer(builder).Style;
+            GetInteractiveComposer(builder).Size = size;
+            return builder;
         }
 
         /// <summary>
-        /// Gets interactive size for BootstrapBuilder rendering or composition.
+        ///     Executes the BootstrapBuilder style operation.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <see cref="BoostrapButtonSize"/> value or BootstrapBuilder result.</returns>
-        public static BoostrapButtonSize GetInteractiveSize<TBuilder>(this TBuilder builder)
+        /// <param name="style">The style value.</param>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
+        public static TBuilder Style<TBuilder>(this TBuilder builder, VariantStyle style)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
         {
-            return GetInteractiveComposer(builder).Size;
+            GetInteractiveComposer(builder).Style = style;
+            return builder;
         }
 
-        /// <summary>
-        /// Gets interactive disabled for BootstrapBuilder rendering or composition.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
-        public static bool GetInteractiveDisabled<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
-        {
-            return GetInteractiveComposer(builder).Disabled;
-        }
-
-        /// <summary>
-        /// Gets interactive no break text for BootstrapBuilder rendering or composition.
-        /// </summary>
-        /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
-        /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>True when the requested BootstrapBuilder condition is active; otherwise, false.</returns>
-        public static bool GetInteractiveNoBreakText<TBuilder>(this TBuilder builder)
-            where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseInteractive
-        {
-            return GetInteractiveComposer(builder).NoBreakText;
-        }
+        #endregion
     }
-    
-    
+
+
     //
     // public abstract class HtmlInteractiveComponentBuilderBase<TBuilder> : HtmlTagBuilder<TBuilder>
     //     where TBuilder : HtmlInteractiveComponentBuilderBase<TBuilder>

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ClipboardActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,34 +14,39 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder clipboard action item component or support type.
+    ///     Represents the BootstrapBuilder clipboard action item component or support type.
     /// </summary>
     public sealed class ClipboardActionItem : ActionLeafBase<ClipboardActionItem>
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the clipboard end icon value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard end icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IconStruct ClipboardEndIcon { get; set; }
+
         /// <summary>
-        /// Gets or sets the clipboard end text value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard end text value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? ClipboardEndText { get; set; }
+
         /// <summary>
-        /// Gets or sets the clipboard reset delay ms value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard reset delay ms value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int ClipboardResetDelayMs { get; set; } = 5000;
+
         /// <summary>
-        /// Gets or sets the clipboard start icon value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard start icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public IconStruct ClipboardStartIcon { get; set; }
+
         /// <summary>
-        /// Gets or sets the clipboard start text value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard start text value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? ClipboardStartText { get; set; }
+
         /// <summary>
-        /// Gets or sets the clipboard value value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the clipboard value value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? ClipboardValue { get; set; }
 
@@ -52,9 +55,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionItem" /> value or BootstrapBuilder result.</returns>
         public override IActionItem Clone()
         {
             var clone = new ClipboardActionItem
@@ -84,10 +87,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard end icon on the current BootstrapBuilder instance.
+        ///     Configures clipboard end icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardEndIcon(IconStruct icon)
         {
             ClipboardEndIcon = icon;
@@ -95,10 +98,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard end text on the current BootstrapBuilder instance.
+        ///     Configures clipboard end text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardEndText(string? text)
         {
             ClipboardEndText = text;
@@ -106,10 +109,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard reset delay ms on the current BootstrapBuilder instance.
+        ///     Configures clipboard reset delay ms on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="delayMs">The delay ms value.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardResetDelayMs(int delayMs)
         {
             if (delayMs < 0)
@@ -122,10 +125,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard start icon on the current BootstrapBuilder instance.
+        ///     Configures clipboard start icon on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="icon">The icon value.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardStartIcon(IconStruct icon)
         {
             ClipboardStartIcon = icon;
@@ -133,10 +136,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard start text on the current BootstrapBuilder instance.
+        ///     Configures clipboard start text on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardStartText(string? text)
         {
             ClipboardStartText = text;
@@ -144,10 +147,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures clipboard value on the current BootstrapBuilder instance.
+        ///     Configures clipboard value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ClipboardActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ClipboardActionItem" /> value or BootstrapBuilder result.</returns>
         public ClipboardActionItem WithClipboardValue(string value)
         {
             if (string.IsNullOrWhiteSpace(value))

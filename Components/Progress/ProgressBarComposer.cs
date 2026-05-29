@@ -1,9 +1,20 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using DMBPageBuilder;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for progress bar.
+    ///     Composes Bootstrap CSS classes or page chrome for progress bar.
     /// </summary>
     public sealed class ProgressBarComposer : IIsCssClassComposer
     {
@@ -18,10 +29,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures animated on the current BootstrapBuilder instance.
+        ///     Configures animated on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarComposer" /> value or BootstrapBuilder result.</returns>
         public ProgressBarComposer SetAnimated(bool value = true)
         {
             _animated = value;
@@ -35,10 +46,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures striped on the current BootstrapBuilder instance.
+        ///     Configures striped on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="ProgressBarComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarComposer" /> value or BootstrapBuilder result.</returns>
         public ProgressBarComposer SetStriped(bool value = true)
         {
             _striped = value;
@@ -46,10 +57,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="ProgressBarComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ProgressBarComposer" /> value or BootstrapBuilder result.</returns>
         public ProgressBarComposer SetVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -59,7 +70,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -92,9 +103,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             return new ProgressBarComposer()

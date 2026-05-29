@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj VariantStyleExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring variant style in BootstrapBuilder components.
+    ///     Provides extension methods for configuring variant style in BootstrapBuilder components.
     /// </summary>
     public static class VariantStyleExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Gets old background css class for BootstrapBuilder rendering or composition.
+        ///     Gets old background css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -45,7 +43,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets old suffix css class for BootstrapBuilder rendering or composition.
+        ///     Gets old suffix css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -67,7 +65,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets old text css class for BootstrapBuilder rendering or composition.
+        ///     Gets old text css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="variant">The variant value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

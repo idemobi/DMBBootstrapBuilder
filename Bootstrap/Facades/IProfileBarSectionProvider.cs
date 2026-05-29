@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj IProfileBarSectionProvider.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines the contract for providing profile bar section provider content to BootstrapBuilder page chrome.
+    ///     Defines the contract for providing profile bar section provider content to BootstrapBuilder page chrome.
     /// </summary>
     public interface IProfileBarSectionProvider
     {
@@ -43,7 +41,7 @@ namespace DMBBootstrapBuilder
         ///     Determines whether the profile bar section should render for the current view.
         /// </summary>
         /// <param name="html">The Razor HTML helper for the current view.</param>
-        /// <returns><see langword="true"/> when the section should render; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true" /> when the section should render; otherwise, <see langword="false" />.</returns>
         bool IsEnabled(IHtmlHelper html);
 
         #endregion

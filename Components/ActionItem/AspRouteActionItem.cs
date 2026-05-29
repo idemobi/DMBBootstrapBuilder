@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj AspRouteActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,27 +15,29 @@ using JetBrains.Annotations;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder asp route action item component or support type.
+    ///     Represents the BootstrapBuilder asp route action item component or support type.
     /// </summary>
     public sealed class AspRouteActionItem : ActionLeafBase<AspRouteActionItem>
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the asp action value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the asp action value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? AspAction { get; set; }
+
         /// <summary>
-        /// Gets or sets the asp area value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the asp area value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? AspArea { get; set; }
+
         /// <summary>
-        /// Gets or sets the asp controller value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the asp controller value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? AspController { get; set; }
 
         /// <summary>
-        /// Gets or sets the route values value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the route values value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public Dictionary<string, string> RouteValues { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
@@ -46,14 +46,14 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AspRouteActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="AspRouteActionItem" /> class.
         /// </summary>
         public AspRouteActionItem()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AspRouteActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="AspRouteActionItem" /> class.
         /// </summary>
         /// <param name="controller">The controller value.</param>
         /// <param name="action">The action value.</param>
@@ -66,7 +66,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AspRouteActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="AspRouteActionItem" /> class.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="icon">The icon value.</param>
@@ -87,11 +87,11 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds route value to the current BootstrapBuilder component or page model.
+        ///     Adds route value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AspRouteActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AspRouteActionItem" /> value or BootstrapBuilder result.</returns>
         public AspRouteActionItem AddRouteValue(string key, string value)
         {
             if (string.IsNullOrWhiteSpace(key))
@@ -104,31 +104,31 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds route value to the current BootstrapBuilder component or page model.
+        ///     Adds route value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AspRouteActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AspRouteActionItem" /> value or BootstrapBuilder result.</returns>
         public AspRouteActionItem AddRouteValue(string key, int value)
         {
             return AddRouteValue(key, value.ToString());
         }
 
         /// <summary>
-        /// Adds route value to the current BootstrapBuilder component or page model.
+        ///     Adds route value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="key">The key value.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AspRouteActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AspRouteActionItem" /> value or BootstrapBuilder result.</returns>
         public AspRouteActionItem AddRouteValue(string key, long value)
         {
             return AddRouteValue(key, value.ToString());
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionItem" /> value or BootstrapBuilder result.</returns>
         public override IActionItem Clone()
         {
             var clone = new AspRouteActionItem

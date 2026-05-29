@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ToastBuilder.cs create at 2026/05/16
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -118,27 +116,7 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
-        #region Interface properties
-
-        string? IHasTitle.Title
-        {
-            get => _title;
-            set => _title = value;
-        }
-
-        string? IHasSubtitle.Subtitle
-        {
-            get => _subtitle;
-            set => _subtitle = value;
-        }
-
-        IconStruct IHasIcon.Icon
-        {
-            get => _icon;
-            set => _icon = value;
-        }
-
-        #endregion
+        #region Instance constructors and destructors
 
         #region Constructors
 
@@ -157,6 +135,30 @@ namespace DMBBootstrapBuilder
             SetAria("live", "assertive");
             SetAria("atomic", "true");
             SetData("bs-autohide", false);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Interface properties
+
+        string? IHasTitle.Title
+        {
+            get => _title;
+            set => _title = value;
+        }
+
+        string? IHasSubtitle.Subtitle
+        {
+            get => _subtitle;
+            set => _subtitle = value;
+        }
+
+        IconStruct IHasIcon.Icon
+        {
+            get => _icon;
+            set => _icon = value;
         }
 
         #endregion

@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj JavaScriptActionItem.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder java script action item component or support type.
+    ///     Represents the BootstrapBuilder java script action item component or support type.
     /// </summary>
     public class JavaScriptActionItem : ActionLeafBase<JavaScriptActionItem>
     {
         #region Instance fields and properties
 
         /// <summary>
-        /// Gets or sets the java script value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the java script value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public string? JavaScript { get; set; }
 
@@ -32,7 +30,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JavaScriptActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="JavaScriptActionItem" /> class.
         /// </summary>
         /// <param name="script">The script value.</param>
         public JavaScriptActionItem(string script)
@@ -41,7 +39,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="JavaScriptActionItem"/> class.
+        ///     Initializes a new instance of the <see cref="JavaScriptActionItem" /> class.
         /// </summary>
         public JavaScriptActionItem()
         {
@@ -52,9 +50,9 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IActionItem"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionItem" /> value or BootstrapBuilder result.</returns>
         public override IActionItem Clone()
         {
             var clone = new JavaScriptActionItem

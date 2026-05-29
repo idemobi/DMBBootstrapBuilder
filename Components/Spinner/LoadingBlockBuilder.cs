@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj LoadingBlockBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -19,7 +17,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder loading block component or page region.
+    ///     Builds and renders the BootstrapBuilder loading block component or page region.
     /// </summary>
     public sealed class LoadingBlockBuilder : HtmlTagBuilder<LoadingBlockBuilder>
     {
@@ -147,7 +145,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LoadingBlockBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="LoadingBlockBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -160,35 +158,6 @@ namespace DMBBootstrapBuilder
         #endregion
 
         #region Instance methods
-
-        /// <inheritdoc />
-        protected override LoadingBlockBuilder CreateInstance()
-        {
-            return new LoadingBlockBuilder(_textWriter, _htmlHelper);
-        }
-
-        /// <inheritdoc />
-        protected override void InternalClone(LoadingBlockBuilder source)
-        {
-            base.InternalClone(source);
-
-            _additionalClasses = source._additionalClasses;
-            _centerHorizontally = source._centerHorizontally;
-            _centerVertically = source._centerVertically;
-            _fullWidth = source._fullWidth;
-            _gap = source._gap;
-            _minHeightCss = source._minHeightCss;
-            _spinnerClasses = source._spinnerClasses;
-            _spinnerHeightCss = source._spinnerHeightCss;
-            _spinnerLabel = source._spinnerLabel;
-            _spinnerSize = source._spinnerSize;
-            _spinnerType = source._spinnerType;
-            _spinnerWidthCss = source._spinnerWidthCss;
-            _style = source._style;
-            _text = source._text;
-            _textClasses = source._textClasses;
-            _textMuted = source._textMuted;
-        }
 
         private string BuildSpinnerHtml()
         {
@@ -277,6 +246,35 @@ namespace DMBBootstrapBuilder
         }
 
         /// <inheritdoc />
+        protected override LoadingBlockBuilder CreateInstance()
+        {
+            return new LoadingBlockBuilder(_textWriter, _htmlHelper);
+        }
+
+        /// <inheritdoc />
+        protected override void InternalClone(LoadingBlockBuilder source)
+        {
+            base.InternalClone(source);
+
+            _additionalClasses = source._additionalClasses;
+            _centerHorizontally = source._centerHorizontally;
+            _centerVertically = source._centerVertically;
+            _fullWidth = source._fullWidth;
+            _gap = source._gap;
+            _minHeightCss = source._minHeightCss;
+            _spinnerClasses = source._spinnerClasses;
+            _spinnerHeightCss = source._spinnerHeightCss;
+            _spinnerLabel = source._spinnerLabel;
+            _spinnerSize = source._spinnerSize;
+            _spinnerType = source._spinnerType;
+            _spinnerWidthCss = source._spinnerWidthCss;
+            _style = source._style;
+            _text = source._text;
+            _textClasses = source._textClasses;
+            _textMuted = source._textMuted;
+        }
+
+        /// <inheritdoc />
         protected override void WriteToCore(TextWriter writer, HtmlEncoder encoder)
         {
             string wrapperCss = BuildWrapperCss();
@@ -297,10 +295,10 @@ namespace DMBBootstrapBuilder
         #region Spinner API
 
         /// <summary>
-        /// Configures spinner type on the current BootstrapBuilder instance.
+        ///     Configures spinner type on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="type">The type value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder WithSpinnerType(SpinnerType type)
         {
             _spinnerType = type;
@@ -308,9 +306,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder border operation.
+        ///     Executes the BootstrapBuilder border operation.
         /// </summary>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Border()
         {
             _spinnerType = SpinnerType.Border;
@@ -318,9 +316,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder grow operation.
+        ///     Executes the BootstrapBuilder grow operation.
         /// </summary>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Grow()
         {
             _spinnerType = SpinnerType.Grow;
@@ -328,10 +326,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures spinner size on the current BootstrapBuilder instance.
+        ///     Configures spinner size on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="size">The size value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder WithSpinnerSize(SpinnerSize size)
         {
             _spinnerSize = size;
@@ -339,9 +337,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder small spinner operation.
+        ///     Executes the BootstrapBuilder small spinner operation.
         /// </summary>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SmallSpinner()
         {
             _spinnerSize = SpinnerSize.Small;
@@ -349,10 +347,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder style operation.
+        ///     Executes the BootstrapBuilder style operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Style(VariantStyle style)
         {
             _style = style;
@@ -360,10 +358,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder spinner label operation.
+        ///     Executes the BootstrapBuilder spinner label operation.
         /// </summary>
         /// <param name="label">The label value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SpinnerLabel(string label)
         {
             _spinnerLabel = string.IsNullOrWhiteSpace(label) ? "Loading..." : label;
@@ -371,10 +369,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder spinner size px operation.
+        ///     Executes the BootstrapBuilder spinner size px operation.
         /// </summary>
         /// <param name="px">The px value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SpinnerSizePx(int px)
         {
             if (px <= 0)
@@ -388,10 +386,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder spinner width px operation.
+        ///     Executes the BootstrapBuilder spinner width px operation.
         /// </summary>
         /// <param name="px">The px value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SpinnerWidthPx(int px)
         {
             if (px <= 0)
@@ -404,10 +402,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder spinner height px operation.
+        ///     Executes the BootstrapBuilder spinner height px operation.
         /// </summary>
         /// <param name="px">The px value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SpinnerHeightPx(int px)
         {
             if (px <= 0)
@@ -420,10 +418,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder spinner classes operation.
+        ///     Executes the BootstrapBuilder spinner classes operation.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder SpinnerClasses(string classes)
         {
             _spinnerClasses = classes ?? string.Empty;
@@ -435,10 +433,10 @@ namespace DMBBootstrapBuilder
         #region Text API
 
         /// <summary>
-        /// Executes the BootstrapBuilder text operation.
+        ///     Executes the BootstrapBuilder text operation.
         /// </summary>
         /// <param name="text">The text value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Text(string? text)
         {
             _text = text;
@@ -446,10 +444,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder text muted operation.
+        ///     Executes the BootstrapBuilder text muted operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder TextMuted(bool value = true)
         {
             _textMuted = value;
@@ -457,10 +455,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder text classes operation.
+        ///     Executes the BootstrapBuilder text classes operation.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder TextClasses(string classes)
         {
             _textClasses = classes ?? string.Empty;
@@ -472,11 +470,11 @@ namespace DMBBootstrapBuilder
         #region Layout API
 
         /// <summary>
-        /// Executes the BootstrapBuilder centered operation.
+        ///     Executes the BootstrapBuilder centered operation.
         /// </summary>
         /// <param name="horizontal">The horizontal value.</param>
         /// <param name="vertical">The vertical value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Centered(bool horizontal = true, bool vertical = true)
         {
             _centerHorizontally = horizontal;
@@ -485,10 +483,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder center horizontally operation.
+        ///     Executes the BootstrapBuilder center horizontally operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder CenterHorizontally(bool value = true)
         {
             _centerHorizontally = value;
@@ -496,10 +494,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder center vertically operation.
+        ///     Executes the BootstrapBuilder center vertically operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder CenterVertically(bool value = true)
         {
             _centerVertically = value;
@@ -507,10 +505,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder full width operation.
+        ///     Executes the BootstrapBuilder full width operation.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder FullWidth(bool value = true)
         {
             _fullWidth = value;
@@ -518,10 +516,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder gap operation.
+        ///     Executes the BootstrapBuilder gap operation.
         /// </summary>
         /// <param name="gap">The gap value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder Gap(int gap)
         {
             if (gap < 0 || gap > 5)
@@ -534,10 +532,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder min height px operation.
+        ///     Executes the BootstrapBuilder min height px operation.
         /// </summary>
         /// <param name="px">The px value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder MinHeightPx(int px)
         {
             if (px <= 0)
@@ -550,10 +548,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder min height vh operation.
+        ///     Executes the BootstrapBuilder min height vh operation.
         /// </summary>
         /// <param name="vh">The vh value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder MinHeightVh(int vh)
         {
             if (vh <= 0)
@@ -566,10 +564,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures classes on the current BootstrapBuilder instance.
+        ///     Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="LoadingBlockBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="LoadingBlockBuilder" /> value or BootstrapBuilder result.</returns>
         public LoadingBlockBuilder WithClasses(string classes)
         {
             _additionalClasses = classes ?? string.Empty;

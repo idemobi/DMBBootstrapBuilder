@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj OpacityInternalExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring opacity internal in BootstrapBuilder components.
+    ///     Provides extension methods for configuring opacity internal in BootstrapBuilder components.
     /// </summary>
     public static class OpacityInternalExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Gets css for BootstrapBuilder rendering or composition.
+        ///     Gets css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="opacity">The opacity value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -36,7 +34,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets value for BootstrapBuilder rendering or composition.
+        ///     Gets value for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="opacity">The opacity value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>

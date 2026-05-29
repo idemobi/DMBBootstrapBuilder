@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FontItalicExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,14 +14,14 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring font italic in BootstrapBuilder components.
+    ///     Provides extension methods for configuring font italic in BootstrapBuilder components.
     /// </summary>
     public static class FontItalicExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Gets css for BootstrapBuilder rendering or composition.
+        ///     Gets css for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="value">The value to apply.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -38,12 +36,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures font italic on the current BootstrapBuilder instance.
+        ///     Configures font italic on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="fontItalic">The font italic value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetFontItalic<TBuilder>(
             this TBuilder builder,
             FontItalic fontItalic
@@ -58,11 +56,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures italic on the current BootstrapBuilder instance.
+        ///     Configures italic on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetItalic<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontItalic
         {
@@ -70,11 +68,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures not italic on the current BootstrapBuilder instance.
+        ///     Configures not italic on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetNotItalic<TBuilder>(this TBuilder builder)
             where TBuilder : HtmlBuilderBase<TBuilder>, ICanUseFontItalic
         {

@@ -1,23 +1,21 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SpinnerSizeInternalExtensions.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring spinner size internal in BootstrapBuilder components.
+    ///     Provides extension methods for configuring spinner size internal in BootstrapBuilder components.
     /// </summary>
     public static class SpinnerSizeInternalExtensions
     {
         #region Static methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder class to clean operation.
+        ///     Executes the BootstrapBuilder class to clean operation.
         /// </summary>
         /// <param name="size">The size value.</param>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
@@ -27,7 +25,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets css class for BootstrapBuilder rendering or composition.
+        ///     Gets css class for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <param name="size">The size value.</param>
         /// <param name="type">The type value.</param>

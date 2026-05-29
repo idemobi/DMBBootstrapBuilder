@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ColBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -17,7 +15,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder col component or page region.
+    ///     Builds and renders the BootstrapBuilder col component or page region.
     /// </summary>
     public sealed class ColBuilder : HtmlConstrainedTagBuilder<ColBuilder>,
         ICanUseColSize,
@@ -35,7 +33,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ColBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ColBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -45,6 +43,16 @@ namespace DMBBootstrapBuilder
             _tag = "div";
             _classesOfComponent.Add("col");
             this.SetCol(ColSize.Col12);
+        }
+
+        #endregion
+
+        #region Instance methods
+
+        /// <inheritdoc />
+        protected override ColBuilder CreateInstance()
+        {
+            return new ColBuilder(_textWriter, _htmlHelper);
         }
 
         #endregion
@@ -63,16 +71,6 @@ namespace DMBBootstrapBuilder
             {
                 HtmlRenderContextKind.Row
             };
-
-        #endregion
-
-        #region Instance methods
-
-        /// <inheritdoc />
-        protected override ColBuilder CreateInstance()
-        {
-            return new ColBuilder(_textWriter, _htmlHelper);
-        }
 
         #endregion
     }

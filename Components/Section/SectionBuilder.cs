@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj SectionBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -21,7 +19,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder section component or page region.
+    ///     Builds and renders the BootstrapBuilder section component or page region.
     /// </summary>
     public sealed class SectionBuilder : HtmlConstrainedTagBuilder<SectionBuilder>,
         ICanUseHeight,
@@ -48,12 +46,19 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_sectionStarted", value);
         }
 
+        #region Protected accessors
+
+        /// <inheritdoc />
+        protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Section;
+
+        #endregion
+
         #endregion
 
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SectionBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="SectionBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -65,22 +70,15 @@ namespace DMBBootstrapBuilder
 
         #endregion
 
-        #region Protected accessors
-
-        /// <inheritdoc />
-        protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Section;
-
-        #endregion
-
         #region Instance methods
 
         /// <summary>
-        /// Adds debug panel to the current BootstrapBuilder component or page model.
+        ///     Adds debug panel to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="title">The title value.</param>
         /// <param name="content">The content value.</param>
         /// <param name="panelId">The panel id value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder AddDebugPanel(string title, IHtmlContent? content, string? panelId = null)
         {
             #if DEBUG
@@ -88,8 +86,7 @@ namespace DMBBootstrapBuilder
             this.AddClass("section-debug-host");
 
             string renderedContent = RenderHtmlContentToString(content);
-            if (string.IsNullOrWhiteSpace(renderedContent))
-                renderedContent = """<div class="section-debug-empty text-muted fst-italic">No debug option.</div>""";
+            if (string.IsNullOrWhiteSpace(renderedContent)) renderedContent = """<div class="section-debug-empty text-muted fst-italic">No debug option.</div>""";
 
             _debugEntries.Add((title ?? "Debug", renderedContent));
             #endif
@@ -98,11 +95,11 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds debug panel to the current BootstrapBuilder component or page model.
+        ///     Adds debug panel to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <typeparam name="T">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="model">The model value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder AddDebugPanel<T>(T model) where T : class
         {
             #if DEBUG
@@ -115,19 +112,19 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder attribute value operation.
+        ///     Executes the BootstrapBuilder attribute value operation.
         /// </summary>
         /// <param name="name">The name value.</param>
-        /// <returns>The configured <see cref="string"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="string" /> value or BootstrapBuilder result.</returns>
         public string? AttributeValue(string name)
         {
             return GetAttributeValue(name);
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder begin operation.
+        ///     Executes the BootstrapBuilder begin operation.
         /// </summary>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public new SectionBuilder Begin()
         {
             if (_sectionStarted)
@@ -175,10 +172,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder change tag operation.
+        ///     Executes the BootstrapBuilder change tag operation.
         /// </summary>
         /// <param name="tag">The tag value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder ChangeTag(string tag)
         {
             _tag = tag.Trim().ToLowerInvariant();
@@ -191,28 +188,8 @@ namespace DMBBootstrapBuilder
             return new SectionBuilder(_textWriter, _htmlHelper);
         }
 
-        /// <inheritdoc />
-        protected override void InternalClone(SectionBuilder source)
-        {
-            base.InternalClone(source);
-
-            _afterBeginContents.Clear();
-            _afterBeginContents.AddRange(source._afterBeginContents);
-
-            _afterEndContents.Clear();
-            _afterEndContents.AddRange(source._afterEndContents);
-
-            #if DEBUG
-            _debugEntries.Clear();
-            _debugEntries.AddRange(source._debugEntries);
-            #endif
-
-            _sectionStarted = false;
-            _sectionDisposed = false;
-        }
-
         /// <summary>
-        /// Executes the BootstrapBuilder dispose operation.
+        ///     Executes the BootstrapBuilder dispose operation.
         /// </summary>
         public new void Dispose()
         {
@@ -237,10 +214,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder ensure id operation.
+        ///     Executes the BootstrapBuilder ensure id operation.
         /// </summary>
         /// <param name="prefix">The prefix value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder EnsureId(string prefix = "section")
         {
             if (string.IsNullOrWhiteSpace(GetAttributeValue("id")))
@@ -249,6 +226,26 @@ namespace DMBBootstrapBuilder
             }
 
             return this;
+        }
+
+        /// <inheritdoc />
+        protected override void InternalClone(SectionBuilder source)
+        {
+            base.InternalClone(source);
+
+            _afterBeginContents.Clear();
+            _afterBeginContents.AddRange(source._afterBeginContents);
+
+            _afterEndContents.Clear();
+            _afterEndContents.AddRange(source._afterEndContents);
+
+            #if DEBUG
+            _debugEntries.Clear();
+            _debugEntries.AddRange(source._debugEntries);
+            #endif
+
+            _sectionStarted = false;
+            _sectionDisposed = false;
         }
 
         private string RenderHtmlContentToString(IHtmlContent? content)
@@ -264,10 +261,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write operation.
+        ///     Executes the BootstrapBuilder write operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder Write(string html)
         {
             if (!string.IsNullOrEmpty(html))
@@ -279,10 +276,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write operation.
+        ///     Executes the BootstrapBuilder write operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder Write(IHtmlContent content)
         {
             if (content != null)
@@ -294,10 +291,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write after begin operation.
+        ///     Executes the BootstrapBuilder write after begin operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder WriteAfterBegin(string html)
         {
             if (!string.IsNullOrEmpty(html))
@@ -309,10 +306,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write after begin operation.
+        ///     Executes the BootstrapBuilder write after begin operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder WriteAfterBegin(IHtmlContent content)
         {
             if (content != null)
@@ -324,10 +321,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write after end operation.
+        ///     Executes the BootstrapBuilder write after end operation.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder WriteAfterEnd(string html)
         {
             if (!string.IsNullOrEmpty(html))
@@ -339,10 +336,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder write after end operation.
+        ///     Executes the BootstrapBuilder write after end operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="SectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="SectionBuilder" /> value or BootstrapBuilder result.</returns>
         public SectionBuilder WriteAfterEnd(IHtmlContent content)
         {
             if (content != null)

@@ -1,18 +1,20 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BadgeBuilderCollection.cs create at 2026/04/15 22:04:46
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
+#region
+
 using System.Text.Encodings.Web;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Represents the BootstrapBuilder badge builder collection component or support type.
+    ///     Represents the BootstrapBuilder badge builder collection component or support type.
     /// </summary>
     public sealed class BadgeBuilderCollection
     {
@@ -25,12 +27,12 @@ namespace DMBBootstrapBuilder
         #region Properties
 
         /// <summary>
-        /// Gets or sets a value indicating whether badges is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether badges is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool HasBadges => _badges.Count > 0;
 
         /// <summary>
-        /// Gets or sets the count value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the count value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public int Count => _badges.Count;
 
@@ -39,7 +41,7 @@ namespace DMBBootstrapBuilder
         #region Public API
 
         /// <summary>
-        /// Executes the BootstrapBuilder clear operation.
+        ///     Executes the BootstrapBuilder clear operation.
         /// </summary>
         public void Clear()
         {
@@ -47,7 +49,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures value on the current BootstrapBuilder instance.
+        ///     Configures value on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="badge">The badge value.</param>
         public void Set(BadgeBuilder badge)
@@ -59,7 +61,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds value to the current BootstrapBuilder component or page model.
+        ///     Adds value to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="badge">The badge value.</param>
         /// <param name="others">The others value.</param>
@@ -84,7 +86,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets all for BootstrapBuilder rendering or composition.
+        ///     Gets all for BootstrapBuilder rendering or composition.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<BadgeBuilder> GetAll()
@@ -97,7 +99,7 @@ namespace DMBBootstrapBuilder
         #region Rendering
 
         /// <summary>
-        /// Renders html for the BootstrapBuilder output.
+        ///     Renders html for the BootstrapBuilder output.
         /// </summary>
         /// <param name="encoder">The encoder value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -107,7 +109,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders html for the BootstrapBuilder output.
+        ///     Renders html for the BootstrapBuilder output.
         /// </summary>
         /// <param name="encoder">The encoder value.</param>
         /// <param name="wrapperCssClass">The wrapper css class value.</param>
@@ -146,9 +148,9 @@ namespace DMBBootstrapBuilder
         #region Clone
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="BadgeBuilderCollection"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="BadgeBuilderCollection" /> value or BootstrapBuilder result.</returns>
         public BadgeBuilderCollection Clone()
         {
             BadgeBuilderCollection clone = new();
@@ -160,9 +162,9 @@ namespace DMBBootstrapBuilder
 
             return clone;
         }
-        
+
         /// <summary>
-        /// Executes the BootstrapBuilder to cloned list operation.
+        ///     Executes the BootstrapBuilder to cloned list operation.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public List<BadgeBuilder> ToClonedList()

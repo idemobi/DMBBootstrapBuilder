@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj RawBootstrapController.cs create at 2026/04/08 09:04:39
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides MVC controller behavior for BootstrapBuilder raw bootstrap pages.
+    ///     Provides MVC controller behavior for BootstrapBuilder raw bootstrap pages.
     /// </summary>
     public abstract class RawBootstrapController : RawPageController
     {
@@ -42,19 +40,19 @@ namespace DMBBootstrapBuilder
 
         #region Instance fields and properties
 
-        private PageBootstrapInformation PageBootstrap = new PageBootstrapInformation();
-
         /// <summary>
         ///     Gets the breadcrumb actions rendered by the Bootstrap page chrome.
         /// </summary>
         protected List<IActionItem> BreadcrumbActions => PageBootstrap.BreadcrumbActions;
+
+        private PageBootstrapInformation PageBootstrap = new PageBootstrapInformation();
 
         #endregion
 
         #region Instance methods
 
         /// <summary>
-        /// Adds alerts to the current BootstrapBuilder component or page model.
+        ///     Adds alerts to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="alerts">The alerts value.</param>
         public void AddAlerts(params AlertModel[] alerts)
@@ -63,7 +61,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Adds breadcrumb to the current BootstrapBuilder component or page model.
+        ///     Adds breadcrumb to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="items">The items value.</param>
         public void AddBreadcrumb(params IActionItem[] items)
@@ -80,7 +78,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder on action executing operation.
+        ///     Executes the BootstrapBuilder on action executing operation.
         /// </summary>
         /// <param name="context">The context value.</param>
         public override void OnActionExecuting(ActionExecutingContext context)
@@ -102,7 +100,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures page container on the current BootstrapBuilder instance.
+        ///     Configures page container on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="pageStyle">The page style value.</param>
         public void SetPageContainer(PageContainer pageStyle)
@@ -112,7 +110,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures page container style on the current BootstrapBuilder instance.
+        ///     Configures page container style on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="style">The style value.</param>
         public void SetPageContainerStyle(ContainerStyle style)
@@ -122,7 +120,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures page container swichable on the current BootstrapBuilder instance.
+        ///     Configures page container swichable on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="swichable">The swichable value.</param>
         public void SetPageContainerSwichable(bool swichable)
@@ -132,7 +130,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures sidebar on the current BootstrapBuilder instance.
+        ///     Configures sidebar on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="sideBarComponent">The side bar component value.</param>
         public void SetSidebar(SideBarComponent sideBarComponent)

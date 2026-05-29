@@ -1,9 +1,20 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
 using DMBPageBuilder;
+
+#endregion
 
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides extension methods for configuring tab area in BootstrapBuilder components.
+    ///     Provides extension methods for configuring tab area in BootstrapBuilder components.
     /// </summary>
     public static class TabAreaExtensions
     {
@@ -16,12 +27,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures tab area fill on the current BootstrapBuilder instance.
+        ///     Configures tab area fill on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTabAreaFill<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -33,12 +44,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures tab area justified on the current BootstrapBuilder instance.
+        ///     Configures tab area justified on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTabAreaJustified<TBuilder>(
             this TBuilder builder,
             bool value = true
@@ -50,12 +61,12 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures tab area style on the current BootstrapBuilder instance.
+        ///     Configures tab area style on the current BootstrapBuilder instance.
         /// </summary>
         /// <typeparam name="TBuilder">The BootstrapBuilder type configured by this member.</typeparam>
         /// <param name="builder">The BootstrapBuilder instance to configure.</param>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <typeparamref name="TBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <typeparamref name="TBuilder" /> value or BootstrapBuilder result.</returns>
         public static TBuilder SetTabAreaStyle<TBuilder>(
             this TBuilder builder,
             TabAreaStyle style

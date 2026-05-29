@@ -1,36 +1,49 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Defines BootstrapBuilder values for debug input type.
+    ///     Defines BootstrapBuilder values for debug input type.
     /// </summary>
     public enum DebugInputType
     {
         /// <summary>
-        /// Represents the auto BootstrapBuilder option.
+        ///     Represents the auto BootstrapBuilder option.
         /// </summary>
         Auto,
+
         /// <summary>
-        /// Represents the text BootstrapBuilder option.
+        ///     Represents the text BootstrapBuilder option.
         /// </summary>
         Text,
+
         /// <summary>
-        /// Represents the number BootstrapBuilder option.
+        ///     Represents the number BootstrapBuilder option.
         /// </summary>
         Number,
+
         /// <summary>
-        /// Represents the color BootstrapBuilder option.
+        ///     Represents the color BootstrapBuilder option.
         /// </summary>
         Color,
+
         /// <summary>
-        /// Represents the select BootstrapBuilder option.
+        ///     Represents the select BootstrapBuilder option.
         /// </summary>
         Select,
+
         /// <summary>
-        /// Represents the switch BootstrapBuilder option.
+        ///     Represents the switch BootstrapBuilder option.
         /// </summary>
         Switch,
+
         /// <summary>
-        /// Represents the hidden BootstrapBuilder option.
+        ///     Represents the hidden BootstrapBuilder option.
         /// </summary>
         Hidden
     }

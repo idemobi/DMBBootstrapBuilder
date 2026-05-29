@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj AlertComposer.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -16,7 +14,7 @@ using DMBPageBuilder;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Composes Bootstrap CSS classes or page chrome for alert.
+    ///     Composes Bootstrap CSS classes or page chrome for alert.
     /// </summary>
     public sealed class AlertComposer : IIsCssClassComposer
     {
@@ -29,23 +27,27 @@ namespace DMBBootstrapBuilder
         private bool _withIconLayout;
 
         /// <summary>
-        /// Gets or sets a value indicating whether dismissible is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether dismissible is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool IsDismissible => _dismissible;
+
         /// <summary>
-        /// Gets or sets a value indicating whether fade is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether fade is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool IsFade => _fade;
+
         /// <summary>
-        /// Gets or sets a value indicating whether show is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether show is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool IsShow => _show;
+
         /// <summary>
-        /// Gets or sets a value indicating whether with icon layout is enabled for BootstrapBuilder rendering.
+        ///     Gets or sets a value indicating whether with icon layout is enabled for BootstrapBuilder rendering.
         /// </summary>
         public bool IsWithIconLayout => _withIconLayout;
+
         /// <summary>
-        /// Gets or sets the variant value used by BootstrapBuilder rendering or composition.
+        ///     Gets or sets the variant value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public VariantStyle Variant => _variant;
 
@@ -54,10 +56,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Configures dismissible on the current BootstrapBuilder instance.
+        ///     Configures dismissible on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AlertComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertComposer" /> value or BootstrapBuilder result.</returns>
         public AlertComposer SetDismissible(bool value = true)
         {
             _dismissible = value;
@@ -65,10 +67,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures fade on the current BootstrapBuilder instance.
+        ///     Configures fade on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AlertComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertComposer" /> value or BootstrapBuilder result.</returns>
         public AlertComposer SetFade(bool value = true)
         {
             _fade = value;
@@ -76,10 +78,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures show on the current BootstrapBuilder instance.
+        ///     Configures show on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AlertComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertComposer" /> value or BootstrapBuilder result.</returns>
         public AlertComposer SetShow(bool value = true)
         {
             _show = value;
@@ -87,10 +89,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures variant on the current BootstrapBuilder instance.
+        ///     Configures variant on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="variant">The variant value.</param>
-        /// <returns>The configured <see cref="AlertComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertComposer" /> value or BootstrapBuilder result.</returns>
         public AlertComposer SetVariant(VariantStyle variant)
         {
             _variant = variant;
@@ -98,10 +100,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures with icon layout on the current BootstrapBuilder instance.
+        ///     Configures with icon layout on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="value">The value to apply.</param>
-        /// <returns>The configured <see cref="AlertComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="AlertComposer" /> value or BootstrapBuilder result.</returns>
         public AlertComposer SetWithIconLayout(bool value = true)
         {
             _withIconLayout = value;
@@ -111,7 +113,7 @@ namespace DMBBootstrapBuilder
         #region From interface IIsCssClassComposer
 
         /// <summary>
-        /// Builds classes for BootstrapBuilder rendering.
+        ///     Builds classes for BootstrapBuilder rendering.
         /// </summary>
         /// <returns>The generated Bootstrap CSS classes or composed output items.</returns>
         public IReadOnlyList<string> BuildClasses()
@@ -155,9 +157,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Creates a copy of the current BootstrapBuilder composer.
+        ///     Creates a copy of the current BootstrapBuilder composer.
         /// </summary>
-        /// <returns>The configured <see cref="IIsCssClassComposer"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IIsCssClassComposer" /> value or BootstrapBuilder result.</returns>
         public IIsCssClassComposer Clone()
         {
             return new AlertComposer()

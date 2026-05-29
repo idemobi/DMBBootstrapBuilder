@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj ImageMediaBuilder.cs create at 2026/04/09 14:04:31
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder image media component or page region.
+    ///     Builds and renders the BootstrapBuilder image media component or page region.
     /// </summary>
     public sealed class ImageMediaBuilder : HtmlTagBuilder<ImageMediaBuilder>,
         ICanUseMargin,
@@ -54,7 +52,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ImageMediaBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="ImageMediaBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -79,6 +77,24 @@ namespace DMBBootstrapBuilder
                 .SetMode(_mode);
         }
 
+        /// <summary>
+        ///     Gets alternate for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
+        public string GetAlternate()
+        {
+            return _alt;
+        }
+
+        /// <summary>
+        ///     Gets source for BootstrapBuilder rendering or composition.
+        /// </summary>
+        /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
+        public string GetSource()
+        {
+            return _src;
+        }
+
         /// <inheritdoc />
         protected override void InternalClone(ImageMediaBuilder source)
         {
@@ -89,27 +105,9 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Gets alternate for BootstrapBuilder rendering or composition.
+        ///     Executes the BootstrapBuilder resolve mode operation.
         /// </summary>
-        /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
-        public string GetAlternate()
-        {
-            return _alt;
-        }
-
-        /// <summary>
-        /// Gets source for BootstrapBuilder rendering or composition.
-        /// </summary>
-        /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
-        public string GetSource()
-        {
-            return _src;
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder resolve mode operation.
-        /// </summary>
-        /// <returns>The configured <see cref="ImageRenderMode"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageRenderMode" /> value or BootstrapBuilder result.</returns>
         public ImageRenderMode ResolveMode()
         {
             if (_mode != ImageRenderMode.Auto)
@@ -122,11 +120,23 @@ namespace DMBBootstrapBuilder
                 : ImageRenderMode.ImageTag;
         }
 
+        private void RestoreAttribute(string name, string? value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                RemoveAttribute(name);
+            }
+            else
+            {
+                _attributes[name] = value;
+            }
+        }
+
         /// <summary>
-        /// Configures alt on the current BootstrapBuilder instance.
+        ///     Configures alt on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="alt">The alt value.</param>
-        /// <returns>The configured <see cref="ImageMediaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageMediaBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageMediaBuilder SetAlt(string alt)
         {
             _alt = alt ?? string.Empty;
@@ -134,10 +144,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures file on the current BootstrapBuilder instance.
+        ///     Configures file on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="src">The src value.</param>
-        /// <returns>The configured <see cref="ImageMediaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageMediaBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageMediaBuilder SetFile(string src)
         {
             _src = src ?? string.Empty;
@@ -145,10 +155,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures mode on the current BootstrapBuilder instance.
+        ///     Configures mode on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="mode">The mode value.</param>
-        /// <returns>The configured <see cref="ImageMediaBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="ImageMediaBuilder" /> value or BootstrapBuilder result.</returns>
         public ImageMediaBuilder SetMode(ImageRenderMode mode)
         {
             _mode = mode;
@@ -185,18 +195,6 @@ namespace DMBBootstrapBuilder
                 RestoreAttribute("alt", previousAlt);
                 RestoreAttribute("aria-label", previousAriaLabel);
                 RestoreAttribute("data-image-render-inline-svg", previousInlineSvg);
-            }
-        }
-
-        private void RestoreAttribute(string name, string? value)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                RemoveAttribute(name);
-            }
-            else
-            {
-                _attributes[name] = value;
             }
         }
 

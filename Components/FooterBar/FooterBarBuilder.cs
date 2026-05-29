@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FooterBarBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -22,14 +20,14 @@ using Microsoft.AspNetCore.Mvc.Routing;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder footer bar component or page region.
+    ///     Builds and renders the BootstrapBuilder footer bar component or page region.
     /// </summary>
     public class FooterBarBuilder : HtmlTagBuilder<FooterBarBuilder>
     {
         #region Static fields and properties
 
         /// <summary>
-        /// Stores the gap icon value used by BootstrapBuilder rendering or composition.
+        ///     Stores the gap icon value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public static string GapIcon = "gap-1";
 
@@ -93,8 +91,8 @@ namespace DMBBootstrapBuilder
         private ResponsiveBreakpoint _columnBreakpoint = ResponsiveBreakpoint.Lg;
         private readonly List<List<GroupActionItem>> _columns = new();
         private string _footerClasses = string.Empty;
-        private string _mainFooterClasses = string.Empty;
         private ContainerStyle _mainContainerStyle = ContainerStyle.Lg;
+        private string _mainFooterClasses = string.Empty;
         private string? _mission;
         private string? _missionTitle;
         private ContainerStyle _noticeContainerStyle = ContainerStyle.Fluid;
@@ -107,7 +105,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterBarBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="FooterBarBuilder" /> class.
         /// </summary>
         /// <param name="writer">The writer that receives the rendered HTML output.</param>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
@@ -121,10 +119,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Adds column to the current BootstrapBuilder component or page model.
+        ///     Adds column to the current BootstrapBuilder component or page model.
         /// </summary>
         /// <param name="groups">The groups value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder AddColumn(params GroupActionItem[] groups)
         {
             List<GroupActionItem> list = new();
@@ -149,10 +147,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder before container operation.
+        ///     Executes the BootstrapBuilder before container operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder BeforeContainer(ContainerStyle style)
         {
             _beforeContainerStyle = style;
@@ -160,10 +158,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder before footer operation.
+        ///     Executes the BootstrapBuilder before footer operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder BeforeFooter(IHtmlContent? content)
         {
             _beforeFooter = content;
@@ -200,10 +198,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder column breakpoint operation.
+        ///     Executes the BootstrapBuilder column breakpoint operation.
         /// </summary>
         /// <param name="breakpoint">The breakpoint value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder ColumnBreakpoint(ResponsiveBreakpoint breakpoint)
         {
             _columnBreakpoint = breakpoint;
@@ -243,10 +241,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder main container operation.
+        ///     Executes the BootstrapBuilder main container operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder MainContainer(ContainerStyle style)
         {
             _mainContainerStyle = style;
@@ -254,10 +252,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder mission operation.
+        ///     Executes the BootstrapBuilder mission operation.
         /// </summary>
         /// <param name="mission">The mission value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder Mission(string? mission)
         {
             _mission = mission;
@@ -265,10 +263,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder mission title operation.
+        ///     Executes the BootstrapBuilder mission title operation.
         /// </summary>
         /// <param name="title">The title value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder MissionTitle(string? title)
         {
             _missionTitle = title;
@@ -276,10 +274,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder notice container operation.
+        ///     Executes the BootstrapBuilder notice container operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder NoticeContainer(ContainerStyle style)
         {
             _noticeContainerStyle = style;
@@ -287,10 +285,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder notice footer operation.
+        ///     Executes the BootstrapBuilder notice footer operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarBuilder NoticeFooter(IHtmlContent? content)
         {
             _noticeFooter = content;
@@ -298,7 +296,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders column for the BootstrapBuilder output.
+        ///     Renders column for the BootstrapBuilder output.
         /// </summary>
         /// <param name="groups">The groups value.</param>
         /// <param name="breakpointCol">The breakpoint col value.</param>
@@ -336,7 +334,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders group for the BootstrapBuilder output.
+        ///     Renders group for the BootstrapBuilder output.
         /// </summary>
         /// <param name="group">The group value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -384,7 +382,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders item for the BootstrapBuilder output.
+        ///     Renders item for the BootstrapBuilder output.
         /// </summary>
         /// <param name="item">The item value.</param>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
@@ -449,7 +447,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders main content for the BootstrapBuilder output.
+        ///     Renders main content for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
         public virtual IHtmlContent RenderMainContent()
@@ -487,7 +485,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders mission for the BootstrapBuilder output.
+        ///     Renders mission for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The generated CSS class string, HTML attribute string, or rendered text value.</returns>
         public virtual string RenderMission()
@@ -501,6 +499,50 @@ namespace DMBBootstrapBuilder
                 : $"""<div class="footer-bar-mission-text">{WebUtility.HtmlEncode(_mission)}</div>""";
 
             return $"{titleHtml}{textHtml}";
+        }
+
+        /// <summary>
+        ///     Configures before footer classes on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="classes">The classes value.</param>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public FooterBarBuilder WithBeforeFooterClasses(string classes)
+        {
+            _beforeFooterClasses = classes ?? string.Empty;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures footer classes on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="classes">The classes value.</param>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public FooterBarBuilder WithFooterClasses(string classes)
+        {
+            _footerClasses = classes ?? string.Empty;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures main footer classes on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="classes">The classes value.</param>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public FooterBarBuilder WithMainFooterClasses(string classes)
+        {
+            _mainFooterClasses = classes ?? string.Empty;
+            return this;
+        }
+
+        /// <summary>
+        ///     Configures notice footer classes on the current BootstrapBuilder instance.
+        /// </summary>
+        /// <param name="classes">The classes value.</param>
+        /// <returns>The configured <see cref="FooterBarBuilder" /> value or BootstrapBuilder result.</returns>
+        public FooterBarBuilder WithNoticeFooterClasses(string classes)
+        {
+            _noticeFooterClasses = classes ?? string.Empty;
+            return this;
         }
 
         /// <inheritdoc />
@@ -530,50 +572,6 @@ namespace DMBBootstrapBuilder
                               {ConvertToString(noticeSection.Render())}
                           </div>
                           """);
-        }
-
-        /// <summary>
-        /// Configures before footer classes on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public FooterBarBuilder WithBeforeFooterClasses(string classes)
-        {
-            _beforeFooterClasses = classes ?? string.Empty;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures footer classes on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public FooterBarBuilder WithFooterClasses(string classes)
-        {
-            _footerClasses = classes ?? string.Empty;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures main footer classes on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public FooterBarBuilder WithMainFooterClasses(string classes)
-        {
-            _mainFooterClasses = classes ?? string.Empty;
-            return this;
-        }
-
-        /// <summary>
-        /// Configures notice footer classes on the current BootstrapBuilder instance.
-        /// </summary>
-        /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="FooterBarBuilder"/> value or BootstrapBuilder result.</returns>
-        public FooterBarBuilder WithNoticeFooterClasses(string classes)
-        {
-            _noticeFooterClasses = classes ?? string.Empty;
-            return this;
         }
 
         #endregion

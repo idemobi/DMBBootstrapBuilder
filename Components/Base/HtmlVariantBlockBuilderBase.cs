@@ -1,3 +1,10 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
 // #region Copyright
 //
 // // Game-Data-Forge Solution

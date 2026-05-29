@@ -1,9 +1,7 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-François & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj FooterBarSectionBuilder.cs create at 2026/04/07 21:04:27
-// ©2024-2026 idéMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
@@ -18,7 +16,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Builds and renders the BootstrapBuilder footer bar section component or page region.
+    ///     Builds and renders the BootstrapBuilder footer bar section component or page region.
     /// </summary>
     public sealed class FooterBarSectionBuilder
     {
@@ -47,7 +45,7 @@ namespace DMBBootstrapBuilder
         #region Instance constructors and destructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FooterBarSectionBuilder"/> class.
+        ///     Initializes a new instance of the <see cref="FooterBarSectionBuilder" /> class.
         /// </summary>
         /// <param name="html">The Razor HTML helper used to access view context and services.</param>
         /// <param name="sectionCssClass">The section css class value.</param>
@@ -62,10 +60,10 @@ namespace DMBBootstrapBuilder
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder container operation.
+        ///     Executes the BootstrapBuilder container operation.
         /// </summary>
         /// <param name="style">The style value.</param>
-        /// <returns>The configured <see cref="FooterBarSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarSectionBuilder Container(ContainerStyle style)
         {
             _containerStyle = style;
@@ -73,10 +71,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Executes the BootstrapBuilder content operation.
+        ///     Executes the BootstrapBuilder content operation.
         /// </summary>
         /// <param name="content">The content value.</param>
-        /// <returns>The configured <see cref="FooterBarSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarSectionBuilder Content(IHtmlContent? content)
         {
             _content = content;
@@ -84,7 +82,7 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Renders value for the BootstrapBuilder output.
+        ///     Renders value for the BootstrapBuilder output.
         /// </summary>
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
         public IHtmlContent Render()
@@ -123,10 +121,10 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        /// Configures classes on the current BootstrapBuilder instance.
+        ///     Configures classes on the current BootstrapBuilder instance.
         /// </summary>
         /// <param name="classes">The classes value.</param>
-        /// <returns>The configured <see cref="FooterBarSectionBuilder"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="FooterBarSectionBuilder" /> value or BootstrapBuilder result.</returns>
         public FooterBarSectionBuilder WithClasses(string classes)
         {
             _additionalClasses = classes ?? string.Empty;

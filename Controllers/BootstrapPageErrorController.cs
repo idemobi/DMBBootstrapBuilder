@@ -1,15 +1,12 @@
 #region Copyright
 
-// Game-Data-Forge Solution
-// Written by CONTART Jean-Francois & BOULOGNE Quentin
-// DMBBootstrapBuilder.csproj BootstrapPageErrorController.cs create at 2026/05/07 00:00:00
-// (c)2024-2026 ideMobi SARL FRANCE
+// ©2002-2026 idéMobi
+// www.idemobi.com
 
 #endregion
 
 #region
 
-using DMBPageBuilder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
@@ -19,39 +16,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace DMBBootstrapBuilder
 {
     /// <summary>
-    /// Provides MVC controller behavior for BootstrapBuilder bootstrap page error pages.
+    ///     Provides MVC controller behavior for BootstrapBuilder bootstrap page error pages.
     /// </summary>
     public abstract class BootstrapPageErrorController : RawBootstrapController
     {
         #region Static fields and properties
 
         /// <summary>
-        /// Stores the information statuses value used by BootstrapBuilder rendering or composition.
-        /// </summary>
-        public static readonly IReadOnlyDictionary<int, string> InformationStatuses = new Dictionary<int, string>
-        {
-            { 100, "Continue" },
-            { 101, "Switching Protocols" },
-            { 102, "Processing" },
-            { 103, "Early Hints" }
-        };
-
-        /// <summary>
-        /// Stores the redirection statuses value used by BootstrapBuilder rendering or composition.
-        /// </summary>
-        public static readonly IReadOnlyDictionary<int, string> RedirectionStatuses = new Dictionary<int, string>
-        {
-            { 300, "Multiple Choices" },
-            { 301, "Moved Permanently" },
-            { 302, "Found" },
-            { 303, "See Other" },
-            { 304, "Not Modified" },
-            { 307, "Temporary Redirect" },
-            { 308, "Permanent Redirect" }
-        };
-
-        /// <summary>
-        /// Stores the error statuses value used by BootstrapBuilder rendering or composition.
+        ///     Stores the error statuses value used by BootstrapBuilder rendering or composition.
         /// </summary>
         public static readonly IReadOnlyDictionary<int, string> ErrorStatuses = new Dictionary<int, string>
         {
@@ -71,55 +43,69 @@ namespace DMBBootstrapBuilder
             { 504, "Gateway Timeout" }
         };
 
+        /// <summary>
+        ///     Stores the information statuses value used by BootstrapBuilder rendering or composition.
+        /// </summary>
+        public static readonly IReadOnlyDictionary<int, string> InformationStatuses = new Dictionary<int, string>
+        {
+            { 100, "Continue" },
+            { 101, "Switching Protocols" },
+            { 102, "Processing" },
+            { 103, "Early Hints" }
+        };
+
+        /// <summary>
+        ///     Stores the redirection statuses value used by BootstrapBuilder rendering or composition.
+        /// </summary>
+        public static readonly IReadOnlyDictionary<int, string> RedirectionStatuses = new Dictionary<int, string>
+        {
+            { 300, "Multiple Choices" },
+            { 301, "Moved Permanently" },
+            { 302, "Found" },
+            { 303, "See Other" },
+            { 304, "Not Modified" },
+            { 307, "Temporary Redirect" },
+            { 308, "Permanent Redirect" }
+        };
+
+        #endregion
+
+        #region Static methods
+
+        /// <summary>
+        ///     Resolves a human-readable HTTP reason phrase for a status code.
+        /// </summary>
+        /// <param name="statusCode">The HTTP status code to resolve.</param>
+        /// <returns>The reason phrase associated with the status code.</returns>
+        protected static string GetReasonPhrase(int statusCode)
+        {
+            if (ErrorStatuses.TryGetValue(statusCode, out string? error))
+            {
+                return error;
+            }
+
+            if (RedirectionStatuses.TryGetValue(statusCode, out string? redirection))
+            {
+                return redirection;
+            }
+
+            if (InformationStatuses.TryGetValue(statusCode, out string? information))
+            {
+                return information;
+            }
+
+            return "Unknown status";
+        }
+
         #endregion
 
         #region Instance methods
 
         /// <summary>
-        /// Executes the BootstrapBuilder http error operation.
+        ///     Executes the BootstrapBuilder ajax http error operation.
         /// </summary>
         /// <param name="statusCode">The status code value.</param>
-        /// <returns>The configured <see cref="IActionResult"/> value or BootstrapBuilder result.</returns>
-        [Route("/Error/{statusCode:int}")]
-        [Route("/ErrorWithLayout/{statusCode:int}")]
-        public virtual IActionResult HttpError(int statusCode = 404)
-        {
-            string reasonPhrase = GetReasonPhrase(statusCode);
-            IStatusCodeReExecuteFeature? reExecuteFeature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
-            string? originalUrl = reExecuteFeature?.OriginalPath;
-
-            ConfigureErrorPage($"{statusCode} - {reasonPhrase}");
-            Response.StatusCode = statusCode;
-            Page.AlertManager.AddHttpError(statusCode, reasonPhrase, originalUrl, Request.GetDisplayUrl());
-            return View(GetErrorViewPath());
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder exception operation.
-        /// </summary>
-        /// <returns>The configured <see cref="IActionResult"/> value or BootstrapBuilder result.</returns>
-        [Route("/Exception")]
-        public virtual IActionResult Exception()
-        {
-            IExceptionHandlerPathFeature? exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
-            System.Exception handledException = exceptionFeature?.Error ?? new InvalidOperationException("An exception was handled by BootstrapPageErrorController.");
-            List<string> details = new();
-            if (!string.IsNullOrWhiteSpace(exceptionFeature?.Path))
-            {
-                details.Add("Original path: " + exceptionFeature.Path);
-            }
-
-            ConfigureErrorPage("Exception alert");
-            Response.StatusCode = 500;
-            Page.AlertManager.AddException(handledException, details);
-            return View(GetErrorViewPath());
-        }
-
-        /// <summary>
-        /// Executes the BootstrapBuilder ajax http error operation.
-        /// </summary>
-        /// <param name="statusCode">The status code value.</param>
-        /// <returns>The configured <see cref="IActionResult"/> value or BootstrapBuilder result.</returns>
+        /// <returns>The configured <see cref="IActionResult" /> value or BootstrapBuilder result.</returns>
         [Route("/ErrorAjax/{statusCode:int}")]
         public virtual IActionResult AjaxHttpError(int statusCode = 404)
         {
@@ -149,6 +135,27 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
+        ///     Executes the BootstrapBuilder exception operation.
+        /// </summary>
+        /// <returns>The configured <see cref="IActionResult" /> value or BootstrapBuilder result.</returns>
+        [Route("/Exception")]
+        public virtual IActionResult Exception()
+        {
+            IExceptionHandlerPathFeature? exceptionFeature = HttpContext.Features.Get<IExceptionHandlerPathFeature>();
+            System.Exception handledException = exceptionFeature?.Error ?? new InvalidOperationException("An exception was handled by BootstrapPageErrorController.");
+            List<string> details = new();
+            if (!string.IsNullOrWhiteSpace(exceptionFeature?.Path))
+            {
+                details.Add("Original path: " + exceptionFeature.Path);
+            }
+
+            ConfigureErrorPage("Exception alert");
+            Response.StatusCode = 500;
+            Page.AlertManager.AddException(handledException, details);
+            return View(GetErrorViewPath());
+        }
+
+        /// <summary>
         ///     Gets the Razor view path used to render the Bootstrap error page.
         /// </summary>
         /// <returns>The absolute Razor view path.</returns>
@@ -158,28 +165,22 @@ namespace DMBBootstrapBuilder
         }
 
         /// <summary>
-        ///     Resolves a human-readable HTTP reason phrase for a status code.
+        ///     Executes the BootstrapBuilder http error operation.
         /// </summary>
-        /// <param name="statusCode">The HTTP status code to resolve.</param>
-        /// <returns>The reason phrase associated with the status code.</returns>
-        protected static string GetReasonPhrase(int statusCode)
+        /// <param name="statusCode">The status code value.</param>
+        /// <returns>The configured <see cref="IActionResult" /> value or BootstrapBuilder result.</returns>
+        [Route("/Error/{statusCode:int}")]
+        [Route("/ErrorWithLayout/{statusCode:int}")]
+        public virtual IActionResult HttpError(int statusCode = 404)
         {
-            if (ErrorStatuses.TryGetValue(statusCode, out string? error))
-            {
-                return error;
-            }
+            string reasonPhrase = GetReasonPhrase(statusCode);
+            IStatusCodeReExecuteFeature? reExecuteFeature = HttpContext.Features.Get<IStatusCodeReExecuteFeature>();
+            string? originalUrl = reExecuteFeature?.OriginalPath;
 
-            if (RedirectionStatuses.TryGetValue(statusCode, out string? redirection))
-            {
-                return redirection;
-            }
-
-            if (InformationStatuses.TryGetValue(statusCode, out string? information))
-            {
-                return information;
-            }
-
-            return "Unknown status";
+            ConfigureErrorPage($"{statusCode} - {reasonPhrase}");
+            Response.StatusCode = statusCode;
+            Page.AlertManager.AddHttpError(statusCode, reasonPhrase, originalUrl, Request.GetDisplayUrl());
+            return View(GetErrorViewPath());
         }
 
         #endregion
