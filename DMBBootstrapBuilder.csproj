@@ -2,7 +2,7 @@
     <PropertyGroup>
         <RootNamespace>DMBBootstrapBuilder</RootNamespace>
         <Title>DMBBootstrapBuilder</Title>
-        <PackageTags>idemobi Bootstrap Builder</PackageTags>
+        <PackageTags>idemobi DMB PageBuilder Bootstrap UI Components Layout Razor MVC</PackageTags>
         <Description>Bootstrap-oriented UI builder package for PageBuilder MVC/Razor applications.</Description>
         <PackageReleaseNotes>note</PackageReleaseNotes>
         <PackageIcon>DMBBootstrapBuilder.png</PackageIcon>
