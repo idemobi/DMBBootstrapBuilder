@@ -1,0 +1,28 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("PNG · fixed size", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.ImageRender("/images/test/test1.png").Alt("PNG simple").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetBorder()
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("PNG · rounded + border", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.ImageRender("/images/test/test2.png").Alt("PNG rounded").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetBorder().SetRounded()
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("SVG inline", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.ImageRender("/images/test/PlayerData.svg").Alt("SVG inline").InlineSvg().SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetBorder()
+    }
+}</code></pre></div>

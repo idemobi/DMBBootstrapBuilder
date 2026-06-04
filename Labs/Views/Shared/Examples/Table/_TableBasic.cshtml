@@ -1,0 +1,69 @@
+@using (Html.TableBuilder().Begin())
+{
+    @using (Html.TableHeaderBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Name
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Role
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Status
+            }
+        }
+    }
+    @using (Html.TableBodyBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Alice Martin
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Developer
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Active
+            }
+        }
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Bob Dupont
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Designer
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Active
+            }
+        }
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Clara Leroy
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Manager
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Inactive
+            }
+        }
+    }
+}

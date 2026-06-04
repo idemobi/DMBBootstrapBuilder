@@ -1,0 +1,72 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Block", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Generic layout containers — BlockBuilder, FlexBlockBuilder and ContainerBuilder.
+            }
+        }
+    }
+}
+
+@* ── BlockBuilder ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("BlockBuilder", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:BlockBuilder renders a div. Use AddClass() for custom CSS or the extension methods (AsSectionHeader, AsSectionContent, AsTextCenter, etc.) for layout roles.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Block/_BlockBuilder", "BlockBuilder", IconStruct.Bootstrap("bi-square"))
+}
+
+@* ── FlexBlockBuilder ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("FlexBlockBuilder", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:FlexBlockBuilder renders a flex container. Configure alignment via SetAlignItemsCenter(), SetJustifyContentCenter() and SetFlexDirection().
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Block/_FlexBlockBuilder", "FlexBlockBuilder", IconStruct.Bootstrap("bi-layout-three-columns"))
+}
+
+@* ── ContainerBuilder ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("ContainerBuilder", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:ContainerBuilder renders a Bootstrap container div with configurable style, padding and optional sidebar panel.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Block/_ContainerBuilder", "ContainerBuilder", IconStruct.Bootstrap("bi-bounding-box"))
+}

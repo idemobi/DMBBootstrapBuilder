@@ -1,0 +1,114 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Accordion", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Collapsible panels — one or many open at a time, with icons, badges and subtitles.
+            }
+        }
+    }
+}
+
+@* ── Standard ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Standard", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:AccordionAreaBuilder renders a standard Bootstrap accordion — only one panel can be open at a time. Open() expands a panel on load.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(AccordionAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Accordion/_AccordionStandard", "Standard", IconStruct.Bootstrap("bi-chevron-down"))
+}
+
+@* ── Badges & Disabled ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Badges & Disabled", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:AddBadge(string, VariantStyle) adds a count badge to the header. Disabled() prevents a panel from being expanded.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(AccordionBlockBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Accordion/_AccordionBadgesDisabled", "Badges & disabled", IconStruct.Bootstrap("bi-tag"))
+}
+
+@* ── Flush ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Flush", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Flush() removes the outer border and rounded corners — panels blend seamlessly with the surrounding container.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(AccordionAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Accordion/_AccordionFlush", "Flush", IconStruct.Bootstrap("bi-border-style"))
+}
+
+@* ── StayOpen ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("StayOpen", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:StayOpen() allows multiple panels to be expanded simultaneously — each collapses independently.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(AccordionAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Accordion/_AccordionStayOpen", "StayOpen", IconStruct.Bootstrap("bi-pin"))
+}
+
+@* ── WithSubtitle ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("WithSubtitle", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:WithSubtitle(string) adds a secondary label below the panel title inside the accordion header.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(AccordionBlockBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Accordion/_AccordionSubtitle", "WithSubtitle", IconStruct.Bootstrap("bi-text-indent-left"))
+}

@@ -1,0 +1,19 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("PNG + spinner", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Spinner PNG").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).ShowSpinner().SetBorder()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("PNG + spinner + rounded", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test2.png").Alt("Spinner rounded").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).ShowSpinner().SetBorder().SetRounded()
+    }
+}

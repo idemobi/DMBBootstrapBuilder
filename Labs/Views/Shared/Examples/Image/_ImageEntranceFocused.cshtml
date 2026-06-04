@@ -1,0 +1,19 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("PolaroidEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Polaroid").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).PolaroidEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("ShineSweepEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Shine").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().ShineSweepEffect()
+    }
+}

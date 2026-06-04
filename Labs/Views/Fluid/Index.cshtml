@@ -1,0 +1,36 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Fluid Layout Toggle", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Switch the main content area between fluid (full-width) and fixed-width container.
+            }
+        }
+    }
+}
+
+@* ── FluidToggleActionItem ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("FluidToggleActionItem", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Toggles the container-fluid class on the main content wrapper. Pass true for fluid, false for fixed.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Fluid/_FluidToggle", "Fluid toggle", IconStruct.Bootstrap("bi-arrows-fullscreen"))
+}

@@ -1,0 +1,23 @@
+@using (Html.BlockBuilder().AddClass("d-flex flex-column gap-2").Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Releases", TitleLevel.Three).Render()
+        @Html.BadgeBuilder("New").SetBadgeVariant(VariantStyle.Primary).SetBadgePill()
+    }
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Documentation", TitleLevel.Four).Render()
+        @Html.BadgeBuilder("Updated").SetBadgeVariant(VariantStyle.Info).SetBadgePill()
+    }
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("API", TitleLevel.Five).Render()
+        @Html.BadgeBuilder("v2").SetBadgeVariant(VariantStyle.Secondary)
+    }
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Beta", TitleLevel.Six).Render()
+        @Html.BadgeBuilder("Experimental").SetBadgeVariant(VariantStyle.Warning)
+    }
+}

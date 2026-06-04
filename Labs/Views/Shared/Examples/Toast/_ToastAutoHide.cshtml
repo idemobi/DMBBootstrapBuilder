@@ -1,0 +1,5 @@
+@using (Html.BlockBuilder().AddClass("toast-container position-static d-flex flex-column gap-2").Begin())
+{
+    @(Html.Toast().SetTitle("Upload complete").SetMessage("3 files have been uploaded.").SetVariant(VariantStyle.Success).SetIcon(IconStruct.Bootstrap("bi-upload")).Render())
+    @(Html.Toast().SetTitle("Action required").SetMessage("You must confirm before the changes are applied.").SetVariant(VariantStyle.Warning).SetIcon(IconStruct.Bootstrap("bi-exclamation-triangle")).SetAutoHide(false).Render())
+}

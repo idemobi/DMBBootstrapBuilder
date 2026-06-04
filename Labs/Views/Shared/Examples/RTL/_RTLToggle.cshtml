@@ -1,0 +1,14 @@
+@{ _ = new RTLToggleActionItem(Html, true); }
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(new JavaScriptActionItem("RTLModeMethod.set(true); return false;")
+        .SetTitle("Enable RTL")
+        .SetIcon(IconStruct.Bootstrap("bi-text-right"))
+        .SetVariant(VariantStyle.Secondary)
+        .SetOutlined())
+    @Html.Button(new JavaScriptActionItem("RTLModeMethod.set(false); return false;")
+        .SetTitle("Disable RTL")
+        .SetIcon(IconStruct.Bootstrap("bi-text-left"))
+        .SetVariant(VariantStyle.Secondary)
+        .SetOutlined())
+}

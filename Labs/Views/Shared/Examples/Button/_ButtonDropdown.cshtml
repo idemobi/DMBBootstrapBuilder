@@ -1,0 +1,25 @@
+@{
+    var dropdown = ActionItemFactory.Group("Actions", IconStruct.Bootstrap("bi-list"))
+        .AddItems(
+            ActionItemFactory.Url("Open docs", "#", IconStruct.Bootstrap("bi-book")),
+            ActionItemFactory.JavaScript("Log to console", "console.log('hello')", IconStruct.Bootstrap("bi-terminal")),
+            ActionItemFactory.ClipboardButton("Copy token", "Copy", "Copied"),
+            ActionItemFactory.Divider()
+        );
+    var subGroup = ActionItemFactory.Group("More", IconStruct.Bootstrap("bi-folder"));
+    subGroup.AddItems(
+        ActionItemFactory.Url("Settings", "#", IconStruct.Bootstrap("bi-gear")),
+        ActionItemFactory.Url("Danger zone", "#", IconStruct.Bootstrap("bi-exclamation-triangle")).SetVariant(VariantStyle.Danger)
+    );
+    dropdown.AddItem(subGroup);
+}
+
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(dropdown.SetVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.Group("Outlined", IconStruct.Bootstrap("bi-list")).SetVariant(VariantStyle.Secondary).SetOutlined()
+        .AddItems(
+            ActionItemFactory.Url("Item A", "#"),
+            ActionItemFactory.Url("Item B", "#")
+        )).Render()
+}

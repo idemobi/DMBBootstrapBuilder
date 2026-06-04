@@ -1,0 +1,29 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("3 segments", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @(Html.ProgressBarStack()
+            .AddProgressBar(25, VariantStyle.Success, "25%", true)
+            .AddProgressBar(35, VariantStyle.Warning, "35%", true)
+            .AddProgressBar(40, VariantStyle.Danger,  "40%", true))
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Large + animated segment", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @(Html.ProgressBarStack()
+            .SetSize(ProgressBarSize.Large)
+            .AddProgressBar(
+                Html.ProgressBar().SetPercentage(40).SetVariant(VariantStyle.Info).SetShowLabel().SetLabel("Done 40%")
+            )
+            .AddProgressBar(
+                Html.ProgressBar().SetPercentage(60).SetVariant(VariantStyle.Primary).SetStriped().SetAnimated().SetShowLabel().SetLabel("In progress 60%")
+            ))
+    }
+}

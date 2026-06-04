@@ -1,0 +1,118 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Button", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Html.Button(IActionItem) renders any action — URL, route, JavaScript, modal, clipboard, toggle or dropdown.
+            }
+        }
+    }
+}
+
+@* ── ActionItem types ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("ActionItem types", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:ActionItemFactory provides a factory method for each button behaviour — the button renders differently depending on the type passed.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ActionItemFactory)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Button/_ButtonActionTypes", "ActionItem types", IconStruct.Bootstrap("bi-lightning"))
+}
+
+@* ── Variants & Outlined ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Variants & Outlined", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetVariant(VariantStyle) fills the button. SetOutlined() switches to the outline style. Both accept the same set of Bootstrap variants.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ActionItemFactory)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Button/_ButtonVariants.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Button/_ButtonVariantsFocused", "Variants & outlined", IconStruct.Bootstrap("bi-palette"))
+}
+
+@* ── Sizes, Icon & Badge ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Sizes, Icon & Badge", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetSize(BoostrapButtonSize) adjusts padding. IconStruct.Bootstrap adds a leading icon. SetBadge(string) appends a count chip. SetDisabled() greys the button out.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ActionItemFactory)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Button/_ButtonSizes", "Sizes, icon & badge", IconStruct.Bootstrap("bi-arrows-expand"))
+}
+
+@* ── Dropdown ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Dropdown", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:GroupActionItem renders a dropdown menu. Items of any type can be nested, including sub-groups and dividers.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(GroupActionItem)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Button/_ButtonDropdown", "Dropdown", IconStruct.Bootstrap("bi-chevron-down"))
+}
+
+@* ── Split button ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Split button", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:ActionItemFactory.Split(main, dropdown) renders a two-part button — the left side triggers the primary action, the right arrow opens the dropdown.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(SplitActionItem)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Button/_ButtonSplit", "Split button", IconStruct.Bootstrap("bi-layout-split"))
+}

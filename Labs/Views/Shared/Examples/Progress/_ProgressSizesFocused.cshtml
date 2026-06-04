@@ -1,0 +1,5 @@
+@using (Html.FlexBlockBuilder().SetFlexColumn().SetAlignItemsStretch().WithGap(Old_Gap.Gap3).Begin())
+{
+    @Html.ProgressBar().SetValue(40).SetVariant(VariantStyle.Primary).SetSize(ProgressBarSize.Thin)
+    @Html.ProgressBar().SetValue(75).SetVariant(VariantStyle.Warning).SetSize(ProgressBarSize.Large).SetShowLabel()
+}

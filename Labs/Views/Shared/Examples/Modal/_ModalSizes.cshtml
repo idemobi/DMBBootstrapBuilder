@@ -1,0 +1,42 @@
+@using (Html.ModalBuilder().Id("ex-modal-sm").WithTitle("Small modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-angle-contract")).Size(ModalSize.Sm).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:ModalSize.Sm
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@using (Html.ModalBuilder().Id("ex-modal-lg").WithTitle("Large modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-angle-expand")).Size(ModalSize.Lg).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:ModalSize.Lg
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@using (Html.ModalBuilder().Id("ex-modal-xl").WithTitle("Extra-large modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-fullscreen")).Size(ModalSize.Xl).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:ModalSize.Xl
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@using (Html.FlexBlockBuilder().Begin())
+{
+    @Html.Button(ActionItemFactory.Modal("Small", "ex-modal-sm", IconStruct.Bootstrap("bi-arrows-angle-contract")).SetVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.Modal("Large", "ex-modal-lg", IconStruct.Bootstrap("bi-arrows-angle-expand")).SetVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.Modal("Extra Large", "ex-modal-xl", IconStruct.Bootstrap("bi-arrows-fullscreen")).SetVariant(VariantStyle.Primary)).Render()
+}

@@ -1,0 +1,45 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Sidebar Theme", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Apply a visual theme to the sidebar.
+            }
+        }
+    }
+}
+
+@* ── SideBarThemeActionItem ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("SideBarThemeActionItem", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Each button switches the sidebar to the corresponding theme immediately.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.FlexBlockBuilder().Begin())
+    {
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Default))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Light))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Dark))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Transparent))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Colored))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Primary))
+        @Html.Button(new SideBarThemeActionItem(Html, SideBarTheme.Inversed))
+    }
+}

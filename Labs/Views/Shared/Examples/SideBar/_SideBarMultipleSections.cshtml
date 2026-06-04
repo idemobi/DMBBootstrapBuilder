@@ -1,0 +1,12 @@
+@(new SideBarComponent()
+    .AddSection("Effects",
+        ActionItemFactory.Url("Image Effects", "/ImageEffect").SetTitle("Image Effects"),
+        ActionItemFactory.Url("Inner Section", "/InnerSectionEffect").SetTitle("Inner Section"),
+        ActionItemFactory.Url("Section Effects", "/SectionEffect").SetTitle("Section Effects")
+    )
+    .AddSection("Settings",
+        ActionItemFactory.Url("Theme", "/Theme").SetTitle("Theme"),
+        ActionItemFactory.Url("RTL", "/RTL").SetTitle("RTL"),
+        ActionItemFactory.Url("Fluid", "/Fluid").SetTitle("Fluid")
+    )
+    .Render(Html))

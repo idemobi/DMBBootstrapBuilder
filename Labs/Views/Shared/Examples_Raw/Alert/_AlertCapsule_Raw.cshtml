@@ -1,0 +1,14 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.AlertBuilder().SetTitle("Yahoo").SetMessage("This is a alert").Begin())
+{
+    @@using (Html.BlockBuilder().Begin())
+    {
+        @@:My message ...
+    }
+    &lt;hr/&gt;
+    @@using (Html.BlockBuilder().Begin())
+    {
+        @@:with html razor composition!
+    }
+}</code></pre></div>

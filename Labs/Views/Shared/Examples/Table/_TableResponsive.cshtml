@@ -1,0 +1,90 @@
+@using (Html.TableBuilder().SetResponsive(TableResponsiveBreakpoint.Md).SetHover().Begin())
+{
+    @using (Html.TableHeaderBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:ID
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:First Name
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Last Name
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Department
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Location
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Start Date
+            }
+        }
+    }
+    @using (Html.TableBodyBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:001
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Alice
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Martin
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Engineering
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Paris
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:2023-01-15
+            }
+        }
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:002
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Bob
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Dupont
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Design
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:Lyon
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:2022-09-03
+            }
+        }
+    }
+}

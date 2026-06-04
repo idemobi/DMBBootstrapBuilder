@@ -1,0 +1,25 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Horizontal only", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Primary).SetCentered(horizontal: true, vertical: false).SetWrapperMinHeight(80, UnitSize.px)
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Horizontal + vertical", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.Spinner().SetSpinnerType(SpinnerType.Grow).SetVariant(VariantStyle.Success).SetCentered(horizontal: true, vertical: true).SetWrapperMinHeight(120, UnitSize.px)
+        }
+    }
+}

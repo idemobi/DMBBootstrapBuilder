@@ -1,0 +1,5 @@
+@using (Html.BlockBuilder().AddClass("d-flex flex-wrap gap-4").Begin())
+{
+    @Html.Button(ActionItemFactory.Url("Inbox", "#").SetVariant(VariantStyle.Primary).SetBadge("99+", VariantStyle.Danger)).Render()
+    @Html.Button(ActionItemFactory.Url("Notifications", "#").SetVariant(VariantStyle.Secondary).SetBadge("5", VariantStyle.Success)).Render()
+}

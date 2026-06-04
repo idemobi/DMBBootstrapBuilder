@@ -1,0 +1,13 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:A card without any header section.
+            }
+        }
+    }
+}

@@ -1,0 +1,133 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Tabs", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Switchable content panels — tabs, pills or underline style, with icons, badges, subtitles and hash navigation.
+            }
+        }
+    }
+}
+
+@* ── Tabs ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Tabs", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:TabAreaBuilder.Tabs() renders the classic Bootstrap tab navigation. Active() sets the initially selected panel; Disabled() prevents a tab from being clicked.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsTabs", "Tabs", IconStruct.Bootstrap("bi-folder"))
+}
+
+@* ── Pills ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Pills", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:TabAreaBuilder.Pills() renders pill-shaped navigation buttons instead of the classic underlined tabs.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsPills", "Pills", IconStruct.Bootstrap("bi-circle"))
+}
+
+@* ── Underline ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Underline", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:TabAreaBuilder.Underline() renders a minimal underline indicator with no background fill on the active tab.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsUnderline", "Underline", IconStruct.Bootstrap("bi-text-underline"))
+}
+
+@* ── Fill & Justified ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Fill & Justified", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Fill() stretches each tab to fill available width proportionally. Justified() gives every tab an equal width.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsFillJustified", "Fill & justified", IconStruct.Bootstrap("bi-distribute-horizontal"))
+}
+
+@* ── Badges & Subtitles ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Badges & Subtitles", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:AddBadge(string, VariantStyle) adds a count chip to the tab header. WithSubtitle(string) adds a secondary label below the title.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabBlockBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsBadgesSubtitles", "Badges & subtitles", IconStruct.Bootstrap("bi-tag"))
+}
+
+@* ── Hash Navigation ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Hash Navigation", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:EnableHashNavigation() activates a tab from the URL hash on load. UpdateHashOnTabChange() keeps the URL in sync as the user navigates.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(TabAreaBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Tabs/_TabsHashNavigation", "Hash navigation", IconStruct.Bootstrap("bi-hash"))
+}

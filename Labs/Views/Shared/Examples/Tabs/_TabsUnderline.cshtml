@@ -1,0 +1,24 @@
+@using (Html.TabAreaBuilder().Underline().WithContentClasses("pt-3").Begin())
+{
+    @using (Html.TabBlockBuilder().WithTitle("News").Active().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Latest updates and announcements from the team.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("Stats").Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Usage statistics and performance indicators.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("History").Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Changelog and past activity log.
+        }
+    }
+}

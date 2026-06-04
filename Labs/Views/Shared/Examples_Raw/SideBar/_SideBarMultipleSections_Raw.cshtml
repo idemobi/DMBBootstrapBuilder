@@ -1,0 +1,13 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@(new SideBarComponent()
+    .AddSection("Effects",
+        ActionItemFactory.Url("Image Effects", "/ImageEffect").SetTitle("Image Effects"),
+        ActionItemFactory.Url("Inner Section", "/InnerSectionEffect").SetTitle("Inner Section"),
+        ActionItemFactory.Url("Section Effects", "/SectionEffect").SetTitle("Section Effects")
+    )
+    .AddSection("Settings",
+        ActionItemFactory.Url("Theme", "/Theme").SetTitle("Theme"),
+        ActionItemFactory.Url("RTL", "/RTL").SetTitle("RTL"),
+        ActionItemFactory.Url("Fluid", "/Fluid").SetTitle("Fluid")
+    )
+    .Render(Html))</code></pre></div>

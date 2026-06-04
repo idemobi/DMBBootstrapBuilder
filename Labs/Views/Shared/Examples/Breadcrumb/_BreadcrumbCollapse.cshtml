@@ -1,0 +1,31 @@
+@{
+    var deepPath = new IActionItem[]
+    {
+        ActionItemFactory.Url("Home",          "/",                                         IconStruct.Bootstrap("bi-house")),
+        ActionItemFactory.Url("Administration", "/admin",                                   IconStruct.Bootstrap("bi-gear")),
+        ActionItemFactory.Url("Organizations",  "/admin/organizations",                     IconStruct.Bootstrap("bi-building")),
+        ActionItemFactory.Url("France",         "/admin/organizations/france",              IconStruct.Bootstrap("bi-globe-europe-africa")),
+        ActionItemFactory.Url("Paris",          "/admin/organizations/france/paris",        IconStruct.Bootstrap("bi-pin-map")),
+        ActionItemFactory.Url("Studio",         "/admin/organizations/france/paris/studio", IconStruct.Bootstrap("bi-controller")),
+    };
+}
+
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("CollapseAfter(4) — IconAndTitle", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.BreadcrumbBuilder().AddItems(deepPath).SetDisplayMode(BreadcrumbDisplayMode.IconAndTitle).SetSeparator("›").SetCollapseAfter(4)
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("CollapseAfter(3) — IconOnly — Subtle style", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.BreadcrumbBuilder().AddItems(deepPath).SetDisplayMode(BreadcrumbDisplayMode.IconOnly).SetStyle(BreadcrumbStyle.Subtle).SetCollapseAfter(3)
+    }
+}

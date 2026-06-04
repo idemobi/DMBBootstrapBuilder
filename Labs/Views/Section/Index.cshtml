@@ -1,0 +1,58 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Section", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Full-width page regions with configurable height and background effects.
+            }
+        }
+    }
+}
+
+@* ── Height ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Height", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetHeight(value, UnitSize) controls the minimum height of the section.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Section/_SectionHeight", "Height variants", IconStruct.Bootstrap("bi-arrows-expand"))
+}
+
+@* ── Background Effects ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Background Effects", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:BootstrapBackgroundEffect(VariantStyle) applies a themed gradient background to the section.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Section/_SectionBackgroundEffects.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Section/_SectionBackgroundEffectsFocused", "Background effects", IconStruct.Bootstrap("bi-palette"))
+}

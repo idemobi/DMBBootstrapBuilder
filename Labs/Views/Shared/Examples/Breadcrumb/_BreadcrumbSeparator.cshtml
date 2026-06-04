@@ -1,0 +1,28 @@
+@{
+    var items = new IActionItem[]
+    {
+        ActionItemFactory.Url("Home",       "/",            IconStruct.Bootstrap("bi-house")),
+        ActionItemFactory.Url("Projects",   "/projects",    IconStruct.Bootstrap("bi-kanban")),
+        ActionItemFactory.Url("FloraBrawl", "/projects/fb", IconStruct.Bootstrap("bi-flower1"))
+    };
+}
+
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("› separator", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.BreadcrumbBuilder().AddItems(items).SetDisplayMode(BreadcrumbDisplayMode.TitleOnly).SetSeparator("›")
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("> separator", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.BreadcrumbBuilder().AddItems(items).SetDisplayMode(BreadcrumbDisplayMode.TitleOnly).SetSeparator(">")
+    }
+}

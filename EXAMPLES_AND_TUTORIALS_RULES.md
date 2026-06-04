@@ -20,21 +20,21 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 
 - Project name: `DMBBootstrapBuilder`
 - Default documentation area: `BootstrapBuilder`
-- Publication target: `../labs_idemobi_com`
+- Publication target: `Labs`
 - Shared UI stack: `DMBBootstrapBuilder`, `DMBComponentBuilder`, `DMBFormBuilder`, and `DMBPageBuilder`
 - Default DocumentationViewer package id for this project: `DMBBootstrapBuilder`
 - Default DocumentationViewer namespace for this project: `DMBBootstrapBuilder`
 
 ## Publication target
 
-Examples and tutorials must be written in `../labs_idemobi_com`.
+Examples and tutorials must be written in `Labs`.
 
 Use the existing MVC conventions in that project:
 
-- controller actions in `labs_idemobi_com/Controllers`,
-- full pages in `labs_idemobi_com/Views/{FeatureOrComponent}/`,
-- reusable example partials in `labs_idemobi_com/Views/Shared/Examples/`,
-- generated raw-code mirrors in `labs_idemobi_com/Views/Shared/Examples_Raw/`.
+- controller actions in `DMBBootstrapBuilder/Labs/Controllers`,
+- full pages in `DMBBootstrapBuilder/Labs/Views/{FeatureOrComponent}/`,
+- reusable example partials in `DMBBootstrapBuilder/Labs/Views/Shared/Examples/`,
+- generated raw-code mirrors in `DMBBootstrapBuilder/Labs/Views/Shared/Examples_Raw/`.
 
 AI may create or update source example partials under `Views/Shared/Examples/`. The developer or prebuild step is responsible for regenerating `Views/Shared/Examples_Raw/` when required.
 
@@ -89,7 +89,7 @@ Draw.io diagrams must follow `DRAWIO_DIAGRAM_RULES.md`.
 In particular:
 
 - use enriched `.drawio.svg` files that remain editable in Draw.io,
-- store diagrams under `labs_idemobi_com/wwwroot/drawio/{Area}/{diagram-name}.drawio.svg`,
+- store diagrams under `DMBBootstrapBuilder/Labs/wwwroot/drawio/{Area}/{diagram-name}.drawio.svg`,
 - keep geometry aligned to the Draw.io grid,
 - keep diagrams compatible with light and dark page themes,
 - include meaningful alternative text when rendering the diagram in a page,
@@ -187,13 +187,13 @@ The gallery must render example partials through:
 The source partials must live under:
 
 ```text
-labs_idemobi_com/Views/Shared/Examples/{ComponentClassName}/{ExamplePartialName}.cshtml
+DMBBootstrapBuilder/Labs/Views/Shared/Examples/{ComponentClassName}/{ExamplePartialName}.cshtml
 ```
 
 The generated raw-code mirrors are expected under:
 
 ```text
-labs_idemobi_com/Views/Shared/Examples_Raw/{ComponentClassName}/{ExamplePartialName}_Raw.cshtml
+DMBBootstrapBuilder/Labs/Views/Shared/Examples_Raw/{ComponentClassName}/{ExamplePartialName}_Raw.cshtml
 ```
 
 Use the component class name as the folder name for new component pages. For example:
@@ -256,7 +256,7 @@ Tutorials must:
 
 Before finishing an example or tutorial task, verify:
 
-- the page is under `labs_idemobi_com`,
+- the page is under `DMBBootstrapBuilder/Labs`,
 - the page uses existing BootstrapBuilder, ComponentBuilder, FormBuilder, or PageBuilder components where appropriate,
 - component pages follow the required component page format,
 - example partials live under `Views/Shared/Examples/{ComponentClassName}/`,

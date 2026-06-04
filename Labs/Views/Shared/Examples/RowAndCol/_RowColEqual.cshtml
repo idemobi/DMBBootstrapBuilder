@@ -1,0 +1,33 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Column 1
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Column 2
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Column 3
+            }
+        }
+    }
+}

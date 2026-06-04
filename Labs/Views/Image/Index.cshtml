@@ -1,0 +1,122 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Image", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Responsive image rendering with spinner, modal preview, download and hover effects.
+            }
+        }
+    }
+}
+
+@* ── Basic rendering ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Basic rendering", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Html.ImageRender(path) renders a standard image. SetWidth/SetHeight control dimensions. SetRounded() and SetBorder() apply visual styles.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ImageRenderBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Image/_ImageBasic", "Basic rendering", IconStruct.Bootstrap("bi-image"))
+}
+
+@* ── Spinner ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Spinner", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:ShowSpinner() displays a loading indicator while the image loads — it disappears automatically once the asset is ready.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ImageRenderBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Image/_ImageSpinner", "Spinner", IconStruct.Bootstrap("bi-arrow-repeat"))
+}
+
+@* ── Modal & Download ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Modal & Download", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:OpenInModal() opens a full-screen preview on click. AllowDownload() adds a download button. AllowThemeDownload() provides separate light/dark versions for SVGs.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ImageRenderBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Image/_ImageModal", "Modal & download", IconStruct.Bootstrap("bi-zoom-in"))
+}
+
+@* ── Hover effects ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Hover effects", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Fluent extension methods add CSS-driven hover interactions — zoom, fade, grayscale, lift and glow.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ImageRenderBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Image/_ImageHover.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Image/_ImageHoverFocused", "Hover effects", IconStruct.Bootstrap("bi-hand-index"))
+}
+
+@* ── Entrance & Stylise effects ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Entrance & Stylise effects", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:CSS effects that apply on load or continuously — polaroid, rotate, grayscale-to-colour, ken burns, blur, shine and more.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ImageRenderBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Image/_ImageEntrance.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Image/_ImageEntranceFocused", "Entrance & stylise", IconStruct.Bootstrap("bi-stars"))
+}

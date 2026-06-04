@@ -1,0 +1,39 @@
+@using (Html.ModalBuilder().Id("ex-modal-basic").WithTitle("Project Details", TitleLevel.Three, IconStruct.Bootstrap("bi-folder")).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:Standard modal with header, body and footer.
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Cancel", IconStruct.Bootstrap("bi-x-lg")).SetVariant(VariantStyle.Secondary).SetOutlined())
+        @Html.Button(ActionItemFactory.JavaScript("Save", "console.log('saved')").SetVariant(VariantStyle.Primary))
+    }
+}
+
+@using (Html.ModalBuilder().Id("ex-modal-no-footer").WithTitle("Confirmation", TitleLevel.Three, IconStruct.Bootstrap("bi-info-circle")).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:No footer — only the header close button dismisses this modal.
+    }
+}
+
+@using (Html.ModalBuilder().Id("ex-modal-no-header").NoHeader().Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:No header — only body and footer are rendered.
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Close").SetVariant(VariantStyle.Secondary))
+    }
+}
+
+@using (Html.FlexBlockBuilder().Begin())
+{
+    @Html.Button(ActionItemFactory.Modal("Standard", "ex-modal-basic", IconStruct.Bootstrap("bi-window")).SetVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.Modal("No footer", "ex-modal-no-footer", IconStruct.Bootstrap("bi-window-stack")).SetVariant(VariantStyle.Secondary)).Render()
+    @Html.Button(ActionItemFactory.Modal("No header", "ex-modal-no-header", IconStruct.Bootstrap("bi-app")).SetVariant(VariantStyle.Normal)).Render()
+}

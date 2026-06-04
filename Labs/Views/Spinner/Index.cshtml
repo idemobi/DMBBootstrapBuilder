@@ -1,0 +1,103 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Spinner", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Animated loading indicators — border or grow style, any size or colour, with optional centering.
+            }
+        }
+    }
+}
+
+@* ── Border ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Border", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SpinnerType.Border renders a spinning ring. SetVariant(VariantStyle) picks the colour. SetSize(SpinnerSize) or SetSize(int, UnitSize) controls the diameter.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(SpinnerBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Spinner/_SpinnerBorder.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Spinner/_SpinnerBorderFocused", "Border spinner", IconStruct.Bootstrap("bi-arrow-repeat"))
+}
+
+@* ── Grow ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Grow", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SpinnerType.Grow renders a pulsing disc — it fades in and out rather than rotating.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(SpinnerBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Spinner/_SpinnerGrow.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Spinner/_SpinnerGrowFocused", "Grow spinner", IconStruct.Bootstrap("bi-circle"))
+}
+
+@* ── Centering ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Centering", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetCentered(horizontal, vertical) wraps the spinner in a flex container. SetWrapperMinHeight(int, UnitSize) guarantees visible space.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(SpinnerBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Spinner/_SpinnerCentering", "Centering", IconStruct.Bootstrap("bi-arrows-move"))
+}
+
+@* ── LoadingBlock ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("LoadingBlock", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:LoadingBlockBuilder combines a spinner with a text label inside a flex wrapper — useful as a skeleton placeholder for content areas.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(LoadingBlockBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Spinner/_SpinnerLoadingBlock", "LoadingBlock", IconStruct.Bootstrap("bi-hourglass-split"))
+}

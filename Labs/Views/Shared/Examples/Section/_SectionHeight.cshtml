@@ -1,0 +1,33 @@
+@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+{
+    @Html.TitleBuilder().SetTitle("50 px", TitleLevel.Six).AsSubSectionTitle().Render()
+}
+@using (Html.SectionBuilder().SetHeight(50, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Secondary).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("50 px", TitleLevel.Six).Render()
+    }
+}
+@using (Html.BlockBuilder().AsSectionSubLabel(largeMargin: true).Begin())
+{
+    @Html.TitleBuilder().SetTitle("150 px", TitleLevel.Six).AsSubSectionTitle().Render()
+}
+@using (Html.SectionBuilder().SetHeight(150, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Secondary).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("150 px", TitleLevel.Six).Render()
+    }
+}
+@using (Html.BlockBuilder().AsSectionSubLabel(largeMargin: true).Begin())
+{
+    @Html.TitleBuilder().SetTitle("300 px", TitleLevel.Six).AsSubSectionTitle().Render()
+}
+@using (Html.SectionBuilder().SetHeight(300, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Secondary).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("300 px", TitleLevel.Six).Render()
+    }
+}

@@ -1,0 +1,24 @@
+@using (Html.AccordionAreaBuilder().Id("acc-subtitle").Begin())
+{
+    @using (Html.AccordionBlockBuilder().WithTitle("Account").WithSubtitle("Identity and credentials").WithIcon(IconStruct.Bootstrap("bi-person-badge")).Open().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Manage your profile, email address and authentication methods.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Security").WithSubtitle("Tokens and authorizations").WithIcon(IconStruct.Bootstrap("bi-shield-lock")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:API keys, two-factor authentication and active sessions.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Usage").WithSubtitle("Metrics and activity").WithIcon(IconStruct.Bootstrap("bi-graph-up")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Requests, storage and bandwidth consumed this billing period.
+        }
+    }
+}

@@ -1,0 +1,192 @@
+@{
+    Layout = "_Layout";
+}
+
+@* ── Hero ── *@
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Architecture — BootstrapBuilder", TitleLevel.One).Render()
+            @using (Html.PB_P().AsLead().Begin())
+            {
+                @:A Bootstrap UI layer built on the PageBuilder rendering lifecycle.
+            }
+        }
+    }
+}
+
+@using (Html.ContainerBuilder().SetPadding(SpacingSide.Y, SpacingSize.Five).Begin())
+{
+    @using (Html.RowBuilder().Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+        {
+            @* ── 1. Layer Architecture ── *@
+            @Html.TitleBuilder().SetTitle("1. Layer Architecture", TitleLevel.Two).AsSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @using (Html.PB_Span().AsBold().Begin())
+                {
+                    @:DMBBootstrapBuilder
+                }
+                @: sits above PageBuilder and turns Bootstrap-oriented UI into composable C# builders. It keeps Bootstrap classes and behaviors available while centralizing repeated markup, action patterns and application shell composition. BootstrapBuilder owns UI vocabulary: components, layout helpers, action items, navigation providers and shell composers.
+            }
+            @(Html.ImageRender("/_content/DMBBootstrapBuilderLabs/drawio/BootstrapBuilder/architecture-layers.drawio.svg")
+                .Alt("DMBBootstrapBuilder architecture layers diagram")
+                .InlineSvg()
+                .SetWidth(100, UnitSize.percent)
+                .SetBorder()
+                .SetRounded()
+                .Render())
+
+            @* ── 2. Main Layers ── *@
+            @Html.TitleBuilder().SetTitle("2. Main Layers", TitleLevel.Two).AsSubSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:BootstrapBuilder is organised into three layers that cover the full UI composition lifecycle.
+            }
+            @using (Html.RowBuilder().AsPillarGrid().Begin())
+            {
+                @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+                {
+                    @using (Html.BlockBuilder().AsPillarCard().Begin())
+                    {
+                        @using (Html.BlockBuilder().AsTopMargin().Begin())
+                        {
+                            @using (Html.PB_Span().AddClass("bi bi-boxes text-primary me-1").Begin()) { }
+                            @Html.TitleBuilder().SetTitle("Component Layer", TitleLevel.Five).AsCompact().Render()
+                        }
+                        @using (Html.PB_P().AsSmallMuted().Begin())
+                        {
+                            @:Builders for buttons, alerts, cards, modals, tables, layout blocks and common Bootstrap UI primitives.
+                        }
+                        @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                        {
+                            @:Html.Button(...)
+                        }
+                    }
+                }
+                @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+                {
+                    @using (Html.BlockBuilder().AsPillarCard().Begin())
+                    {
+                        @using (Html.BlockBuilder().AsTopMargin().Begin())
+                        {
+                            @using (Html.PB_Span().AddClass("bi bi-bezier2 text-success me-1").Begin()) { }
+                            @Html.TitleBuilder().SetTitle("Composer Layer", TitleLevel.Five).AsCompact().Render()
+                        }
+                        @using (Html.PB_P().AsSmallMuted().Begin())
+                        {
+                            @:Navigation, sidebar, breadcrumb, footer, profile and theme composers assemble application-level structure.
+                        }
+                        @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                        {
+                            @:IMenuBarSectionProvider
+                        }
+                    }
+                }
+                @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+                {
+                    @using (Html.BlockBuilder().AsPillarCard().Begin())
+                    {
+                        @using (Html.BlockBuilder().AsTopMargin().Begin())
+                        {
+                            @using (Html.PB_Span().AddClass("bi bi-lightning-charge text-warning me-1").Begin()) { }
+                            @Html.TitleBuilder().SetTitle("Action Layer", TitleLevel.Five).AsCompact().Render()
+                        }
+                        @using (Html.PB_P().AsSmallMuted().Begin())
+                        {
+                            @:Action items normalize links, routes, buttons, groups, toggles and menu entries across the UI.
+                        }
+                        @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                        {
+                            @:ActionItemFactory.AspRoute(...)
+                        }
+                    }
+                }
+            }
+
+            @* ── 3. Extension Points ── *@
+            @Html.TitleBuilder().SetTitle("3. Extension Points", TitleLevel.Two).AsSubSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:Register
+                @using (Html.PB_Span().AsMonospace().Begin())
+                {
+                    @:IMenuBarSectionProvider
+                }
+                @: implementations for application navigation. Create specialized builders when repeated Bootstrap markup becomes a stable pattern. Keep domain workflows in ComponentBuilder and visual treatments in EffectBuilder.
+            }
+            @(Html.CodeBlock(@"builder.Services.AddTransient<IMenuBarSectionProvider, MyMenuProvider>();
+builder.Services.AddTransient<IProfileBarSectionProvider, MyProfileProvider>();
+builder.Services.AddTransient<IBreadcrumbComposer, BasicBreadcrumbComposer>();", CodeLanguage.CSharp)
+                .SetTitle("Application shell providers")
+                .SetCopyButton())
+
+            @* ── Tech Stack ── *@
+            @using (Html.BlockBuilder().AsInfoCallout().Begin())
+            {
+                @using (Html.FlexBlockBuilder().Begin())
+                {
+                    @using (Html.BlockBuilder().AsCalloutIcon().Begin())
+                    {
+                        @using (Html.PB_Span().AddClass("bi bi-gear-fill fs-2 text-info").Begin()) { }
+                    }
+                    @using (Html.BlockBuilder().Begin())
+                    {
+                        @Html.TitleBuilder().SetTitle("Tech Stack", TitleLevel.Five).AsAlertHeading().Render()
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsBold().Begin())
+                            {
+                                @:Backend:
+                            }
+                            @: .NET 10 / ASP.NET Core
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsBold().Begin())
+                            {
+                                @:Frontend:
+                            }
+                            @: Bootstrap 5.3
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsBold().Begin())
+                            {
+                                @:Architecture:
+                            }
+                            @: Fluent API / Builder Pattern
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsBold().Begin())
+                            {
+                                @:Integration:
+                            }
+                            @: PageBuilder + EffectBuilder
+                        }
+                    }
+                }
+            }
+
+            @* ── Next Step ── *@
+            @using (Html.BlockBuilder().AsSidebarNote().Begin())
+            {
+                @using (Html.BlockBuilder().AsTextCenter().Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("See it in action", TitleLevel.Four).Render()
+                    @using (Html.PB_P().AsSmallMuted().Begin())
+                    {
+                        @:Learn how a Razor call becomes Bootstrap markup in the final PageBuilder document.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "RenderingPipeline").SetTitle("Rendering Pipeline").SetIcon(IconStruct.Bootstrap("bi-bezier2")).SetVariant(VariantStyle.Primary)).Render()
+                }
+            }
+        }
+    }
+}

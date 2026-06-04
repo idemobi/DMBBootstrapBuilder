@@ -1,0 +1,145 @@
+@{
+    Layout = "_Layout";
+}
+
+@* ── Hero ── *@
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Rendering Pipeline — BootstrapBuilder", TitleLevel.One).Render()
+            @using (Html.PB_P().AsLead().Begin())
+            {
+                @:From action items and builders to Bootstrap markup in the final PageBuilder document.
+            }
+        }
+    }
+}
+
+@using (Html.ContainerBuilder().SetPadding(SpacingSide.Y, SpacingSize.Five).Begin())
+{
+    @using (Html.RowBuilder().Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+        {
+            @* ── Step 1 ── *@
+            @using (Html.BlockBuilder().AsTimelineStep().Begin())
+            {
+                @using (Html.BlockBuilder().AsTimelineStepBadge().Begin())
+                {
+                    @:1
+                }
+                @Html.TitleBuilder().SetTitle("Create Component", TitleLevel.Three).AsH4().Render()
+                @using (Html.PB_P().Begin())
+                {
+                    @:A Razor view creates a builder or action item through
+                    @using (Html.PB_Span().AsMonospace().Begin())
+                    {
+                        @:Html
+                    }
+                    @: or
+                    @using (Html.PB_Span().AsMonospace().Begin())
+                    {
+                        @:ActionItemFactory
+                    }
+                    @:. The pipeline starts with a simple fluent method call in your view.
+                }
+                @(Html.CodeBlock(@"@Html.Button(
+    ActionItemFactory.AspRoute(""Open"", ""Documentation"", ""Index"",
+        IconStruct.Bootstrap(""bi-journal-text""))
+        .SetVariant(VariantStyle.Primary)
+).Render()", CodeLanguage.CSharp))
+            }
+
+            @* ── Step 2 ── *@
+            @using (Html.BlockBuilder().AsTimelineStep().Begin())
+            {
+                @using (Html.BlockBuilder().AsTimelineStepBadge().Begin())
+                {
+                    @:2
+                }
+                @Html.TitleBuilder().SetTitle("Compose Options", TitleLevel.Three).AsH4().Render()
+                @using (Html.PB_P().Begin())
+                {
+                    @:Fluent calls set variants, icons, spacing, responsive behavior, routes and classes. Action items carry command intent, route values, icons, titles and variant information.
+                }
+                @(Html.CodeBlock(@"@Html.CardBuilder()
+    .SetTitle(""My Card"", TitleLevel.Four)
+    .SetIconBootstrap(""bi-star"")
+    .SetPadding(SpacingSide.All, SpacingSize.Four)
+    .Begin()", CodeLanguage.CSharp))
+            }
+
+            @* ── Step 3 ── *@
+            @using (Html.BlockBuilder().AsTimelineStep().Begin())
+            {
+                @using (Html.BlockBuilder().AsTimelineStepBadge().Begin())
+                {
+                    @:3
+                }
+                @Html.TitleBuilder().SetTitle("Resolve Shell Providers", TitleLevel.Three).AsH4().Render()
+                @using (Html.PB_P().Begin())
+                {
+                    @:When the layout renders, navigation and profile composers read registered providers from dependency injection to assemble application-level menus, sidebars and breadcrumbs.
+                }
+                @(Html.CodeBlock(@"// Registered in Program.cs — resolved at layout render time
+builder.Services.AddTransient<IMenuBarSectionProvider, MyMenuProvider>();
+builder.Services.AddTransient<IProfileBarSectionProvider, MyProfileProvider>();", CodeLanguage.CSharp))
+            }
+
+            @* ── Step 4 (final) ── *@
+            @using (Html.BlockBuilder().AsTimelineStep().Begin())
+            {
+                @using (Html.BlockBuilder().AsTimelineStepBadge("bg-success").Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-check").Begin()) { }
+                }
+                @Html.TitleBuilder().SetTitle("Render Bootstrap Markup", TitleLevel.Three).AsH4().Render()
+                @using (Html.PB_P().Begin())
+                {
+                    @:Builders output structured HTML with Bootstrap classes and attributes. PageBuilder writes the final document using the captured body and page model assembled during the pipeline.
+                }
+                @(Html.CodeBlock(@"<!-- Final output from the button builder -->
+<button type=""button"" class=""btn btn-primary"">
+    <i class=""bi bi-journal-text me-1""></i>Open
+</button>", CodeLanguage.Html))
+            }
+
+            @* ── Performance highlight ── *@
+            @using (Html.BlockBuilder().AsInfoCallout().Begin())
+            {
+                @using (Html.FlexBlockBuilder().Begin())
+                {
+                    @using (Html.BlockBuilder().AsCalloutIcon().Begin())
+                    {
+                        @using (Html.PB_Span().AddClass("bi bi-lightning-charge-fill fs-2 text-warning").Begin()) { }
+                    }
+                    @using (Html.BlockBuilder().Begin())
+                    {
+                        @Html.TitleBuilder().SetTitle("Zero Repetition", TitleLevel.Five).AsAlertHeading().Render()
+                        @using (Html.PB_P().AsNoMargin().Begin())
+                        {
+                            @:Action items and shell providers eliminate duplicated navigation markup — define once, render everywhere through the composer pipeline.
+                        }
+                    }
+                }
+            }
+
+            @* ── Next Step ── *@
+            @using (Html.BlockBuilder().AsSidebarNote().Begin())
+            {
+                @using (Html.BlockBuilder().AsTextCenter().Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Explore Components", TitleLevel.Four).Render()
+                    @using (Html.PB_P().AsSmallMuted().Begin())
+                    {
+                        @:Now that you know how it works, explore buttons, cards, modals and the application shell.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "Introduction").SetTitle("Introduction").SetIcon(IconStruct.Bootstrap("bi-house")).SetVariant(VariantStyle.Primary)).Render()
+                }
+            }
+        }
+    }
+}

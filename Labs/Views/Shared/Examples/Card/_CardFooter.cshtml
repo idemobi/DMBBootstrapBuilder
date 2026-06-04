@@ -1,0 +1,17 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Report").WithVariant(VariantStyle.Primary).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Card body content.
+            }
+            @using (Html.FooterBuilder().Begin())
+            {
+                @Html.Button(ActionItemFactory.Url("Download", "#", IconStruct.Bootstrap("bi-download")).SetVariant(VariantStyle.Primary)).Render()
+            }
+        }
+    }
+}

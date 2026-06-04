@@ -1,0 +1,25 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("xs:12 · md:6 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("xs:12 · md:6 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col12, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("xs:12 · md:12 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+}</code></pre></div>

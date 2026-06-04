@@ -1,0 +1,72 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Footer Bar", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:The footer bar is configured at application level via IFooterBarSectionProvider.
+            }
+        }
+    }
+}
+
+@* ── IFooterBarSectionProvider ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("IFooterBarSectionProvider", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Implement IFooterBarSectionProvider and register it with DI. The layout calls Build() to assemble the footer columns automatically.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/FooterBar/_FooterBarProvider", "IFooterBarSectionProvider", IconStruct.Bootstrap("bi-window-dock"))
+}
+
+@* ── FooterBarColumnDefinition ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("FooterBarColumnDefinition", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Each column in the footer is a FooterBarColumnDefinition containing one or more GroupActionItem groups.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/FooterBar/_FooterBarColumn", "FooterBarColumnDefinition", IconStruct.Bootstrap("bi-layout-three-columns"))
+}
+
+@* ── Registration ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Registration", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Register the provider in Program.cs — multiple providers can be combined and ordered.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/FooterBar/_FooterBarRegistration", "Registration", IconStruct.Bootstrap("bi-plug"))
+}

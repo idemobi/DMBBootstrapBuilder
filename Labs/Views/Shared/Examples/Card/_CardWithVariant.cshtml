@@ -1,0 +1,33 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Primary").WithVariant(VariantStyle.Primary).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:VariantStyle.Primary
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Success").WithVariant(VariantStyle.Success).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:VariantStyle.Success
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Danger").WithVariant(VariantStyle.Danger).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:VariantStyle.Danger
+            }
+        }
+    }
+}

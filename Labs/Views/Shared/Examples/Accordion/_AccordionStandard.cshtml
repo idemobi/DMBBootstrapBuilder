@@ -1,0 +1,31 @@
+@using (Html.AccordionAreaBuilder().Id("acc-standard").Begin())
+{
+    @using (Html.AccordionBlockBuilder().WithTitle("Discovery").WithIcon(IconStruct.Bootstrap("bi-search")).Open().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Understanding your goals, constraints and audience before writing a single line of code.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Design").WithIcon(IconStruct.Bootstrap("bi-pencil-square")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Wireframes, prototypes and a visual language aligned with your brand.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Development").WithIcon(IconStruct.Bootstrap("bi-code-slash")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Clean, well-tested code delivered in regular sprints.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Launch").WithIcon(IconStruct.Bootstrap("bi-rocket-takeoff")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Deployment, monitoring and full handover documentation.
+        }
+    }
+}

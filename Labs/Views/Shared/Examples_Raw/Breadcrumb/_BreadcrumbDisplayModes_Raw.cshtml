@@ -1,0 +1,39 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@{
+    var items = new IActionItem[]
+    {
+        ActionItemFactory.Url("Home",  "/",              IconStruct.Bootstrap("bi-house")),
+        ActionItemFactory.Url("Admin", "/admin",         IconStruct.Bootstrap("bi-gear")),
+        ActionItemFactory.Url("Users", "/admin/users",   IconStruct.Bootstrap("bi-people")),
+        ActionItemFactory.Url("Alice", "/admin/users/42",IconStruct.Bootstrap("bi-person-badge"))
+    };
+}
+
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("IconAndTitle", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.BreadcrumbBuilder().AddItems(items).SetDisplayMode(BreadcrumbDisplayMode.IconAndTitle)
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("TitleOnly", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.BreadcrumbBuilder().AddItems(items).SetDisplayMode(BreadcrumbDisplayMode.TitleOnly)
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("IconOnly", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@Html.BreadcrumbBuilder().AddItems(items).SetDisplayMode(BreadcrumbDisplayMode.IconOnly)
+    }
+}</code></pre></div>

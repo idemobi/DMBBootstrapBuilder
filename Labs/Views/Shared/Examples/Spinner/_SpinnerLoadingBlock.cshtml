@@ -1,0 +1,35 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Border · Primary", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.LoadingBlock().Border().Style(VariantStyle.Primary).Text("Loading…").MinHeightPx(100).WithClasses("border rounded")
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Grow · Danger", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.LoadingBlock().Grow().Style(VariantStyle.Danger).Text("Deleting…").SpinnerSizePx(36).MinHeightPx(100).WithClasses("border rounded")
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Small spinner · Secondary", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.LoadingBlock().Border().Style(VariantStyle.Secondary).SmallSpinner().Text("Refreshing…").MinHeightPx(100).WithClasses("border rounded")
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("No text · Grow · Success", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.LoadingBlock().Grow().Style(VariantStyle.Success).Text(null).SpinnerSizePx(42).MinHeightPx(100).WithClasses("border rounded")
+    }
+}

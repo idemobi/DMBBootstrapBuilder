@@ -1,0 +1,7 @@
+@Html.AlertBuilder().SetTitle("Just an alert").Render()
+@Html.AlertBuilder().SetMessage("Don't panic").Render()
+@Html.AlertBuilder().SetTitle("Yahoo").SetMessage("This is a simple alert").Render()
+
+@Html.AlertBuilder().SetTitle("Just an alert").SetIcon(IconStruct.BootstrapEnum(BootStrapEnum.bi_exclamation_triangle)).Render()
+@Html.AlertBuilder().SetMessage("Don't panic").SetIcon(IconStruct.BootstrapEnum(BootStrapEnum.bi_exclamation_triangle)).Render()
+@Html.AlertBuilder().SetTitle("Yahoo").SetMessage("This is a simple alert").SetIcon(IconStruct.BootstrapEnum(BootStrapEnum.bi_alarm)).Render()

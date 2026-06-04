@@ -1,0 +1,54 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Overridable views", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Debug helpers to visualise and mark overridable view regions at runtime.
+            }
+        }
+    }
+}
+
+@* ── Path markers ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Path markers", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:DebugOverridablePath() renders a badge showing the current view path. OverridableViewDebugBuilder() targets a specific path and marks it as an override.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/OverridableViewDebug/_OVDPathMarker", "Path markers", IconStruct.Bootstrap("bi-pencil-square"))
+}
+
+@* ── Section wrapper ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Section wrapper", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:DebugOverridablePathSection(path) wraps a block of content and injects HTML comments marking the overridable region boundaries.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/OverridableViewDebug/_OVDSectionWrapper", "Section wrapper", IconStruct.Bootstrap("bi-bounding-box"))
+}

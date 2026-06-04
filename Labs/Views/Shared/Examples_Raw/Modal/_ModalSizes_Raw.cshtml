@@ -1,0 +1,44 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.ModalBuilder().Id("ex-modal-sm").WithTitle("Small modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-angle-contract")).Size(ModalSize.Sm).Begin())
+{
+    @@using (Html.PB_P().AsMuted().Begin())
+    {
+        @@:ModalSize.Sm
+    }
+    @@using (Html.FooterBuilder().Begin())
+    {
+        @@Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@@using (Html.ModalBuilder().Id("ex-modal-lg").WithTitle("Large modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-angle-expand")).Size(ModalSize.Lg).Begin())
+{
+    @@using (Html.PB_P().AsMuted().Begin())
+    {
+        @@:ModalSize.Lg
+    }
+    @@using (Html.FooterBuilder().Begin())
+    {
+        @@Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@@using (Html.ModalBuilder().Id("ex-modal-xl").WithTitle("Extra-large modal", TitleLevel.Three, IconStruct.Bootstrap("bi-arrows-fullscreen")).Size(ModalSize.Xl).Begin())
+{
+    @@using (Html.PB_P().AsMuted().Begin())
+    {
+        @@:ModalSize.Xl
+    }
+    @@using (Html.FooterBuilder().Begin())
+    {
+        @@Html.Button(ActionItemFactory.DismissModal("Close"))
+    }
+}
+
+@@using (Html.FlexBlockBuilder().Begin())
+{
+    @@Html.Button(ActionItemFactory.Modal("Small", "ex-modal-sm", IconStruct.Bootstrap("bi-arrows-angle-contract")).SetVariant(VariantStyle.Primary)).Render()
+    @@Html.Button(ActionItemFactory.Modal("Large", "ex-modal-lg", IconStruct.Bootstrap("bi-arrows-angle-expand")).SetVariant(VariantStyle.Primary)).Render()
+    @@Html.Button(ActionItemFactory.Modal("Extra Large", "ex-modal-xl", IconStruct.Bootstrap("bi-arrows-fullscreen")).SetVariant(VariantStyle.Primary)).Render()
+}</code></pre></div>

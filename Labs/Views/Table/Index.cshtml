@@ -1,0 +1,90 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Table", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Structured data tables with headers, body sections, striping, borders and responsive wrappers.
+            }
+        }
+    }
+}
+
+@* ── Basic Table ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Basic Table", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:TableBuilder wraps a standard HTML table. Use TableHeaderBuilder, TableBodyBuilder, TableRowBuilder and TableCellBuilder to compose rows and cells.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Table/_TableBasic", "Basic table", IconStruct.Bootstrap("bi-table"))
+}
+
+@* ── Striped & Hover ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Striped & Hover", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetStriped() alternates row backgrounds. SetHover() highlights the row under the cursor.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Table/_TableStripedHover", "Striped & hover", IconStruct.Bootstrap("bi-list-ul"))
+}
+
+@* ── Bordered & Small ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Bordered & Small", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetBordered() draws cell borders. SetSmall() reduces row padding for dense displays.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Table/_TableBorderedSmall", "Bordered & small", IconStruct.Bootstrap("bi-grid"))
+}
+
+@* ── Responsive ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Responsive", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetResponsive(TableResponsiveBreakpoint) wraps the table in a scrollable container below the given breakpoint.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Table/_TableResponsive", "Responsive", IconStruct.Bootstrap("bi-phone"))
+}

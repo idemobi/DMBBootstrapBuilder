@@ -1,0 +1,30 @@
+@using (Html.BlockBuilder().AddClass("border rounded p-3").Begin())
+{
+    @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("SetAlignItemsCenter + SetJustifyContentCenter", TitleLevel.Six).AsSubSectionTitle().Render()
+    }
+    @using (Html.BlockBuilder().AddClass("d-flex").SetStyle("height", "80px").Begin())
+    {
+        @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Centered horizontally and vertically.
+            }
+        }
+    }
+}
+@using (Html.BlockBuilder().AddClass("border rounded p-3 mt-3").Begin())
+{
+    @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("SetFlexDirectionColumn", TitleLevel.Six).AsSubSectionTitle().Render()
+    }
+    @using (Html.FlexBlockBuilder().SetFlexColumn().SetAlignItemsCenter().Begin())
+    {
+        @Html.Button(ActionItemFactory.Url("Item A", "#").SetVariant(VariantStyle.Primary)).Render()
+        @Html.Button(ActionItemFactory.Url("Item B", "#").SetVariant(VariantStyle.Secondary)).Render()
+        @Html.Button(ActionItemFactory.Url("Item C", "#").SetVariant(VariantStyle.Normal)).Render()
+    }
+}

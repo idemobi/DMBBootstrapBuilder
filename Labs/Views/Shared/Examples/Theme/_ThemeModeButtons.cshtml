@@ -1,0 +1,6 @@
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(new ThemeModeActionItem(Html, ThemeMode.Light).SetTitle("Light").SetIcon(IconStruct.Bootstrap("bi-sun")).SetVariant(VariantStyle.Secondary).SetOutlined())
+    @Html.Button(new ThemeModeActionItem(Html, ThemeMode.Dark).SetTitle("Dark").SetIcon(IconStruct.Bootstrap("bi-moon-stars")).SetVariant(VariantStyle.Secondary).SetOutlined())
+    @Html.Button(new ThemeModeActionItem(Html, ThemeMode.Automatic).SetTitle("Automatic").SetIcon(IconStruct.Bootstrap("bi-circle-half")).SetVariant(VariantStyle.Secondary).SetOutlined())
+}

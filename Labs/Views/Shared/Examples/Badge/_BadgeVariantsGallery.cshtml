@@ -1,0 +1,11 @@
+@using (Html.FlexBlockBuilder().Begin())
+{
+    @Html.BadgeBuilder("Primary").SetBadgeVariant(VariantStyle.Primary)
+    @Html.BadgeBuilder("Secondary").SetBadgeVariant(VariantStyle.Secondary)
+    @Html.BadgeBuilder("Success").SetBadgeVariant(VariantStyle.Success)
+    @Html.BadgeBuilder("Warning").SetBadgeVariant(VariantStyle.Warning)
+    @Html.BadgeBuilder("Danger").SetBadgeVariant(VariantStyle.Danger)
+    @Html.BadgeBuilder("Info").SetBadgeVariant(VariantStyle.Info)
+    @Html.BadgeBuilder("Dark").SetBadgeVariant(VariantStyle.Dark)
+    @Html.BadgeBuilder("Light").SetBadgeVariant(VariantStyle.Light)
+}

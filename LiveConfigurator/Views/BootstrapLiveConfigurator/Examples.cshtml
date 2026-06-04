@@ -1,0 +1,125 @@
+@{
+    ViewData["Title"] = "Bootstrap Live Examples";
+    Layout = "_Layout";
+}
+
+<div class="container py-4 d-grid gap-4">
+    <h1 class="h3 mb-0">Bootstrap Live Examples</h1>
+
+    <section class="card">
+        <div class="card-body">
+            <h2 class="h5">Color system and buttons</h2>
+            <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-warning">Warning</button>
+                <button class="btn btn-info">Info</button>
+                <button class="btn btn-light">Light</button>
+                <button class="btn btn-dark">Dark</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-body">
+            <h2 class="h5">Badges and alerts</h2>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge text-bg-primary">Primary</span>
+                <span class="badge text-bg-secondary">Secondary</span>
+                <span class="badge text-bg-success">Success</span>
+                <span class="badge text-bg-danger">Danger</span>
+                <span class="badge text-bg-warning">Warning</span>
+                <span class="badge text-bg-info">Info</span>
+            </div>
+            <div class="d-grid gap-2">
+                <div class="alert alert-primary mb-0">Primary alert example.</div>
+                <div class="alert alert-secondary mb-0">Secondary alert example.</div>
+                <div class="alert alert-success mb-0">Success alert example.</div>
+                <div class="alert alert-danger mb-0">Danger alert example.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-body">
+            <h2 class="h5">Typography and form controls</h2>
+            <p class="mb-2">The quick brown fox jumps over the lazy dog.</p>
+            <p class="text-muted mb-3">Muted copy to validate body and secondary tones.</p>
+            <div class="row g-3">
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Text input</label>
+                    <input class="form-control" value="Sample input" />
+                </div>
+                <div class="col-12 col-md-6">
+                    <label class="form-label">Select input</label>
+                    <select class="form-select">
+                        <option>Option A</option>
+                        <option>Option B</option>
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label class="form-label">Textarea</label>
+                    <textarea class="form-control" rows="3">Sample textarea content.</textarea>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-body">
+            <h2 class="h5">Table and realistic data example</h2>
+            <div class="table-responsive">
+                <table class="table table-striped align-middle mb-0">
+                    <thead>
+                    <tr>
+                        <th>Preset</th>
+                        <th>Primary</th>
+                        <th>Radius</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Studio Blue</td>
+                        <td>#0d6efd</td>
+                        <td>0.5rem</td>
+                        <td><span class="badge text-bg-success">Applied</span></td>
+                    </tr>
+                    <tr>
+                        <td>Festival Warm</td>
+                        <td>#d9480f</td>
+                        <td>0.75rem</td>
+                        <td><span class="badge text-bg-warning">Draft</span></td>
+                    </tr>
+                    <tr>
+                        <td>Minimal Mono</td>
+                        <td>#343a40</td>
+                        <td>0.25rem</td>
+                        <td><span class="badge text-bg-secondary">Archived</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="card border-danger">
+        <div class="card-body">
+            <h2 class="h5 text-danger">Error state</h2>
+            <div class="alert alert-danger mb-0" role="alert">
+                Unable to compile output with current token combination.
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <div class="card-body">
+            <h2 class="h5">Empty state</h2>
+            <div class="border rounded p-4 text-center text-muted">
+                No dataset available for this panel.
+            </div>
+        </div>
+    </section>
+</div>

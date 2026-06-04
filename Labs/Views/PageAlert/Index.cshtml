@@ -1,0 +1,421 @@
+@using DMBBootstrapBuilderLabs.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Page Alerts", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Error and exception rendering — full-page, AJAX alert and AJAX card modes.
+            }
+        }
+    }
+}
+
+@* ── Alert manager ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Alert manager", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Trigger exceptions and resets — compare the three rendering modes: full-page, AJAX alert and AJAX card.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.CardBuilder().WithIconOnly(TitleLevel.Four, IconStruct.BootstrapEnum(BootStrapEnum.bi_exclamation_triangle)).Begin())
+    {
+        @using (Html.TableBuilder().SetHover().Begin())
+        {
+            @using (Html.TableHeaderBuilder().Begin())
+            {
+                @using (Html.TableRowBuilder().Begin())
+                {
+                    @using (Html.TableCellBuilder(true).Begin())
+                    {
+                        @:Scenario
+                    }
+                    @using (Html.TableCellBuilder(true).Begin())
+                    {
+                        @:Page
+                    }
+                    @using (Html.TableCellBuilder(true).Begin())
+                    {
+                        @:AJAX rough
+                    }
+                    @using (Html.TableCellBuilder(true).Begin())
+                    {
+                        @:AJAX alert
+                    }
+                    @using (Html.TableCellBuilder(true).Begin())
+                    {
+                        @:AJAX card
+                    }
+                }
+            }
+            @using (Html.TableBodyBuilder().Begin())
+            {
+                @using (Html.TableRowBuilder().Begin())
+                {
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        @:Exception
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        @Html.Button(ActionItemFactory.AspRoute("PageAlert", "Exception").SetTitle("Open").SetVariant(VariantStyle.Danger).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-danger" type="button" onclick="requestPageAlert('@Url.Action("AjaxException", "PageAlert")', 'exceptionResult', 'none')">Run</button>
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-danger" type="button" onclick="requestPageAlert('@Url.Action("AjaxException", "PageAlert")', 'exceptionResult', 'alert')">Run</button>
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-danger" type="button" onclick="requestPageAlert('@Url.Action("AjaxException", "PageAlert")', 'exceptionResult', 'card')">Run</button>
+                    }
+                }
+                @using (Html.TableRowBuilder().Begin())
+                {
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        @:Internal error
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        @Html.Button(ActionItemFactory.AspRoute("PageAlert", "InternalError").SetTitle("Open").SetVariant(VariantStyle.Danger).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="requestPageAlert('@Url.Action("ResetAjax", "PageAlert")', 'exceptionResult', 'none')">Reset</button>
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="requestPageAlert('@Url.Action("ResetAjax", "PageAlert")', 'exceptionResult', 'alert')">Reset</button>
+                    }
+                    @using (Html.TableCellBuilder().Begin())
+                    {
+                        <button class="btn btn-sm btn-outline-secondary" type="button" onclick="requestPageAlert('@Url.Action("ResetAjax", "PageAlert")', 'exceptionResult', 'card')">Reset</button>
+                    }
+                }
+            }
+        }
+        @using (Html.BlockBuilder().SetMargin(SpacingSide.Top, SpacingSize.Three).Begin())
+        {
+            <div id="exceptionResult"></div>
+        }
+    }
+}
+
+@* ── Concrete scenarios ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Concrete scenarios", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Real-world error scenarios — 404, 405, validation errors and voluntary exceptions.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.CardBuilder().WithIconOnly(TitleLevel.Four, IconStruct.BootstrapEnum(BootStrapEnum.bi_ui_checks_grid)).Begin())
+    {
+        @using (Html.RowBuilder().SetGapY(Gap.G3).Begin())
+        {
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Page that does not exist", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Triggers the status-code pipeline and renders the PageBuilder 404 alert.
+                    }
+                    @Html.Button(ActionItemFactory.Url("Open missing page", "/page-alert-demo/missing-page").SetVariant(VariantStyle.Warning).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Controller action that does not exist", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Routes to this controller with an unknown action and should end as 404.
+                    }
+                    @Html.Button(ActionItemFactory.Url("Open missing action", "/PageAlert/MethodDoesNotExist").SetVariant(VariantStyle.Warning).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Wrong HTTP method: GET on POST", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Calls a POST-only action with GET and should end as 405.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("PageAlert", "PostOnly").SetTitle("Open with GET").SetVariant(VariantStyle.Warning).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Wrong HTTP method: POST on GET", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Submits to a GET-only action and should end as 405.
+                    }
+                    <form asp-controller="PageAlert" asp-action="GetOnly" method="post">
+                        <button type="submit" class="btn btn-sm btn-outline-warning">Submit with POST</button>
+                    </form>
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Invalid model: missing fields", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Submits an empty form and renders all required-field errors.
+                    }
+                    <form asp-controller="PageAlert" asp-action="MissingFields" method="post">
+                        <button type="submit" class="btn btn-sm btn-outline-warning">Submit empty form</button>
+                    </form>
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Invalid model: wrong values", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Submits bad values and renders validation-rule errors.
+                    }
+                    <form asp-controller="PageAlert" asp-action="InvalidFields" method="post">
+                        <input type="hidden" name="@nameof(PageAlertFormExample.Name)" value="Ada" />
+                        <input type="hidden" name="@nameof(PageAlertFormExample.Email)" value="not-an-email" />
+                        <input type="hidden" name="@nameof(PageAlertFormExample.Age)" value="12" />
+                        <button type="submit" class="btn btn-sm btn-outline-warning">Submit wrong values</button>
+                    </form>
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+            {
+                @using (Html.BlockBuilder().AddClass("border rounded").SetPadding(SpacingSide.All, SpacingSize.Three).SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Voluntary exception", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsMuted().Begin())
+                    {
+                        @:Throws an exception intentionally and lets the exception handler render the alert.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("PageAlert", "ThrowException").SetTitle("Throw exception").SetVariant(VariantStyle.Danger).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                }
+            }
+        }
+    }
+}
+
+@* ── HTTP status catalog ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("HTTP status catalog", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:All handled HTTP status codes — open the full-page view or fire an AJAX request to see the rendered alert.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.CardBuilder().WithIconOnly(TitleLevel.Four, IconStruct.BootstrapEnum(BootStrapEnum.bi_globe)).Begin())
+    {
+        @using (Html.RowBuilder().SetGapY(Gap.G3).Begin())
+        {
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col5, ResponsiveBreakpoint.Xl).Begin())
+            {
+                @using (Html.TableBuilder().SetHover().Begin())
+                {
+                    @using (Html.TableHeaderBuilder().Begin())
+                    {
+                        @using (Html.TableRowBuilder().Begin())
+                        {
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Status
+                            }
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Kind
+                            }
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Reason
+                            }
+                        }
+                    }
+                    @using (Html.TableBodyBuilder().Begin())
+                    {
+                        @foreach (KeyValuePair<int, string> item in BootstrapPageErrorController.InformationStatuses)
+                        {
+                            @using (Html.TableRowBuilder().Begin())
+                            {
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @item.Key
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @Html.BadgeBuilder(item.Key.ToString()).SetBadgeVariant(VariantStyle.Info).Render()
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @item.Value
+                                }
+                            }
+                        }
+                        @foreach (KeyValuePair<int, string> item in BootstrapPageErrorController.RedirectionStatuses)
+                        {
+                            @using (Html.TableRowBuilder().Begin())
+                            {
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @item.Key
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @Html.BadgeBuilder(item.Key.ToString()).SetBadgeVariant(VariantStyle.Secondary).Render()
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @item.Value
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col7, ResponsiveBreakpoint.Xl).Begin())
+            {
+                @using (Html.TableBuilder().SetHover().Begin())
+                {
+                    @using (Html.TableHeaderBuilder().Begin())
+                    {
+                        @using (Html.TableRowBuilder().Begin())
+                        {
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Error
+                            }
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Page
+                            }
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:AJAX
+                            }
+                            @using (Html.TableCellBuilder(true).Begin())
+                            {
+                                @:Reason
+                            }
+                        }
+                    }
+                    @using (Html.TableBodyBuilder().Begin())
+                    {
+                        @foreach (KeyValuePair<int, string> item in BootstrapPageErrorController.ErrorStatuses)
+                        {
+                            @using (Html.TableRowBuilder().Begin())
+                            {
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @Html.BadgeBuilder(item.Key.ToString()).SetBadgeVariant(item.Key >= 500 ? VariantStyle.Danger : VariantStyle.Warning).Render()
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @Html.Button(ActionItemFactory.Url("Open", $"/Error/{item.Key}").SetVariant(item.Key >= 500 ? VariantStyle.Danger : VariantStyle.Warning).SetOutlined().SetSize(BoostrapButtonSize.Small)).Render()
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    <button class="btn btn-sm btn-outline-@(item.Key >= 500 ? "danger" : "warning")" type="button" onclick="requestPageAlert('/ErrorAjax/@item.Key', 'httpResult', 'alert')">Run</button>
+                                }
+                                @using (Html.TableCellBuilder().Begin())
+                                {
+                                    @item.Value
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @using (Html.BlockBuilder().SetMargin(SpacingSide.Top, SpacingSize.Three).Begin())
+        {
+            <div id="httpResult"></div>
+        }
+    }
+}
+
+<script>
+    async function requestPageAlert(url, targetId, mode) {
+        const target = document.getElementById(targetId);
+        target.innerHTML = '<div class="text-center p-3"><div class="spinner-border text-primary" role="status"></div></div>';
+
+        try {
+            const response = await fetch(url, { headers: { 'X-Requested-With': 'XMLHttpRequest' } });
+            const payload = await response.json();
+            const code = response.headers.get('X-Error-Code') || payload.code || response.status;
+            const title = response.headers.get('X-Error-Title') || (response.ok ? 'Success' : 'HTTP error');
+            const description = response.headers.get('X-Error-Description') || payload.message || '';
+            const request = response.headers.get('X-Error-Request') || payload.displayUrl || url;
+
+            if (mode === 'none') {
+                target.innerHTML = '<pre class="mb-0 p-3 bg-body-tertiary border rounded">' + escapeHtml(JSON.stringify(payload, null, 2)) + '</pre>';
+                return;
+            }
+
+            if (mode === 'card') {
+                target.innerHTML = '<div class="card"><div class="card-header">' + escapeHtml(code + ' - ' + title) + '</div><div class="card-body"><p class="card-text">' + escapeHtml(description) + '</p><small class="text-body-secondary">' + escapeHtml(request) + '</small></div></div>';
+                return;
+            }
+
+            const variant = Number(code) >= 500 ? 'danger' : Number(code) >= 400 ? 'warning' : 'info';
+            target.innerHTML = '<div class="alert alert-' + variant + ' mb-0"><strong>' + escapeHtml(code + ' - ' + title) + '</strong><p class="mb-1">' + escapeHtml(description) + '</p><small>' + escapeHtml(request) + '</small></div>';
+        } catch (error) {
+            target.innerHTML = '<div class="alert alert-danger mb-0">AJAX request failed: ' + escapeHtml(error.message) + '</div>';
+        }
+    }
+
+    function escapeHtml(value) {
+        return String(value ?? '')
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#039;');
+    }
+</script>

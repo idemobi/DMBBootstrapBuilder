@@ -1,0 +1,53 @@
+@using (Html.TableBuilder().SetBordered().SetSmall().Begin())
+{
+    @using (Html.TableHeaderBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Key
+            }
+            @using (Html.TableCellBuilder(isHeader: true).Begin())
+            {
+                @:Value
+            }
+        }
+    }
+    @using (Html.TableBodyBuilder().Begin())
+    {
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:api_url
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:https://api.example.com
+            }
+        }
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:timeout_ms
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:5000
+            }
+        }
+        @using (Html.TableRowBuilder().Begin())
+        {
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:retry_count
+            }
+            @using (Html.TableCellBuilder().Begin())
+            {
+                @:3
+            }
+        }
+    }
+}

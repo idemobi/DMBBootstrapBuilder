@@ -1,0 +1,33 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.AccordionAreaBuilder().Id("acc-badges").Begin())
+{
+    @@using (Html.AccordionBlockBuilder().WithTitle("Inbox").WithIcon(IconStruct.Bootstrap("bi-inbox")).AddBadge("12", VariantStyle.Danger).Open().Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:12 unread messages waiting for your attention.
+        }
+    }
+    @@using (Html.AccordionBlockBuilder().WithTitle("Tasks").WithIcon(IconStruct.Bootstrap("bi-list-check")).AddBadge("4", VariantStyle.Warning).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:4 pending tasks assigned to you.
+        }
+    }
+    @@using (Html.AccordionBlockBuilder().WithTitle("Archive").WithIcon(IconStruct.Bootstrap("bi-archive")).Disabled().Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:This panel is disabled — it cannot be opened.
+        }
+    }
+    @@using (Html.AccordionBlockBuilder().WithTitle("Settings").WithIcon(IconStruct.Bootstrap("bi-gear")).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:General application configuration.
+        }
+    }
+}</code></pre></div>

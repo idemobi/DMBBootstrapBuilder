@@ -1,0 +1,11 @@
+@using (Html.ContainerBuilder().Begin())
+{
+    @using (Html.CardBuilder().NoHeader().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Inside ContainerBuilder", TitleLevel.Six).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Content placed inside ContainerBuilder is constrained to the container width.
+        }
+    }
+}

@@ -1,0 +1,20 @@
+@using (Html.ModalBuilder().Id("ex-btn-demo-modal").WithTitle("Demo modal", TitleLevel.Three, IconStruct.Bootstrap("bi-window")).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:Modal opened from a button.
+    }
+    @using (Html.FooterBuilder().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Close").SetVariant(VariantStyle.Secondary).SetOutlined())
+    }
+}
+
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(ActionItemFactory.Url("Url", "#", IconStruct.Bootstrap("bi-link-45deg")).SetVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.JavaScript("JavaScript", "console.log('js')", IconStruct.Bootstrap("bi-terminal")).SetVariant(VariantStyle.Info)).Render()
+    @Html.Button(ActionItemFactory.Modal("Modal", "ex-btn-demo-modal", IconStruct.Bootstrap("bi-window")).SetVariant(VariantStyle.Warning)).Render()
+    @Html.Button(ActionItemFactory.ClipboardButton("Hello world", "Copy", "Copied", IconStruct.Bootstrap("bi-clipboard")).SetVariant(VariantStyle.Success)).Render()
+    @Html.Button(ActionItemFactory.Toggle("Toggle", true, IconStruct.Bootstrap("bi-toggle-on")).SetVariant(VariantStyle.Danger)).Render()
+}

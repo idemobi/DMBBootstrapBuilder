@@ -1,0 +1,8 @@
+@using (Html.BlockBuilder().AddClass("toast-container position-static d-flex flex-column gap-2").Begin())
+{
+    @(Html.Toast().SetTitle("Published").SetMessage("Page is now live.").SetVariant(VariantStyle.Primary).Render())
+    @(Html.Toast().SetTitle("Saved").SetMessage("All changes persisted.").SetVariant(VariantStyle.Success).Render())
+    @(Html.Toast().SetTitle("Low storage").SetMessage("Less than 10 % remaining.").SetVariant(VariantStyle.Warning).Render())
+    @(Html.Toast().SetTitle("Error").SetMessage("Upload failed — please retry.").SetVariant(VariantStyle.Danger).Render())
+    @(Html.Toast().SetTitle("Info").SetMessage("Scheduled maintenance on Sunday.").SetVariant(VariantStyle.Info).Render())
+}

@@ -1,0 +1,6 @@
+@using (Html.BlockBuilder().AddClass("d-flex flex-wrap gap-4").Begin())
+    { 
+        @Html.Button(ActionItemFactory.Url("Profile", "#").SetVariant(VariantStyle.Primary).SetBadge("", VariantStyle.Danger)).Render()
+        @Html.Button(ActionItemFactory.Url("Messages", "#").SetVariant(VariantStyle.Secondary).SetOutlined().SetBadge("", VariantStyle.Success)).Render()
+    }
+

@@ -1,0 +1,15 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@using (Html.PB_P().AsMuted().Begin())
+            {
+                @@:A card without any header section.
+            }
+        }
+    }
+}</code></pre></div>

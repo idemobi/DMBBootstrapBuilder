@@ -1,0 +1,15 @@
+@using (Html.FlexBlockBuilder().SetFlexColumn().SetAlignItemsStart().WithGap(Old_Gap.Gap2).Begin())
+{
+    @using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.Button(ActionItemFactory.Url("Primary", "#").SetVariant(VariantStyle.Primary)).Render()
+        @Html.Button(ActionItemFactory.Url("Success", "#").SetVariant(VariantStyle.Success)).Render()
+        @Html.Button(ActionItemFactory.Url("Danger",  "#").SetVariant(VariantStyle.Danger)).Render()
+    }
+    @using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+    {
+        @Html.Button(ActionItemFactory.Url("Primary", "#").SetVariant(VariantStyle.Primary).SetOutlined()).Render()
+        @Html.Button(ActionItemFactory.Url("Success", "#").SetVariant(VariantStyle.Success).SetOutlined()).Render()
+        @Html.Button(ActionItemFactory.Url("Danger",  "#").SetVariant(VariantStyle.Danger).SetOutlined()).Render()
+    }
+}

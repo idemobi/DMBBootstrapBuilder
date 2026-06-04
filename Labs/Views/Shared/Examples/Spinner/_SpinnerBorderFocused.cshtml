@@ -1,0 +1,6 @@
+@using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Primary)
+    @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Success).SetSize(SpinnerSize.Small)
+    @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Warning).SetSize(48, UnitSize.px)
+}

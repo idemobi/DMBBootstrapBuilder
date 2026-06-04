@@ -1,0 +1,14 @@
+@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Primary).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("VariantStyle.Primary", TitleLevel.Six).Render()
+    }
+}
+@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Danger).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("VariantStyle.Danger", TitleLevel.Six).Render()
+    }
+}

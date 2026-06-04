@@ -1,0 +1,42 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col4).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("col-4", TitleLevel.Six).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col8).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("col-8", TitleLevel.Six).Render()
+        }
+    }
+}
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col3).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("col-3", TitleLevel.Six).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col3).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("col-3", TitleLevel.Six).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col6).Begin())
+    {
+        @@using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("col-6", TitleLevel.Six).Render()
+        }
+    }
+}</code></pre></div>

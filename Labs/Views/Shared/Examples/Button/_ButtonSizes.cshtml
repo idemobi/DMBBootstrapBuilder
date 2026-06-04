@@ -1,0 +1,29 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Sizes", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap2).Begin())
+        {
+            @Html.Button(ActionItemFactory.Url("Small",  "#").SetVariant(VariantStyle.Primary).SetSize(BoostrapButtonSize.Small)).Render()
+            @Html.Button(ActionItemFactory.Url("Medium", "#").SetVariant(VariantStyle.Primary).SetSize(BoostrapButtonSize.Medium)).Render()
+            @Html.Button(ActionItemFactory.Url("Large",  "#").SetVariant(VariantStyle.Primary).SetSize(BoostrapButtonSize.Large)).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Icon · Badge · Disabled", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+        {
+            @Html.Button(ActionItemFactory.Url("Download", "#", IconStruct.Bootstrap("bi-download")).SetVariant(VariantStyle.Primary)).Render()
+            @Html.Button(ActionItemFactory.Url("Inbox", "#", IconStruct.Bootstrap("bi-inbox")).SetVariant(VariantStyle.Secondary).SetBadge("5")).Render()
+            @Html.Button(ActionItemFactory.Url("Disabled", "#").SetVariant(VariantStyle.Normal).SetDisabled()).Render()
+        }
+    }
+}

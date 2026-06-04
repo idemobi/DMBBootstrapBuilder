@@ -1,0 +1,23 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Settings").Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Default title at TitleLevel.Three.
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Analytics", TitleLevel.Five).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Title at TitleLevel.Five.
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Thin", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ProgressBar().SetValue(40).SetVariant(VariantStyle.Primary).SetSize(ProgressBarSize.Thin)
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Small", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ProgressBar().SetValue(50).SetVariant(VariantStyle.Info).SetSize(ProgressBarSize.Small)
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Large · SetShowLabel()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ProgressBar().SetValue(75).SetVariant(VariantStyle.Warning).SetSize(ProgressBarSize.Large).SetShowLabel()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Thick · SetShowLabel()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ProgressBar().SetValue(60).SetVariant(VariantStyle.Danger).SetSize(ProgressBarSize.Thick).SetShowLabel()
+    }
+}

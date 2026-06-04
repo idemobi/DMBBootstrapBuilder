@@ -1,0 +1,7 @@
+.dmb-bootstrap-live-configurator {
+  --dmb-live-preview-accent: #0d6efd;
+}
+
+.dmb-bootstrap-live-configurator .card {
+  border-radius: 0.75rem;
+}

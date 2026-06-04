@@ -1,0 +1,41 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col4).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("col-4", TitleLevel.Six).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col8).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("col-8", TitleLevel.Six).Render()
+        }
+    }
+}
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col3).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("col-3", TitleLevel.Six).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col3).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("col-3", TitleLevel.Six).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col6).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("col-6", TitleLevel.Six).Render()
+        }
+    }
+}

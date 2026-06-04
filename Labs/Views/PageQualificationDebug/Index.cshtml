@@ -1,0 +1,54 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Page qualification", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Debug helpers to mark pages with qualification statuses — layout issues, validation state, or danger flags.
+            }
+        }
+    }
+}
+
+@* ── Status markers ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Status markers", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:PageQualificationDebugBuilder(status, path).RenderMarker() renders a badge for the given status. Flags can be combined with the | operator.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/PageQualificationDebug/_PQDMarkers", "Status markers", IconStruct.Bootstrap("bi-patch-check"))
+}
+
+@* ── Wrapper ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Wrapped content", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:PageQualificationDebugBuilder(...).Begin() wraps a block of content and injects diagnostic HTML comments around it.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/PageQualificationDebug/_PQDWrapper", "Wrapped content", IconStruct.Bootstrap("bi-layout-text-window"))
+}

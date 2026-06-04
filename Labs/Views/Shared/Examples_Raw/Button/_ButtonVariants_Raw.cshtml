@@ -1,0 +1,38 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.RowBuilder().SetGapY(Gap.G3).Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("Filled", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+        {
+            @@Html.Button(ActionItemFactory.Url("Primary",   "#").SetVariant(VariantStyle.Primary)).Render()
+            @@Html.Button(ActionItemFactory.Url("Secondary", "#").SetVariant(VariantStyle.Secondary)).Render()
+            @@Html.Button(ActionItemFactory.Url("Success",   "#").SetVariant(VariantStyle.Success)).Render()
+            @@Html.Button(ActionItemFactory.Url("Warning",   "#").SetVariant(VariantStyle.Warning)).Render()
+            @@Html.Button(ActionItemFactory.Url("Danger",    "#").SetVariant(VariantStyle.Danger)).Render()
+            @@Html.Button(ActionItemFactory.Url("Info",      "#").SetVariant(VariantStyle.Info)).Render()
+            @@Html.Button(ActionItemFactory.Url("Normal",    "#").SetVariant(VariantStyle.Normal)).Render()
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("Outlined", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+        {
+            @@Html.Button(ActionItemFactory.Url("Primary",   "#").SetVariant(VariantStyle.Primary).SetOutlined()).Render()
+            @@Html.Button(ActionItemFactory.Url("Secondary", "#").SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+            @@Html.Button(ActionItemFactory.Url("Success",   "#").SetVariant(VariantStyle.Success).SetOutlined()).Render()
+            @@Html.Button(ActionItemFactory.Url("Warning",   "#").SetVariant(VariantStyle.Warning).SetOutlined()).Render()
+            @@Html.Button(ActionItemFactory.Url("Danger",    "#").SetVariant(VariantStyle.Danger).SetOutlined()).Render()
+            @@Html.Button(ActionItemFactory.Url("Info",      "#").SetVariant(VariantStyle.Info).SetOutlined()).Render()
+        }
+    }
+}</code></pre></div>

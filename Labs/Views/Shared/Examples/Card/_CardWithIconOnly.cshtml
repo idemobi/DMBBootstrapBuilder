@@ -1,0 +1,23 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col3, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().WithIconOnly(TitleLevel.Two, IconStruct.Bootstrap("bi-gear")).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Centered icon header.
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col3, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().WithIconOnly(TitleLevel.Two, IconStruct.Bootstrap("bi-star"), centered: false, subtitle: "Favorites").Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Left-aligned icon with subtitle.
+            }
+        }
+    }
+}

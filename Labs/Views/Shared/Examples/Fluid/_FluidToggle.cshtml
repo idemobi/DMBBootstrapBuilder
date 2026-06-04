@@ -1,0 +1,14 @@
+@{ _ = new FluidToggleActionItem(Html, true); }
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(new JavaScriptActionItem("FluidModeMethod.set(true); return false;")
+        .SetTitle("Enable fluid")
+        .SetIcon(IconStruct.Bootstrap("bi-arrows-fullscreen"))
+        .SetVariant(VariantStyle.Secondary)
+        .SetOutlined())
+    @Html.Button(new JavaScriptActionItem("FluidModeMethod.set(false); return false;")
+        .SetTitle("Disable fluid")
+        .SetIcon(IconStruct.Bootstrap("bi-fullscreen-exit"))
+        .SetVariant(VariantStyle.Secondary)
+        .SetOutlined())
+}

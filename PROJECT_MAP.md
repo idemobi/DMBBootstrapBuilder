@@ -7,68 +7,88 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 - Project name: `DMBBootstrapBuilder`
 - Project root folder: `DMBBootstrapBuilder`
 - Main role: Bootstrap-oriented visual component, layout, navigation, and page chrome package.
-- Important folders: `Components/`, `Bootstrap/`, `BodyBuilder/`, `Composers/`, `HtmlHelpers/`, `Helpers/`, `Managers/`, `Providers/`, `Controllers/`, `Configuration/`, `Constants/`, `Resources/`, `Tools/`, `Views/`, and `wwwroot/`.
+- Main project folder: `Source/`
+- Important source folders: `Source/Components/`, `Source/Bootstrap/`, `Source/BodyBuilder/`, `Source/Composers/`, `Source/HtmlHelpers/`, `Source/Helpers/`, `Source/Managers/`, `Source/Providers/`, `Source/Controllers/`, `Source/Configuration/`, `Source/Constants/`, `Source/Resources/`, `Source/Tools/`, `Source/Views/`, and `Source/wwwroot/`.
+- Live configurator project folder: `LiveConfigurator/`
+- Labs folder: `Labs/`
+- Unit test folder: `UnitTests/`
 - Documentation target: `labs_idemobi_com`
 
 ## Folder responsibilities
 
-- `Components/`
+- `Source/Components/`
   - Bootstrap visual component builders and shared component foundations.
   - Includes accordion, action item, alert, badge, block, body, breadcrumb, button, card, column, container, cookie consent, debug model, diagnostics, footer, footer bar, header, icon, image, logo, modal, navbar, progress, row, section, sidebar, spinner, table, tabs, title, and toast components.
   - `Base/`: abstract component foundations such as `HtmlComponentBuilderBase<TBuilder>`, `HtmlInteractiveComponentBuilderBase<TBuilder>`, panel/block/text bases, wrappers, and void/tag helpers.
 
-- `Bootstrap/`
+- `Source/Bootstrap/`
   - Bootstrap-specific enums, enum extensions, facades, and model types.
   - Includes variant, alignment, spacing, responsive, media, form, card decoration, table, alert, navbar, breadcrumb, and page module contracts.
 
-- `BodyBuilder/`
+- `Source/BodyBuilder/`
   - Bootstrap body builder implementation that composes page body regions with PageBuilder infrastructure.
 
-- `Composers/`
+- `Source/Composers/`
   - Default composition helpers for breadcrumb, footer bar, and navigation bar structures.
 
-- `Configuration/`
+- `Source/Configuration/`
   - BootstrapBuilder configuration and static-file post-configuration for embedded package assets.
 
-- `Constants/`
+- `Source/Constants/`
   - Shared BootstrapBuilder constants.
 
-- `Controllers/`
+- `Source/Controllers/`
   - MVC controller support for Bootstrap-specific package pages and raw Bootstrap output.
 
-- `Helpers/`
+- `Source/Helpers/`
   - Extension helpers for cards, tables, modals, title effects, action items, theme toggles, RTL toggles, fluid layout toggles, and sidebar theme actions.
 
-- `HtmlHelpers/`
+- `Source/HtmlHelpers/`
   - Razor extension methods that expose BootstrapBuilder components and utility output to `.cshtml` files.
 
-- `Managers/`
+- `Source/Managers/`
   - Bootstrap page alert management contracts and implementations.
 
-- `Providers/`
+- `Source/Providers/`
   - Section providers for debug bar, language bar, theme bar, and related page chrome areas.
 
-- `Resources/`
+- `Source/Resources/`
   - Internal and data-annotation localization `.resx` assets for `DMBBootstrapBuilder`.
 
-- `Views/`
+- `Source/Views/`
   - Embedded Razor views used by BootstrapBuilder package controllers.
 
-- `Tools/`
+- `Source/Tools/`
   - Utility helpers for Bootstrap styles, flex options, responsive display, resource-once rendering, and region state keys.
 
-- `wwwroot/`
+- `Source/wwwroot/`
   - Embedded static assets (`css`, `js`) served through package static-file configuration.
+
+- `UnitTests/`
+  - NUnit test project for `DMBBootstrapBuilder`.
+  - References `Source/DMBBootstrapBuilder.csproj` directly and keeps the test assembly name `DMBBootstrapBuilderUnitTest`.
+
+- `Labs/`
+  - Razor class library containing BootstrapBuilder presentation pages and examples hosted by `labs_idemobi_com`.
+  - References `Source/DMBBootstrapBuilder.csproj` directly and exposes controllers, views, helper extensions, and static assets used by the labs website.
+
+- `LiveConfigurator/`
+  - Razor class library and NuGet package project for `DMBBootstrapLiveConfigurator`.
+  - References `Source/DMBBootstrapBuilder.csproj` directly and keeps the public package identity `DMBBootstrapLiveConfigurator`.
+  - Exposes the live Bootstrap theme configurator controller, views, configuration hooks, and embedded static assets.
 
 - `.ai/` and `.aiassistant/`
   - Local AI-assistant support metadata when present. Do not treat generated assistant state as project source.
 
-- `bin/` and `obj/`
+- `Source/bin/` and `Source/obj/`
   - Build outputs and intermediate files. Do not use these folders as documentation or source-of-truth inputs.
 
 ## Documentation-related files
 
-- `README.md`: package overview and usage context.
+- `Source/README.md`: package overview and usage context packaged with NuGet.
+- `Source/LICENSE.md`: package license text packaged with NuGet.
+- `LiveConfigurator/README.md`: live configurator package overview packaged with the `DMBBootstrapLiveConfigurator` NuGet package.
+- `LiveConfigurator/LICENSE.md`: live configurator package license text packaged with NuGet.
 - `AGENTS.md`: local AI rules and scope for this package.
 - `AI_CONTEXT.md`: additional context for AI-assisted maintenance.
 - `DOCUMENTATION_RULES.md`: strict documentation policy.

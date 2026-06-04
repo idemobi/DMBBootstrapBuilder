@@ -1,0 +1,24 @@
+@using (Html.TabAreaBuilder().Pills().WithNavClasses("mb-3").Begin())
+{
+    @using (Html.TabBlockBuilder().WithTitle("Overview").WithIcon(IconStruct.Bootstrap("bi-bar-chart")).Active().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:High-level summary of the project status and key metrics.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("Team").WithIcon(IconStruct.Bootstrap("bi-people")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Members and their current assignments.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("Billing").WithIcon(IconStruct.Bootstrap("bi-credit-card")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Subscription plan and payment history.
+        }
+    }
+}

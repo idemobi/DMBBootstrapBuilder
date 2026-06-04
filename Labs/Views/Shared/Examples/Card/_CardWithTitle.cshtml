@@ -1,0 +1,23 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().WithTitle("Dashboard", TitleLevel.Four, IconStruct.Bootstrap("bi-speedometer2")).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Title with an icon, no subtitle.
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().WithTitle("Notifications", TitleLevel.Four, IconStruct.Bootstrap("bi-bell"), "Last 30 days").Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Title, icon and subtitle.
+            }
+        }
+    }
+}

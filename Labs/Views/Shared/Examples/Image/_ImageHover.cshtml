@@ -1,0 +1,51 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("ZoomHoverEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test4.png").Alt("Zoom").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetRounded().ZoomHoverEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("FadeHoverEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Fade").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetRounded().FadeHoverEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("GrayscaleHoverEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test2.png").Alt("Grayscale").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetRounded().GrayscaleHoverEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("LiftHoverEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test4.png").Alt("Lift").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetRounded().LiftHoverEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("GlowHoverEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Glow").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SetRounded().GlowHoverEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("SoftShadowEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Shadow").SetWidth(320, UnitSize.px).SetHeight(220, UnitSize.px).SoftShadowEffect()
+    }
+}

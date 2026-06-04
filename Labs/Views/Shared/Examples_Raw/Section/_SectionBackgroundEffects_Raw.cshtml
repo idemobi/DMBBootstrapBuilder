@@ -1,0 +1,52 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBEffectBuilder
+@@using DMBPageBuilder
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Primary).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Primary", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Secondary).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Secondary", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Success).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Success", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Warning).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Warning", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Danger).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Danger", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Info).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Info", TitleLevel.Six).Render()
+    }
+}
+@@using (Html.SectionBuilder().SetHeight(80, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @@using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @@Html.TitleBuilder().SetTitle("Normal", TitleLevel.Six).Render()
+    }
+}</code></pre></div>

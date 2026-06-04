@@ -1,0 +1,54 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Nav Bar", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:The navigation bar is configured at application level — not built inline in views.
+            }
+        }
+    }
+}
+
+@* ── INavigationBarComposer ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("INavigationBarComposer", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:The navbar is assembled by implementing INavigationBarComposer and registering it with the DI container. The layout calls it automatically.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/NavBar/_NavBarComposer", "INavigationBarComposer", IconStruct.Bootstrap("bi-layout-text-sidebar"))
+}
+
+@* ── BasicNavigationBarComposer ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("BasicNavigationBarComposer", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:BasicNavigationBarComposer is a ready-made base class. Override Brand(), LeftItems() and RightItems() to customize the navbar without implementing the full interface.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/NavBar/_BasicNavBarComposer", "BasicNavigationBarComposer", IconStruct.Bootstrap("bi-grid-3x3-gap"))
+}

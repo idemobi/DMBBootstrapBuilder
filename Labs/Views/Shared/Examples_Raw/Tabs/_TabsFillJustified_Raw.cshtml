@@ -1,0 +1,67 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.RowBuilder().Begin())
+{
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("Fill()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@using (Html.TabAreaBuilder().Tabs().Fill().WithContentClasses("pt-3").Begin())
+        {
+            @@using (Html.TabBlockBuilder().WithTitle("Alpha").Active().Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Alpha panel content.
+                }
+            }
+            @@using (Html.TabBlockBuilder().WithTitle("Beta").Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Beta panel content.
+                }
+            }
+            @@using (Html.TabBlockBuilder().WithTitle("Gamma").Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Gamma panel content.
+                }
+            }
+        }
+    }
+    @@using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @@Html.TitleBuilder().SetTitle("Justified()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @@using (Html.TabAreaBuilder().Pills().Justified().WithContentClasses("pt-3").Begin())
+        {
+            @@using (Html.TabBlockBuilder().WithTitle("Alpha").Active().Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Alpha panel content.
+                }
+            }
+            @@using (Html.TabBlockBuilder().WithTitle("Beta").Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Beta panel content.
+                }
+            }
+            @@using (Html.TabBlockBuilder().WithTitle("Gamma").Begin())
+            {
+                @@using (Html.PB_P().AsMuted().Begin())
+                {
+                    @@:Gamma panel content.
+                }
+            }
+        }
+    }
+}</code></pre></div>

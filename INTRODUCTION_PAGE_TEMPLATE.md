@@ -5,7 +5,7 @@
 Ce fichier est le template de référence pour les quatre pages standard présentes dans chaque
 catégorie du site PageBuilder : **Introduction**, **Getting Started**, **Architecture**, **Rendering Pipeline**.
 
-Implémentation de référence : `labs_idemobi_com/Views/EffectBuilder/`
+Implémentation de référence : `DMBBootstrapBuilder/Labs/Views/BootstrapBuilder/`
 
 ---
 
@@ -103,12 +103,12 @@ Utiliser `bg-body`, `bg-body-secondary`, `bg-body-tertiary`, `text-muted`, `text
 ## Emplacements des fichiers
 
 ```
-Introduction       : labs_idemobi_com/Views/{{CONTROLLER}}/Introduction.cshtml
-Getting Started    : labs_idemobi_com/Views/{{CONTROLLER}}/GettingStarted.cshtml
-Architecture       : labs_idemobi_com/Views/{{CONTROLLER}}/Architecture.cshtml
-Rendering Pipeline : labs_idemobi_com/Views/{{CONTROLLER}}/RenderingPipeline.cshtml
+Introduction       : DMBBootstrapBuilder/Labs/Views/{{CONTROLLER}}/Introduction.cshtml
+Getting Started    : DMBBootstrapBuilder/Labs/Views/{{CONTROLLER}}/GettingStarted.cshtml
+Architecture       : DMBBootstrapBuilder/Labs/Views/{{CONTROLLER}}/Architecture.cshtml
+Rendering Pipeline : DMBBootstrapBuilder/Labs/Views/{{CONTROLLER}}/RenderingPipeline.cshtml
 
-Controller         : labs_idemobi_com/Controllers/{{CONTROLLER}}Controller.cs
+Controller         : DMBBootstrapBuilder/Labs/Controllers/{{CONTROLLER}}Controller.cs
                      → une action IActionResult publique par page
 ```
 

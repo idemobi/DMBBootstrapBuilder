@@ -1,0 +1,288 @@
+@{
+    Layout = "_Layout";
+}
+
+@* ── Hero ── *@
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Introduction — BootstrapBuilder", TitleLevel.One).Render()
+            @using (Html.PB_P().AsLead().Begin())
+            {
+                @:Bootstrap components expressed through the PageBuilder rendering model.
+            }
+            @using (Html.FlexBlockBuilder().SetJustifyContentCenter().WithGap(Old_Gap.Gap2).Begin())
+            {
+                @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "GettingStarted").SetTitle("Get Started").SetIcon(IconStruct.Bootstrap("bi-play-fill")).SetVariant(VariantStyle.Primary)).Render()
+                @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "Architecture").SetTitle("Architecture").SetIcon(IconStruct.Bootstrap("bi-diagram-3")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+            }
+        }
+    }
+}
+
+@* ── 3 highlight cards ── *@
+@using (Html.BlockBuilder().AsSectionContentTop().Begin())
+{
+    @using (Html.RowBuilder().AsPillarGrid().Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsSidebarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsPaddedBlock().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-bootstrap fs-2 text-primary d-block mb-2").Begin()) { }
+                    @using (Html.PB_Span().AsSemiBold().Begin())
+                    {
+                        @:Fluent Bootstrap API
+                    }
+                    @using (Html.PB_P().AsSmallMuted().AsNoMargin().Begin())
+                    {
+                        @:Express Bootstrap components as typed C# builders — no scattered class strings.
+                    }
+                }
+            }
+        }
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsSidebarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsPaddedBlock().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-layout-sidebar-inset fs-2 text-success d-block mb-2").Begin()) { }
+                    @using (Html.PB_Span().AsSemiBold().Begin())
+                    {
+                        @:Application Shell
+                    }
+                    @using (Html.PB_P().AsSmallMuted().AsNoMargin().Begin())
+                    {
+                        @:Navigation, sidebar, footer and breadcrumb driven by provider interfaces.
+                    }
+                }
+            }
+        }
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsSidebarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsPaddedBlock().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-diagram-3 fs-2 text-warning d-block mb-2").Begin()) { }
+                    @using (Html.PB_Span().AsSemiBold().Begin())
+                    {
+                        @:Composable Action Items
+                    }
+                    @using (Html.PB_P().AsSmallMuted().AsNoMargin().Begin())
+                    {
+                        @:Centralises routes, icons, variants and labels behind a single factory API.
+                    }
+                }
+            }
+        }
+    }
+}
+
+@* ── What is BootstrapBuilder? + preview ── *@
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.RowBuilder().SetGapY(Gap.G5).SetAlignItems(AlignItems.Center).Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col7, ResponsiveBreakpoint.Lg).Begin())
+        {
+            @Html.TitleBuilder().SetTitle("What is BootstrapBuilder?", TitleLevel.Two).AsSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @using (Html.PB_Span().AsBold().Begin())
+                {
+                    @:DMBBootstrapBuilder
+                }
+                @: is the Bootstrap-oriented UI layer of the DMB stack. It provides fluent builders for common Bootstrap structures while preserving the PageBuilder approach: explicit composition, predictable output and page-aware resource registration.
+            }
+            @using (Html.PB_P().Begin())
+            {
+                @:Use it when you want Bootstrap UI without scattering class strings and repeated markup patterns across views. The package exposes components, layout primitives and application shell helpers such as navigation, sidebar, breadcrumb, footer, theme switching and cookie consent composition.
+            }
+            @using (Html.BlockBuilder().AsBenefitRow().Begin())
+            {
+                @using (Html.PB_Span().AddClass("bi bi-check-circle-fill text-success me-3 mt-1").Begin()) { }
+                @using (Html.BlockBuilder().Begin())
+                {
+                    @using (Html.PB_Span().AsBold().Begin())
+                    {
+                        @:Predictable Output:
+                    }
+                    @: Every builder produces the same Bootstrap markup regardless of where it is called in the view.
+                }
+            }
+            @using (Html.BlockBuilder().AsBenefitRow().Begin())
+            {
+                @using (Html.PB_Span().AddClass("bi bi-check-circle-fill text-success me-3 mt-1").Begin()) { }
+                @using (Html.BlockBuilder().Begin())
+                {
+                    @using (Html.PB_Span().AsBold().Begin())
+                    {
+                        @:No Scattered Class Strings:
+                    }
+                    @: Bootstrap variants, spacing, responsive breakpoints and states are expressed as typed enums, not inline strings.
+                }
+            }
+            @using (Html.BlockBuilder().AsBenefitRow().Begin())
+            {
+                @using (Html.PB_Span().AddClass("bi bi-check-circle-fill text-success me-3 mt-1").Begin()) { }
+                @using (Html.BlockBuilder().Begin())
+                {
+                    @using (Html.PB_Span().AsBold().Begin())
+                    {
+                        @:Shell Integration:
+                    }
+                    @: Navigation, sidebar and footer are driven by provider interfaces, keeping layout concerns out of individual views.
+                }
+            }
+        }
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col5, ResponsiveBreakpoint.Lg).Begin())
+        {
+            @using (Html.BlockBuilder().AsSidebarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsPreviewWrapper().Begin())
+                {
+                    @using (Html.FlexBlockBuilder().SetFlexColumn().Begin())
+                    {
+                        @Html.Button(ActionItemFactory.Url("Primary action", "#", IconStruct.Bootstrap("bi-check")).SetVariant(VariantStyle.Primary)).Render()
+                        @Html.Button(ActionItemFactory.Url("Secondary action", "#", IconStruct.Bootstrap("bi-dash")).SetVariant(VariantStyle.Secondary)).Render()
+                        @Html.Button(ActionItemFactory.Url("Danger action", "#", IconStruct.Bootstrap("bi-x")).SetVariant(VariantStyle.Danger)).Render()
+                    }
+                }
+                @using (Html.BlockBuilder().AsPaddedBlock().Begin())
+                {
+                    @(Html.CodeBlock(@"@@Html.Button(ActionItemFactory.Url(""..."", ""#"").SetVariant(VariantStyle.Primary)).Render()", CodeLanguage.CSharp))
+                    @using (Html.PB_P().AsSmallMuted().AsNoMargin().Begin())
+                    {
+                        @:A sample of Bootstrap components rendered through BootstrapBuilder.
+                    }
+                }
+            }
+        }
+    }
+}
+
+@* ── Three Pillars ── *@
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Three Pillars of BootstrapBuilder", TitleLevel.Two).AsSectionHeading().Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:BootstrapBuilder is organized around three main areas, each covering a distinct layer of Bootstrap UI.
+        }
+    }
+    @using (Html.RowBuilder().AsPillarGrid().Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsPillarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsTopMargin().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-bootstrap text-primary me-1").Begin()) { }
+                    @Html.TitleBuilder().SetTitle("Bootstrap Components", TitleLevel.Five).AsCompact().Render()
+                }
+                @using (Html.PB_P().AsSmallMuted().Begin())
+                {
+                    @:Buttons, alerts, badges, cards, modals, tabs, tables and layout blocks through fluent builders.
+                }
+                @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                {
+                    @:.ButtonRender()
+                }
+            }
+        }
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsPillarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsTopMargin().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-layout-sidebar-inset text-success me-1").Begin()) { }
+                    @Html.TitleBuilder().SetTitle("Application Shell", TitleLevel.Five).AsCompact().Render()
+                }
+                @using (Html.PB_P().AsSmallMuted().Begin())
+                {
+                    @:Navigation bar, sidebar, footer, breadcrumb, theme controls and profile sections composed from providers.
+                }
+                @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                {
+                    @:.NavBarBuilder()
+                }
+            }
+        }
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+        {
+            @using (Html.BlockBuilder().AsPillarCard().Begin())
+            {
+                @using (Html.BlockBuilder().AsTopMargin().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-diagram-3 text-warning me-1").Begin()) { }
+                    @Html.TitleBuilder().SetTitle("Composable API", TitleLevel.Five).AsCompact().Render()
+                }
+                @using (Html.PB_P().AsSmallMuted().Begin())
+                {
+                    @:Keeps Bootstrap classes available, but centralises repeated patterns behind builders and action items.
+                }
+                @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                {
+                    @:.CardBuilder()
+                }
+            }
+        }
+    }
+}
+
+@* ── Philosophy + Next Step ── *@
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap3).SetAlignItemsStretch().Begin())
+    {
+        @using (Html.BlockBuilder().AsInfoCallout().SetStyle("margin", "0").SetStyle("flex", "2").Begin())
+        {
+            @using (Html.FlexBlockBuilder().Begin())
+            {
+                @using (Html.BlockBuilder().AsCalloutIcon().Begin())
+                {
+                    @using (Html.PB_Span().AddClass("bi bi-lightbulb-fill fs-2 text-info").Begin()) { }
+                }
+                @using (Html.BlockBuilder().Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Core Philosophy", TitleLevel.Four).AsAlertHeading().Render()
+                    @using (Html.PB_P().AsNoMargin().Begin())
+                    {
+                        @:We believe Bootstrap should be configured through intent, not class strings. When you write
+                        @using (Html.PB_Span().AsMonospace().Begin())
+                        {
+                            @:.SetVariant(VariantStyle.Primary)
+                        }
+                        @:, you express the intent to use the primary variant. The builder handles the Bootstrap class, the HTML structure, and any accessibility attribute required.
+                    }
+                }
+            }
+        }
+        @using (Html.BlockBuilder().AsSidebarCard().SetStyle("flex", "1").Begin())
+        {
+            @using (Html.BlockBuilder().AsPaddedBlock().SetStyle("height", "100%").Begin())
+            {
+                @using (Html.FlexBlockBuilder().SetFlexColumn().SetAlignItemsStart().SetJustifyContentCenter().SetStyle("height", "100%").Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Next Step", TitleLevel.Five).Render()
+                    @using (Html.PB_P().AsSmallMuted().Begin())
+                    {
+                        @:Learn how to install and configure BootstrapBuilder in your project.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "GettingStarted").SetTitle("Getting Started").SetIcon(IconStruct.Bootstrap("bi-play-fill")).SetVariant(VariantStyle.Primary)).Render()
+                }
+            }
+        }
+    }
+}

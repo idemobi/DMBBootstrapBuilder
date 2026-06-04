@@ -1,0 +1,12 @@
+@using (Html.AlertBuilder().SetTitle("Yahoo").SetMessage("This is a alert").Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @:My message ...
+    }
+    <hr/>
+    @using (Html.BlockBuilder().Begin())
+    {
+        @:with html razor composition!
+    }
+}

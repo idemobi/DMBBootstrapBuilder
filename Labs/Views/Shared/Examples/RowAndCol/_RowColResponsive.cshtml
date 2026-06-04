@@ -1,0 +1,24 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("xs:12 · md:6 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("xs:12 · md:6 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col12, ResponsiveBreakpoint.Md).SetCol(ColSize.Col4, ResponsiveBreakpoint.Lg).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("xs:12 · md:12 · lg:4", TitleLevel.Six).Render()
+        }
+    }
+}

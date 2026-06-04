@@ -1,0 +1,13 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.FlexBlockBuilder().SetAlignItemsCenter().Begin())
+{
+    @@Html.TitleBuilder().SetTitle("Primary", TitleLevel.Five).SetTextVariant(VariantStyle.Primary).Render()
+    @@Html.TitleBuilder().SetTitle("Secondary", TitleLevel.Five).SetTextVariant(VariantStyle.Secondary).Render()
+    @@Html.TitleBuilder().SetTitle("Success", TitleLevel.Five).SetTextVariant(VariantStyle.Success).Render()
+    @@Html.TitleBuilder().SetTitle("Danger", TitleLevel.Five).SetTextVariant(VariantStyle.Danger).Render()
+    @@Html.TitleBuilder().SetTitle("Warning", TitleLevel.Five).SetTextVariant(VariantStyle.Warning).Render()
+    @@Html.TitleBuilder().SetTitle("Info", TitleLevel.Five).SetTextVariant(VariantStyle.Info).Render()
+    @@Html.TitleBuilder().SetTitle("Light", TitleLevel.Five).SetTextVariant(VariantStyle.Light).Render()
+    @@Html.TitleBuilder().SetTitle("Dark", TitleLevel.Five).SetTextVariant(VariantStyle.Dark).Render()
+}</code></pre></div>

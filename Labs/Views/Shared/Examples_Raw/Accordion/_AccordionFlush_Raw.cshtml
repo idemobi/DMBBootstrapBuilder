@@ -1,0 +1,26 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.AccordionAreaBuilder().Id("acc-flush").Flush().Begin())
+{
+    @@using (Html.AccordionBlockBuilder().WithTitle("Overview").WithIcon(IconStruct.Bootstrap("bi-bar-chart")).Open().Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:High-level summary of the project status and key metrics.
+        }
+    }
+    @@using (Html.AccordionBlockBuilder().WithTitle("Team").WithIcon(IconStruct.Bootstrap("bi-people")).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:Jean-François · Quentin · Lila · Gégé
+        }
+    }
+    @@using (Html.AccordionBlockBuilder().WithTitle("Billing").WithIcon(IconStruct.Bootstrap("bi-credit-card")).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:Billing information and current subscription status.
+        }
+    }
+}</code></pre></div>

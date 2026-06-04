@@ -1,0 +1,24 @@
+@using (Html.TabAreaBuilder().SetId("hash-tabs").Tabs().EnableHashNavigation(true).UpdateHashOnTabChange(true).WithContentClasses("pt-3").Begin())
+{
+    @using (Html.TabBlockBuilder().WithTitle("Overview").WithIcon(IconStruct.Bootstrap("bi-house")).Active().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Active by default. The URL hash becomes #hash-tabs_tab_0_pane when this tab is selected.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("Monitoring").WithIcon(IconStruct.Bootstrap("bi-activity")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Activated via window.location.hash — the hash updates to #hash-tabs_tab_1_pane.
+        }
+    }
+    @using (Html.TabBlockBuilder().WithTitle("Billing").WithIcon(IconStruct.Bootstrap("bi-credit-card")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Direct links can target this pane — hash becomes #hash-tabs_tab_2_pane.
+        }
+    }
+}

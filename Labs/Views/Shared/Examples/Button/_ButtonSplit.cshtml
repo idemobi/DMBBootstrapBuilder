@@ -1,0 +1,13 @@
+@using (Html.FlexBlockBuilder().WithGap(Old_Gap.Gap2).Begin())
+{
+    @Html.Button(ActionItemFactory.Split(
+        ActionItemFactory.Url("Save", "#", IconStruct.Bootstrap("bi-floppy")),
+        ActionItemFactory.Url("Save as draft", "#"),
+        ActionItemFactory.Url("Save and publish", "#")
+    ).WithVariant(VariantStyle.Primary)).Render()
+    @Html.Button(ActionItemFactory.Split(
+        ActionItemFactory.Url("Export", "#", IconStruct.Bootstrap("bi-box-arrow-up")),
+        ActionItemFactory.Url("Export as PDF", "#"),
+        ActionItemFactory.Url("Export as CSV", "#")
+    ).WithVariant(VariantStyle.Secondary).Outlined()).Render()
+}

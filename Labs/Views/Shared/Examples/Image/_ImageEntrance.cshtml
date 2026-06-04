@@ -1,0 +1,51 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("PolaroidEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Polaroid").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).PolaroidEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("GrayscaleToColorEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Grayscale to color").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().GrayscaleToColorEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("KenBurnsSlowEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Ken Burns").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().KenBurnsSlowEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("ShineSweepEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Shine").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().ShineSweepEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("NeonFrameEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Neon").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().NeonFrameEffect()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("TiltParallaxEffect()", TitleLevel.Six).AsSubSectionTitle().Render()
+        }
+        @Html.ImageRender("/images/test/test1.png").Alt("Tilt").SetWidth(260, UnitSize.px).SetHeight(180, UnitSize.px).SetBorder().TiltParallaxEffect()
+    }
+}

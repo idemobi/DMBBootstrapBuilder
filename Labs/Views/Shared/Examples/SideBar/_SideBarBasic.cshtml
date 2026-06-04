@@ -1,0 +1,14 @@
+@(new SideBarComponent()
+    .AddSection("Foundation",
+        ActionItemFactory.Url("Block", "/Block").SetTitle("Block"),
+        ActionItemFactory.Url("Row & Col", "/RowAndCol").SetTitle("Row & Col"),
+        ActionItemFactory.Url("Section", "/Section").SetTitle("Section"),
+        ActionItemFactory.Url("Card", "/Card").SetTitle("Card"),
+        ActionItemFactory.Url("Table", "/Table").SetTitle("Table")
+    )
+    .AddSection("Layout",
+        ActionItemFactory.Url("Nav Bar", "/NavBar").SetTitle("Nav Bar"),
+        ActionItemFactory.Url("Sidebar", "/SideBar").SetTitle("Sidebar"),
+        ActionItemFactory.Url("Footer Bar", "/FooterBar").SetTitle("Footer Bar")
+    )
+    .Render(Html))

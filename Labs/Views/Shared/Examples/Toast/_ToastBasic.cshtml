@@ -1,0 +1,5 @@
+﻿@using (Html.BlockBuilder().AddClass("toast-container position-static d-flex flex-column gap-2").Begin())
+{
+    @(Html.Toast().SetTitle("File saved").SetMessage("Your document has been saved successfully.").Render())
+    @(Html.Toast().SetMessage("Settings have been updated.").Render())
+}

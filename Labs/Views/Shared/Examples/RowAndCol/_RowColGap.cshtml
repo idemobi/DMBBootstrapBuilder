@@ -1,0 +1,54 @@
+@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+{
+    @Html.TitleBuilder().SetTitle("Gap.G0", TitleLevel.Six).AsSubSectionTitle().Render()
+}
+@using (Html.RowBuilder().SetGap(Gap.G0).Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:A
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:B
+            }
+        }
+    }
+}
+@using (Html.BlockBuilder().AsSectionSubLabel().Begin())
+{
+    @Html.TitleBuilder().SetTitle("Gap.G5", TitleLevel.Six).AsSubSectionTitle().Render()
+}
+@using (Html.RowBuilder().SetGap(Gap.G5).Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:A
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col).Begin())
+    {
+        @using (Html.CardBuilder().NoHeader().Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:B
+            }
+        }
+    }
+}

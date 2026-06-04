@@ -1,0 +1,24 @@
+@using (Html.AccordionAreaBuilder().Id("acc-stayopen").StayOpen().Begin())
+{
+    @using (Html.AccordionBlockBuilder().WithTitle("Frontend").WithIcon(IconStruct.Bootstrap("bi-window")).Open().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Razor views, Bootstrap layout and client-side effects.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Backend").WithIcon(IconStruct.Bootstrap("bi-server")).Open().Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:ASP.NET Core controllers, services and data access layer.
+        }
+    }
+    @using (Html.AccordionBlockBuilder().WithTitle("Infrastructure").WithIcon(IconStruct.Bootstrap("bi-cloud")).Begin())
+    {
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Deployment pipelines, cloud hosting and monitoring.
+        }
+    }
+}

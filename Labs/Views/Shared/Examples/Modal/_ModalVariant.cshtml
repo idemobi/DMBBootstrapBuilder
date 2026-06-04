@@ -1,0 +1,17 @@
+@using (Html.ModalBuilder().Id("ex-modal-primary").WithTitle("Primary variant", TitleLevel.Three, IconStruct.Bootstrap("bi-window")).WithVariant(VariantStyle.Primary).Size(ModalSize.Lg).Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:WithVariant(VariantStyle.Primary) colours the modal header.
+    }
+    @using (Html.FooterBuilder().SetJustifyContentBetween().Begin())
+    {
+        @Html.Button(ActionItemFactory.DismissModal("Cancel", IconStruct.Bootstrap("bi-x-circle")).SetVariant(VariantStyle.Secondary).SetOutlined())
+        @Html.Button(ActionItemFactory.JavaScript("Confirm", "console.log('confirmed')").SetVariant(VariantStyle.Primary))
+    }
+}
+
+@using (Html.FlexBlockBuilder().Begin())
+{
+    @Html.Button(ActionItemFactory.Modal("Primary", "ex-modal-primary", IconStruct.Bootstrap("bi-window")).SetVariant(VariantStyle.Primary)).Render()
+}

@@ -1,0 +1,73 @@
+#region Copyright
+
+// ©2002-2026 idéMobi
+// www.idemobi.com
+
+#endregion
+
+#region
+
+using System.IO;
+using DMBPageBuilder;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+#endregion
+
+namespace DMBBootstrapBuilder
+{
+    /// <summary>
+    ///     Builds and renders the BootstrapBuilder row component or page region.
+    /// </summary>
+    public sealed class RowBuilder : HtmlConstrainedTagBuilder<RowBuilder>,
+        ICanUseRowCols,
+        ICanUseGridGap,
+        ICanUseGridGapX,
+        ICanUseGridGapY,
+        ICanUsePadding,
+        ICanUseMargin,
+        ICanUseJustifyContent,
+        ICanUseVerticalAlign,
+        ICanUseAlignItems,
+        ICanUseHeight,
+        ICanUseWidth,
+        ICanUseCustomClasses
+    {
+        #region Instance fields and properties
+
+        #region Protected accessors
+
+        /// <inheritdoc />
+        protected override HtmlRenderContextKind ContextKind => HtmlRenderContextKind.Row;
+
+        #endregion
+
+        #endregion
+
+        #region Instance constructors and destructors
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="RowBuilder" /> class.
+        /// </summary>
+        /// <param name="writer">The writer that receives the rendered HTML output.</param>
+        /// <param name="html">The Razor HTML helper used to access view context and services.</param>
+        public RowBuilder(TextWriter writer, IHtmlHelper html)
+            : base(writer, html)
+        {
+            _tag = "div";
+            _classesOfComponent.Add("row");
+            this.SetGap(Gap.G3);
+        }
+
+        #endregion
+
+        #region Instance methods
+
+        /// <inheritdoc />
+        protected override RowBuilder CreateInstance()
+        {
+            return new RowBuilder(_textWriter, _htmlHelper);
+        }
+
+        #endregion
+    }
+}

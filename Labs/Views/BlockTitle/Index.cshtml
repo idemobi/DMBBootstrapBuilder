@@ -1,0 +1,215 @@
+@{
+    Layout = "_Layout";
+}
+
+@(Html.BlockTitleBuilder()
+    .SetTitle("BlockTitle – Live Examples", TitleLevel.Two)
+    .SetIconBootstrap("bi-type-h1")
+    .AsSectionHeading()
+    .Render())
+
+@using (Html.RowBuilder().AsBottomPadded().Begin())
+{
+    @* Title only *@
+    @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Title only", TitleLevel.Three).SetIconBootstrap("bi-type-h1").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("A stable foundation", TitleLevel.Two)
+                .Render())
+        }
+    }
+
+    @* Title + icon *@
+    @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Title + icon", TitleLevel.Three).SetIconBootstrap("bi-image").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("A stable foundation", TitleLevel.Two)
+                .SetIconBootstrap("bi-boxes")
+                .Render())
+        }
+    }
+
+    @* Title + single subtitle *@
+    @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Title + subtitle", TitleLevel.Three).SetIconBootstrap("bi-text-paragraph").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("A stable foundation", TitleLevel.Two)
+                .SetIconBootstrap("bi-boxes")
+                .AddSubtitle("Each package covers a specific part of web rendering without changing the way your team works in Razor.")
+                .Render())
+        }
+    }
+
+    @* Title + lead subtitle *@
+    @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Title + lead subtitle", TitleLevel.Three).SetIconBootstrap("bi-text-paragraph").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("A stable foundation", TitleLevel.Two)
+                .SetIconBootstrap("bi-boxes")
+                .AddSubtitle("A prominent tagline for the section.", SubtitleSize.Lead)
+                .Render())
+        }
+    }
+
+    @* Title + multiple subtitles *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Title + multiple subtitles", TitleLevel.Three).SetIconBootstrap("bi-list-ul").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("From framework to published page", TitleLevel.Two)
+                .SetIconBootstrap("bi-signpost-split")
+                .AddSubtitle("A short path from a stable package to a readable experience.", SubtitleSize.Lead)
+                .AddSubtitle("Each builder covers one layer: layout, components, effects, documentation.")
+                .AddSubtitle("No configuration files. No build step. Pure server-side Razor.", SubtitleSize.Small)
+                .Render())
+        }
+    }
+
+    @* All heading levels *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("All heading levels", TitleLevel.Three).SetIconBootstrap("bi-type").Begin())
+        {
+            @foreach (TitleLevel level in Enum.GetValues(typeof(TitleLevel)))
+            {
+                @(Html.BlockTitleBuilder()
+                    .SetTitle($"TitleLevel.{level}", level)
+                    .AddSubtitle($"Subtitle for {level} — standard muted text.")
+                    .AsItemSpaced()
+                    .Render())
+            }
+        }
+    }
+
+    @* All subtitle sizes *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("All subtitle sizes", TitleLevel.Three).SetIconBootstrap("bi-text-left").Begin())
+        {
+            @(Html.BlockTitleBuilder()
+                .SetTitle("Subtitle size showcase", TitleLevel.Three)
+                .SetIconBootstrap("bi-type-h3")
+                .AddSubtitle("SubtitleSize.Lead — larger lead text for prominent taglines.", SubtitleSize.Lead)
+                .AddSubtitle("SubtitleSize.Normal — standard muted paragraph text.")
+                .AddSubtitle("SubtitleSize.Small — smaller annotation or secondary note.", SubtitleSize.Small)
+                .Render())
+        }
+    }
+
+    @* Text color variants *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Text color variants", TitleLevel.Three).SetIconBootstrap("bi-fonts").Begin())
+        {
+            @using (Html.RowBuilder().SetGap(Gap.G3).Begin())
+            {
+                @foreach (VariantStyle variant in new[] { VariantStyle.Primary, VariantStyle.Secondary, VariantStyle.Success, VariantStyle.Danger, VariantStyle.Warning, VariantStyle.Info, VariantStyle.Dark })
+                {
+                    @using (Html.ColBuilder(12, 12, 6, 4, 4, 3).Begin())
+                    {
+                        @(Html.BlockTitleBuilder()
+                            .SetTitle($"{variant}", TitleLevel.Five)
+                            .SetIconBootstrap("bi-palette")
+                            .AddSubtitle($"SetTextVariant({variant})", SubtitleSize.Small)
+                            .SetTextVariant(variant)
+                            .Render())
+                    }
+                }
+            }
+        }
+    }
+
+    @* Text shadow *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Text shadow", TitleLevel.Three).SetIconBootstrap("bi-fonts").Begin())
+        {
+            @using (Html.RowBuilder().SetGap(Gap.G3).Begin())
+            {
+                @foreach (Shadow shadow in new[] { Shadow.Small, Shadow.Regular, Shadow.Large })
+                {
+                    @using (Html.ColBuilder(12, 12, 6, 4, 4, 4).Begin())
+                    {
+                        @(Html.BlockTitleBuilder()
+                            .SetTitle($"Shadow.{shadow}", TitleLevel.Five)
+                            .SetIconBootstrap("bi-type")
+                            .AddSubtitle($"SetTextShadow(Shadow.{shadow})", SubtitleSize.Small)
+                            .SetTextShadow(shadow)
+                            .Render())
+                    }
+                }
+            }
+        }
+    }
+
+    @* Color + shadow combined *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Color + shadow combined", TitleLevel.Three).SetIconBootstrap("bi-stars").Begin())
+        {
+            @using (Html.RowBuilder().SetGap(Gap.G3).Begin())
+            {
+                @foreach (VariantStyle variant in new[] { VariantStyle.Primary, VariantStyle.Success, VariantStyle.Danger, VariantStyle.Warning })
+                {
+                    @using (Html.ColBuilder(12, 12, 6, 3, 3, 3).Begin())
+                    {
+                        @(Html.BlockTitleBuilder()
+                            .SetTitle($"{variant}", TitleLevel.Five)
+                            .SetIconBootstrap("bi-palette")
+                            .AddSubtitle("Lead subtitle in same color.", SubtitleSize.Lead)
+                            .AddSubtitle("Small annotation below.", SubtitleSize.Small)
+                            .SetTextVariant(variant)
+                            .SetTextShadow(Shadow.Regular)
+                            .Render())
+                    }
+                }
+            }
+        }
+    }
+
+    @* Per-line color and shadow *@
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Per-line color and shadow", TitleLevel.Three).SetIconBootstrap("bi-palette2").Begin())
+        {
+            @using (Html.RowBuilder().SetGap(Gap.G4).Begin())
+            {
+                @* Title override + subtitle overrides *@
+                @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+                {
+                    @(Html.BlockTitleBuilder()
+                        .SetTitle("Mixed colors", TitleLevel.Four)
+                        .SetIconBootstrap("bi-palette2")
+                        .SetTitleVariant(VariantStyle.Primary)
+                        .AddSubtitle("This line is green.", SubtitleSize.Normal, VariantStyle.Success)
+                        .AddSubtitle("This line is red with shadow.", SubtitleSize.Normal, VariantStyle.Danger, Shadow.Regular)
+                        .AddSubtitle("This line is default muted.")
+                        .Render())
+                }
+
+                @* Global fallback + one override *@
+                @using (Html.ColBuilder(12, 12, 6, 6, 6, 6).Begin())
+                {
+                    @(Html.BlockTitleBuilder()
+                        .SetTitle("Global primary, one override", TitleLevel.Four)
+                        .SetIconBootstrap("bi-type")
+                        .SetTextVariant(VariantStyle.Primary)
+                        .SetTextShadow(Shadow.Small)
+                        .AddSubtitle("Inherits Primary + Small shadow.", SubtitleSize.Lead)
+                        .AddSubtitle("Overridden to Warning, no shadow.", SubtitleSize.Normal, VariantStyle.Warning, Shadow.None)
+                        .AddSubtitle("Back to inherited Primary.", SubtitleSize.Small)
+                        .Render())
+                }
+            }
+        }
+    }
+}

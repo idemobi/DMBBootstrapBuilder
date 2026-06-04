@@ -1,0 +1,14 @@
+@using (Html.BlockBuilder().AddClass("toast-container position-static").Begin())
+{
+    @using (Html.Toast().SetTitle("Publication queue").SetSubtitle("2 min ago").SetIcon(IconStruct.Bootstrap("bi-cloud-upload")).SetVariant(VariantStyle.Info).Begin())
+    {
+        @using (Html.BlockBuilder().AddClass("d-flex flex-column gap-2").Begin())
+        {
+            @using (Html.BlockBuilder().Begin())
+            {
+                @:3 documentation pages are waiting for publication.
+            }
+            @Html.ProgressBar().SetValue(66).SetVariant(VariantStyle.Info)
+        }
+    }
+}

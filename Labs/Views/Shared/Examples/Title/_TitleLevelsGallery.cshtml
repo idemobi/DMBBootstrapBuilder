@@ -1,0 +1,15 @@
+@using (Html.RowBuilder(2).Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Heading One", TitleLevel.One).Render()
+        @Html.TitleBuilder().SetTitle("Heading Two", TitleLevel.Two).Render()
+        @Html.TitleBuilder().SetTitle("Heading Three", TitleLevel.Three).Render()
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Md).Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Heading Four", TitleLevel.Four).Render()
+        @Html.TitleBuilder().SetTitle("Heading Five", TitleLevel.Five).Render()
+        @Html.TitleBuilder().SetTitle("Heading Six", TitleLevel.Six).Render()
+    }
+}

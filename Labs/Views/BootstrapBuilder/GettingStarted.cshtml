@@ -1,0 +1,159 @@
+@{
+    Layout = "_Layout";
+}
+
+@* ── Hero ── *@
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Getting Started — BootstrapBuilder", TitleLevel.One).Render()
+            @using (Html.PB_P().AsLead().Begin())
+            {
+                @:From zero to Bootstrap UI components in minutes.
+            }
+        }
+    }
+}
+
+@using (Html.ContainerBuilder().SetPadding(SpacingSide.Y, SpacingSize.Five).Begin())
+{
+    @using (Html.RowBuilder().Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).Begin())
+        {
+            @* ── Step 1 ── *@
+            @Html.TitleBuilder().SetTitle("1. Install the NuGet Package", TitleLevel.Two).AsSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:Install
+                @using (Html.PB_Span().AsMonospace().Begin())
+                {
+                    @:DMBBootstrapBuilder
+                }
+                @: alongside
+                @using (Html.PB_Span().AsMonospace().Begin())
+                {
+                    @:DMBPageBuilder
+                }
+                @:. BootstrapBuilder depends on PageBuilder for its rendering lifecycle.
+            }
+            @(Html.CodeBlock("dotnet add package DMBBootstrapBuilder", CodeLanguage.Bash)
+                .SetTitle("Install DMBBootstrapBuilder")
+                .SetCopyButton())
+
+            @* ── Step 2 ── *@
+            @Html.TitleBuilder().SetTitle("2. Configure Services", TitleLevel.Two).AsSubSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:Load PageBuilder first, then BootstrapBuilder. Both register services into the DI container before the application is built.
+            }
+            @(Html.CodeBlock(@"using DMBPageBuilder;
+using DMBBootstrapBuilder;
+
+PageBuilderConfiguration.LoadCommonConfig(builder);
+BootstrapBuilderConfiguration.LoadCommonConfig(builder);
+
+builder.Services.AddControllersWithViews();", CodeLanguage.CSharp)
+                .SetTitle("Program.cs")
+                .SetCopyButton())
+
+            @* ── Step 3 ── *@
+            @Html.TitleBuilder().SetTitle("3. Add Razor Imports", TitleLevel.Two).AsSubSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:In your
+                @using (Html.PB_Span().AsMonospace().Begin())
+                {
+                    @:_ViewImports.cshtml
+                }
+                @:, add the namespaces to make builders and helpers available in every view.
+            }
+            @(Html.CodeBlock(@"@using DMBPageBuilder
+@using DMBBootstrapBuilder", CodeLanguage.CSharp)
+                .SetTitle("_ViewImports.cshtml")
+                .SetCopyButton())
+
+            @* ── Step 4 ── *@
+            @Html.TitleBuilder().SetTitle("4. Render a First Component", TitleLevel.Two).AsSubSectionHeading().Render()
+            @using (Html.PB_P().Begin())
+            {
+                @:Start with a simple action button. Once this renders correctly, explore layout builders, navigation and the application shell.
+            }
+            @(Html.CodeBlock(@"@Html.Button(
+    ActionItemFactory.AspRoute(""Documentation"", ""Documentation"", ""Index"",
+        IconStruct.Bootstrap(""bi-journal-text""))
+        .SetVariant(VariantStyle.Primary)
+).Render()", CodeLanguage.CSharp)
+                .SetTitle("First BootstrapBuilder component")
+                .SetCopyButton())
+
+            @* ── Common Builders quick reference ── *@
+            @using (Html.BlockBuilder().AsInfoCallout().Begin())
+            {
+                @using (Html.FlexBlockBuilder().Begin())
+                {
+                    @using (Html.BlockBuilder().AsCalloutIcon().Begin())
+                    {
+                        @using (Html.PB_Span().AddClass("bi bi-collection-fill fs-2 text-info").Begin()) { }
+                    }
+                    @using (Html.BlockBuilder().Begin())
+                    {
+                        @Html.TitleBuilder().SetTitle("Common Builders", TitleLevel.Five).AsAlertHeading().Render()
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                            {
+                                @:Html.Button(...)
+                            }
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                            {
+                                @:Html.CardBuilder()
+                            }
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                            {
+                                @:Html.AlertBuilder()
+                            }
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                            {
+                                @:Html.NavBarBuilder()
+                            }
+                        }
+                        @using (Html.BlockBuilder().AsSidebarRow().Begin())
+                        {
+                            @using (Html.PB_Span().AsMonospaceSmall().Begin())
+                            {
+                                @:Html.ModalBuilder()
+                            }
+                        }
+                    }
+                }
+            }
+
+            @* ── Next Step ── *@
+            @using (Html.BlockBuilder().AsSidebarNote().Begin())
+            {
+                @using (Html.BlockBuilder().AsTextCenter().Begin())
+                {
+                    @Html.TitleBuilder().SetTitle("Understand how BootstrapBuilder layers on top of PageBuilder?", TitleLevel.Four).Render()
+                    @using (Html.PB_P().AsSmallMuted().Begin())
+                    {
+                        @:Check out the architecture guide to understand how BootstrapBuilder is structured and integrates with the rendering lifecycle.
+                    }
+                    @Html.Button(ActionItemFactory.AspRoute("BootstrapBuilder", "Architecture").SetTitle("Architecture").SetIcon(IconStruct.Bootstrap("bi-diagram-3")).SetVariant(VariantStyle.Primary)).Render()
+                }
+            }
+        }
+    }
+}

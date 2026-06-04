@@ -1,0 +1,33 @@
+﻿<div class="dmb-demo-code border rounded-3 overflow-hidden bg-body"><div class="dmb-demo-code-header px-3 py-2 border-bottom bg-body-tertiary d-flex align-items-center"><span class="badge text-bg-secondary font-monospace">C#</span></div><pre class="language-csharp mb-0 border-0 rounded-0"><code class="language-csharp">@@using DMBBootstrapBuilder
+@@using DMBPageBuilder
+@@using (Html.TabAreaBuilder().Tabs().WithContentClasses("pt-3").Begin())
+{
+    @@using (Html.TabBlockBuilder().WithTitle("Discovery").WithIcon(IconStruct.Bootstrap("bi-search")).Active().Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:Understanding your goals, constraints and audience before writing a single line of code.
+        }
+    }
+    @@using (Html.TabBlockBuilder().WithTitle("Design").WithIcon(IconStruct.Bootstrap("bi-pencil-square")).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:Wireframes, prototypes and a visual language aligned with your brand.
+        }
+    }
+    @@using (Html.TabBlockBuilder().WithTitle("Development").WithIcon(IconStruct.Bootstrap("bi-code-slash")).Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:Clean, well-tested code delivered in regular sprints.
+        }
+    }
+    @@using (Html.TabBlockBuilder().WithTitle("Launch").WithIcon(IconStruct.Bootstrap("bi-rocket-takeoff")).Disabled().Begin())
+    {
+        @@using (Html.PB_P().AsMuted().Begin())
+        {
+            @@:This tab is disabled — it cannot be selected.
+        }
+    }
+}</code></pre></div>

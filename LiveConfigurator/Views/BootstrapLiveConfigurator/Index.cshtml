@@ -1,0 +1,1817 @@
+@using DMBBootstrapBuilder
+@using DMBComponentBuilder
+@using DMBPageBuilder
+@using Microsoft.AspNetCore.Html
+@{
+    ViewData["Title"] = "Bootstrap Live Configurator";
+    Layout = "_Layout";
+}
+
+<div class="container py-4 d-grid gap-4">
+    <h1 class="h3 mb-0">Bootstrap Live Configurator</h1>
+
+    @using (Html.CardBuilder().WithTitle("About this module", TitleLevel.Three, IconStruct.Bootstrap("bi-info-circle")).Begin())
+    {
+        <p class="mb-2 text-muted">
+            Configure Bootstrap tokens with immediate feedback. Each tab provides dedicated controls and a focused preview.
+            The global preview below summarizes all active settings.
+        </p>
+        <div class="form-check form-switch mb-1">
+            <input class="form-check-input" type="checkbox" role="switch" id="liveOverrideEnabled" checked />
+            <label class="form-check-label" for="liveOverrideEnabled">Enable live Bootstrap style override site-wide</label>
+        </div>
+        <small class="text-muted">When disabled, values stay saved but no visual override is applied.</small>
+    }
+
+    @using (Html.CardBuilder().WithTitle("Configuration by group", TitleLevel.Three, IconStruct.Bootstrap("bi-sliders2")).Begin())
+    {
+        <div class="d-flex justify-content-end mb-2">
+            <button id="togglePreviewTheme" type="button" class="btn btn-sm btn-outline-secondary">Theme: Light</button>
+        </div>
+        <div id="dmbConfiguratorTabsScope">
+        @using (Html.TabAreaBuilder().Tabs().WithContentClasses("pt-3").Begin())
+        {
+            @using (Html.TabBlockBuilder().WithTitle("Colors").WithIcon(IconStruct.Bootstrap("bi-palette")).Active().Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Primary", "primaryColor", "color", "#0d6efd", "Main accent color for actions and highlights.")
+                                @RenderSettingRow("Secondary", "secondaryColor", "color", "#6c757d", "Secondary accent for alternate actions.")
+                                @RenderSettingRow("Success", "successColor", "color", "#198754", "Success semantic color.")
+                                @RenderSettingRow("Danger", "dangerColor", "color", "#dc3545", "Danger/error semantic color.")
+                                @RenderSettingRow("Warning", "warningColor", "color", "#ffc107", "Warning semantic color.")
+                                @RenderSettingRow("Info", "infoColor", "color", "#0dcaf0", "Info semantic color.")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section id="previewColors" class="card">
+                            <div class="card-body d-grid gap-2">
+                                <h3 class="h6 mb-1">Preview - Colors</h3>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-primary">Primary</button>
+                                    <button class="btn btn-secondary">Secondary</button>
+                                    <button class="btn btn-success">Success</button>
+                                    <button class="btn btn-danger">Danger</button>
+                                    <button class="btn btn-warning">Warning</button>
+                                    <button class="btn btn-info">Info</button>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button class="btn btn-primary" disabled>Primary disabled</button>
+                                    <button class="btn btn-secondary" disabled>Secondary disabled</button>
+                                    <button class="btn btn-outline-primary" disabled>Outline disabled</button>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge text-bg-primary">Primary</span>
+                                    <span class="badge text-bg-secondary">Secondary</span>
+                                    <span class="badge text-bg-success">Success</span>
+                                    <span class="badge text-bg-danger">Danger</span>
+                                    <span class="badge text-bg-warning">Warning</span>
+                                    <span class="badge text-bg-info">Info</span>
+                                </div>
+                                <div class="table-responsive mt-2">
+                                    <table class="table table-sm align-middle mb-0">
+                                        <thead>
+                                        <tr>
+                                            <th>Variant</th>
+                                            <th>Base</th>
+                                            <th>Subtle BG</th>
+                                            <th>Subtle Border</th>
+                                            <th>Emphasis text</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Primary</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-primary-base">Primary</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-primary-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-primary-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-primary-emphasis">emphasis</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Secondary</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-secondary-base">Secondary</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-secondary-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-secondary-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-secondary-emphasis">emphasis</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Success</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-success-base">Success</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-success-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-success-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-success-emphasis">emphasis</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Danger</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-danger-base">Danger</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-danger-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-danger-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-danger-emphasis">emphasis</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Warning</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-warning-base">Warning</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-warning-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-warning-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-warning-emphasis">emphasis</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Info</td>
+                                            <td><span class="badge dmb-variant-badge dmb-variant-info-base">Info</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-info-subtle-bg">bg</span></td>
+                                            <td><span class="dmb-variant-chip dmb-variant-info-subtle-border">border</span></td>
+                                            <td><span class="dmb-variant-text dmb-variant-info-emphasis">emphasis</span></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Typography").WithIcon(IconStruct.Bootstrap("bi-fonts")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Font scale", "fontScalePercent", "range", "100", "Base font size scaling (%).", "85", "140")
+                                @RenderSettingRow("Line height", "lineHeight", "range", "150", "Default text line-height (%).", "110", "220")
+                                @RenderSettingRow("Sans font family", "fontFamilySansSerif", "text", "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif", "Bootstrap $font-family-sans-serif stack.")
+                                @RenderSettingRow("Google body font", "googleBodyFont", "text", "", "Optional Google Font for body text (test mode).")
+                                @RenderSettingRow("Headings font family", "headingsFontFamily", "text", "inherit", "Bootstrap $headings-font-family.")
+                                @RenderSettingRow("Google heading font", "googleHeadingFont", "text", "", "Optional Google Font for headings (test mode).")
+                                @RenderSettingRow("Headings font weight", "headingsFontWeight", "number", "500", "Bootstrap $headings-font-weight.", min: "100", max: "900", step: "100")
+                                @RenderSettingRow("Headings line-height", "headingsLineHeight", "number", "1.2", "Bootstrap $headings-line-height.", min: "0.8", max: "2", step: "0.05")
+                                @RenderSettingRow("Lead font size", "leadFontSize", "number", "1.25", "Bootstrap $lead-font-size (rem).", min: "0.8", max: "2.5", step: "0.05")
+                                @RenderSettingRow("Small font size", "smallFontSize", "number", "0.875", "Bootstrap $small-font-size (rem).", min: "0.6", max: "1.2", step: "0.025")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section id="previewTypography" class="card">
+                            <div class="card-body">
+                                <h3 class="h6 mb-2">Preview - Typography</h3>
+                                <p class="mb-2">The quick brown fox jumps over the lazy dog.</p>
+                                <p class="lead mb-2 dmb-preview-lead">Lead text preview sample.</p>
+                                <p class="mb-2"><small class="dmb-preview-small">Small text preview sample.</small></p>
+                                <p class="text-muted mb-2">Secondary text sample for readability check.</p>
+                                <p class="mb-0"><strong>Headings, paragraph rhythm, and body scaling should react instantly.</strong></p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Borders & Layout").WithIcon(IconStruct.Bootstrap("bi-bounding-box-circles")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Border radius", "borderRadiusPx", "range", "8", "Rounded corners base size in px.", "0", "28")
+                                @RenderSettingRow("Border width", "borderWidthPx", "range", "1", "Default border width in px.", "0", "6")
+                                @RenderSettingRow("Border color", "borderColor", "color", "#dee2e6", "Bootstrap $border-color.")
+                                @RenderSettingRow("Border translucent", "borderColorTranslucent", "range", "0.175", "Bootstrap $border-color-translucent alpha (0..1).", min: "0", max: "1", step: "0.01")
+                                @RenderSettingRow("Radius sm", "borderRadiusSmPx", "number", "4", "Small radius for compact controls/chips.", min: "0", max: "24", step: "1")
+                                @RenderSettingRow("Radius lg", "borderRadiusLgPx", "number", "10", "Large radius for prominent controls/cards.", min: "0", max: "32", step: "1")
+                                @RenderSettingRow("Radius xl", "borderRadiusXlPx", "number", "16", "Extra large radius for hero blocks/callouts.", min: "0", max: "40", step: "1")
+                                @RenderSettingRow("Radius pill", "borderRadiusPillPx", "number", "50", "Pill radius for capsule buttons/badges.", min: "0", max: "200", step: "1")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section id="previewBorders" class="card">
+                            <div class="card-body">
+                                <h3 class="h6 mb-2">Preview - Borders</h3>
+                                <div class="p-3 border rounded mb-2 dmb-preview-border-card">Card sample with configurable radius and border width.</div>
+                                <div class="p-3 border rounded mb-2 dmb-preview-border-translucent">Translucent border sample.</div>
+                                <div class="d-grid gap-2 mb-2">
+                                    <input class="form-control rounded dmb-preview-border-input" value="Input sample" />
+                                    <button class="btn btn-primary dmb-preview-border-btn">Button sample</button>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge text-bg-secondary dmb-radius-sm">Radius sm</span>
+                                    <span class="badge text-bg-secondary dmb-radius-lg">Radius lg</span>
+                                    <span class="badge text-bg-secondary dmb-radius-xl">Radius xl</span>
+                                    <span class="badge text-bg-secondary dmb-radius-pill px-3">Radius pill</span>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Spacing & Grid").WithIcon(IconStruct.Bootstrap("bi-grid-3x3-gap")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Base spacer", "spacerRem", "range", "1", "Bootstrap $spacer (rem).", "0.25", "2", "0.05")
+                                @RenderSettingRow("Grid gutter", "gridGutterRem", "range", "1.5", "Bootstrap $grid-gutter-width (rem).", "0.5", "3", "0.05")
+                                @RenderSettingRow("Spacer 0", "spacer0", "number", "0", "$spacers map level 0.", step: "0.05")
+                                @RenderSettingRow("Spacer 1", "spacer1", "number", "0.25", "$spacers map level 1.", step: "0.05")
+                                @RenderSettingRow("Spacer 2", "spacer2", "number", "0.5", "$spacers map level 2.", step: "0.05")
+                                @RenderSettingRow("Spacer 3", "spacer3", "number", "1", "$spacers map level 3.", step: "0.05")
+                                @RenderSettingRow("Spacer 4", "spacer4", "number", "1.5", "$spacers map level 4.", step: "0.05")
+                                @RenderSettingRow("Spacer 5", "spacer5", "number", "3", "$spacers map level 5.", step: "0.05")
+                                @RenderSettingRow("Breakpoint xs", "bpXs", "number", "0", "$grid-breakpoints xs (px).", min: "0", step: "1")
+                                @RenderSettingRow("Breakpoint sm", "bpSm", "number", "576", "$grid-breakpoints sm (px).", min: "0", step: "1")
+                                @RenderSettingRow("Breakpoint md", "bpMd", "number", "768", "$grid-breakpoints md (px).", min: "0", step: "1")
+                                @RenderSettingRow("Breakpoint lg", "bpLg", "number", "992", "$grid-breakpoints lg (px).", min: "0", step: "1")
+                                @RenderSettingRow("Breakpoint xl", "bpXl", "number", "1200", "$grid-breakpoints xl (px).", min: "0", step: "1")
+                                @RenderSettingRow("Breakpoint xxl", "bpXxl", "number", "1400", "$grid-breakpoints xxl (px).", min: "0", step: "1")
+                                @RenderSettingRow("Container sm", "cwSm", "number", "540", "$container-max-widths sm (px).", min: "0", step: "1")
+                                @RenderSettingRow("Container md", "cwMd", "number", "720", "$container-max-widths md (px).", min: "0", step: "1")
+                                @RenderSettingRow("Container lg", "cwLg", "number", "960", "$container-max-widths lg (px).", min: "0", step: "1")
+                                @RenderSettingRow("Container xl", "cwXl", "number", "1140", "$container-max-widths xl (px).", min: "0", step: "1")
+                                @RenderSettingRow("Container xxl", "cwXxl", "number", "1320", "$container-max-widths xxl (px).", min: "0", step: "1")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section id="previewSpacing" class="card">
+                            <div class="card-body">
+                                <h3 class="h6 mb-2">Preview - Spacing/Grid</h3>
+                                <div class="container border rounded p-2">
+                                    <div class="row" id="spacingGridRow">
+                                        <div class="col-4"><div class="border rounded p-2 text-center">A</div></div>
+                                        <div class="col-4"><div class="border rounded p-2 text-center">B</div></div>
+                                        <div class="col-4"><div class="border rounded p-2 text-center">C</div></div>
+                                    </div>
+                                </div>
+                                <small class="text-muted d-block mt-2">Gutter and base spacing should update this grid block.</small>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Links & Focus").WithIcon(IconStruct.Bootstrap("bi-link-45deg")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Link color", "linkColor", "color", "#0d6efd", "$link-color.")
+                                @RenderSettingRow("Link hover color", "linkHoverColor", "color", "#0a58ca", "$link-hover-color.")
+                                @RenderSettingRow("Link decoration", "linkDecoration", "text", "underline", "$link-decoration (underline/none).")
+                                @RenderSettingRow("Focus ring color", "focusRingColor", "text", "rgba(13,110,253,.25)", "$focus-ring-color.")
+                                @RenderSettingRow("Focus ring width", "focusRingWidthPx", "number", "4", "$focus-ring-width (px).", min: "0", max: "12", step: "1")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section class="card dmb-preview-advanced">
+                            <div class="card-body d-grid gap-3">
+                                <h3 class="h6 mb-0">Preview - Links & Focus</h3>
+                                <div class="d-flex flex-wrap gap-3 align-items-center">
+                                    <a href="#" class="dmb-preview-link">Sample link</a>
+                                    <button class="btn btn-primary dmb-preview-btn">Button sample</button>
+                                </div>
+                                <div class="p-2 border rounded dmb-preview-popover" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Popover background preview target.">Hover here for popover</div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Forms & Buttons").WithIcon(IconStruct.Bootstrap("bi-input-cursor-text")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Input bg", "inputBg", "color", "#ffffff", "$input-bg.")
+                                @RenderSettingRow("Input color", "inputColor", "color", "#212529", "$input-color.")
+                                @RenderSettingRow("Input border", "inputBorderColor", "color", "#ced4da", "$input-border-color.")
+                                @RenderSettingRow("Input focus border", "inputFocusBorderColor", "color", "#86b7fe", "$input-focus-border-color.")
+                                @RenderSettingRow("Input/Button pad Y", "inputBtnPaddingYRem", "number", "0.375", "$input-btn-padding-y (rem).", min: "0", max: "1.5", step: "0.025")
+                                @RenderSettingRow("Input/Button pad X", "inputBtnPaddingXRem", "number", "0.75", "$input-btn-padding-x (rem).", min: "0", max: "2", step: "0.025")
+                                @RenderSettingRow("Button pad Y", "btnPaddingYRem", "number", "0.375", "$btn-padding-y (rem).", min: "0", max: "1.5", step: "0.025")
+                                @RenderSettingRow("Button pad X", "btnPaddingXRem", "number", "0.75", "$btn-padding-x (rem).", min: "0", max: "2", step: "0.025")
+                                @RenderSettingRow("Button radius", "btnBorderRadiusPx", "number", "6", "$btn-border-radius (px).", min: "0", max: "40", step: "1")
+                                @RenderSettingRow("Select indicator color", "formSelectIndicatorColor", "color", "#6c757d", "$form-select-indicator-color.")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section class="card dmb-preview-advanced">
+                            <div class="card-body d-grid gap-3">
+                                <h3 class="h6 mb-0">Preview - Forms & Buttons</h3>
+                                <div class="d-grid gap-2">
+                                    <input class="form-control dmb-preview-input" value="Input sample" />
+                                    <select class="form-select dmb-preview-select">
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Cards").WithIcon(IconStruct.Bootstrap("bi-postcard")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Card bg", "cardBg", "color", "#ffffff", "$card-bg.")
+                                @RenderSettingRow("Card border color", "cardBorderColor", "color", "#dee2e6", "$card-border-color (used when mode=custom).")
+                                @RenderSettingRow("Card border width", "cardBorderWidthPx", "number", "1", "$card-border-width in px (used when mode=custom).", min: "0", max: "10", step: "1")
+                                @RenderSettingRow("Card border radius", "cardBorderRadiusPx", "number", "8", "$card-border-radius in px (used when mode=custom).", min: "0", max: "48", step: "1")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section class="card dmb-preview-advanced">
+                            <div class="card-body d-grid gap-3">
+                                <h3 class="h6 mb-0">Preview - Cards</h3>
+                                <div class="card dmb-preview-card">
+                                    <div class="card-header">Card header</div>
+                                    <div class="card-body">
+                                        <h5 class="card-title mb-2">Card title</h5>
+                                        <p class="card-text mb-3">This card reflects card background and border settings.</p>
+                                        <a class="btn btn-primary btn-sm" href="#">Card action</a>
+                                    </div>
+                                    <div class="card-footer text-muted">Card footer</div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Components").WithIcon(IconStruct.Bootstrap("bi-window-stack")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Modal content bg", "modalContentBg", "color", "#ffffff", "$modal-content-bg.")
+                                @RenderSettingRow("Modal backdrop opacity", "modalBackdropOpacity", "number", "0.5", "$modal-backdrop-opacity.", min: "0", max: "1", step: "0.05")
+                                @RenderSettingRow("Dropdown bg", "dropdownBg", "color", "#ffffff", "$dropdown-bg.")
+                                @RenderSettingRow("Dropdown hover bg", "dropdownLinkHoverBg", "color", "#f8f9fa", "$dropdown-link-hover-bg.")
+                                @RenderSettingRow("Nav link color", "navLinkColor", "color", "#495057", "$nav-link-color.")
+                                @RenderSettingRow("Nav hover color", "navLinkHoverColor", "color", "#0d6efd", "$nav-link-hover-color.")
+                                @RenderSettingRow("Table bg", "tableBg", "color", "#ffffff", "$table-bg.")
+                                @RenderSettingRow("Table striped bg", "tableStripedBg", "text", "rgba(0,0,0,.02)", "$table-striped-bg.")
+                                @RenderSettingRow("Table hover bg", "tableHoverBg", "text", "rgba(0,0,0,.04)", "$table-hover-bg.")
+                                @RenderSettingRow("Tooltip bg", "tooltipBg", "color", "#000000", "$tooltip-bg.")
+                                @RenderSettingRow("Popover bg", "popoverBg", "color", "#ffffff", "$popover-bg.")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section class="card dmb-preview-advanced">
+                            <div class="card-body d-grid gap-3">
+                                <h3 class="h6 mb-0">Preview - Components</h3>
+                                <ul class="nav nav-pills dmb-preview-nav">
+                                    <li class="nav-item"><a class="nav-link active" href="#">Active</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+                                </ul>
+                                <div class="dropdown d-inline-block">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</button>
+                                    <ul class="dropdown-menu dmb-preview-dropdown-menu show position-static mt-2">
+                                        <li><a class="dropdown-item" href="#">Action</a></li>
+                                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    </ul>
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-hover dmb-preview-table mb-0">
+                                        <thead><tr><th>#</th><th>Name</th><th>Status</th></tr></thead>
+                                        <tbody>
+                                        <tr><td>1</td><td>Alpha</td><td>Open</td></tr>
+                                        <tr><td>2</td><td>Beta</td><td>Done</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+
+            @using (Html.TabBlockBuilder().WithTitle("Utilities & Behavior").WithIcon(IconStruct.Bootstrap("bi-sliders")).Begin())
+            {
+                <div class="row g-4">
+                    <div class="col-12 col-lg-6 d-grid gap-3">
+                        <div class="table-responsive">
+                            <table class="table table-sm align-middle mb-0 dmb-setting-table">
+                                <colgroup>
+                                    <col class="dmb-col-label" />
+                                    <col class="dmb-col-mode" />
+                                    <col class="dmb-col-field" />
+                                    <col class="dmb-col-value" />
+                                    <col class="dmb-col-reset" />
+                                    <col class="dmb-col-info" />
+                                </colgroup>
+                                <tbody>
+                                @RenderSettingRow("Box shadow sm", "boxShadowSm", "text", "0 .125rem .25rem rgba(0,0,0,.075)", "$box-shadow-sm.")
+                                @RenderSettingRow("Box shadow", "boxShadow", "text", "0 .5rem 1rem rgba(0,0,0,.15)", "$box-shadow.")
+                                @RenderSettingRow("Box shadow lg", "boxShadowLg", "text", "0 1rem 3rem rgba(0,0,0,.175)", "$box-shadow-lg.")
+                                @RenderSettingRow("Enable transitions", "enableTransitions", "number", "1", "$enable-transitions (1/0).", min: "0", max: "1", step: "1")
+                                @RenderSettingRow("Transition base", "transitionBase", "text", "all .2s ease-in-out", "$transition-base.")
+                                @RenderSettingRow("Transition fade", "transitionFade", "text", "opacity .15s linear", "$transition-fade.")
+                                @RenderSettingRow("Transition collapse", "transitionCollapse", "text", "height .35s ease", "$transition-collapse.")
+                                @RenderSettingRow("Utilities map extras", "utilitiesMapRaw", "text", "(\"opacity\": true, \"shadow\": true)", "Additional Sass map fragment for $utilities.")
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <section class="card dmb-preview-advanced">
+                            <div class="card-body d-grid gap-3">
+                                <h3 class="h6 mb-0">Preview - Utilities & Behavior</h3>
+                                <div class="border rounded p-3 dmb-preview-popover" data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-content="Transition and shadow preview.">
+                                    Hover/focus me to inspect focus ring, transition and shadow.
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            }
+        }
+        </div>
+        @Html.SeparatorBuilder().SetIcon(IconStruct.Bootstrap("bi-bookmark-star")).UsePageSpacing()
+
+        <div class="d-flex flex-wrap align-items-center gap-2 mt-3">
+            <input id="profileNameInput" type="text" class="form-control form-control-sm" style="max-width: 220px;" placeholder="New profile name" />
+            <button id="saveAsProfile" type="button" class="btn btn-primary btn-sm">Save as</button>
+            <button id="saveCurrentProfile" type="button" class="btn btn-outline-primary btn-sm">Save</button>
+            <button id="restoreProfile" type="button" class="btn btn-outline-secondary btn-sm">Restore from last save</button>
+            <select id="profileSelect" class="form-select form-select-sm" style="max-width: 260px;"></select>
+            <button id="unloadProfile" type="button" class="btn btn-outline-danger btn-sm">Unload profile</button>
+            <button id="deleteProfile" type="button" class="btn btn-outline-danger btn-sm">Delete profile</button>
+        </div>
+    }
+
+    <section id="dmbPreviewScope" class="card">
+        <div class="card-body">
+            <h2 class="h5 mb-2">General live preview</h2>
+            <p id="emptyStateText" class="text-muted">No local profile is currently loaded.</p>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <button class="btn btn-primary">Primary</button>
+                <button class="btn btn-secondary">Secondary</button>
+                <button class="btn btn-success">Success</button>
+                <button class="btn btn-danger">Danger</button>
+                <button class="btn btn-outline-primary">Outline</button>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mb-3">
+                <span class="badge text-bg-primary">Primary</span>
+                <span class="badge text-bg-secondary">Secondary</span>
+                <span class="badge text-bg-success">Success</span>
+                <span class="badge text-bg-danger">Danger</span>
+                <span class="badge text-bg-warning">Warning</span>
+                <span class="badge text-bg-info">Info</span>
+            </div>
+            <div class="alert alert-info mb-3" role="alert">Live alert preview.</div>
+        </div>
+    </section>
+
+    @using (Html.RowBuilder().SetGap(Gap.G3).Begin())
+    {
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Lg).Begin())
+        {
+            @(Html.CodeBlock("{}", CodeLanguage.Json)
+                .SetId("jsonOutputBlock")
+                .SetTitle("bootstrap-live-config.json")
+                .SetShowLineNumbers()
+                .SetCopyButton()
+                .SetDownloadFileName("bootstrap-live-config.json"))
+        }
+
+        @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col6, ResponsiveBreakpoint.Lg).Begin())
+        {
+            @(Html.CodeBlock("/* _custom.scss */", CodeLanguage.Css)
+                .SetId("scssOutputBlock")
+                .SetTitle("_custom.scss")
+                .SetShowLineNumbers()
+                .SetCopyButton()
+                .SetDownloadFileName("_custom.scss"))
+        }
+    }
+</div>
+
+<style>
+    .dmb-setting-table .dmb-col-label { width: 24%; }
+    .dmb-setting-table .dmb-col-mode { width: 9rem; }
+    .dmb-setting-table .dmb-col-field { width: auto; }
+    .dmb-setting-table .dmb-col-value { width: 12ch; }
+    .dmb-setting-table .dmb-col-reset { width: 1%; }
+    .dmb-setting-table .dmb-col-info { width: 1%; }
+    .dmb-setting-table td { vertical-align: middle; }
+    .dmb-setting-table td:nth-child(5),
+    .dmb-setting-table td:nth-child(6) { text-align: right; white-space: nowrap; vertical-align: middle; }
+    .dmb-setting-table .btn { white-space: nowrap; }
+    .dmb-setting-table .dmb-action-cell { text-align: right; }
+    .dmb-setting-table .dmb-action-btn { display: inline-flex; align-items: center; justify-content: center; }
+    .dmb-setting-table .dmb-value-cell { white-space: nowrap; font-family: var(--bs-font-monospace); font-size: .85rem; color: var(--bs-secondary-color); }
+    .dmb-setting-table .dmb-mode-select { min-width: 8.25rem; }
+    #profileSelect.dmb-profile-select-empty { color: var(--bs-secondary-color); }
+    .dmb-variant-chip {
+        display: inline-block;
+        min-width: 3.5rem;
+        padding: .2rem .45rem;
+        border-radius: .35rem;
+        text-align: center;
+        border: 1px solid transparent;
+    }
+    .dmb-variant-text { font-weight: 600; }
+
+    @@media (max-width: 991.98px) {
+        .dmb-setting-table .dmb-col-label { width: 34%; }
+    }
+</style>
+
+@functions {
+    private IHtmlContent RenderSettingRow(string label, string id, string inputType, string value, string info, string? min = null, string? max = null, string? step = null)
+    {
+        var isCardParam = id.StartsWith("card", StringComparison.Ordinal);
+        var minAttr = string.IsNullOrWhiteSpace(min) ? string.Empty : $" min=\"{min}\"";
+        var maxAttr = string.IsNullOrWhiteSpace(max) ? string.Empty : $" max=\"{max}\"";
+        var stepAttr = string.IsNullOrWhiteSpace(step) ? string.Empty : $" step=\"{step}\"";
+        var docEntry = GetBootstrapDocInfo(id);
+        var enrichedInfo = info;
+        if (!string.IsNullOrWhiteSpace(docEntry.Variable))
+        {
+            enrichedInfo += $" | Bootstrap variable: {docEntry.Variable}";
+        }
+        if (!string.IsNullOrWhiteSpace(docEntry.Url))
+        {
+            enrichedInfo += $" | Docs: {docEntry.Url}";
+        }
+        var escapedInfo = System.Net.WebUtility.HtmlEncode(enrichedInfo);
+        var controlClass = inputType == "color"
+            ? "form-control form-control-color"
+            : inputType == "range"
+                ? "form-range"
+                : "form-control form-control-sm";
+        string controlMarkup;
+        if (id == "fontFamilySansSerif")
+        {
+            controlMarkup = $"""
+            <select id="{id}" class="form-select form-select-sm">
+                <option value="system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"{(value == "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" ? " selected" : "")}>System UI</option>
+                <option value="Arial, Helvetica, sans-serif"{(value == "Arial, Helvetica, sans-serif" ? " selected" : "")}>Arial</option>
+                <option value="Verdana, Geneva, sans-serif"{(value == "Verdana, Geneva, sans-serif" ? " selected" : "")}>Verdana</option>
+                <option value="Tahoma, Geneva, sans-serif"{(value == "Tahoma, Geneva, sans-serif" ? " selected" : "")}>Tahoma</option>
+                <option value="Trebuchet MS, Arial, sans-serif"{(value == "Trebuchet MS, Arial, sans-serif" ? " selected" : "")}>Trebuchet MS</option>
+                <option value="Gill Sans, Gill Sans MT, Calibri, sans-serif"{(value == "Gill Sans, Gill Sans MT, Calibri, sans-serif" ? " selected" : "")}>Gill Sans</option>
+                <option value="Segoe UI, Tahoma, Geneva, Verdana, sans-serif"{(value == "Segoe UI, Tahoma, Geneva, Verdana, sans-serif" ? " selected" : "")}>Segoe UI</option>
+            </select>
+            """;
+        }
+        else if (id == "headingsFontFamily")
+        {
+            controlMarkup = $"""
+            <select id="{id}" class="form-select form-select-sm">
+                <option value="inherit"{(value == "inherit" ? " selected" : "")}>Inherit (body)</option>
+                <option value="system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif"{(value == "system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif" ? " selected" : "")}>System UI</option>
+                <option value="Georgia, Times New Roman, serif"{(value == "Georgia, Times New Roman, serif" ? " selected" : "")}>Georgia</option>
+                <option value="Times New Roman, Times, serif"{(value == "Times New Roman, Times, serif" ? " selected" : "")}>Times New Roman</option>
+                <option value="Palatino Linotype, Book Antiqua, Palatino, serif"{(value == "Palatino Linotype, Book Antiqua, Palatino, serif" ? " selected" : "")}>Palatino</option>
+                <option value="Garamond, serif"{(value == "Garamond, serif" ? " selected" : "")}>Garamond</option>
+                <option value="Arial, Helvetica, sans-serif"{(value == "Arial, Helvetica, sans-serif" ? " selected" : "")}>Arial</option>
+            </select>
+            """;
+        }
+        else if (id == "googleBodyFont")
+        {
+            controlMarkup = $"""
+            <select id="{id}" class="form-select form-select-sm">
+                <option value=""{(string.IsNullOrWhiteSpace(value) ? " selected" : "")}>None</option>
+                <option value="Inter"{(value == "Inter" ? " selected" : "")}>Inter</option>
+                <option value="Roboto"{(value == "Roboto" ? " selected" : "")}>Roboto</option>
+                <option value="Open Sans"{(value == "Open Sans" ? " selected" : "")}>Open Sans</option>
+                <option value="Lato"{(value == "Lato" ? " selected" : "")}>Lato</option>
+                <option value="Montserrat"{(value == "Montserrat" ? " selected" : "")}>Montserrat</option>
+            </select>
+            """;
+        }
+        else if (id == "googleHeadingFont")
+        {
+            controlMarkup = $"""
+            <select id="{id}" class="form-select form-select-sm">
+                <option value=""{(string.IsNullOrWhiteSpace(value) ? " selected" : "")}>None</option>
+                <option value="Playfair Display"{(value == "Playfair Display" ? " selected" : "")}>Playfair Display</option>
+                <option value="Merriweather"{(value == "Merriweather" ? " selected" : "")}>Merriweather</option>
+                <option value="Oswald"{(value == "Oswald" ? " selected" : "")}>Oswald</option>
+                <option value="Nunito Sans"{(value == "Nunito Sans" ? " selected" : "")}>Nunito Sans</option>
+                <option value="Poppins"{(value == "Poppins" ? " selected" : "")}>Poppins</option>
+            </select>
+            """;
+        }
+        else
+        {
+            controlMarkup = $"<input id=\"{id}\" class=\"{controlClass}\" type=\"{inputType}\" value=\"{value}\"{minAttr}{maxAttr}{stepAttr} />";
+        }
+
+        var modeCellMarkup = "<span class=\"text-muted\">-</span>";
+        if (isCardParam)
+        {
+            var modeId = id + "Mode";
+            var formulaOption = id == "cardBorderRadiusPx"
+                ? "<option value=\"formula\">formula</option>"
+                : string.Empty;
+            modeCellMarkup = $"<select id=\"{modeId}\" class=\"form-select form-select-sm dmb-mode-select\" data-mode-target=\"{id}\"><option value=\"inherit\" selected>inherit</option><option value=\"custom\">custom</option>{formulaOption}</select>";
+        }
+
+        return new HtmlString($"""
+        <tr>
+            <td class="text-nowrap">{label}</td>
+            <td>
+                {modeCellMarkup}
+            </td>
+            <td>
+                {controlMarkup}
+            </td>
+            <td class="dmb-value-cell"><span id="{id}ValueLabel" data-value-for="{id}">{value}</span></td>
+            <td class="dmb-action-cell" style="width:1%">
+                <button type="button" class="btn btn-sm btn-outline-secondary dmb-action-btn" data-reset-target="{id}">Reset</button>
+            </td>
+            <td class="dmb-action-cell" style="width:1%">
+                <button type="button" class="btn btn-sm btn-outline-info dmb-action-btn"
+                        data-bs-toggle="popover"
+                        data-bs-trigger="hover focus"
+                        data-bs-placement="top"
+                        data-bs-content="{escapedInfo}">
+                    <span class="bi bi-info-circle"></span>
+                </button>
+            </td>
+        </tr>
+        """);
+    }
+
+    private (string Variable, string Url) GetBootstrapDocInfo(string id)
+    {
+        const string customizeUrl = "https://getbootstrap.com/docs/5.3/customize/sass/";
+        const string formsUrl = "https://getbootstrap.com/docs/5.3/forms/overview/";
+        const string buttonsUrl = "https://getbootstrap.com/docs/5.3/components/buttons/";
+        const string cardsUrl = "https://getbootstrap.com/docs/5.3/components/card/";
+        const string navsUrl = "https://getbootstrap.com/docs/5.3/components/navs-tabs/";
+        const string dropdownUrl = "https://getbootstrap.com/docs/5.3/components/dropdowns/";
+        const string modalUrl = "https://getbootstrap.com/docs/5.3/components/modal/";
+        const string tablesUrl = "https://getbootstrap.com/docs/5.3/content/tables/";
+        const string utilitiesUrl = "https://getbootstrap.com/docs/5.3/utilities/api/";
+
+        return id switch
+        {
+            "primaryColor" => ("$primary", customizeUrl),
+            "secondaryColor" => ("$secondary", customizeUrl),
+            "successColor" => ("$success", customizeUrl),
+            "dangerColor" => ("$danger", customizeUrl),
+            "warningColor" => ("$warning", customizeUrl),
+            "infoColor" => ("$info", customizeUrl),
+            "fontScalePercent" => ("$font-size-base", customizeUrl),
+            "lineHeight" => ("$line-height-base", customizeUrl),
+            "fontFamilySansSerif" => ("$font-family-sans-serif", customizeUrl),
+            "headingsFontFamily" => ("$headings-font-family", customizeUrl),
+            "headingsFontWeight" => ("$headings-font-weight", customizeUrl),
+            "headingsLineHeight" => ("$headings-line-height", customizeUrl),
+            "leadFontSize" => ("$lead-font-size", customizeUrl),
+            "smallFontSize" => ("$small-font-size", customizeUrl),
+            "borderRadiusPx" => ("$border-radius", customizeUrl),
+            "borderWidthPx" => ("$border-width", customizeUrl),
+            "borderColor" => ("$border-color", customizeUrl),
+            "borderColorTranslucent" => ("$border-color-translucent", customizeUrl),
+            "borderRadiusSmPx" => ("$border-radius-sm", customizeUrl),
+            "borderRadiusLgPx" => ("$border-radius-lg", customizeUrl),
+            "borderRadiusXlPx" => ("$border-radius-xl", customizeUrl),
+            "borderRadiusPillPx" => ("$border-radius-pill", customizeUrl),
+            "spacerRem" => ("$spacer", customizeUrl),
+            "gridGutterRem" => ("$grid-gutter-width", customizeUrl),
+            "spacer0" => ("$spacers", customizeUrl),
+            "spacer1" => ("$spacers", customizeUrl),
+            "spacer2" => ("$spacers", customizeUrl),
+            "spacer3" => ("$spacers", customizeUrl),
+            "spacer4" => ("$spacers", customizeUrl),
+            "spacer5" => ("$spacers", customizeUrl),
+            "bpXs" => ("$grid-breakpoints", customizeUrl),
+            "bpSm" => ("$grid-breakpoints", customizeUrl),
+            "bpMd" => ("$grid-breakpoints", customizeUrl),
+            "bpLg" => ("$grid-breakpoints", customizeUrl),
+            "bpXl" => ("$grid-breakpoints", customizeUrl),
+            "bpXxl" => ("$grid-breakpoints", customizeUrl),
+            "cwSm" => ("$container-max-widths", customizeUrl),
+            "cwMd" => ("$container-max-widths", customizeUrl),
+            "cwLg" => ("$container-max-widths", customizeUrl),
+            "cwXl" => ("$container-max-widths", customizeUrl),
+            "cwXxl" => ("$container-max-widths", customizeUrl),
+            "linkColor" => ("$link-color", customizeUrl),
+            "linkHoverColor" => ("$link-hover-color", customizeUrl),
+            "linkDecoration" => ("$link-decoration", customizeUrl),
+            "focusRingColor" => ("$focus-ring-color", customizeUrl),
+            "focusRingWidthPx" => ("$focus-ring-width", customizeUrl),
+            "inputBg" => ("$input-bg", formsUrl),
+            "inputColor" => ("$input-color", formsUrl),
+            "inputBorderColor" => ("$input-border-color", formsUrl),
+            "inputFocusBorderColor" => ("$input-focus-border-color", formsUrl),
+            "inputBtnPaddingYRem" => ("$input-btn-padding-y", formsUrl),
+            "inputBtnPaddingXRem" => ("$input-btn-padding-x", formsUrl),
+            "btnPaddingYRem" => ("$btn-padding-y", buttonsUrl),
+            "btnPaddingXRem" => ("$btn-padding-x", buttonsUrl),
+            "btnBorderRadiusPx" => ("$btn-border-radius", buttonsUrl),
+            "formSelectIndicatorColor" => ("$form-select-indicator-color", formsUrl),
+            "cardBg" => ("$card-bg", cardsUrl),
+            "cardBorderColor" => ("$card-border-color", cardsUrl),
+            "cardBorderWidthPx" => ("$card-border-width", cardsUrl),
+            "cardBorderRadiusPx" => ("$card-border-radius", cardsUrl),
+            "modalContentBg" => ("$modal-content-bg", modalUrl),
+            "modalBackdropOpacity" => ("$modal-backdrop-opacity", modalUrl),
+            "dropdownBg" => ("$dropdown-bg", dropdownUrl),
+            "dropdownLinkHoverBg" => ("$dropdown-link-hover-bg", dropdownUrl),
+            "navLinkColor" => ("$nav-link-color", navsUrl),
+            "navLinkHoverColor" => ("$nav-link-hover-color", navsUrl),
+            "tableBg" => ("$table-bg", tablesUrl),
+            "tableStripedBg" => ("$table-striped-bg", tablesUrl),
+            "tableHoverBg" => ("$table-hover-bg", tablesUrl),
+            "tooltipBg" => ("$tooltip-bg", "https://getbootstrap.com/docs/5.3/components/tooltips/"),
+            "popoverBg" => ("$popover-bg", "https://getbootstrap.com/docs/5.3/components/popovers/"),
+            "boxShadowSm" => ("$box-shadow-sm", customizeUrl),
+            "boxShadow" => ("$box-shadow", customizeUrl),
+            "boxShadowLg" => ("$box-shadow-lg", customizeUrl),
+            "enableTransitions" => ("$enable-transitions", customizeUrl),
+            "transitionBase" => ("$transition-base", customizeUrl),
+            "transitionFade" => ("$transition-fade", customizeUrl),
+            "transitionCollapse" => ("$transition-collapse", customizeUrl),
+            "utilitiesMapRaw" => ("$utilities", utilitiesUrl),
+            _ => (string.Empty, customizeUrl)
+        };
+    }
+}
+
+<script>
+(function () {
+    const legacyStorageKey = "DMB_BOOTSTRAP_LIVE_CONFIG_PRESET";
+    const profilesStorageKey = "DMB_BOOTSTRAP_LIVE_CONFIG_PROFILES";
+    const activeProfileStorageKey = "DMB_BOOTSTRAP_LIVE_CONFIG_ACTIVE_PROFILE";
+    const defaultConfig = {
+        liveOverrideEnabled: true,
+        primaryColor: "#0d6efd",
+        secondaryColor: "#6c757d",
+        successColor: "#198754",
+        dangerColor: "#dc3545",
+        warningColor: "#ffc107",
+        infoColor: "#0dcaf0",
+        lightColor: "#f8f9fa",
+        darkColor: "#212529",
+        bodyBgColor: "#ffffff",
+        bodyColor: "#212529",
+        borderColor: "#dee2e6",
+        borderColorTranslucent: 0.175,
+        borderRadiusPx: 8,
+        borderRadiusSmPx: 4,
+        borderRadiusLgPx: 10,
+        borderRadiusXlPx: 16,
+        borderRadiusPillPx: 50,
+        borderWidthPx: 1,
+        fontScalePercent: 100,
+        lineHeight: 150,
+        fontFamilySansSerif: "system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+        googleBodyFont: "",
+        headingsFontFamily: "inherit",
+        googleHeadingFont: "",
+        headingsFontWeight: 500,
+        headingsLineHeight: 1.2,
+        leadFontSize: 1.25,
+        smallFontSize: 0.875,
+        linkColor: "#0d6efd",
+        linkHoverColor: "#0a58ca",
+        linkDecoration: "underline",
+        focusRingColor: "rgba(13,110,253,.25)",
+        focusRingWidthPx: 4,
+        inputBg: "#ffffff",
+        inputColor: "#212529",
+        inputBorderColor: "#ced4da",
+        inputFocusBorderColor: "#86b7fe",
+        inputBtnPaddingYRem: 0.375,
+        inputBtnPaddingXRem: 0.75,
+        btnPaddingYRem: 0.375,
+        btnPaddingXRem: 0.75,
+        btnBorderRadiusPx: 6,
+        formSelectIndicatorColor: "#6c757d",
+        cardBg: "#ffffff",
+        cardBgMode: "inherit",
+        cardBorderColor: "#dee2e6",
+        cardBorderColorMode: "inherit",
+        cardBorderWidthPx: 1,
+        cardBorderWidthPxMode: "inherit",
+        cardBorderRadiusPx: 8,
+        cardBorderRadiusPxMode: "inherit",
+        modalContentBg: "#ffffff",
+        modalBackdropOpacity: 0.5,
+        dropdownBg: "#ffffff",
+        dropdownLinkHoverBg: "#f8f9fa",
+        navLinkColor: "#495057",
+        navLinkHoverColor: "#0d6efd",
+        tableBg: "#ffffff",
+        tableStripedBg: "rgba(0,0,0,.02)",
+        tableHoverBg: "rgba(0,0,0,.04)",
+        tooltipBg: "#000000",
+        popoverBg: "#ffffff",
+        boxShadowSm: "0 .125rem .25rem rgba(0,0,0,.075)",
+        boxShadow: "0 .5rem 1rem rgba(0,0,0,.15)",
+        boxShadowLg: "0 1rem 3rem rgba(0,0,0,.175)",
+        enableTransitions: 1,
+        transitionBase: "all .2s ease-in-out",
+        transitionFade: "opacity .15s linear",
+        transitionCollapse: "height .35s ease",
+        utilitiesMapRaw: "(\"opacity\": true, \"shadow\": true)",
+        spacerRem: 1,
+        gridGutterRem: 1.5,
+        spacer0: 0,
+        spacer1: 0.25,
+        spacer2: 0.5,
+        spacer3: 1,
+        spacer4: 1.5,
+        spacer5: 3,
+        bpXs: 0,
+        bpSm: 576,
+        bpMd: 768,
+        bpLg: 992,
+        bpXl: 1200,
+        bpXxl: 1400,
+        cwSm: 540,
+        cwMd: 720,
+        cwLg: 960,
+        cwXl: 1140,
+        cwXxl: 1320
+    };
+
+    const ids = Object.keys(defaultConfig);
+    const form = {};
+    ids.forEach(id => form[id] = document.getElementById(id));
+
+    const valueLabels = {};
+    ids.forEach(function (id) {
+        valueLabels[id] = document.getElementById(id + "ValueLabel");
+    });
+
+    const ui = {
+        emptyStateText: document.getElementById("emptyStateText"),
+        jsonCode: document.querySelector("#jsonOutputBlock code"),
+        scssCode: document.querySelector("#scssOutputBlock code"),
+        previewThemeToggle: document.getElementById("togglePreviewTheme"),
+        profileNameInput: document.getElementById("profileNameInput"),
+        profileSelect: document.getElementById("profileSelect")
+    };
+    let previewTheme = "light";
+
+    function safeGetLegacyStoredConfig() {
+        try {
+            const value = window.localStorage.getItem(legacyStorageKey);
+            return value ? JSON.parse(value) : null;
+        } catch {
+            return null;
+        }
+    }
+
+    function safeGetProfiles() {
+        try {
+            const value = window.localStorage.getItem(profilesStorageKey);
+            const parsed = value ? JSON.parse(value) : {};
+            if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return {};
+            return parsed;
+        } catch {
+            return {};
+        }
+    }
+
+    function saveProfiles(profiles) {
+        window.localStorage.setItem(profilesStorageKey, JSON.stringify(profiles));
+    }
+
+    function getActiveProfileName() {
+        return window.localStorage.getItem(activeProfileStorageKey) || "";
+    }
+
+    function setActiveProfileName(name) {
+        if (!name) window.localStorage.removeItem(activeProfileStorageKey);
+        else window.localStorage.setItem(activeProfileStorageKey, name);
+    }
+    function hasActiveProfile() {
+        const activeName = getActiveProfileName();
+        if (!activeName) return false;
+        const profiles = safeGetProfiles();
+        return Boolean(profiles[activeName]);
+    }
+
+    function normalizeProfileName(rawName) {
+        return String(rawName || "").trim();
+    }
+
+    function normalizeConfig(rawConfig) {
+        const source = rawConfig && typeof rawConfig === "object" ? rawConfig : {};
+        return Object.assign({}, defaultConfig, source);
+    }
+
+    function refreshProfileSelect(selectedName) {
+        if (!ui.profileSelect) return;
+        const profiles = safeGetProfiles();
+        const names = Object.keys(profiles).sort((a, b) => a.localeCompare(b));
+        ui.profileSelect.innerHTML = "";
+        const noConfigOption = document.createElement("option");
+        noConfigOption.value = "";
+        noConfigOption.textContent = "No config";
+        noConfigOption.selected = !selectedName;
+        ui.profileSelect.appendChild(noConfigOption);
+        names.forEach(function (name) {
+            const option = document.createElement("option");
+            option.value = name;
+            option.textContent = name;
+            if (name === selectedName) option.selected = true;
+            ui.profileSelect.appendChild(option);
+        });
+        ui.profileSelect.classList.toggle("dmb-profile-select-empty", !ui.profileSelect.value);
+    }
+
+    function setButtonEnabled(id, enabled) {
+        const button = document.getElementById(id);
+        if (!button) return;
+        button.disabled = !enabled;
+    }
+
+    function updateProfileActionState() {
+        const active = hasActiveProfile();
+        const inputName = normalizeProfileName(ui.profileNameInput ? ui.profileNameInput.value : "");
+        const hasInputName = inputName.length > 0;
+
+        setButtonEnabled("saveAsProfile", hasInputName);
+        setButtonEnabled("saveCurrentProfile", active);
+        setButtonEnabled("restoreProfile", active);
+        setButtonEnabled("deleteProfile", active);
+
+        const unloadButton = document.getElementById("unloadProfile");
+        if (unloadButton) {
+            unloadButton.textContent = active ? "Unload profile" : "Reset to default";
+            unloadButton.classList.toggle("btn-outline-danger", active);
+            unloadButton.classList.toggle("btn-outline-warning", !active);
+        }
+    }
+
+    function toConfig() {
+        const c = {};
+        ids.forEach(function (id) {
+            if (!form[id]) return;
+            if (id === "liveOverrideEnabled") c[id] = form[id].checked;
+            else if (["borderRadiusPx", "borderRadiusSmPx", "borderRadiusLgPx", "borderRadiusXlPx", "borderRadiusPillPx", "borderWidthPx", "fontScalePercent", "headingsFontWeight", "focusRingWidthPx", "btnBorderRadiusPx", "cardBorderWidthPx", "cardBorderRadiusPx", "enableTransitions", "bpXs", "bpSm", "bpMd", "bpLg", "bpXl", "bpXxl", "cwSm", "cwMd", "cwLg", "cwXl", "cwXxl"].includes(id)) c[id] = Number.parseInt(form[id].value, 10);
+            else if (["headingsLineHeight", "leadFontSize", "smallFontSize", "modalBackdropOpacity", "borderColorTranslucent", "inputBtnPaddingYRem", "inputBtnPaddingXRem", "btnPaddingYRem", "btnPaddingXRem", "spacerRem", "gridGutterRem", "spacer0", "spacer1", "spacer2", "spacer3", "spacer4", "spacer5"].includes(id)) c[id] = Number.parseFloat(form[id].value);
+            else c[id] = form[id].value;
+        });
+        return c;
+    }
+
+    function pxToRem(value) { return (value / 16).toFixed(3).replace(/0+$/, "").replace(/\.$/, "") + "rem"; }
+
+    function formatValueLabel(id, value) {
+        if (value === null || value === undefined) return "";
+
+        if (id.endsWith("Color") || id === "borderColor" || id === "cardBg" || id === "modalContentBg" || id === "dropdownBg" || id === "dropdownLinkHoverBg" || id === "tableBg" || id === "tooltipBg" || id === "popoverBg") {
+            return String(value);
+        }
+        if (id === "fontScalePercent" || id === "lineHeight") {
+            return id === "fontScalePercent" ? String(value) + "%" : (Number(value) / 100).toFixed(2);
+        }
+        if (id === "borderColorTranslucent" || id === "modalBackdropOpacity") {
+            return Number(value).toFixed(2);
+        }
+        if (id === "spacerRem" || id === "gridGutterRem" || id.startsWith("spacer")) {
+            return String(value) + "rem";
+        }
+        if (id.startsWith("bp") || id.startsWith("cw") || id.endsWith("Px") || id === "focusRingWidthPx" || id === "borderWidthPx") {
+            return String(value) + "px";
+        }
+        if (id === "leadFontSize" || id === "smallFontSize" || id.endsWith("Rem")) {
+            return String(value) + "rem";
+        }
+        if (id === "liveOverrideEnabled") {
+            return value ? "on" : "off";
+        }
+        return String(value);
+    }
+
+    function updateValueLabels(config) {
+        ids.forEach(function (id) {
+            const label = valueLabels[id];
+            if (!label) return;
+            label.textContent = formatValueLabel(id, config[id]);
+        });
+    }
+
+    function syncCardModeUi() {
+        ["cardBg", "cardBorderColor", "cardBorderWidthPx", "cardBorderRadiusPx"].forEach(function (id) {
+            const modeField = form[id + "Mode"];
+            const valueField = form[id];
+            if (!modeField || !valueField) return;
+            const mode = String(modeField.value || "custom");
+            const isReadOnly = mode === "inherit" || (id === "cardBorderRadiusPx" && mode === "formula");
+            valueField.disabled = isReadOnly;
+        });
+    }
+
+    function resolveCardValues(config) {
+        const cardBg = config.cardBgMode === "inherit" ? config.bodyBgColor : config.cardBg;
+        const cardBorderColor = config.cardBorderColorMode === "custom" ? config.cardBorderColor : config.borderColor;
+        const cardBorderWidthPx = config.cardBorderWidthPxMode === "custom" ? config.cardBorderWidthPx : config.borderWidthPx;
+        let cardBorderRadiusPx = config.borderRadiusPx;
+        if (config.cardBorderRadiusPxMode === "custom") {
+            cardBorderRadiusPx = config.cardBorderRadiusPx;
+        } else if (config.cardBorderRadiusPxMode === "formula") {
+            cardBorderRadiusPx = Math.max(0, config.borderRadiusPx - cardBorderWidthPx);
+        }
+        return { cardBg, cardBorderColor, cardBorderWidthPx, cardBorderRadiusPx };
+    }
+
+    function toScss(config) {
+        const resolvedCard = resolveCardValues(config);
+        return [
+            "$primary: " + config.primaryColor + ";",
+            "$secondary: " + config.secondaryColor + ";",
+            "$success: " + config.successColor + ";",
+            "$danger: " + config.dangerColor + ";",
+            "$warning: " + config.warningColor + ";",
+            "$info: " + config.infoColor + ";",
+            "$light: " + config.lightColor + ";",
+            "$dark: " + config.darkColor + ";",
+            "$body-bg: " + config.bodyBgColor + ";",
+            "$body-color: " + config.bodyColor + ";",
+            "$border-color: " + config.borderColor + ";",
+            "$border-color-translucent: rgba(0, 0, 0, " + config.borderColorTranslucent + ");",
+            "$border-radius: " + pxToRem(config.borderRadiusPx) + ";",
+            "$border-radius-sm: " + pxToRem(config.borderRadiusSmPx) + ";",
+            "$border-radius-lg: " + pxToRem(config.borderRadiusLgPx) + ";",
+            "$border-radius-xl: " + pxToRem(config.borderRadiusXlPx) + ";",
+            "$border-radius-pill: " + pxToRem(config.borderRadiusPillPx) + ";",
+            "$border-width: " + config.borderWidthPx + "px;",
+            "$font-family-sans-serif: " + config.fontFamilySansSerif + ";",
+            "$headings-font-family: " + config.headingsFontFamily + ";",
+            "$headings-font-weight: " + config.headingsFontWeight + ";",
+            "$headings-line-height: " + config.headingsLineHeight + ";",
+            "$lead-font-size: " + config.leadFontSize + "rem;",
+            "$small-font-size: " + config.smallFontSize + "rem;",
+            "$link-color: " + config.linkColor + ";",
+            "$link-hover-color: " + config.linkHoverColor + ";",
+            "$link-decoration: " + config.linkDecoration + ";",
+            "$focus-ring-color: " + config.focusRingColor + ";",
+            "$focus-ring-width: " + config.focusRingWidthPx + "px;",
+            "$input-bg: " + config.inputBg + ";",
+            "$input-color: " + config.inputColor + ";",
+            "$input-border-color: " + config.inputBorderColor + ";",
+            "$input-focus-border-color: " + config.inputFocusBorderColor + ";",
+            "$input-btn-padding-y: " + config.inputBtnPaddingYRem + "rem;",
+            "$input-btn-padding-x: " + config.inputBtnPaddingXRem + "rem;",
+            "$btn-padding-y: " + config.btnPaddingYRem + "rem;",
+            "$btn-padding-x: " + config.btnPaddingXRem + "rem;",
+            "$btn-border-radius: " + pxToRem(config.btnBorderRadiusPx) + ";",
+            "$form-select-indicator-color: " + config.formSelectIndicatorColor + ";",
+            (config.cardBgMode === "custom" ? "$card-bg: " + config.cardBg + ";" : "// $card-bg inherits from body background"),
+            (config.cardBorderColorMode === "custom" ? "$card-border-color: " + config.cardBorderColor + ";" : "// $card-border-color inherits from $border-color"),
+            (config.cardBorderWidthPxMode === "custom" ? "$card-border-width: " + config.cardBorderWidthPx + "px;" : "// $card-border-width inherits from $border-width"),
+            (config.cardBorderRadiusPxMode === "custom"
+                ? "$card-border-radius: " + pxToRem(config.cardBorderRadiusPx) + ";"
+                : (config.cardBorderRadiusPxMode === "formula"
+                    ? "$card-border-radius: subtract($border-radius, $card-border-width);"
+                    : "// $card-border-radius inherits from $border-radius")),
+            "// resolved preview values -> bg: " + resolvedCard.cardBg + ", border-color: " + resolvedCard.cardBorderColor + ", border-width: " + resolvedCard.cardBorderWidthPx + "px, border-radius: " + pxToRem(resolvedCard.cardBorderRadiusPx),
+            "$modal-content-bg: " + config.modalContentBg + ";",
+            "$modal-backdrop-opacity: " + config.modalBackdropOpacity + ";",
+            "$dropdown-bg: " + config.dropdownBg + ";",
+            "$dropdown-link-hover-bg: " + config.dropdownLinkHoverBg + ";",
+            "$nav-link-color: " + config.navLinkColor + ";",
+            "$nav-link-hover-color: " + config.navLinkHoverColor + ";",
+            "$table-bg: " + config.tableBg + ";",
+            "$table-striped-bg: " + config.tableStripedBg + ";",
+            "$table-hover-bg: " + config.tableHoverBg + ";",
+            "$tooltip-bg: " + config.tooltipBg + ";",
+            "$popover-bg: " + config.popoverBg + ";",
+            "$box-shadow-sm: " + config.boxShadowSm + ";",
+            "$box-shadow: " + config.boxShadow + ";",
+            "$box-shadow-lg: " + config.boxShadowLg + ";",
+            "$enable-transitions: " + (config.enableTransitions === 1 ? "true" : "false") + ";",
+            "$transition-base: " + config.transitionBase + ";",
+            "$transition-fade: " + config.transitionFade + ";",
+            "$transition-collapse: " + config.transitionCollapse + ";",
+            "$spacer: " + config.spacerRem + "rem;",
+            "$spacers: (",
+            "  0: " + config.spacer0 + " * $spacer,",
+            "  1: " + config.spacer1 + " * $spacer,",
+            "  2: " + config.spacer2 + " * $spacer,",
+            "  3: " + config.spacer3 + " * $spacer,",
+            "  4: " + config.spacer4 + " * $spacer,",
+            "  5: " + config.spacer5 + " * $spacer",
+            ");",
+            "$grid-gutter-width: " + config.gridGutterRem + "rem;",
+            "$grid-breakpoints: ( xs: " + config.bpXs + "px, sm: " + config.bpSm + "px, md: " + config.bpMd + "px, lg: " + config.bpLg + "px, xl: " + config.bpXl + "px, xxl: " + config.bpXxl + "px );",
+            "$container-max-widths: ( sm: " + config.cwSm + "px, md: " + config.cwMd + "px, lg: " + config.cwLg + "px, xl: " + config.cwXl + "px, xxl: " + config.cwXxl + "px );",
+            "$line-height-base: " + (config.lineHeight / 100).toFixed(2) + ";",
+            "$font-size-base: " + (config.fontScalePercent / 100).toFixed(3) + "rem;",
+            "$utilities: map-merge($utilities, " + config.utilitiesMapRaw + ");",
+            "",
+            "@@import \"bootstrap/scss/bootstrap\";"
+        ].join("\n");
+    }
+
+    function updateOutputs(config) {
+        if (ui.jsonCode) {
+            ui.jsonCode.textContent = JSON.stringify(config, null, 2);
+            ui.jsonCode.removeAttribute("data-code-block-highlighted");
+            ui.jsonCode.removeAttribute("data-code-block-raw");
+        }
+        if (ui.scssCode) {
+            ui.scssCode.textContent = toScss(config);
+            ui.scssCode.removeAttribute("data-code-block-highlighted");
+            ui.scssCode.removeAttribute("data-code-block-raw");
+        }
+        if (window.DMBCodeBlock && typeof window.DMBCodeBlock.enhance === "function") {
+            const jsonBlock = document.getElementById("jsonOutputBlock");
+            const scssBlock = document.getElementById("scssOutputBlock");
+            if (jsonBlock) window.DMBCodeBlock.enhance(jsonBlock);
+            if (scssBlock) window.DMBCodeBlock.enhance(scssBlock);
+        }
+    }
+
+    function toRgbString(hexColor) {
+        const value = (hexColor || "").replace("#", "").trim();
+        if (value.length !== 6) return null;
+        const r = Number.parseInt(value.substring(0, 2), 16);
+        const g = Number.parseInt(value.substring(2, 4), 16);
+        const b = Number.parseInt(value.substring(4, 6), 16);
+        if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return null;
+        return r + ", " + g + ", " + b;
+    }
+
+    function shadeColor(hexColor, factor) {
+        const value = (hexColor || "").replace("#", "").trim();
+        if (value.length !== 6) return hexColor;
+        const r = Number.parseInt(value.substring(0, 2), 16);
+        const g = Number.parseInt(value.substring(2, 4), 16);
+        const b = Number.parseInt(value.substring(4, 6), 16);
+        if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return hexColor;
+        const clamp = n => Math.max(0, Math.min(255, Math.round(n)));
+        const toHex = n => clamp(n).toString(16).padStart(2, "0");
+        return "#" + toHex(r * factor) + toHex(g * factor) + toHex(b * factor);
+    }
+    function hexToRgba(hexColor, alpha) {
+        const value = (hexColor || "").replace("#", "").trim();
+        if (value.length !== 6) return hexColor;
+        const r = Number.parseInt(value.substring(0, 2), 16);
+        const g = Number.parseInt(value.substring(2, 4), 16);
+        const b = Number.parseInt(value.substring(4, 6), 16);
+        if (Number.isNaN(r) || Number.isNaN(g) || Number.isNaN(b)) return hexColor;
+        return "rgba(" + r + ", " + g + ", " + b + ", " + alpha + ")";
+    }
+
+    function applyCssVars(config) {
+        const root = document.documentElement;
+        const previewFallbackTag = document.getElementById("dmb-live-configurator-preview-fallback");
+        if (previewFallbackTag) previewFallbackTag.remove();
+        const typographyFallbackTag = document.getElementById("dmb-live-configurator-preview-typography-fallback");
+        if (typographyFallbackTag) typographyFallbackTag.remove();
+
+        const bodyFontFamilyResolved = resolveBodyFontFamily(config);
+        const headingFontFamilyResolved = resolveHeadingFontFamily(config);
+
+        root.style.setProperty("--bs-primary", config.primaryColor);
+        root.style.setProperty("--bs-secondary", config.secondaryColor);
+        root.style.setProperty("--bs-success", config.successColor);
+        root.style.setProperty("--bs-danger", config.dangerColor);
+        root.style.setProperty("--bs-warning", config.warningColor);
+        root.style.setProperty("--bs-info", config.infoColor);
+        root.style.setProperty("--bs-link-color", config.linkColor);
+        root.style.setProperty("--bs-border-color", config.borderColor);
+        root.style.setProperty("--bs-border-color-translucent", "rgba(0, 0, 0, " + config.borderColorTranslucent + ")");
+        root.style.setProperty("--bs-border-radius", pxToRem(config.borderRadiusPx));
+        root.style.setProperty("--bs-border-width", config.borderWidthPx + "px");
+        root.style.setProperty("--bs-card-border-color", config.borderColor);
+        root.style.setProperty("--bs-card-border-width", config.borderWidthPx + "px");
+        root.style.setProperty("--bs-card-border-radius", pxToRem(config.borderRadiusPx));
+
+        const primaryRgb = toRgbString(config.primaryColor);
+        const secondaryRgb = toRgbString(config.secondaryColor);
+        const successRgb = toRgbString(config.successColor);
+        const dangerRgb = toRgbString(config.dangerColor);
+        const warningRgb = toRgbString(config.warningColor);
+        const infoRgb = toRgbString(config.infoColor);
+
+        if (primaryRgb) root.style.setProperty("--bs-primary-rgb", primaryRgb);
+        if (secondaryRgb) root.style.setProperty("--bs-secondary-rgb", secondaryRgb);
+        if (successRgb) root.style.setProperty("--bs-success-rgb", successRgb);
+        if (dangerRgb) root.style.setProperty("--bs-danger-rgb", dangerRgb);
+        if (warningRgb) root.style.setProperty("--bs-warning-rgb", warningRgb);
+        if (infoRgb) root.style.setProperty("--bs-info-rgb", infoRgb);
+
+        root.style.fontSize = (config.fontScalePercent / 100).toFixed(3) + "rem";
+        root.style.lineHeight = (config.lineHeight / 100).toFixed(2);
+        root.style.setProperty("--bs-body-font-family", bodyFontFamilyResolved);
+
+        const spacingGridRow = document.getElementById("spacingGridRow");
+        if (spacingGridRow) {
+            spacingGridRow.style.setProperty("--bs-gutter-x", config.gridGutterRem + "rem");
+        }
+
+        ensureGoogleFontLoaded(config.googleBodyFont);
+        ensureGoogleFontLoaded(config.googleHeadingFont);
+        applyComponentOverrides(config);
+    }
+
+    function applyComponentOverrides(config) {
+        const styleId = "dmb-live-configurator-component-overrides";
+        let styleTag = document.getElementById(styleId);
+        if (!styleTag) {
+            styleTag = document.createElement("style");
+            styleTag.id = styleId;
+            document.head.appendChild(styleTag);
+        }
+        const primaryHover = shadeColor(config.primaryColor, 0.9);
+        const primaryActive = shadeColor(config.primaryColor, 0.8);
+        const secondaryHover = shadeColor(config.secondaryColor, 0.9);
+        const successHover = shadeColor(config.successColor, 0.9);
+        const dangerHover = shadeColor(config.dangerColor, 0.9);
+        const primaryDisabled = hexToRgba(config.primaryColor, 0.65);
+        const secondaryDisabled = hexToRgba(config.secondaryColor, 0.65);
+        const successDisabled = hexToRgba(config.successColor, 0.65);
+        const dangerDisabled = hexToRgba(config.dangerColor, 0.65);
+        const resolvedCard = resolveCardValues(config);
+
+        styleTag.textContent = [
+            "#dmbPreviewScope .btn-primary, #previewColors .btn-primary{background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#saveAsProfile{background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-primary:hover, #previewColors .btn-primary:hover{background-color:" + primaryHover + " !important;border-color:" + primaryHover + " !important;}",
+            "#saveAsProfile:hover{background-color:" + primaryHover + " !important;border-color:" + primaryHover + " !important;}",
+            "#dmbPreviewScope .btn-primary:active, #previewColors .btn-primary:active{background-color:" + primaryActive + " !important;border-color:" + primaryActive + " !important;}",
+            "#dmbPreviewScope .btn-primary:disabled, #previewColors .btn-primary:disabled{background-color:" + primaryDisabled + " !important;border-color:" + primaryDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#saveAsProfile:active{background-color:" + primaryActive + " !important;border-color:" + primaryActive + " !important;}",
+            "#dmbPreviewScope .btn-secondary, #previewColors .btn-secondary{background-color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-secondary:hover, #previewColors .btn-secondary:hover{background-color:" + secondaryHover + " !important;border-color:" + secondaryHover + " !important;}",
+            "#dmbPreviewScope .btn-secondary:disabled, #previewColors .btn-secondary:disabled{background-color:" + secondaryDisabled + " !important;border-color:" + secondaryDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#saveCurrentProfile{color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;}",
+            "#saveCurrentProfile:hover{background-color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#restoreProfile{color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;}",
+            "#restoreProfile:hover{background-color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-success, #previewColors .btn-success{background-color:" + config.successColor + " !important;border-color:" + config.successColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-success:hover, #previewColors .btn-success:hover{background-color:" + successHover + " !important;border-color:" + successHover + " !important;}",
+            "#dmbPreviewScope .btn-success:disabled, #previewColors .btn-success:disabled{background-color:" + successDisabled + " !important;border-color:" + successDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#dmbPreviewScope .btn-danger, #previewColors .btn-danger{background-color:" + config.dangerColor + " !important;border-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-danger:hover, #previewColors .btn-danger:hover{background-color:" + dangerHover + " !important;border-color:" + dangerHover + " !important;}",
+            "#dmbPreviewScope .btn-danger:disabled, #previewColors .btn-danger:disabled{background-color:" + dangerDisabled + " !important;border-color:" + dangerDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#unloadProfile{color:" + config.dangerColor + " !important;border-color:" + config.dangerColor + " !important;}",
+            "#unloadProfile:hover{background-color:" + config.dangerColor + " !important;border-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#deleteProfile{color:" + config.dangerColor + " !important;border-color:" + config.dangerColor + " !important;}",
+            "#deleteProfile:hover{background-color:" + config.dangerColor + " !important;border-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-outline-primary, #previewColors .btn-outline-primary{color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;}",
+            "#dmbPreviewScope .btn-outline-primary:hover, #previewColors .btn-outline-primary:hover{background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-outline-primary:disabled, #previewColors .btn-outline-primary:disabled{color:" + primaryDisabled + " !important;border-color:" + primaryDisabled + " !important;opacity:1 !important;}",
+            "#dmbPreviewScope .text-bg-primary, #previewColors .text-bg-primary, #previewColors .dmb-variant-primary-base{background-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-secondary, #previewColors .text-bg-secondary, #previewColors .dmb-variant-secondary-base{background-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-success, #previewColors .text-bg-success, #previewColors .dmb-variant-success-base{background-color:" + config.successColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-danger, #previewColors .text-bg-danger, #previewColors .dmb-variant-danger-base{background-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-warning, #previewColors .text-bg-warning, #previewColors .dmb-variant-warning-base{background-color:" + config.warningColor + " !important;color:#212529 !important;}",
+            "#dmbPreviewScope .text-bg-info, #previewColors .text-bg-info, #previewColors .dmb-variant-info-base{background-color:" + config.infoColor + " !important;color:#212529 !important;}",
+            "#previewColors .dmb-variant-primary-subtle-bg{background:" + hexToRgba(config.primaryColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-primary-subtle-border{border-color:" + hexToRgba(config.primaryColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-primary-emphasis{color:" + shadeColor(config.primaryColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-secondary-subtle-bg{background:" + hexToRgba(config.secondaryColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-secondary-subtle-border{border-color:" + hexToRgba(config.secondaryColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-secondary-emphasis{color:" + shadeColor(config.secondaryColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-success-subtle-bg{background:" + hexToRgba(config.successColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-success-subtle-border{border-color:" + hexToRgba(config.successColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-success-emphasis{color:" + shadeColor(config.successColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-danger-subtle-bg{background:" + hexToRgba(config.dangerColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-danger-subtle-border{border-color:" + hexToRgba(config.dangerColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-danger-emphasis{color:" + shadeColor(config.dangerColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-warning-subtle-bg{background:" + hexToRgba(config.warningColor, 0.2) + ";}",
+            "#previewColors .dmb-variant-warning-subtle-border{border-color:" + hexToRgba(config.warningColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-warning-emphasis{color:" + shadeColor(config.warningColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-info-subtle-bg{background:" + hexToRgba(config.infoColor, 0.2) + ";}",
+            "#previewColors .dmb-variant-info-subtle-border{border-color:" + hexToRgba(config.infoColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-info-emphasis{color:" + shadeColor(config.infoColor, 0.55) + ";}",
+            "#dmbPreviewScope .alert-info{border-color:" + config.infoColor + "55 !important;background-color:" + config.infoColor + "22 !important;color:" + shadeColor(config.infoColor, 0.6) + " !important;}",
+            "#dmbConfiguratorTabsScope .nav-tabs{border-bottom-color:" + config.borderColor + " !important;}",
+            "#dmbConfiguratorTabsScope .nav-tabs .nav-link:not(.active){border-color:transparent !important;}",
+            "#dmbConfiguratorTabsScope .nav-tabs .nav-link.active{border-color:" + config.borderColor + " " + config.borderColor + " transparent !important;}",
+            "#previewBorders .border, .dmb-preview-advanced .border, .dmb-preview-advanced .card{border-color:" + config.borderColor + " !important;}",
+            ".dmb-preview-advanced .dmb-preview-link{color:" + config.linkColor + " !important;text-decoration:" + config.linkDecoration + ";}",
+            ".dmb-preview-advanced .dmb-preview-link:hover{color:" + config.linkHoverColor + " !important;}",
+            ".dmb-preview-advanced .dmb-preview-btn{padding:" + config.btnPaddingYRem + "rem " + config.btnPaddingXRem + "rem !important;border-radius:" + pxToRem(config.btnBorderRadiusPx) + " !important;}",
+            ".dmb-preview-advanced .dmb-preview-input,.dmb-preview-advanced .dmb-preview-select{background:" + config.inputBg + " !important;color:" + config.inputColor + " !important;border-color:" + config.inputBorderColor + " !important;padding:" + config.inputBtnPaddingYRem + "rem " + config.inputBtnPaddingXRem + "rem !important;}",
+            ".dmb-preview-advanced .dmb-preview-input:focus,.dmb-preview-advanced .dmb-preview-select:focus{border-color:" + config.inputFocusBorderColor + " !important;box-shadow:0 0 0 " + config.focusRingWidthPx + "px " + config.focusRingColor + " !important;}",
+            ".dmb-preview-advanced .dmb-preview-select{background-image:linear-gradient(45deg,transparent 50%," + config.formSelectIndicatorColor + " 50%),linear-gradient(135deg," + config.formSelectIndicatorColor + " 50%,transparent 50%);background-position:calc(100% - 14px) calc(50% - 3px),calc(100% - 9px) calc(50% - 3px);background-size:5px 5px,5px 5px;background-repeat:no-repeat;}",
+            ".dmb-preview-advanced .dmb-preview-card{background:" + resolvedCard.cardBg + " !important;border-color:" + resolvedCard.cardBorderColor + " !important;border-width:" + resolvedCard.cardBorderWidthPx + "px !important;border-radius:" + pxToRem(resolvedCard.cardBorderRadiusPx) + " !important;box-shadow:" + config.boxShadowSm + " !important;}",
+            ".dmb-preview-advanced .dropdown-menu{background:" + config.dropdownBg + " !important;box-shadow:" + config.boxShadow + " !important;}",
+            ".dmb-preview-advanced .dropdown-item:hover{background:" + config.dropdownLinkHoverBg + " !important;}",
+            ".dmb-preview-advanced .nav-link{color:" + config.navLinkColor + " !important;}",
+            ".dmb-preview-advanced .nav-link:hover{color:" + config.navLinkHoverColor + " !important;}",
+            ".dmb-preview-advanced .table{background:" + config.tableBg + " !important;}",
+            ".dmb-preview-advanced .table-striped>tbody>tr:nth-of-type(odd)>*{background:" + config.tableStripedBg + " !important;}",
+            ".dmb-preview-advanced .table-hover>tbody>tr:hover>*{background:" + config.tableHoverBg + " !important;}",
+            ".dmb-preview-advanced .dmb-preview-popover{background:" + config.popoverBg + " !important;box-shadow:" + config.boxShadowLg + " !important;}",
+            ".dmb-preview-advanced [data-bs-toggle='popover']:focus{box-shadow:0 0 0 " + config.focusRingWidthPx + "px " + config.focusRingColor + " !important;outline:0;}",
+            (config.enableTransitions === 1 ? ".dmb-preview-advanced *{transition:" + config.transitionBase + " !important;}" : ".dmb-preview-advanced *{transition:none !important;}"),
+            "#previewBorders .rounded, #previewBorders .card, #dmbPreviewScope .card{border-radius:" + pxToRem(config.borderRadiusPx) + " !important;}",
+            "#previewBorders .border, #previewBorders input, #dmbPreviewScope .border, #dmbPreviewScope .card{border-width:" + config.borderWidthPx + "px !important;}",
+            "#previewBorders .dmb-preview-border-card, #previewBorders .dmb-preview-border-input, #previewBorders .dmb-preview-border-btn{border-color:" + config.borderColor + " !important;}",
+            "#previewBorders .dmb-preview-border-translucent{border-color:" + hexToRgba(config.borderColor, config.borderColorTranslucent) + " !important;}",
+            "#previewBorders .dmb-preview-border-btn{border-width:" + config.borderWidthPx + "px !important;border-radius:" + pxToRem(config.borderRadiusPx) + " !important;background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#previewBorders .dmb-preview-border-input{border-radius:" + pxToRem(config.borderRadiusPx) + " !important;}",
+            "#previewBorders .dmb-radius-sm{border-radius:" + pxToRem(config.borderRadiusSmPx) + " !important;}",
+            "#previewBorders .dmb-radius-lg{border-radius:" + pxToRem(config.borderRadiusLgPx) + " !important;}",
+            "#previewBorders .dmb-radius-xl{border-radius:" + pxToRem(config.borderRadiusXlPx) + " !important;}",
+            "#previewBorders .dmb-radius-pill{border-radius:" + pxToRem(config.borderRadiusPillPx) + " !important;}",
+            "#saveAsProfile, #saveCurrentProfile, #restoreProfile, #unloadProfile, #deleteProfile{border-width:" + config.borderWidthPx + "px !important;border-radius:" + pxToRem(config.borderRadiusPx) + " !important;}",
+            "#previewTypography{line-height:" + (config.lineHeight / 100).toFixed(2) + ";font-family:" + resolveBodyFontFamily(config) + ";}",
+            "#previewTypography .dmb-preview-lead{font-size:" + config.leadFontSize + "rem;}",
+            "#previewTypography .dmb-preview-small{font-size:" + config.smallFontSize + "rem;}",
+            "#previewTypography h1,#previewTypography h2,#previewTypography h3,#previewTypography h4,#previewTypography h5,#previewTypography h6{font-family:" + resolveHeadingFontFamily(config) + ";font-weight:" + config.headingsFontWeight + ";line-height:" + config.headingsLineHeight + ";}",
+            "#previewSpacing .container{padding:" + config.spacerRem + "rem !important;}"
+        ].join("");
+    }
+
+    function applyPreviewFallbackColors(config) {
+        const styleId = "dmb-live-configurator-preview-fallback";
+        let styleTag = document.getElementById(styleId);
+        if (!styleTag) {
+            styleTag = document.createElement("style");
+            styleTag.id = styleId;
+            document.head.appendChild(styleTag);
+        }
+
+        const primaryHover = shadeColor(config.primaryColor, 0.9);
+        const primaryActive = shadeColor(config.primaryColor, 0.8);
+        const secondaryHover = shadeColor(config.secondaryColor, 0.9);
+        const dangerHover = shadeColor(config.dangerColor, 0.9);
+        const primaryDisabled = hexToRgba(config.primaryColor, 0.65);
+        const secondaryDisabled = hexToRgba(config.secondaryColor, 0.65);
+
+        styleTag.textContent = [
+            "#dmbPreviewScope .btn-primary, #previewColors .btn-primary{background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-primary:hover, #previewColors .btn-primary:hover{background-color:" + primaryHover + " !important;border-color:" + primaryHover + " !important;}",
+            "#dmbPreviewScope .btn-primary:active, #previewColors .btn-primary:active{background-color:" + primaryActive + " !important;border-color:" + primaryActive + " !important;}",
+            "#dmbPreviewScope .btn-primary:disabled, #previewColors .btn-primary:disabled{background-color:" + primaryDisabled + " !important;border-color:" + primaryDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#dmbPreviewScope .btn-secondary, #previewColors .btn-secondary{background-color:" + config.secondaryColor + " !important;border-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-secondary:hover, #previewColors .btn-secondary:hover{background-color:" + secondaryHover + " !important;border-color:" + secondaryHover + " !important;}",
+            "#dmbPreviewScope .btn-secondary:disabled, #previewColors .btn-secondary:disabled{background-color:" + secondaryDisabled + " !important;border-color:" + secondaryDisabled + " !important;color:#fff !important;opacity:1 !important;}",
+            "#dmbPreviewScope .btn-danger:hover, #previewColors .btn-danger:hover{background-color:" + dangerHover + " !important;border-color:" + dangerHover + " !important;}",
+            "#dmbPreviewScope .btn-outline-primary, #previewColors .btn-outline-primary{color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;}",
+            "#dmbPreviewScope .btn-outline-primary:hover, #previewColors .btn-outline-primary:hover{background-color:" + config.primaryColor + " !important;border-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .btn-outline-primary:disabled, #previewColors .btn-outline-primary:disabled{color:" + primaryDisabled + " !important;border-color:" + primaryDisabled + " !important;opacity:1 !important;}",
+            "#dmbPreviewScope .text-bg-primary, #previewColors .text-bg-primary{background-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-secondary, #previewColors .text-bg-secondary{background-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-success, #previewColors .text-bg-success{background-color:" + config.successColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-danger, #previewColors .text-bg-danger{background-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#dmbPreviewScope .text-bg-warning, #previewColors .text-bg-warning{background-color:" + config.warningColor + " !important;color:#212529 !important;}",
+            "#dmbPreviewScope .text-bg-info, #previewColors .text-bg-info{background-color:" + config.infoColor + " !important;color:#212529 !important;}",
+            "#previewColors .dmb-variant-primary-base{background-color:" + config.primaryColor + " !important;color:#fff !important;}",
+            "#previewColors .dmb-variant-secondary-base{background-color:" + config.secondaryColor + " !important;color:#fff !important;}",
+            "#previewColors .dmb-variant-success-base{background-color:" + config.successColor + " !important;color:#fff !important;}",
+            "#previewColors .dmb-variant-danger-base{background-color:" + config.dangerColor + " !important;color:#fff !important;}",
+            "#previewColors .dmb-variant-warning-base{background-color:" + config.warningColor + " !important;color:#212529 !important;}",
+            "#previewColors .dmb-variant-info-base{background-color:" + config.infoColor + " !important;color:#212529 !important;}",
+            "#previewColors .dmb-variant-primary-subtle-bg{background:" + hexToRgba(config.primaryColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-primary-subtle-border{border-color:" + hexToRgba(config.primaryColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-primary-emphasis{color:" + shadeColor(config.primaryColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-secondary-subtle-bg{background:" + hexToRgba(config.secondaryColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-secondary-subtle-border{border-color:" + hexToRgba(config.secondaryColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-secondary-emphasis{color:" + shadeColor(config.secondaryColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-success-subtle-bg{background:" + hexToRgba(config.successColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-success-subtle-border{border-color:" + hexToRgba(config.successColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-success-emphasis{color:" + shadeColor(config.successColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-danger-subtle-bg{background:" + hexToRgba(config.dangerColor, 0.15) + ";}",
+            "#previewColors .dmb-variant-danger-subtle-border{border-color:" + hexToRgba(config.dangerColor, 0.45) + ";}",
+            "#previewColors .dmb-variant-danger-emphasis{color:" + shadeColor(config.dangerColor, 0.65) + ";}",
+            "#previewColors .dmb-variant-warning-subtle-bg{background:" + hexToRgba(config.warningColor, 0.2) + ";}",
+            "#previewColors .dmb-variant-warning-subtle-border{border-color:" + hexToRgba(config.warningColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-warning-emphasis{color:" + shadeColor(config.warningColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-info-subtle-bg{background:" + hexToRgba(config.infoColor, 0.2) + ";}",
+            "#previewColors .dmb-variant-info-subtle-border{border-color:" + hexToRgba(config.infoColor, 0.55) + ";}",
+            "#previewColors .dmb-variant-info-emphasis{color:" + shadeColor(config.infoColor, 0.55) + ";}",
+            "#dmbPreviewScope .alert-info{border-color:" + config.infoColor + "55 !important;background-color:" + config.infoColor + "22 !important;color:" + shadeColor(config.infoColor, 0.6) + " !important;}"
+        ].join("");
+    }
+    function applyPreviewFallbackTypography(config) {
+        const styleId = "dmb-live-configurator-preview-typography-fallback";
+        let styleTag = document.getElementById(styleId);
+        if (!styleTag) {
+            styleTag = document.createElement("style");
+            styleTag.id = styleId;
+            document.head.appendChild(styleTag);
+        }
+
+        styleTag.textContent = [
+            "#previewTypography{font-size:" + (config.fontScalePercent / 100).toFixed(3) + "rem;line-height:" + (config.lineHeight / 100).toFixed(2) + ";font-family:" + resolveBodyFontFamily(config) + ";}",
+            "#previewTypography .dmb-preview-lead{font-size:" + config.leadFontSize + "rem;}",
+            "#previewTypography .dmb-preview-small{font-size:" + config.smallFontSize + "rem;}",
+            "#previewTypography h1,#previewTypography h2,#previewTypography h3,#previewTypography h4,#previewTypography h5,#previewTypography h6{font-family:" + resolveHeadingFontFamily(config) + ";font-weight:" + config.headingsFontWeight + ";line-height:" + config.headingsLineHeight + ";}"
+        ].join("");
+    }
+    function applyPreviewFallbackCards(config) {
+        const styleId = "dmb-live-configurator-preview-cards-fallback";
+        let styleTag = document.getElementById(styleId);
+        if (!styleTag) {
+            styleTag = document.createElement("style");
+            styleTag.id = styleId;
+            document.head.appendChild(styleTag);
+        }
+
+        const resolvedCard = resolveCardValues(config);
+
+        styleTag.textContent = [
+            ".dmb-preview-advanced .dmb-preview-card{background:" + resolvedCard.cardBg + " !important;border-color:" + resolvedCard.cardBorderColor + " !important;border-width:" + resolvedCard.cardBorderWidthPx + "px !important;border-radius:" + pxToRem(resolvedCard.cardBorderRadiusPx) + " !important;}"
+        ].join("");
+    }
+
+    function ensureGoogleFontLoaded(fontName) {
+        if (!fontName || !String(fontName).trim()) return;
+        const normalized = String(fontName).trim();
+        const id = "dmb-gfont-" + normalized.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+        if (document.getElementById(id)) return;
+        const link = document.createElement("link");
+        link.id = id;
+        link.rel = "stylesheet";
+        link.href = "https://fonts.googleapis.com/css2?family=" + encodeURIComponent(normalized).replace(/%20/g, "+") + ":wght@300;400;500;600;700&display=swap";
+        document.head.appendChild(link);
+    }
+
+    function resolveBodyFontFamily(config) {
+        if (config.googleBodyFont && String(config.googleBodyFont).trim()) {
+            return "\"" + String(config.googleBodyFont).trim() + "\", sans-serif";
+        }
+        return config.fontFamilySansSerif;
+    }
+
+    function resolveHeadingFontFamily(config) {
+        if (config.googleHeadingFont && String(config.googleHeadingFont).trim()) {
+            return "\"" + String(config.googleHeadingFont).trim() + "\", serif";
+        }
+        return config.headingsFontFamily;
+    }
+
+    function clearCssVars() {
+        const root = document.documentElement;
+        [
+            "--bs-primary", "--bs-secondary", "--bs-success", "--bs-danger", "--bs-warning", "--bs-info",
+            "--bs-link-color", "--bs-border-color", "--bs-border-color-translucent", "--bs-border-radius", "--bs-border-width",
+            "--bs-card-border-color", "--bs-card-border-width", "--bs-card-border-radius",
+            "--bs-primary-rgb", "--bs-secondary-rgb", "--bs-success-rgb", "--bs-danger-rgb", "--bs-warning-rgb", "--bs-info-rgb",
+            "--bs-body-font-family"
+        ].forEach(n => root.style.removeProperty(n));
+        root.style.removeProperty("font-size");
+        root.style.removeProperty("line-height");
+
+        const spacingGridRow = document.getElementById("spacingGridRow");
+        if (spacingGridRow) spacingGridRow.style.removeProperty("--bs-gutter-x");
+
+        [
+            "dmb-live-configurator-component-overrides",
+            "dmb-bootstrap-live-dynamic-colors",
+            "dmb-live-configurator-preview-typography-fallback",
+            "dmb-live-configurator-preview-cards-fallback"
+        ].forEach(function (styleId) {
+            const styleTag = document.getElementById(styleId);
+            if (styleTag) styleTag.remove();
+        });
+    }
+
+    function applyConfig(config) {
+        syncCardModeUi();
+        updateValueLabels(config);
+
+        if (config.liveOverrideEnabled) applyCssVars(config); else clearCssVars();
+        if (!config.liveOverrideEnabled) applyPreviewFallbackColors(config);
+        if (!config.liveOverrideEnabled) applyPreviewFallbackTypography(config);
+        if (!config.liveOverrideEnabled) applyPreviewFallbackCards(config);
+        updateOutputs(config);
+        const activeName = getActiveProfileName();
+        if (!activeName) {
+            ui.emptyStateText.textContent = "No profile loaded. You are editing a temporary working state.";
+        } else {
+            ui.emptyStateText.textContent = config.liveOverrideEnabled
+                ? "Active profile: " + activeName + " (site-wide override enabled)."
+                : "Active profile: " + activeName + " (override disabled, values kept).";
+        }
+    }
+
+    function setForm(config) {
+        ids.forEach(function (id) {
+            if (!form[id]) return;
+            if (id === "liveOverrideEnabled") form[id].checked = Boolean(config[id]);
+            else form[id].value = String(config[id]);
+        });
+    }
+
+    function refreshEmptyState() {
+        const profiles = safeGetProfiles();
+        const profileCount = Object.keys(profiles).length;
+        const activeName = getActiveProfileName();
+        if (!activeName) {
+            ui.emptyStateText.textContent = profileCount === 0
+                ? "No local profile is stored yet."
+                : "No profile loaded (" + profileCount + " stored profile(s)).";
+            return;
+        }
+        const activeConfig = profiles[activeName];
+        if (!activeConfig) {
+            ui.emptyStateText.textContent = "Active profile missing. Choose a profile to load.";
+            return;
+        }
+        ui.emptyStateText.textContent = activeConfig.liveOverrideEnabled === false
+            ? "Active profile: " + activeName + " (override disabled)."
+            : "Active profile: " + activeName + " (override enabled site-wide).";
+    }
+
+    function saveAsProfile() {
+        const currentName = ui.profileNameInput ? ui.profileNameInput.value : "";
+        const name = normalizeProfileName(currentName);
+        if (!name) {
+            window.alert("Please enter a profile name.");
+            return;
+        }
+        const profiles = safeGetProfiles();
+        if (profiles[name] && !window.confirm("A profile with this name already exists. Overwrite it?")) {
+            return;
+        }
+        profiles[name] = normalizeConfig(toConfig());
+        saveProfiles(profiles);
+        setActiveProfileName(name);
+        refreshProfileSelect(name);
+        if (ui.profileNameInput) ui.profileNameInput.value = name;
+        refreshEmptyState();
+        updateProfileActionState();
+    }
+
+    function saveCurrentProfile() {
+        const activeName = getActiveProfileName();
+        if (!activeName) {
+            return;
+        }
+        const profiles = safeGetProfiles();
+        const requestedName = normalizeProfileName(ui.profileNameInput ? ui.profileNameInput.value : "");
+        const targetName = requestedName || activeName;
+        if (targetName !== activeName) {
+            if (profiles[targetName] && !window.confirm("A profile with this name already exists. Overwrite it?")) {
+                return;
+            }
+            delete profiles[activeName];
+        }
+        profiles[targetName] = normalizeConfig(toConfig());
+        saveProfiles(profiles);
+        setActiveProfileName(targetName);
+        if (ui.profileNameInput) ui.profileNameInput.value = targetName;
+        refreshProfileSelect(targetName);
+        refreshEmptyState();
+        updateProfileActionState();
+    }
+
+    function loadProfileByName(selected) {
+        const profiles = safeGetProfiles();
+        const selectedConfig = normalizeConfig(profiles[selected]);
+        if (!selectedConfig) {
+            window.alert("Selected profile was not found.");
+            refreshProfileSelect("");
+            refreshEmptyState();
+            return;
+        }
+        setActiveProfileName(selected);
+        setForm(selectedConfig);
+        applyConfig(selectedConfig);
+        if (ui.profileNameInput) ui.profileNameInput.value = selected;
+        refreshProfileSelect(selected);
+        refreshEmptyState();
+        updateProfileActionState();
+    }
+
+    function unloadProfile() {
+        const wasActive = hasActiveProfile();
+        setActiveProfileName("");
+        setForm(defaultConfig);
+        applyConfig(defaultConfig);
+        if (ui.profileNameInput) ui.profileNameInput.value = wasActive ? "" : (ui.profileNameInput.value || "");
+        refreshProfileSelect("");
+        refreshEmptyState();
+        updateProfileActionState();
+    }
+
+    function restoreFromLastSave() {
+        const activeName = getActiveProfileName();
+        if (!activeName) return;
+        const profiles = safeGetProfiles();
+        const config = normalizeConfig(profiles[activeName]);
+        if (!config) return;
+        setForm(config);
+        applyConfig(config);
+        refreshEmptyState();
+    }
+
+    function deleteProfile() {
+        const activeName = getActiveProfileName();
+        if (!activeName) return;
+        if (!window.confirm("Delete profile '" + activeName + "'? This action cannot be undone.")) {
+            return;
+        }
+        const profiles = safeGetProfiles();
+        delete profiles[activeName];
+        saveProfiles(profiles);
+        setActiveProfileName("");
+        setForm(defaultConfig);
+        applyConfig(defaultConfig);
+        if (ui.profileNameInput) ui.profileNameInput.value = "";
+        refreshProfileSelect("");
+        refreshEmptyState();
+        updateProfileActionState();
+    }
+    function togglePreviewTheme() {
+        previewTheme = previewTheme === "light" ? "dark" : "light";
+        document.documentElement.setAttribute("data-bs-theme", previewTheme);
+        if (ui.previewThemeToggle) ui.previewThemeToggle.textContent = previewTheme === "light" ? "Theme: Light" : "Theme: Dark";
+    }
+    function initPopovers() {
+        const popoverTargets = document.querySelectorAll('[data-bs-toggle="popover"]');
+        popoverTargets.forEach(function (el) {
+            if (window.bootstrap && window.bootstrap.Popover) {
+                if (!el.getAttribute("data-dmb-popover-bound")) {
+                    new window.bootstrap.Popover(el);
+                    el.setAttribute("data-dmb-popover-bound", "1");
+                }
+            } else {
+                const content = el.getAttribute("data-bs-content");
+                if (content && !el.getAttribute("title")) {
+                    el.setAttribute("title", content);
+                }
+            }
+        });
+    }
+
+    ids.forEach(function (id) {
+        if (!form[id]) return;
+        ["input", "change"].forEach(function (eventName) {
+            form[id].addEventListener(eventName, function () {
+                const config = toConfig();
+                applyConfig(config);
+                if (id === "liveOverrideEnabled") {
+                    const activeName = getActiveProfileName();
+                    if (activeName) {
+                        const profiles = safeGetProfiles();
+                        if (profiles[activeName]) {
+                            profiles[activeName].liveOverrideEnabled = config.liveOverrideEnabled;
+                            saveProfiles(profiles);
+                        }
+                    }
+                }
+                refreshEmptyState();
+            });
+        });
+    });
+
+    document.querySelectorAll("[data-reset-target]").forEach(function (button) {
+        button.addEventListener("click", function () {
+            const target = button.getAttribute("data-reset-target");
+            if (!target || !form[target]) return;
+            if (target === "liveOverrideEnabled") form[target].checked = Boolean(defaultConfig[target]);
+            else form[target].value = String(defaultConfig[target]);
+            applyConfig(toConfig());
+        });
+    });
+
+    const saveAsProfileButton = document.getElementById("saveAsProfile");
+    const saveCurrentProfileButton = document.getElementById("saveCurrentProfile");
+    const restoreProfileButton = document.getElementById("restoreProfile");
+    const unloadProfileButton = document.getElementById("unloadProfile");
+    const deleteProfileButton = document.getElementById("deleteProfile");
+    if (saveAsProfileButton) saveAsProfileButton.addEventListener("click", saveAsProfile);
+    if (saveCurrentProfileButton) saveCurrentProfileButton.addEventListener("click", saveCurrentProfile);
+    if (restoreProfileButton) restoreProfileButton.addEventListener("click", restoreFromLastSave);
+    if (unloadProfileButton) unloadProfileButton.addEventListener("click", unloadProfile);
+    if (deleteProfileButton) deleteProfileButton.addEventListener("click", deleteProfile);
+    if (ui.profileNameInput) {
+        ui.profileNameInput.addEventListener("input", updateProfileActionState);
+        ui.profileNameInput.addEventListener("change", updateProfileActionState);
+    }
+    if (ui.profileSelect) {
+        ui.profileSelect.addEventListener("change", function () {
+            const selected = normalizeProfileName(ui.profileSelect.value);
+            if (!selected) {
+                unloadProfile();
+                return;
+            }
+            loadProfileByName(selected);
+            updateProfileActionState();
+        });
+    }
+    if (ui.previewThemeToggle) ui.previewThemeToggle.addEventListener("click", togglePreviewTheme);
+    initPopovers();
+    window.setTimeout(initPopovers, 250);
+    refreshProfileSelect(getActiveProfileName());
+    const activeName = getActiveProfileName();
+    const profiles = safeGetProfiles();
+    const legacyRaw = safeGetLegacyStoredConfig();
+    if (!activeName && Object.keys(profiles).length === 0 && legacyRaw) {
+        const legacy = normalizeConfig(legacyRaw);
+        profiles["Migrated profile"] = legacy;
+        saveProfiles(profiles);
+        setActiveProfileName("Migrated profile");
+        refreshProfileSelect("Migrated profile");
+        if (ui.profileNameInput) ui.profileNameInput.value = "Migrated profile";
+        setForm(legacy);
+        applyConfig(legacy);
+    } else if (activeName && profiles[activeName]) {
+        const normalizedActive = normalizeConfig(profiles[activeName]);
+        setForm(normalizedActive);
+        applyConfig(normalizedActive);
+        refreshProfileSelect(activeName);
+        if (ui.profileNameInput) ui.profileNameInput.value = activeName;
+    } else {
+        setForm(defaultConfig);
+        applyConfig(defaultConfig);
+    }
+    refreshEmptyState();
+    updateProfileActionState();
+})();
+</script>

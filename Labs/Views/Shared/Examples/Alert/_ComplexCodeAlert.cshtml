@@ -1,0 +1,21 @@
+@{
+    AlertBuilder alert = Html.AlertBuilder();
+    alert.SetTitle("Yahoo")
+        .SetMessage("This is a alert")
+        .SetVariant(VariantStyle.Success);
+
+    @alert.Render()
+    using (alert.Clone().SetTitle("Yahoo clone?!").SetVariant(VariantStyle.Primary).Begin())
+    {
+        @using (Html.BlockBuilder().Begin())
+        {
+            @:hummm … complex code …
+        }
+        @using (Html.BlockBuilder().Begin())
+        {
+            @:Clone element change between render…
+        }
+    }
+
+    @alert.SetVariant(VariantStyle.Warning).Render()
+}

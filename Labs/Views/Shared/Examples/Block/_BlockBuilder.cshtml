@@ -1,0 +1,16 @@
+@using (Html.BlockBuilder().AddClass("p-3 border rounded").Begin())
+{
+    @Html.TitleBuilder().SetTitle("Plain block with border", TitleLevel.Six).Render()
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:Html.BlockBuilder().AddClass("p-3 border rounded")
+    }
+}
+@using (Html.BlockBuilder().AsTextCenter().AddClass("mt-3 p-3 border rounded").Begin())
+{
+    @Html.TitleBuilder().SetTitle("Centered text block", TitleLevel.Six).Render()
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:AsTextCenter() adds the Bootstrap text-center class.
+    }
+}

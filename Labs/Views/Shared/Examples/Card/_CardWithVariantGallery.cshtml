@@ -1,0 +1,63 @@
+@using (Html.RowBuilder().Begin())
+{
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Primary").WithVariant(VariantStyle.Primary).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Primary)
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Success").WithVariant(VariantStyle.Success).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Success)
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Danger").WithVariant(VariantStyle.Danger).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Danger)
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Info").WithVariant(VariantStyle.Info).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Info)
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Warning").WithVariant(VariantStyle.Warning).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Warning)
+            }
+        }
+    }
+    @using (Html.ColBuilder().SetCol(ColSize.Col12).SetCol(ColSize.Col4, ResponsiveBreakpoint.Md).Begin())
+    {
+        @using (Html.CardBuilder().SetTitle("Secondary").WithVariant(VariantStyle.Secondary).Begin())
+        {
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:WithVariant(VariantStyle.Secondary)
+            }
+        }
+    }
+}

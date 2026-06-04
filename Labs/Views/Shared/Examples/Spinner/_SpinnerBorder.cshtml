@@ -1,0 +1,43 @@
+@using (Html.FlexBlockBuilder().SetAlignItemsCenter().WithGap(Old_Gap.Gap3).Begin())
+{
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Primary)
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Default
+        }
+    }
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Secondary).SetSize(SpinnerSize.Small)
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Small
+        }
+    }
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Success).SetSize(32, UnitSize.px)
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:32 px
+        }
+    }
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Warning).SetSize(48, UnitSize.px)
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:48 px
+        }
+    }
+    @using (Html.BlockBuilder().AsTextCenter().Begin())
+    {
+        @Html.Spinner().SetSpinnerType(SpinnerType.Border).SetVariant(VariantStyle.Danger).SetLabel("Please wait")
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Custom label
+        }
+    }
+}

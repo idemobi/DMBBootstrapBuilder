@@ -1,0 +1,130 @@
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("Card", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Flexible card containers with titles, icons, variants and footers.
+            }
+        }
+    }
+}
+
+@* ── NoHeader ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("NoHeader", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:NoHeader() removes the card header entirely — only the body is rendered.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardNoHeader", "NoHeader", IconStruct.Bootstrap("bi-square"))
+}
+
+@* ── SetTitle ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("SetTitle", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:SetTitle(string, TitleLevel) renders a styled header with just a text label.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardSetTitle", "SetTitle", IconStruct.Bootstrap("bi-card-heading"))
+}
+
+@* ── WithTitle + Icon + Subtitle ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("WithTitle + Icon + Subtitle", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:WithTitle(string, TitleLevel, IconStruct, string?) adds an icon and optional subtitle next to the title.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardWithTitle", "WithTitle + icon", IconStruct.Bootstrap("bi-image"))
+}
+
+@* ── WithIconOnly ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("WithIconOnly", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:WithIconOnly(TitleLevel, IconStruct) renders an icon-only header, optionally centered.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardWithIconOnly", "WithIconOnly", IconStruct.Bootstrap("bi-star"))
+}
+
+@* ── WithVariant ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("WithVariant", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:WithVariant(VariantStyle) colors the card header using Bootstrap contextual styles.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AsExamplePreview().Begin())
+    {
+        @await Html.PartialAsync("~/Views/Shared/Examples/Card/_CardWithVariantGallery.cshtml")
+    }
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardWithVariant", "WithVariant", IconStruct.Bootstrap("bi-palette"))
+}
+
+@* ── Footer ── *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Footer", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:FooterBuilder() inside a CardBuilder block renders a card-footer region below the body.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Card/_CardFooter", "Footer", IconStruct.Bootstrap("bi-layout-text-window-reverse"))
+}
