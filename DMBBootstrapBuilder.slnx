@@ -1,0 +1,30 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="NuGet" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Folder Name="/Source/">
+    <Project Path="Source/DMBBootstrapBuilder.csproj" />
+  </Folder>
+  <Folder Name="/LiveConfigurator/">
+    <Project Path="LiveConfigurator/DMBBootstrapLiveConfigurator.csproj">
+      <BuildType Solution="NuGet|*" Project="Debug" />
+    </Project>
+  </Folder>
+  <Folder Name="/Labs/">
+    <Project Path="Labs/DMBBootstrapBuilderLabs.csproj">
+      <BuildType Solution="NuGet|*" Project="Debug" />
+    </Project>
+  </Folder>
+  <Folder Name="/Website/">
+    <Project Path="Website/DMBBootstrapBuilderWebsite.csproj">
+      <BuildType Solution="NuGet|*" Project="Debug" />
+    </Project>
+  </Folder>
+  <Folder Name="/UnitTests/">
+    <Project Path="UnitTests/DMBBootstrapBuilderUnitTest.csproj">
+      <BuildType Solution="NuGet|*" Project="Debug" />
+    </Project>
+  </Folder>
+</Solution>

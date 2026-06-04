@@ -11,6 +11,7 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 - Important source folders: `Source/Components/`, `Source/Bootstrap/`, `Source/BodyBuilder/`, `Source/Composers/`, `Source/HtmlHelpers/`, `Source/Helpers/`, `Source/Managers/`, `Source/Providers/`, `Source/Controllers/`, `Source/Configuration/`, `Source/Constants/`, `Source/Resources/`, `Source/Tools/`, `Source/Views/`, and `Source/wwwroot/`.
 - Live configurator project folder: `LiveConfigurator/`
 - Labs folder: `Labs/`
+- Local website folder: `Website/`
 - Unit test folder: `UnitTests/`
 - Documentation target: `labs_idemobi_com`
 
@@ -71,11 +72,17 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 - `Labs/`
   - Razor class library containing BootstrapBuilder presentation pages and examples hosted by `labs_idemobi_com`.
   - References `Source/DMBBootstrapBuilder.csproj` directly and exposes controllers, views, helper extensions, and static assets used by the labs website.
+  - `Navigation/`: reusable navigation fragments consumed by local and final host websites.
 
 - `LiveConfigurator/`
   - Razor class library and NuGet package project for `DMBBootstrapLiveConfigurator`.
   - References `Source/DMBBootstrapBuilder.csproj` directly and keeps the public package identity `DMBBootstrapLiveConfigurator`.
   - Exposes the live Bootstrap theme configurator controller, views, configuration hooks, and embedded static assets.
+
+- `Website/`
+  - Local ASP.NET Core host website for opening `DMBBootstrapBuilder.slnx` and previewing Labs pages independently from `labs_idemobi_com`.
+  - References only local module projects directly (`Labs/`, `Source/`, and `LiveConfigurator/`) and uses package references for external dependencies.
+  - Provides the local navbar provider, sidebar filter, PageBuilder-compatible layout, launch settings, favicons, and logo assets.
 
 - `.ai/` and `.aiassistant/`
   - Local AI-assistant support metadata when present. Do not treat generated assistant state as project source.
