@@ -226,6 +226,13 @@ namespace DMBBootstrapBuilder
             string sectionId = sectionIdProp?.GetValue(model)?.ToString() ?? "unknown_section";
             string sectionIdJs = JavaScriptEncoder.Default.Encode(sectionId);
 
+            // Préfixe basé sur le type du modèle pour éviter les collisions d'IDs quand plusieurs effets sont sur la même section
+            string effectKey = type.Name
+                .Replace("EffectDebugModel", "")
+                .Replace("DebugModel", "")
+                .ToLowerInvariant();
+            string formPrefix = $"{sectionId}_{effectKey}";
+
             var sb = new StringBuilder();
             var applyLogic = new StringBuilder();
             var resetLogic = new StringBuilder();
@@ -236,7 +243,7 @@ namespace DMBBootstrapBuilder
                 var attr = prop.GetCustomAttribute<DebugPropertyAttribute>();
                 if (attr?.Ignore == true || prop.Name.Equals("SectionId", StringComparison.OrdinalIgnoreCase)) continue;
 
-                string propId = $"{sectionId}_{prop.Name.ToLowerInvariant()}";
+                string propId = $"{formPrefix}_{prop.Name.ToLowerInvariant()}";
                 string propIdJs = JavaScriptEncoder.Default.Encode(propId);
                 string label = attr?.Label ?? prop.Name;
                 object? initialValue = prop.GetValue(model);
@@ -255,13 +262,15 @@ namespace DMBBootstrapBuilder
                 if (attr?.InputType != DebugInputType.Hidden) codeParts.Add(GetPropCodeValue(prop, propIdJs));
             }
 
+            string formPrefixJs = JavaScriptEncoder.Default.Encode(formPrefix);
+
             // Script Apply
             string applyScript = $@"
 (function(){{
     var section = document.getElementById('{sectionIdJs}');
     if(!section) return;
     {applyLogic}
-    var code = document.getElementById('{sectionIdJs}_debug_code');
+    var code = document.getElementById('{formPrefixJs}_debug_code');
     if(code) {{
         code.value = {GetFullCodeValueJs(modelAttr?.CodePattern, codeParts)};
     }}
@@ -294,7 +303,7 @@ namespace DMBBootstrapBuilder
     <button type=""button"" class=""btn btn-sm btn-outline-secondary"" onclick=""{WebUtility.HtmlEncode(resetScript)}"">Reset</button>
 </div>
 
-<input id=""{sectionId}_debug_code"" class=""form-control border-top"" readonly value=""{WebUtility.HtmlEncode(GetInitialCodeValue(modelAttr?.CodePattern, properties, model))}"" onclick=""{WebUtility.HtmlEncode(copyScript)}"">");
+<input id=""{formPrefix}_debug_code"" class=""form-control border-top"" readonly value=""{WebUtility.HtmlEncode(GetInitialCodeValue(modelAttr?.CodePattern, properties, model))}"" onclick=""{WebUtility.HtmlEncode(copyScript)}"">");
 
             return new HtmlString(sb.ToString());
         }
