@@ -326,7 +326,9 @@ namespace DMBBootstrapBuilder
         /// <returns>The rendered HTML content for the BootstrapBuilder component.</returns>
         public override IHtmlContent Render()
         {
-            throw new NotImplementedException();
+            using StringWriter writer = new();
+            WriteTo(writer, HtmlEncoder.Default);
+            return new HtmlString(writer.ToString());
         }
 
         private string RenderBadges(TabDefinition tab)
