@@ -19,11 +19,11 @@
         <ProjectReference Include="..\Labs\DMBBootstrapBuilderLabs.csproj" />
         <ProjectReference Include="..\Source\DMBBootstrapBuilder.csproj" />
         <ProjectReference Include="..\LiveConfigurator\DMBBootstrapLiveConfigurator.csproj" />
-        <PackageReference Include="DMBServerHelper" Version="0.18.0-preview.1" />
-        <PackageReference Include="DMBServerWebHelper" Version="0.18.0-preview.1" />
-        <PackageReference Include="DMBPageBuilder" Version="0.18.0-preview.1" />
-        <PackageReference Include="DMBComponentBuilder" Version="0.18.0-preview.1" />
-        <PackageReference Include="DMBEffectBuilder" Version="0.18.0-preview.1" />
+        <PackageReference Include="DMBServerHelper" Version="0.19.0" />
+        <PackageReference Include="DMBServerWebHelper" Version="0.19.0" />
+        <PackageReference Include="DMBPageBuilder" Version="0.19.0" />
+        <PackageReference Include="DMBComponentBuilder" Version="0.19.0" />
+        <PackageReference Include="DMBEffectBuilder" Version="0.19.0" />
     </ItemGroup>
 
 </Project>
