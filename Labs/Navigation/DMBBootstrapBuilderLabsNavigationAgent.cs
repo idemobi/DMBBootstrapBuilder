@@ -191,7 +191,7 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     /// <returns>The configured <see cref="SideBarSectionComponent" />.</returns>
     public static SideBarSectionComponent CreateSidebarSection(string? currentController, string? currentAction)
     {
-        return new SideBarSectionComponent("BootstrapBuilder")
+        return new SideBarSectionComponent("DMBBootstrapBuilder")
             .Add(
                 ActionItemFactory.Group("General", IconStruct.Bootstrap("bi-info-circle"))
                     .AddItems(
@@ -393,8 +393,8 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     public static string ResolveModuleTitle(string? currentController)
     {
         return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
-            ? "BootstrapLiveConfigurator"
-            : "BootstrapBuilder";
+            ? "DMBBootstrapLiveConfigurator"
+            : "DMBBootstrapBuilder";
     }
 
     #endregion
