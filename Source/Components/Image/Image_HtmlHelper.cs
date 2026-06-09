@@ -7,7 +7,6 @@
 
 #region
 
-using System;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 

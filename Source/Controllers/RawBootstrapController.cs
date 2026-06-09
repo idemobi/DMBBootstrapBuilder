@@ -7,7 +7,6 @@
 
 #region
 
-using System.Collections.Generic;
 using DMBPageBuilder;
 using DMBPageBuilder.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;

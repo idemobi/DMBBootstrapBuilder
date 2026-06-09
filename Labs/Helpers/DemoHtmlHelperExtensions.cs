@@ -7,11 +7,8 @@
 
 #region
 
-using System;
-using System.IO;
 using System.Net;
 using System.Text.Encodings.Web;
-using System.Threading.Tasks;
 using DMBBootstrapBuilder;
 using DMBPageBuilder;
 using JetBrains.Annotations;
@@ -81,8 +78,11 @@ namespace DMBBootstrapBuilderLabs
         /// <param name="model">The optional model passed to the example partial.</param>
         /// <param name="previewFirst">A value indicating whether the preview panel is selected by default.</param>
         /// <returns>The rendered example block.</returns>
-        /// <exception cref="ArgumentNullException">Thrown when <paramref name="htmlHelper"/> is <see langword="null"/>.</exception>
-        /// <exception cref="ArgumentException">Thrown when <paramref name="partialViewName"/> is empty or does not use the expected examples prefix.</exception>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="htmlHelper" /> is <see langword="null" />.</exception>
+        /// <exception cref="ArgumentException">
+        ///     Thrown when <paramref name="partialViewName" /> is empty or does not use the
+        ///     expected examples prefix.
+        /// </exception>
         public static async Task<IHtmlContent> RenderExamplePartialAsync(
             this IHtmlHelper htmlHelper,
             [AspMvcView] string partialViewName,

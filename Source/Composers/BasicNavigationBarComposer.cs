@@ -7,9 +7,6 @@
 
 #region
 
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.DependencyInjection;

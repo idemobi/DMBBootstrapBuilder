@@ -7,8 +7,6 @@
 
 #region
 
-using System;
-using System.Collections.Generic;
 using DMBBootstrapBuilder;
 using DMBPageBuilder;
 
@@ -74,7 +72,7 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     /// <param name="icon">The Bootstrap Icons CSS class used by the action.</param>
     /// <param name="currentController">The current MVC controller name used to mark the action active.</param>
     /// <param name="currentAction">The current MVC action name used to mark the action active.</param>
-    /// <returns>The configured <see cref="AspRouteActionItem"/>.</returns>
+    /// <returns>The configured <see cref="AspRouteActionItem" />.</returns>
     public static AspRouteActionItem CreateAction(
         string controller,
         string action,
@@ -97,7 +95,7 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     /// <summary>
     ///     Creates the DMBBootstrapBuilder navbar menu group.
     /// </summary>
-    /// <returns>The configured <see cref="GroupActionItem"/> containing DMBBootstrapBuilder labs page links.</returns>
+    /// <returns>The configured <see cref="GroupActionItem" /> containing DMBBootstrapBuilder labs page links.</returns>
     public static GroupActionItem CreateMenuGroup()
     {
         return ActionItemFactory.Group("DMBBootstrapBuilder", IconStruct.Bootstrap("bi-bootstrap"))
@@ -160,11 +158,37 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     }
 
     /// <summary>
+    ///     Creates the DMBBootstrapBuilder sidebar component.
+    /// </summary>
+    /// <param name="currentController">The current MVC controller name used to mark the active item.</param>
+    /// <param name="currentAction">The current MVC action name used to mark the active item.</param>
+    /// <param name="sidebarId">The HTML identifier applied to the sidebar component.</param>
+    /// <param name="localStorageKey">The browser local-storage key used for sidebar state.</param>
+    /// <returns>The configured <see cref="SideBarComponent" />.</returns>
+    public static SideBarComponent CreateSidebar(
+        string? currentController,
+        string? currentAction,
+        string sidebarId = "bootstrap_builder_sidebar",
+        string localStorageKey = "dmbbootstrapbuilder.labs.sidebar"
+    )
+    {
+        SideBarComponent sidebar = new SideBarComponent()
+            .WithId(sidebarId)
+            .WithLocalStorageKey(localStorageKey)
+            .WithAutoExpandActivePath()
+            .WithRememberExpandedState();
+
+        sidebar.AddSection(CreateSidebarSection(currentController, currentAction));
+
+        return sidebar;
+    }
+
+    /// <summary>
     ///     Creates the DMBBootstrapBuilder sidebar section.
     /// </summary>
     /// <param name="currentController">The current MVC controller name used to mark the active item.</param>
     /// <param name="currentAction">The current MVC action name used to mark the active item.</param>
-    /// <returns>The configured <see cref="SideBarSectionComponent"/>.</returns>
+    /// <returns>The configured <see cref="SideBarSectionComponent" />.</returns>
     public static SideBarSectionComponent CreateSidebarSection(string? currentController, string? currentAction)
     {
         return new SideBarSectionComponent("BootstrapBuilder")
@@ -227,39 +251,31 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
     }
 
     /// <summary>
-    ///     Creates the DMBBootstrapBuilder sidebar component.
-    /// </summary>
-    /// <param name="currentController">The current MVC controller name used to mark the active item.</param>
-    /// <param name="currentAction">The current MVC action name used to mark the active item.</param>
-    /// <param name="sidebarId">The HTML identifier applied to the sidebar component.</param>
-    /// <param name="localStorageKey">The browser local-storage key used for sidebar state.</param>
-    /// <returns>The configured <see cref="SideBarComponent"/>.</returns>
-    public static SideBarComponent CreateSidebar(
-        string? currentController,
-        string? currentAction,
-        string sidebarId = "bootstrap_builder_sidebar",
-        string localStorageKey = "dmbbootstrapbuilder.labs.sidebar"
-    )
-    {
-        SideBarComponent sidebar = new SideBarComponent()
-            .WithId(sidebarId)
-            .WithLocalStorageKey(localStorageKey)
-            .WithAutoExpandActivePath()
-            .WithRememberExpandedState();
-
-        sidebar.AddSection(CreateSidebarSection(currentController, currentAction));
-
-        return sidebar;
-    }
-
-    /// <summary>
     ///     Determines whether a controller belongs to the DMBBootstrapBuilder labs module.
     /// </summary>
     /// <param name="controllerName">The MVC controller name to inspect.</param>
-    /// <returns><see langword="true"/> when the controller is part of this labs module; otherwise, <see langword="false"/>.</returns>
+    /// <returns><see langword="true" /> when the controller is part of this labs module; otherwise, <see langword="false" />.</returns>
     public static bool IsModuleController(string? controllerName)
     {
         return !string.IsNullOrWhiteSpace(controllerName) && ModuleControllers.Contains(controllerName);
+    }
+
+    /// <summary>
+    ///     Resolves the Bootstrap icon for a DMBBootstrapBuilder labs action.
+    /// </summary>
+    /// <param name="currentController">The MVC controller name to resolve.</param>
+    /// <param name="actionName">The MVC action name to resolve.</param>
+    /// <returns>The icon value represented as an <see cref="IconStruct" />.</returns>
+    public static IconStruct ResolveActionIcon(string? currentController, string? actionName)
+    {
+        return actionName switch
+        {
+            "GettingStarted" => IconStruct.Bootstrap("bi-play-circle"),
+            "Architecture" => IconStruct.Bootstrap("bi-diagram-3"),
+            "RenderingPipeline" => IconStruct.Bootstrap("bi-bezier2"),
+            "Examples" => IconStruct.Bootstrap("bi-window-stack"),
+            _ => ResolveIndexIcon(currentController)
+        };
     }
 
     /// <summary>
@@ -281,72 +297,6 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
                 ? "Introduction"
                 : ResolveIndexTitle(currentController)
         };
-    }
-
-    /// <summary>
-    ///     Resolves the Bootstrap icon for a DMBBootstrapBuilder labs action.
-    /// </summary>
-    /// <param name="currentController">The MVC controller name to resolve.</param>
-    /// <param name="actionName">The MVC action name to resolve.</param>
-    /// <returns>The icon value represented as an <see cref="IconStruct"/>.</returns>
-    public static IconStruct ResolveActionIcon(string? currentController, string? actionName)
-    {
-        return actionName switch
-        {
-            "GettingStarted" => IconStruct.Bootstrap("bi-play-circle"),
-            "Architecture" => IconStruct.Bootstrap("bi-diagram-3"),
-            "RenderingPipeline" => IconStruct.Bootstrap("bi-bezier2"),
-            "Examples" => IconStruct.Bootstrap("bi-window-stack"),
-            _ => ResolveIndexIcon(currentController)
-        };
-    }
-
-    /// <summary>
-    ///     Resolves the module root controller for a DMBBootstrapBuilder labs controller.
-    /// </summary>
-    /// <param name="currentController">The MVC controller name to resolve.</param>
-    /// <returns>The module root controller name.</returns>
-    public static string ResolveModuleController(string? currentController)
-    {
-        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
-            ? "BootstrapLiveConfigurator"
-            : "BootstrapBuilder";
-    }
-
-    /// <summary>
-    ///     Resolves the default action for a DMBBootstrapBuilder labs module root controller.
-    /// </summary>
-    /// <param name="currentController">The MVC controller name to resolve.</param>
-    /// <returns>The module default action name.</returns>
-    public static string ResolveModuleDefaultAction(string? currentController)
-    {
-        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
-            ? "Index"
-            : "Introduction";
-    }
-
-    /// <summary>
-    ///     Resolves the display title for a DMBBootstrapBuilder labs module.
-    /// </summary>
-    /// <param name="currentController">The MVC controller name to resolve.</param>
-    /// <returns>The module display title.</returns>
-    public static string ResolveModuleTitle(string? currentController)
-    {
-        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
-            ? "BootstrapLiveConfigurator"
-            : "BootstrapBuilder";
-    }
-
-    /// <summary>
-    ///     Resolves the Bootstrap icon for a DMBBootstrapBuilder labs module.
-    /// </summary>
-    /// <param name="currentController">The MVC controller name to resolve.</param>
-    /// <returns>The module icon value represented as an <see cref="IconStruct"/>.</returns>
-    public static IconStruct ResolveModuleIcon(string? currentController)
-    {
-        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
-            ? IconStruct.Bootstrap("bi-sliders2")
-            : IconStruct.Bootstrap("bi-bootstrap");
     }
 
     private static IconStruct ResolveIndexIcon(string? currentController)
@@ -397,6 +347,54 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
             null or "" => "Introduction",
             _ => currentController
         };
+    }
+
+    /// <summary>
+    ///     Resolves the module root controller for a DMBBootstrapBuilder labs controller.
+    /// </summary>
+    /// <param name="currentController">The MVC controller name to resolve.</param>
+    /// <returns>The module root controller name.</returns>
+    public static string ResolveModuleController(string? currentController)
+    {
+        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
+            ? "BootstrapLiveConfigurator"
+            : "BootstrapBuilder";
+    }
+
+    /// <summary>
+    ///     Resolves the default action for a DMBBootstrapBuilder labs module root controller.
+    /// </summary>
+    /// <param name="currentController">The MVC controller name to resolve.</param>
+    /// <returns>The module default action name.</returns>
+    public static string ResolveModuleDefaultAction(string? currentController)
+    {
+        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
+            ? "Index"
+            : "Introduction";
+    }
+
+    /// <summary>
+    ///     Resolves the Bootstrap icon for a DMBBootstrapBuilder labs module.
+    /// </summary>
+    /// <param name="currentController">The MVC controller name to resolve.</param>
+    /// <returns>The module icon value represented as an <see cref="IconStruct" />.</returns>
+    public static IconStruct ResolveModuleIcon(string? currentController)
+    {
+        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
+            ? IconStruct.Bootstrap("bi-sliders2")
+            : IconStruct.Bootstrap("bi-bootstrap");
+    }
+
+    /// <summary>
+    ///     Resolves the display title for a DMBBootstrapBuilder labs module.
+    /// </summary>
+    /// <param name="currentController">The MVC controller name to resolve.</param>
+    /// <returns>The module display title.</returns>
+    public static string ResolveModuleTitle(string? currentController)
+    {
+        return string.Equals(currentController, "BootstrapLiveConfigurator", StringComparison.OrdinalIgnoreCase)
+            ? "BootstrapLiveConfigurator"
+            : "BootstrapBuilder";
     }
 
     #endregion

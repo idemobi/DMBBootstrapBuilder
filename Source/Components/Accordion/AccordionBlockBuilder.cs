@@ -7,9 +7,6 @@
 
 #region
 
-using System;
-using System.IO;
-using System.Linq;
 using System.Text.Encodings.Web;
 using DMBPageBuilder;
 using Microsoft.AspNetCore.Mvc.Rendering;

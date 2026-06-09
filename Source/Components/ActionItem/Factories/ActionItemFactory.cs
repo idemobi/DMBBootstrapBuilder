@@ -7,7 +7,6 @@
 
 #region
 
-using System;
 using DMBPageBuilder;
 using JetBrains.Annotations;
 

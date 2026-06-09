@@ -7,8 +7,6 @@
 
 #region
 
-using System;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;

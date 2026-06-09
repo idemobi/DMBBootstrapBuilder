@@ -7,7 +7,6 @@
 
 #region
 
-using System;
 using DMBBootstrapLiveConfigurator.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

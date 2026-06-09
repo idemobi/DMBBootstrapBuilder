@@ -9,8 +9,6 @@
 
 #endregion
 
-using System;
-
 namespace DMBBootstrapBuilder
 {
     /// <summary>

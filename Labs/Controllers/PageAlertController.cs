@@ -7,8 +7,6 @@
 
 #region
 
-using System;
-using System.Collections.Generic;
 using DMBBootstrapBuilder;
 using DMBBootstrapBuilderLabs.Models;
 using DMBPageBuilder;
