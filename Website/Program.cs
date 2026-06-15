@@ -11,7 +11,7 @@ using DMBBootstrapBuilder;
 using DMBBootstrapBuilderLabs.Controllers;
 using DMBBootstrapBuilderWebsite;
 using DMBBootstrapLiveConfigurator.Configuration;
-using DMBBootstrapLiveConfigurator.Controllers;
+using DMBBootstrapLiveConfigurator;
 using DMBComponentBuilder;
 using DMBEffectBuilder;
 using DMBPageBuilder;

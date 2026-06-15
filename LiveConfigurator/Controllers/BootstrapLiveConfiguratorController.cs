@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 
 #endregion
 
-namespace DMBBootstrapLiveConfigurator.Controllers;
+namespace DMBBootstrapLiveConfigurator;
 
 /// <summary>
 ///     Provides a manual preview page for Bootstrap live configuration scenarios.
