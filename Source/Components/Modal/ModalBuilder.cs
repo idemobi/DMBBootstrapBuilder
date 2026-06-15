@@ -29,6 +29,8 @@ namespace DMBBootstrapBuilder
     {
         #region Static fields and properties
 
+        private const string PdfPreviewScriptPath = "/js/ModalPdfPreview.js";
+
         /// <summary>
         ///     Gets or sets the close button add class value used by BootstrapBuilder rendering or composition.
         /// </summary>
@@ -701,6 +703,7 @@ namespace DMBBootstrapBuilder
             _pdfPreviewUrl = urlOfPdf;
             _pdfIframeId = HtmlHelper.GenerateUniqueId("frame");
             _pdfIframeHeight = iframeHeight;
+            RegisterPdfPreviewAssets();
 
             return this;
         }
@@ -733,7 +736,8 @@ namespace DMBBootstrapBuilder
 
             if (_hasPdfPreview)
             {
-                _textWriter.Write($"""<iframe id="{_pdfIframeId}" width="100%" height="{_pdfIframeHeight}px" style="border: none;"></iframe>""");
+                RegisterPdfPreviewAssets();
+                _textWriter.Write(RenderPdfPreviewFrameHtml());
             }
 
             _started = true;
@@ -752,11 +756,6 @@ namespace DMBBootstrapBuilder
 
             _textWriter.Write(RenderModalEnd());
 
-            if (_hasPdfPreview)
-            {
-                _textWriter.Write(RenderPdfPreviewScript());
-            }
-
             OnEndRendering();
             _started = false;
         }
@@ -774,15 +773,12 @@ namespace DMBBootstrapBuilder
 
                 if (_hasPdfPreview)
                 {
-                    writer.Write($"""<iframe id="{_pdfIframeId}" width="100%" height="{_pdfIframeHeight}px" style="border: none;"></iframe>""");
+                    RegisterPdfPreviewAssets();
+                    writer.Write(RenderPdfPreviewFrameHtml());
                 }
 
                 writer.Write(RenderModalEnd());
 
-                if (_hasPdfPreview)
-                {
-                    writer.Write(RenderPdfPreviewScript());
-                }
             }
             finally
             {
@@ -1053,6 +1049,17 @@ namespace DMBBootstrapBuilder
                    """;
         }
 
+        private string RenderPdfPreviewFrameHtml()
+        {
+            string iframeId = HtmlEncoder.Default.Encode(_pdfIframeId ?? string.Empty);
+            string previewUrl = HtmlEncoder.Default.Encode(_pdfPreviewUrl ?? string.Empty);
+            string title = HtmlEncoder.Default.Encode(_title ?? "PDF preview");
+
+            return $"""
+                    <iframe id="{iframeId}" title="{title}" data-dmb-pdf-preview-src="{previewUrl}" width="100%" height="{_pdfIframeHeight}px" style="border: none;"></iframe>
+                    """;
+        }
+
         private bool ShouldRenderBodyEndHtml()
         {
             if (_htmlRenderContext == null)
@@ -1255,29 +1262,10 @@ namespace DMBBootstrapBuilder
             };
         }
 
-        private string RenderPdfPreviewScript()
+        private void RegisterPdfPreviewAssets()
         {
-            return $$$"""
-                      <script>
-                      document.addEventListener('DOMContentLoaded', function () {
-                          var modalEl = document.getElementById('{{_modalId}}');
-                          var iframe = document.getElementById('{{_pdfIframeId}}');
-                          var pdfUrl = '{{_pdfPreviewUrl}}';
-
-                          if (!modalEl || !iframe) {
-                              return;
-                          }
-
-                          modalEl.addEventListener('show.bs.modal', function () {
-                              iframe.src = pdfUrl;
-                          });
-
-                          modalEl.addEventListener('hidden.bs.modal', function () {
-                              iframe.src = '';
-                          });
-                      });
-                      </script>
-                      """;
+            PageInformation page = PageRegistry.GetOrCreatePageInformation(_htmlHelper.ViewContext.HttpContext);
+            page.SetScriptFile(PdfPreviewScriptPath, PageScriptLocation.EndOfBody, PageScriptLoadingMode.Defer, 10);
         }
 
         private void WriteHtmlContent(IHtmlContent content)

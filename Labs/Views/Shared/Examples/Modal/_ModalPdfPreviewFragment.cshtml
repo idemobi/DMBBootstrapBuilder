@@ -1,0 +1,16 @@
+@{
+    string pdfUrl = Url.Action("SamplePdf", "Modal") ?? "/Modal/SamplePdf";
+}
+
+@using (Html.ModalBuilder()
+            .Id("ex-modal-pdf-preview")
+            .WithTitle("PDF Preview", TitleLevel.Three, IconStruct.Bootstrap("bi-file-earmark-pdf"))
+            .WithVariant(VariantStyle.Danger)
+            .Size(ModalSize.Xl)
+            .AddPDFPreviewURL(pdfUrl, 640)
+            .Trigger("Open PDF", IconStruct.Bootstrap("bi-box-arrow-up-right"))
+            .TriggerStyle(VariantStyle.Primary)
+            .RenderTriggerInsideBegin()
+            .Begin())
+{
+}

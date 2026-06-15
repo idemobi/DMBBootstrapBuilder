@@ -74,3 +74,22 @@
 {
     @await Html.RenderExamplePartialAsync("Examples/Modal/_ModalVariant", "Variant", IconStruct.Bootstrap("bi-palette"))
 }
+
+@* -- PDF preview -- *@
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("PDF preview", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:AddPDFPreviewURL(string) renders a PDF preview inside a modal and loads the document only when the modal is shown.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ModalBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/Modal/_ModalPdfPreviewFragment", "PDF preview", IconStruct.Bootstrap("bi-file-earmark-pdf"))
+}
