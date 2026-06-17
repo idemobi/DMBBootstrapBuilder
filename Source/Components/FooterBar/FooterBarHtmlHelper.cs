@@ -16,7 +16,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Provides extension methods for configuring html footer bar in BootstrapBuilder components.
     /// </summary>
-    public static class Html_FooterBar_Extensions
+    public static class FooterBarHtmlHelper
     {
         #region Static methods
 

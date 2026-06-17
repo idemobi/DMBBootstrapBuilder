@@ -17,7 +17,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Represents the BootstrapBuilder image html helper component or support type.
     /// </summary>
-    public static class Image_HtmlHelper
+    public static class ImageHtmlHelper
     {
         #region Static methods
 

@@ -16,7 +16,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Represents the BootstrapBuilder title html helpers component or support type.
     /// </summary>
-    public static class Title_HtmlHelpers
+    public static class TitleHtmlHelper
     {
         #region Static methods
 

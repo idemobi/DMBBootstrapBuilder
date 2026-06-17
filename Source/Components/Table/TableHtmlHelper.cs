@@ -16,7 +16,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Provides extension methods for configuring html table in BootstrapBuilder components.
     /// </summary>
-    public static class Html_Table_Extensions
+    public static class TableHtmlHelper
     {
         #region Static methods
 

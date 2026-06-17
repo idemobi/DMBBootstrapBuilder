@@ -16,7 +16,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Represents the BootstrapBuilder alert html helpers component or support type.
     /// </summary>
-    public static class Alert_HtmlHelpers
+    public static class AlertHtmlHelpers
     {
         #region Static methods
 

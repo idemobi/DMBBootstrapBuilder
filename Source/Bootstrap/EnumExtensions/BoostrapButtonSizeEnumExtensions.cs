@@ -16,7 +16,7 @@ namespace DMBBootstrapBuilder
     /// <summary>
     ///     Provides extension methods for configuring boostrap button size enum in BootstrapBuilder components.
     /// </summary>
-    public static class BoostrapButtonSize_EnumExtensions
+    public static class BoostrapButtonSizeEnumExtensions
     {
         #region Static methods
 
