@@ -270,8 +270,12 @@ namespace DMBBootstrapBuilder
                 "dmb-container-sidebar",
                 "flex-shrink-0",
                 "align-self-stretch",
-                "my-3",
                 ResponsiveDisplayHelper.BuildVisibleFromCss(_sidebarShowFrom));
+
+            if (_containerStyle != ContainerStyle.Fluid)
+            {
+                localSideBarComponent.AddClasses("my-3");
+            }
 
             localSideBarComponent.SetStyle("width", _sidebarWidth);
             localSideBarComponent.SetStyle("min-width", _sidebarMinWidth);
@@ -283,6 +287,7 @@ namespace DMBBootstrapBuilder
 
             localContainerComponent.AddClasses(
                 "dmb-container",
+                "dmb-container-with-sidebar",
                 "p-0",
                 "d-flex",
                 "align-items-stretch",

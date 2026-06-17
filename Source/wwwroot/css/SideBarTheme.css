@@ -154,11 +154,13 @@ body[sidebar="inversed"] .dmb-container-sidebar {
 [data-fluid-info="true"] .dmb-container-sidebar {
     border-right-color: var(--dmb-sidebar-border-color);
     border-right-width: 1px;
-    margin: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 [data-fluid-info="false"] .dmb-container-sidebar {
     border-radius: var(--bs-border-radius);
     border: 1px solid var(--dmb-sidebar-border-color);
-    margin: 0;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
 }

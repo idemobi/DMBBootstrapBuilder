@@ -266,8 +266,14 @@ namespace DMBBootstrapBuilder
             Container = new ContainerBuilder(writer, html);
             Container.SwitchableToFluid(bootstrapInformation.PageContainerSwichable).Style(bootstrapInformation.PageContainerStyle).SetSidebar(bootstrapInformation.SideBar);
             Container.Begin();
-            writer.Write($@"<div class=""container-content w-100"" id=""page-content"">");
             BreadcrumbBuilder? breadcrumb = BootstrapBuilderConfiguration.Config.BreadcrumbComposer.GetBreadcrumb(writer, html, bootstrapInformation.BreadcrumbActions);
+            string containerContentClasses = breadcrumb == null
+                ? "container-content w-100"
+                : "container-content w-100 dmb-container-content-has-breadcrumb";
+            string containerContentAttributes = breadcrumb == null
+                ? string.Empty
+                : @" data-layout-has-breadcrumb=""true""";
+            writer.Write($@"<div class=""{containerContentClasses}"" id=""page-content""{containerContentAttributes}>");
             if (breadcrumb != null)
             {
                 breadcrumb.WriteTo(writer, HtmlEncoder.Default);

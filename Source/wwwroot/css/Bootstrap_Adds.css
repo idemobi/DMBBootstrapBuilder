@@ -432,6 +432,16 @@ button[aria-expanded="true"] .navbar-chevron
 	padding: 0 10px 050px;
 }
 
+[data-fluid-info="true"] .dmb-container-sidebar {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+[data-fluid-info="false"] .dmb-container-sidebar {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+}
+
 .dmb-container-main {
     min-width: 0;
 }

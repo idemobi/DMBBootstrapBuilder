@@ -1,3 +1,8 @@
 html[data-layout-breadcrumb="false"] [data-breadcrumb="true"] {
     display: none !important;
 }
+
+html[data-layout-breadcrumb="false"] .dmb-container-content-has-breadcrumb,
+html[data-layout-breadcrumb="false"] [data-layout-has-breadcrumb="true"] {
+    margin-top: 1rem;
+}
