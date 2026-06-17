@@ -192,10 +192,10 @@ namespace DMBBootstrapBuilder
             _desktopNavbar.Add(_desktopMenuContainer);
             _desktopNavbar.Add(new NavbarSpacerComponent());
             _desktopNavbar.Add(_desktopProfilContainer);
-            _desktopBrandContainer.WithAlignItems(AlignItems.End).WithJustify(JustifyContent.Start).Add(_desktopBrand);
+            _desktopBrandContainer.WithAlignItems(AlignItems.Center).WithJustify(JustifyContent.Start).Add(_desktopBrand);
             _desktopProfilActionsContainer.IconOnly = true;
-            _desktopMenuContainer.WithAlignItems(AlignItems.End).WithJustify(JustifyContent.Start).WithGap(Old_Gap.Gap3).Add(_desktopMenuActionsContainer);
-            _desktopProfilContainer.WithAlignItems(AlignItems.End).WithJustify(JustifyContent.End).WithGap(Old_Gap.Gap3).Add(_desktopProfilActionsContainer);
+            _desktopMenuContainer.WithAlignItems(AlignItems.Center).WithJustify(JustifyContent.Start).WithGap(Old_Gap.Gap3).Add(_desktopMenuActionsContainer);
+            _desktopProfilContainer.WithAlignItems(AlignItems.Center).WithJustify(JustifyContent.End).WithGap(Old_Gap.Gap3).Add(_desktopProfilActionsContainer);
 
             return _desktopNavbar;
         }
