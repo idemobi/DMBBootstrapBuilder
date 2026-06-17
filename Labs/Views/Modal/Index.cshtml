@@ -75,15 +75,15 @@
     @await Html.RenderExamplePartialAsync("Examples/Modal/_ModalVariant", "Variant", IconStruct.Bootstrap("bi-palette"))
 }
 
-@* -- PDF preview -- *@
+@* -- Previews -- *@
 @using (Html.BlockBuilder().AsSectionHeader().Begin())
 {
     @using (Html.BlockBuilder().Begin())
     {
-        @Html.TitleBuilder().SetTitle("PDF preview", TitleLevel.Three).Render()
+        @Html.TitleBuilder().SetTitle("Previews", TitleLevel.Three).Render()
         @using (Html.PB_P().AsMuted().Begin())
         {
-            @:AddPDFPreviewURL(string) renders a PDF preview inside a modal and loads the document only when the modal is shown.
+            @:AddPDFPreviewURL(string) renders a deferred PDF preview. AddImagePreviewURL(string) renders a responsive PNG or JPEG preview inside the modal body.
         }
     }
     @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(ModalBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
@@ -92,4 +92,5 @@
 @using (Html.BlockBuilder().AsSectionContent().Begin())
 {
     @await Html.RenderExamplePartialAsync("Examples/Modal/_ModalPdfPreviewFragment", "PDF preview", IconStruct.Bootstrap("bi-file-earmark-pdf"))
+    @await Html.RenderExamplePartialAsync("Examples/Modal/_ModalImagePreviewFragment", "Image preview", IconStruct.Bootstrap("bi-image"))
 }

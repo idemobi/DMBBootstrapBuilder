@@ -8,6 +8,7 @@ It centralizes reusable primitives for:
 
 - composing Bootstrap components through strongly typed fluent builders,
 - rendering layout primitives such as containers, rows, columns, blocks, cards, tables, and tabs,
+- rendering modal previews for PDFs and responsive PNG or JPEG images,
 - rendering page chrome such as body, header, footer, navbar, breadcrumb, sidebar, and footer bar areas,
 - rendering action links and buttons through `ActionItem` and `ButtonRender`,
 - exposing Bootstrap-oriented Razor helpers for `.cshtml` pages,

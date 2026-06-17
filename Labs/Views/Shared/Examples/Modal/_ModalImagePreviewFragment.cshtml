@@ -1,0 +1,16 @@
+@{
+    string imageUrl = Url.Action("SampleImage", "Modal") ?? "/Modal/SampleImage";
+}
+
+@using (Html.ModalBuilder()
+            .Id("ex-modal-image-preview")
+            .WithTitle("Image Preview", TitleLevel.Three, IconStruct.Bootstrap("bi-image"))
+            .WithVariant(VariantStyle.Primary)
+            .Size(ModalSize.Lg)
+            .AddImagePreviewURL(imageUrl, "Sample PNG preview")
+            .Trigger("Open image", IconStruct.Bootstrap("bi-box-arrow-up-right"))
+            .TriggerStyle(VariantStyle.Primary)
+            .RenderTriggerInsideBegin()
+            .Begin())
+{
+}

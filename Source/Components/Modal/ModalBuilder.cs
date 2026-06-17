@@ -81,6 +81,12 @@ namespace DMBBootstrapBuilder
             set => SetInternal("_hasPdfPreview", value);
         }
 
+        private bool _hasImagePreview
+        {
+            get => GetInternal("_hasImagePreview", false);
+            set => SetInternal("_hasImagePreview", value);
+        }
+
         private IActionItem? _headerAction
         {
             get => GetInternal<IActionItem?>("_headerAction", null);
@@ -137,6 +143,18 @@ namespace DMBBootstrapBuilder
         {
             get => GetInternal<string?>("_pdfPreviewUrl", null);
             set => SetInternal("_pdfPreviewUrl", value);
+        }
+
+        private string? _imagePreviewUrl
+        {
+            get => GetInternal<string?>("_imagePreviewUrl", null);
+            set => SetInternal("_imagePreviewUrl", value);
+        }
+
+        private string? _imagePreviewAltText
+        {
+            get => GetInternal<string?>("_imagePreviewAltText", null);
+            set => SetInternal("_imagePreviewAltText", value);
         }
 
         private bool _renderTriggerInsideBegin
@@ -220,6 +238,11 @@ namespace DMBBootstrapBuilder
 
         private void ValidateBeforeBegin()
         {
+            if (_hasPdfPreview && _hasImagePreview)
+            {
+                throw new InvalidOperationException("Modal cannot render PDF and image previews at the same time.");
+            }
+
             if (_noHeader)
             {
                 return;
@@ -708,6 +731,26 @@ namespace DMBBootstrapBuilder
             return this;
         }
 
+        /// <summary>
+        ///     Adds an image preview URL to the current BootstrapBuilder modal.
+        /// </summary>
+        /// <param name="urlOfImage">The URL of the image to render inside the modal body.</param>
+        /// <param name="altText">The alternative text used by the preview image.</param>
+        /// <returns>The configured <see cref="ModalBuilder" /> value.</returns>
+        public ModalBuilder AddImagePreviewURL(string urlOfImage, string? altText = null)
+        {
+            if (string.IsNullOrWhiteSpace(urlOfImage))
+            {
+                throw new ArgumentException("Image URL cannot be null or empty.", nameof(urlOfImage));
+            }
+
+            _hasImagePreview = true;
+            _imagePreviewUrl = urlOfImage;
+            _imagePreviewAltText = altText;
+
+            return this;
+        }
+
         #endregion
 
         #region Lifecycle
@@ -738,6 +781,10 @@ namespace DMBBootstrapBuilder
             {
                 RegisterPdfPreviewAssets();
                 _textWriter.Write(RenderPdfPreviewFrameHtml());
+            }
+            else if (_hasImagePreview)
+            {
+                _textWriter.Write(RenderImagePreviewHtml());
             }
 
             _started = true;
@@ -775,6 +822,10 @@ namespace DMBBootstrapBuilder
                 {
                     RegisterPdfPreviewAssets();
                     writer.Write(RenderPdfPreviewFrameHtml());
+                }
+                else if (_hasImagePreview)
+                {
+                    writer.Write(RenderImagePreviewHtml());
                 }
 
                 writer.Write(RenderModalEnd());
@@ -817,10 +868,13 @@ namespace DMBBootstrapBuilder
             _variant = source._variant;
 
             _hasPdfPreview = source._hasPdfPreview;
+            _hasImagePreview = source._hasImagePreview;
             _modalId = source._modalId;
             _pdfIframeHeight = source._pdfIframeHeight;
             _pdfIframeId = source._pdfIframeId;
             _pdfPreviewUrl = source._pdfPreviewUrl;
+            _imagePreviewUrl = source._imagePreviewUrl;
+            _imagePreviewAltText = source._imagePreviewAltText;
             _renderTriggerInsideBegin = source._renderTriggerInsideBegin;
             _size = source._size;
             _triggerRequested = source._triggerRequested;
@@ -1057,6 +1111,16 @@ namespace DMBBootstrapBuilder
 
             return $"""
                     <iframe id="{iframeId}" title="{title}" data-dmb-pdf-preview-src="{previewUrl}" width="100%" height="{_pdfIframeHeight}px" style="border: none;"></iframe>
+                    """;
+        }
+
+        private string RenderImagePreviewHtml()
+        {
+            string previewUrl = HtmlEncoder.Default.Encode(_imagePreviewUrl ?? string.Empty);
+            string altText = HtmlEncoder.Default.Encode(_imagePreviewAltText ?? _title ?? "Image preview");
+
+            return $"""
+                    <img class="img-fluid d-block mx-auto" src="{previewUrl}" alt="{altText}">
                     """;
         }
 
