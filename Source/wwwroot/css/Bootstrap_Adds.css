@@ -149,9 +149,9 @@
 /* 	margin: 0;*/
 /* }*/
 /* */
-/*.nav-icon-only .dropdown-toggle::after {*/
-/*    display: none;*/
-/*}*/
+.nav-icon-only .dropdown-toggle::after {
+    display: none;
+}
 
 .nav-link:focus,
 .nav-link:active {
