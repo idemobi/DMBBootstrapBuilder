@@ -418,7 +418,7 @@ namespace DMBBootstrapBuilder
                                                aria-expanded="false"{disabledAttribute}{extraAttributes}>
                                            <span class="d-inline-flex {GapIcon}">{iconHtml}{titleHtml}{badgeHtml}</span>
                                        </button>
-                                       <ul class="dropdown-menu" aria-labelledby="{HtmlEncoder.Default.Encode(toggleId)}">
+                                       <ul class="dropdown-menu px-2" aria-labelledby="{HtmlEncoder.Default.Encode(toggleId)}">
                                            {string.Join(Environment.NewLine, itemsHtml)}
                                        </ul>
                                    </div>
@@ -477,7 +477,7 @@ namespace DMBBootstrapBuilder
                                                aria-expanded="false"{GetDisabledAttribute(split)}>
                                            <span class="visually-hidden">Toggle Dropdown</span>
                                        </button>
-                                       <ul class="dropdown-menu" aria-labelledby="{HtmlEncoder.Default.Encode(toggleId)}">
+                                       <ul class="dropdown-menu px-2" aria-labelledby="{HtmlEncoder.Default.Encode(toggleId)}">
                                            {string.Join(Environment.NewLine, itemsHtml)}
                                        </ul>
                                    </div>
