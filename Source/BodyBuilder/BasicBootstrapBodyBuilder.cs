@@ -252,7 +252,7 @@ namespace DMBBootstrapBuilder
         {
             PageBootstrapInformation bootstrapInformation = PageBootstrapRegistry.GetPageInformation(html.ViewContext.HttpContext);
 
-            MainClasses.Add("flex-grow-1");
+            MainClasses.Add("flex-grow-1 d-flex flex-column");
             writer.Write($@"<!-- Bootstrap main -->");
             writer.Write($@"<main{RenderMainAttributes()}>");
 
@@ -265,6 +265,15 @@ namespace DMBBootstrapBuilder
 
             Container = new ContainerBuilder(writer, html);
             Container.SwitchableToFluid(bootstrapInformation.PageContainerSwichable).Style(bootstrapInformation.PageContainerStyle).SetSidebar(bootstrapInformation.SideBar);
+            if (bootstrapInformation.SideBar?.HasContent == true)
+            {
+                Container.InContainerComponent(component => component.AddClass("flex-grow-1"));
+            }
+            else
+            {
+                Container.AddClass("flex-grow-1");
+            }
+
             Container.Begin();
             BreadcrumbBuilder? breadcrumb = BootstrapBuilderConfiguration.Config.BreadcrumbComposer.GetBreadcrumb(writer, html, bootstrapInformation.BreadcrumbActions);
             string containerContentClasses = breadcrumb == null
