@@ -5,7 +5,7 @@
 
 #endregion
 
-namespace DMBBootstrapLiveConfigurator.Configuration;
+namespace DMBBootstrapLiveConfigurator;
 
 /// <summary>
 ///     Represents options used by the Bootstrap live configurator module.

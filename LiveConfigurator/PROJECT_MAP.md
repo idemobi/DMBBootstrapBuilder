@@ -33,7 +33,7 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 
 - `BootstrapLiveConfiguratorConfigureOptions.cs`: static file options configuration for embedded configurator assets.
 - `BootstrapLiveConfiguratorOptions.cs`: package options.
-- `DMBBootstrapLiveConfiguratorConfiguration.cs`: server configuration hook for static assets and global theme script registration.
+- `BootstrapLiveConfiguratorConfiguration.cs`: server configuration hook for static assets and global theme script registration.
 
 ## Controllers
 

@@ -11,7 +11,7 @@ The package provides:
 - `BootstrapLiveConfiguratorController` for configurator and example pages,
 - embedded Razor views under `Views/BootstrapLiveConfigurator`,
 - JavaScript and CSS assets under `wwwroot`,
-- `DMBBootstrapLiveConfiguratorConfiguration` for registering static assets and global theme scripts,
+- `BootstrapLiveConfiguratorConfiguration` for registering static assets and global theme scripts,
 - `AddDmbBootstrapLiveConfigurator(...)` for dependency injection setup,
 - options and static file configuration classes for host integration.
 

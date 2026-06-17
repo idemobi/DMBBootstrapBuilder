@@ -19,7 +19,7 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 
 - Project name: `DMBBootstrapLiveConfigurator`
 - Primary API families: controller actions, configuration classes, options, dependency injection extensions, embedded views, JavaScript assets, and CSS assets.
-- Important types to reference when relevant: `BootstrapLiveConfiguratorController`, `BootstrapLiveConfiguratorOptions`, `BootstrapLiveConfiguratorConfigureOptions`, `DMBBootstrapLiveConfiguratorConfiguration`, and `ServiceCollectionExtensions`.
+- Important types to reference when relevant: `BootstrapLiveConfiguratorController`, `BootstrapLiveConfiguratorOptions`, `BootstrapLiveConfiguratorConfigureOptions`, `BootstrapLiveConfiguratorConfiguration`, and `ServiceCollectionExtensions`.
 - Publication host: `labs_idemobi_com`
 - Documentation generation strategy: DocumentationBuilder-first; AI prepares content, the developer executes generation.
 

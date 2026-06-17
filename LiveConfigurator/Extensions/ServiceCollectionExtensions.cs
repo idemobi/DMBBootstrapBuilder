@@ -7,12 +7,11 @@
 
 #region
 
-using DMBBootstrapLiveConfigurator.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 #endregion
 
-namespace DMBBootstrapLiveConfigurator.Extensions;
+namespace DMBBootstrapLiveConfigurator;
 
 /// <summary>
 ///     Provides dependency injection extensions for the Bootstrap live configurator package.

@@ -10,7 +10,6 @@
 using DMBBootstrapBuilder;
 using DMBBootstrapBuilderLabs.Controllers;
 using DMBBootstrapBuilderWebsite;
-using DMBBootstrapLiveConfigurator.Configuration;
 using DMBBootstrapLiveConfigurator;
 using DMBComponentBuilder;
 using DMBEffectBuilder;
@@ -29,7 +28,7 @@ PageBuilderConfiguration.LoadCommonConfig(builder);
 BootstrapBuilderConfiguration.LoadCommonConfig(builder);
 ComponentBuilderConfiguration.LoadCommonConfig(builder);
 EffectBuilderConfiguration.LoadCommonConfig(builder);
-DMBBootstrapLiveConfiguratorConfiguration.LoadCommonConfig(builder);
+BootstrapLiveConfiguratorConfiguration.LoadCommonConfig(builder);
 
 var mvcBuilder = builder.Services.AddControllersWithViews();
 mvcBuilder.AddApplicationPart(typeof(BootstrapBuilderController).Assembly);

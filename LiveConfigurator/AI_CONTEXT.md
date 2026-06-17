@@ -44,7 +44,7 @@ This project is not:
 - `BootstrapLiveConfiguratorController` serves the live configurator pages.
 - `BootstrapLiveConfiguratorOptions` stores package options.
 - `BootstrapLiveConfiguratorConfigureOptions` exposes embedded static files.
-- `DMBBootstrapLiveConfiguratorConfiguration` registers static file options and the global theme script asset.
+- `BootstrapLiveConfiguratorConfiguration` registers static file options and the global theme script asset.
 - `AddDmbBootstrapLiveConfigurator(...)` registers the options surface with dependency injection.
 
 ## Change strategy

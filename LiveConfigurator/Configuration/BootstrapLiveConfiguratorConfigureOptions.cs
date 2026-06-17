@@ -15,7 +15,7 @@ using Microsoft.Extensions.Options;
 
 #endregion
 
-namespace DMBBootstrapLiveConfigurator.Configuration;
+namespace DMBBootstrapLiveConfigurator;
 
 /// <summary>
 ///     Configures static file options to expose embedded assets from the live configurator package.

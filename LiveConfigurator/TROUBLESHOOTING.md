@@ -35,7 +35,7 @@ Check:
 
 Check:
 
-- `DMBBootstrapLiveConfiguratorConfiguration` is loaded by the host,
+- `BootstrapLiveConfiguratorConfiguration` is loaded by the host,
 - the script key is `DMBBootstrapLiveConfigurator.GlobalTheme`,
 - the script URL is `/js/BootstrapLiveConfigurator.GlobalTheme.js`,
 - the script location and order still match the intended head loading behavior.

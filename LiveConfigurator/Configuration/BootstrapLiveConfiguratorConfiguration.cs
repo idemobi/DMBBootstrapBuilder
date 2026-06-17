@@ -15,13 +15,13 @@ using Microsoft.Extensions.Hosting;
 
 #endregion
 
-namespace DMBBootstrapLiveConfigurator.Configuration;
+namespace DMBBootstrapLiveConfigurator;
 
 /// <summary>
 ///     Provides configuration bootstrap for the DMBBootstrapLiveConfigurator package.
 /// </summary>
 [Serializable]
-public sealed class DMBBootstrapLiveConfiguratorConfiguration : WebGenericConfiguration<DMBBootstrapLiveConfiguratorConfiguration>, IServerWebConfig
+public sealed class BootstrapLiveConfiguratorConfiguration : WebGenericConfiguration<BootstrapLiveConfiguratorConfiguration>, IServerWebConfig
 {
     #region Instance methods
 
