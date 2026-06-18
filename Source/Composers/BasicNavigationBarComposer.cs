@@ -106,10 +106,58 @@ namespace DMBBootstrapBuilder
                     continue;
                 }
 
-                result.Add(moduleResult);
+                MergeProfileBarGroupActions(result, moduleResult.ActionList);
+                if (moduleResult.ActionList.Count > 0 || moduleResult.NavbarComponents.Count > 0)
+                {
+                    result.Add(moduleResult);
+                }
             }
 
             return result;
+        }
+
+        private static void MergeProfileBarGroupActions(List<ProfilBarModuleResult> results, List<IActionItem> actions)
+        {
+            for (int i = actions.Count - 1; i >= 0; i--)
+            {
+                if (TryMergeProfileBarGroupAction(results, actions[i]))
+                {
+                    actions.RemoveAt(i);
+                }
+            }
+        }
+
+        private static bool TryMergeProfileBarGroupAction(List<ProfilBarModuleResult> results, IActionItem action)
+        {
+            if (action is not GroupActionItem sourceGroup || string.IsNullOrWhiteSpace(sourceGroup.Id))
+            {
+                return false;
+            }
+
+            foreach (ProfilBarModuleResult result in results)
+            {
+                foreach (IActionItem existingAction in result.ActionList)
+                {
+                    if (existingAction is not GroupActionItem targetGroup)
+                    {
+                        continue;
+                    }
+
+                    if (!string.Equals(targetGroup.Id, sourceGroup.Id, StringComparison.OrdinalIgnoreCase))
+                    {
+                        continue;
+                    }
+
+                    foreach (IActionItem child in sourceGroup.Items)
+                    {
+                        targetGroup.AddItem(child);
+                    }
+
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         /// <summary>

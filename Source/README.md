@@ -57,6 +57,7 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 
 - Dropdown, sidebar, and offcanvas action items render disabled states with Bootstrap-compatible `.disabled`, `disabled`, or `aria-disabled="true"` signals.
 - Embedded navigation styles keep disabled items visibly muted across light, dark, primary, and inversed sidebar themes, while preventing pointer activation for disabled links.
+- Profile bar `GroupActionItem` entries with the same non-empty `Id` are merged by `BasicNavigationBarComposer`, allowing independent modules to contribute actions to one shared dropdown.
 
 ## Documentation strategy
 
