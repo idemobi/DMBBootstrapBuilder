@@ -529,6 +529,8 @@ namespace DMBBootstrapBuilder
             string iconHtml = GetPrimaryIconHtml(item);
             string badgeHtml = GetInlineBadgeHtml(item);
             string extraAttributes = BuildAdditionalAttributes(item);
+            string ariaDisabledAttribute = item.Disabled ? """ aria-disabled="true" """ : string.Empty;
+            string disabledAttribute = GetDisabledAttribute(item);
 
             string activeCss = item.Active ? " active" : string.Empty;
             string disabledCss = item.Disabled ? " disabled" : string.Empty;
@@ -555,7 +557,7 @@ namespace DMBBootstrapBuilder
                 case UrlActionItem url:
                     return $"""
                             <li>
-                                <a class="{itemCss}" href="{HtmlEncoder.Default.Encode(url.Url ?? "#")}"{GetTargetAttribute(url)}{GetRelAttribute(url)}{extraAttributes}>
+                                <a class="{itemCss}" href="{HtmlEncoder.Default.Encode(url.Url ?? "#")}"{GetTargetAttribute(url)}{GetRelAttribute(url)}{ariaDisabledAttribute}{extraAttributes}>
                                     {innerContent}
                                 </a>
                             </li>
@@ -564,7 +566,7 @@ namespace DMBBootstrapBuilder
                 case JavaScriptActionItem js:
                     return $"""
                             <li>
-                                <button type="button" class="{itemCss}" onclick="{HtmlEncoder.Default.Encode(js.JavaScript ?? string.Empty)}"{extraAttributes}>
+                                <button type="button" class="{itemCss}" onclick="{HtmlEncoder.Default.Encode(js.JavaScript ?? string.Empty)}"{disabledAttribute}{extraAttributes}>
                                     {innerContent}
                                 </button>
                             </li>
@@ -573,7 +575,7 @@ namespace DMBBootstrapBuilder
                 case AspRouteActionItem route:
                     return $"""
                             <li>
-                                <a class="{itemCss}" href="{HtmlEncoder.Default.Encode(BuildAspRouteUrl(route))}"{extraAttributes}>
+                                <a class="{itemCss}" href="{HtmlEncoder.Default.Encode(BuildAspRouteUrl(route))}"{ariaDisabledAttribute}{extraAttributes}>
                                     {innerContent}
                                 </a>
                             </li>
@@ -585,7 +587,7 @@ namespace DMBBootstrapBuilder
                                 <button type="button"
                                         class="{itemCss}"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#{HtmlEncoder.Default.Encode(modal.ModalTargetId ?? string.Empty)}"{extraAttributes}>
+                                        data-bs-target="#{HtmlEncoder.Default.Encode(modal.ModalTargetId ?? string.Empty)}"{disabledAttribute}{extraAttributes}>
                                     {innerContent}
                                 </button>
                             </li>
@@ -596,7 +598,7 @@ namespace DMBBootstrapBuilder
                             <li>
                                 <button type="button"
                                         class="{itemCss}"
-                                        data-bs-dismiss="modal">
+                                        data-bs-dismiss="modal"{disabledAttribute}>
                                     {innerContent}
                                 </button>
                             </li>
@@ -608,7 +610,7 @@ namespace DMBBootstrapBuilder
                 default:
                     return $"""
                             <li>
-                                <button type="button" class="{itemCss}">
+                                <button type="button" class="{itemCss}"{disabledAttribute}>
                                     {innerContent}
                                 </button>
                             </li>
@@ -622,6 +624,7 @@ namespace DMBBootstrapBuilder
             string endText = item.ClipboardEndText ?? string.Empty;
             string value = item.ClipboardValue ?? string.Empty;
             string extraAttributes = BuildAdditionalAttributes(item);
+            string disabledAttribute = GetDisabledAttribute(item);
 
             IconStruct startIcon = item.ClipboardStartIcon.IsEmpty ? item.Icon : item.ClipboardStartIcon;
             IconStruct endIcon = item.ClipboardEndIcon.IsEmpty ? startIcon : item.ClipboardEndIcon;
@@ -640,7 +643,7 @@ namespace DMBBootstrapBuilder
                                 data-copy-text-end="{EncodeAttribute(endText)}"
                                 data-copy-icon-start-html="{EncodeAttribute(startIconHtml)}"
                                 data-copy-icon-end-html="{EncodeAttribute(endIconHtml)}"
-                                onclick="DMBActionItemClipboard(this)">
+                                onclick="DMBActionItemClipboard(this)"{disabledAttribute}>
                             <span class="d-flex align-items-center justify-content-between w-100">
                                 <span class="d-inline-flex align-items-center {GapIcon} {innerIndentCss}">
                                     <span class="action-item-clipboard-icon">{startIconHtml}</span>

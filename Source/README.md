@@ -53,6 +53,11 @@ When copying this file to another PageBuilder ecosystem project, update this sec
 - Nullable: enabled
 - XML documentation output: enabled in `Debug`, `Release`, and `NuGet` configurations
 
+## Navigation rendering
+
+- Dropdown, sidebar, and offcanvas action items render disabled states with Bootstrap-compatible `.disabled`, `disabled`, or `aria-disabled="true"` signals.
+- Embedded navigation styles keep disabled items visibly muted across light, dark, primary, and inversed sidebar themes, while preventing pointer activation for disabled links.
+
 ## Documentation strategy
 
 This module follows a **DocumentationBuilder-first** strategy:

@@ -451,6 +451,9 @@ namespace DMBBootstrapBuilder
             string endText = item.ClipboardEndText ?? string.Empty;
             string value = item.ClipboardValue ?? string.Empty;
             string extraAttributes = BuildAdditionalAttributes(item);
+            string activeCss = item.Active ? " active" : string.Empty;
+            string disabledCss = item.Disabled ? " disabled" : string.Empty;
+            string disabledAttribute = GetDisabledAttribute(item);
 
             IconStruct startIcon = item.ClipboardStartIcon.IsEmpty ? item.Icon : item.ClipboardStartIcon;
             IconStruct endIcon = item.ClipboardEndIcon.IsEmpty ? startIcon : item.ClipboardEndIcon;
@@ -465,7 +468,7 @@ namespace DMBBootstrapBuilder
 
             return $"""
                     <button type="button"
-                            class="dropdown-item{textColorCss}"
+                            class="dropdown-item{activeCss}{disabledCss}{textColorCss}"
                             {extraAttributes}
                             data-copy="{EncodeAttribute(value)}"
                             data-copy-reset-ms="{item.ClipboardResetDelayMs}"
@@ -473,7 +476,7 @@ namespace DMBBootstrapBuilder
                             data-copy-text-end="{EncodeAttribute(endText)}"
                             data-copy-icon-start-html="{EncodeAttribute(startIconHtml)}"
                             data-copy-icon-end-html="{EncodeAttribute(endIconHtml)}"
-                            onclick="DMBActionItemClipboard(this)">
+                            onclick="DMBActionItemClipboard(this)"{disabledAttribute}>
                         <span class="d-flex align-items-center justify-content-between gap-2 w-100">
                             <span class="d-inline-flex align-items-center gap-2">
                                 <span class="action-item-clipboard-icon">{startIconHtml}</span>
@@ -610,6 +613,8 @@ namespace DMBBootstrapBuilder
             string textColorCss = BuildTextColorCss(item);
             string badgeHtml = GetInlineBadgeHtml(item);
             string extraAttributes = BuildAdditionalAttributes(item);
+            string ariaDisabledAttribute = GetAriaDisabledAttribute(item);
+            string disabledAttribute = GetDisabledAttribute(item);
 
             string inner = $"""
                             <span class="d-flex align-items-center justify-content-between gap-2 w-100">
@@ -624,35 +629,35 @@ namespace DMBBootstrapBuilder
             {
                 case UrlActionItem url:
                     return $"""
-                            <a class="dropdown-item{activeCss}{disabledCss}{textColorCss}" href="{WebUtility.HtmlEncode(url.Url ?? "#")}"{GetTargetAttribute(url)}{GetRelAttribute(url)}{extraAttributes}>
+                            <a class="dropdown-item{activeCss}{disabledCss}{textColorCss}" href="{WebUtility.HtmlEncode(url.Url ?? "#")}"{GetTargetAttribute(url)}{GetRelAttribute(url)}{ariaDisabledAttribute}{extraAttributes}>
                                 {inner}
                             </a>
                             """;
 
                 case AspRouteActionItem route:
                     return $"""
-                            <a class="dropdown-item{activeCss}{disabledCss}{textColorCss}" href="{WebUtility.HtmlEncode(BuildAspRouteUrl(htmlHelper, route))}"{extraAttributes}>
+                            <a class="dropdown-item{activeCss}{disabledCss}{textColorCss}" href="{WebUtility.HtmlEncode(BuildAspRouteUrl(htmlHelper, route))}"{ariaDisabledAttribute}{extraAttributes}>
                                 {inner}
                             </a>
                             """;
 
                 case JavaScriptActionItem js:
                     return $"""
-                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" onclick="{HtmlEncoder.Default.Encode(js.JavaScript ?? string.Empty)}"{extraAttributes}>
+                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" onclick="{HtmlEncoder.Default.Encode(js.JavaScript ?? string.Empty)}"{disabledAttribute}{extraAttributes}>
                                 {inner}
                             </button>
                             """;
 
                 case ModalActionItem modal:
                     return $"""
-                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" data-bs-toggle="modal" data-bs-target="#{WebUtility.HtmlEncode(modal.ModalTargetId ?? string.Empty)}"{extraAttributes}>
+                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" data-bs-toggle="modal" data-bs-target="#{WebUtility.HtmlEncode(modal.ModalTargetId ?? string.Empty)}"{disabledAttribute}{extraAttributes}>
                                 {inner}
                             </button>
                             """;
 
                 case DismissModalActionItem:
                     return $"""
-                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" data-bs-dismiss="modal"{extraAttributes}>
+                            <button type="button" class="dropdown-item{activeCss}{disabledCss}{textColorCss}" data-bs-dismiss="modal"{disabledAttribute}{extraAttributes}>
                                 {inner}
                             </button>
                             """;

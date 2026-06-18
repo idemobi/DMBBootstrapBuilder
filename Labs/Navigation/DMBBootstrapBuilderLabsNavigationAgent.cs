@@ -36,6 +36,7 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
         "NavBar",
         "FooterBar",
         "Breadcrumb",
+        "Pagination",
         "Block",
         "BlockTitle",
         "RowAndCol",
@@ -118,7 +119,8 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
                     .AddItems(
                         CreateAction("NavBar", "Index", "NavBar", "bi-menu-button-wide"),
                         CreateAction("FooterBar", "Index", "FooterBar", "bi-window-dock"),
-                        CreateAction("Breadcrumb", "Index", "Breadcrumb", "bi-signpost-split")
+                        CreateAction("Breadcrumb", "Index", "Breadcrumb", "bi-signpost-split"),
+                        CreateAction("Pagination", "Index", "Pagination", "bi-list-ol")
                     ),
                 ActionItemFactory.Group("Blocks", IconStruct.Bootstrap("bi-grid-3x3-gap"))
                     .AddItems(
@@ -211,7 +213,8 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
                     .AddItems(
                         CreateAction("NavBar", "Index", "NavBar", "bi-menu-button-wide", currentController, currentAction),
                         CreateAction("FooterBar", "Index", "FooterBar", "bi-window-dock", currentController, currentAction),
-                        CreateAction("Breadcrumb", "Index", "Breadcrumb", "bi-signpost-split", currentController, currentAction)
+                        CreateAction("Breadcrumb", "Index", "Breadcrumb", "bi-signpost-split", currentController, currentAction),
+                        CreateAction("Pagination", "Index", "Pagination", "bi-list-ol", currentController, currentAction)
                     ),
                 ActionItemFactory.Group("Blocks", IconStruct.Bootstrap("bi-grid-3x3-gap"))
                     .AddItems(
@@ -310,6 +313,7 @@ public static class DMBBootstrapBuilderLabsNavigationAgent
             "NavBar" => IconStruct.Bootstrap("bi-menu-button-wide"),
             "FooterBar" => IconStruct.Bootstrap("bi-window-dock"),
             "Breadcrumb" => IconStruct.Bootstrap("bi-signpost-split"),
+            "Pagination" => IconStruct.Bootstrap("bi-list-ol"),
             "Block" => IconStruct.Bootstrap("bi-square"),
             "RowAndCol" => IconStruct.Bootstrap("bi-columns-gap"),
             "Section" => IconStruct.Bootstrap("bi-layout-text-window"),

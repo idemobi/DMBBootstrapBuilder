@@ -1,0 +1,12 @@
+@{ Html.PaginationBuilder()
+       .SetFirstAction(ActionItemFactory.Url("First page", "?page=1", IconStruct.Bootstrap("bi-chevron-double-left")))
+       .SetPreviousAction(ActionItemFactory.Url("Previous page", "?page=45", IconStruct.Bootstrap("bi-chevron-left")))
+       .AddPageAction(1, ActionItemFactory.Url("1", "?page=1"))
+       .AddPageAction(2, ActionItemFactory.Url("2", "?page=2"))
+       .AddGap()
+       .AddPageAction(45, ActionItemFactory.Url("45", "?page=45"))
+       .AddPageAction(46, ActionItemFactory.Url("46", "?page=46").SetActive())
+       .SetNextAction(ActionItemFactory.Url("Next page", "?page=47", IconStruct.Bootstrap("bi-chevron-right")))
+       .SetLastAction(ActionItemFactory.Url("Last page", "?page=90", IconStruct.Bootstrap("bi-chevron-double-right")))
+       .Render(); 
+}

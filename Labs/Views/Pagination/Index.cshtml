@@ -1,0 +1,72 @@
+@{
+    Layout = "_Layout";
+    string DocUrl(string c) => $"/Documentation/Show?packageId=DMBBootstrapBuilder&groupName=NuGet&namespaceName=DMBBootstrapBuilder&objectName={c}";
+}
+
+@using (Html.SectionBuilder().SetHeight(125, UnitSize.px).BootstrapBackgroundEffect(VariantStyle.Normal).Begin())
+{
+    @using (Html.FlexBlockBuilder().SetAlignItemsCenter().SetJustifyContentCenter().Begin())
+    {
+        @using (Html.BlockBuilder().AsTextCenter().Begin())
+        {
+            @Html.TitleBuilder().SetTitle("PaginationBuilder", TitleLevel.One).Render()
+            @using (Html.PB_P().AsMuted().Begin())
+            {
+                @:Bootstrap pagination navigation driven by ActionItem route, URL, JavaScript, or modal actions.
+            }
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("ActionItem pagination", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:Use SetPageWindow for the standard first, previous, page window, next, and last pattern. Use the manual methods when a screen needs a custom page sequence.
+        }
+    }
+    @Html.Button(ActionItemFactory.Url(title: "", url: DocUrl(nameof(PaginationBuilder)), icon: IconStruct.Bootstrap("bi-book-half")).SetVariant(VariantStyle.Secondary).SetOutlined()).Render()
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @await Html.RenderExamplePartialAsync("Examples/PaginationBuilder/_B001NormalPagination", "Normal state", IconStruct.Bootstrap("bi-list-ol"))
+    @await Html.RenderExamplePartialAsync("Examples/PaginationBuilder/_B002EmptyPagination", "Empty state", IconStruct.Bootstrap("bi-inbox"))
+    @await Html.RenderExamplePartialAsync("Examples/PaginationBuilder/_B003ErrorPagination", "Error state", IconStruct.Bootstrap("bi-exclamation-triangle"))
+    @await Html.RenderExamplePartialAsync("Examples/PaginationBuilder/_B004RealisticSearchPagination", "Realistic search result", IconStruct.Bootstrap("bi-search"))
+}
+
+@using (Html.BlockBuilder().AsSectionHeader().Begin())
+{
+    @using (Html.BlockBuilder().Begin())
+    {
+        @Html.TitleBuilder().SetTitle("Showcase", TitleLevel.Three).Render()
+        @using (Html.PB_P().AsMuted().Begin())
+        {
+            @:The same builder can render compact, default, large, automatic, or manually composed pagination surfaces.
+        }
+    }
+}
+
+@using (Html.BlockBuilder().AsSectionContent().Begin())
+{
+    @using (Html.BlockBuilder().AddClass("d-flex flex-wrap gap-3").Begin())
+    {
+        Html.PaginationBuilder()
+            .SetSize(BoostrapButtonSize.Small)
+            .SetPageWindow(6, 12, page => ActionItemFactory.Url(page.ToString(), $"?page={page}"), 1)
+            .Render();
+
+        Html.PaginationBuilder()
+            .SetPageWindow(6, 12, page => ActionItemFactory.Url(page.ToString(), $"?page={page}"), 2)
+            .Render();
+
+        Html.PaginationBuilder()
+            .SetSize(BoostrapButtonSize.Large)
+            .SetPageWindow(6, 12, page => ActionItemFactory.Url(page.ToString(), $"?page={page}"), 1)
+            .Render();
+    }
+}

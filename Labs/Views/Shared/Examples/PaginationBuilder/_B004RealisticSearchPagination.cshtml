@@ -1,0 +1,24 @@
+@{
+    const int currentPage = 46;
+    const int totalPages = 90;
+}
+
+@using (Html.BlockBuilder().Begin())
+{
+    @using (Html.PB_P().AsMuted().Begin())
+    {
+        @:Showing search results page @currentPage of @totalPages.
+    }
+
+    Html.PaginationBuilder()
+        .SetAria("label", "Search results pages")
+        .SetPageWindow(
+            currentPage,
+            totalPages,
+            page => ActionItemFactory.AspRoute("Pagination", "Index")
+                .SetTitle(page.ToString())
+                .SetIcon(IconStruct.Empty)
+                .AddRouteValue("page", page),
+            2)
+        .Render();
+}
