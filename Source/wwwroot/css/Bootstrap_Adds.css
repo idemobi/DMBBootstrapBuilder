@@ -466,9 +466,9 @@ button[aria-expanded="true"] .navbar-chevron
     min-width: 0;
 }
 
-.dmb-container:not(.landing-page) > .dmb-container-main {
-    margin-bottom: 1rem;
-}
+/*.dmb-container:not(.landing-page) > .dmb-container-main {*/
+/*    margin-bottom: 1rem;*/
+/*}*/
 
 
 .section-debug-host {

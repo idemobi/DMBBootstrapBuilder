@@ -31,7 +31,7 @@ namespace DMBBootstrapBuilder
                 ContainerStyle.Lg => "container-lg",
                 ContainerStyle.Xl => "container-xl",
                 ContainerStyle.Xxl => "container-xxl",
-                ContainerStyle.LandingPage => "landing-page",
+                //ContainerStyle.LandingPage => "landing-page",
                 _ => "container"
             };
         }

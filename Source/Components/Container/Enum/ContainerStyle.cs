@@ -52,9 +52,11 @@ namespace DMBBootstrapBuilder
         /// </summary>
         Xxl = 6,
 
+        /*
         /// <summary>
         ///     Represents the landing page BootstrapBuilder option.
         /// </summary>
         LandingPage = 7,
+        */
     }
 }
