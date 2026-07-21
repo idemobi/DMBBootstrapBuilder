@@ -1009,6 +1009,11 @@ namespace DMBBootstrapBuilder
                     continue;
                 }
 
+                if (item is JavaScriptActionItem && string.Equals(kvp.Key, "type", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
                 sb.Append(' ');
                 sb.Append(HtmlEncoder.Default.Encode(kvp.Key));
                 sb.Append("=\"");
